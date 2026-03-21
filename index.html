@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nabooshy</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0910;
+    --bg2: #13121f;
+    --bg3: #1a1830;
+    --border: #ffffff12;
+    --text: #e8e6ff;
+    --muted: #6b6880;
+    --purple: #7F77DD;
+    --purple-light: #AFA9EC;
+    --teal: #1D9E75;
+    --teal-light: #5DCAA5;
+    --pink: #D4537E;
+    --amber: #EF9F27;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,9,16,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 52px;
+  }
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    background: linear-gradient(90deg, #7F77DD, #1D9E75, #D4537E, #EF9F27, #7F77DD);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradMove 4s linear infinite;
+  }
+  @keyframes gradMove { 0%{background-position:0%} 100%{background-position:100%} }
+  .nav-links { display: flex; gap: 4px; }
+  .nav-link {
+    font-size: 13px;
+    color: var(--muted);
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all .2s;
+  }
+  .nav-link:hover { color: var(--purple-light); background: #7F77DD15; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    padding: 56px 24px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+  }
+  .orb1 { width:300px;height:300px;background:#7F77DD22;top:-80px;left:-60px;animation:orbFloat 8s ease-in-out infinite; }
+  .orb2 { width:200px;height:200px;background:#1D9E7522;bottom:-40px;right:-40px;animation:orbFloat 10s ease-in-out infinite 2s; }
+  .orb3 { width:160px;height:160px;background:#D4537E18;top:40px;right:80px;animation:orbFloat 6s ease-in-out infinite 1s; }
+  @keyframes orbFloat { 0%,100%{transform:translate(0,0)} 50%{transform:translate(20px,-20px)} }
+
+  /* LOGO ANIMATION */
+  .logo-hero {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 16px;
+  }
+  .logo-letters {
+    display: flex;
+    gap: 2px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(52px, 12vw, 88px);
+    font-weight: 600;
+    line-height: 1;
+  }
+  .logo-letters span {
+    display: inline-block;
+    animation: letterFloat 2.4s ease-in-out infinite;
+  }
+  .logo-letters span:nth-child(1){animation-delay:0s;background:linear-gradient(135deg,#534AB7,#7F77DD);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .logo-letters span:nth-child(2){animation-delay:.08s;background:linear-gradient(135deg,#7F77DD,#1D9E75);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .logo-letters span:nth-child(3){animation-delay:.16s;background:linear-gradient(135deg,#1D9E75,#D4537E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .logo-letters span:nth-child(4){animation-delay:.24s;background:linear-gradient(135deg,#D4537E,#EF9F27);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .logo-letters span:nth-child(5){animation-delay:.32s;background:linear-gradient(135deg,#EF9F27,#534AB7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .logo-letters span:nth-child(6){animation-delay:.40s;background:linear-gradient(135deg,#534AB7,#1D9E75);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .logo-letters span:nth-child(7){animation-delay:.48s;background:linear-gradient(135deg,#1D9E75,#D4537E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .logo-letters span:nth-child(8){animation-delay:.56s;background:linear-gradient(135deg,#D4537E,#534AB7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  @keyframes letterFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+
+  .logo-underline {
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(90deg,#534AB7,#1D9E75,#D4537E,#EF9F27,#534AB7);
+    background-size: 300% 100%;
+    animation: gradMove 3s linear infinite;
+    margin-top: 8px;
+  }
+  .hero-tagline {
+    position: relative;
+    z-index: 2;
+    font-size: 15px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 12px;
+  }
+
+  /* WEATHER WIDGET */
+  .weather-widget {
+    position: relative;
+    z-index: 2;
+    margin-top: 28px;
+    background: #1D9E7515;
+    border: 0.5px solid #1D9E7540;
+    border-radius: 16px;
+    padding: 16px 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    min-width: 280px;
+  }
+  .w-temp { font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:600;color:#5DCAA5; }
+  .w-info { text-align: left; }
+  .w-city { font-size:14px;font-weight:500;color:#5DCAA5; }
+  .w-desc { font-size:12px;color:var(--muted);margin-top:2px; }
+  .w-feels { font-size:12px;color:var(--muted); }
+  .w-icon { font-size:36px; }
+  .city-tabs { display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;justify-content:center;position:relative;z-index:2; }
+  .city-tab {
+    font-size:12px;padding:4px 12px;border-radius:20px;
+    background:transparent;border:0.5px solid var(--border);
+    color:var(--muted);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;
+  }
+  .city-tab:hover,.city-tab.active { background:#1D9E7520;border-color:#1D9E7560;color:#5DCAA5; }
+  #weather-loading { font-size:12px;color:var(--muted);margin-top:8px;position:relative;z-index:2; }
+
+  /* SECTIONS */
+  .section { padding: 32px 24px; position: relative; z-index: 1; }
+  .sec-header { display:flex;align-items:center;justify-content:space-between;margin-bottom:20px; }
+  .sec-title { font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:var(--text); }
+  .sec-icon { margin-right:8px; }
+
+  /* MOVIE GRID */
+  .movie-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px; }
+  .movie-card {
+    border-radius:10px;overflow:hidden;
+    border:0.5px solid var(--border);
+    cursor:pointer;position:relative;
+    transition:transform .2s,border-color .2s;
+    text-decoration:none;
+  }
+  .movie-card:hover { transform:translateY(-4px);border-color:#7F77DD60; }
+  .movie-poster {
+    width:100%;aspect-ratio:2/3;
+    object-fit:cover;
+    background:var(--bg2);
+    display:block;
+  }
+  .movie-poster-placeholder {
+    width:100%;aspect-ratio:2/3;
+    display:flex;align-items:center;justify-content:center;
+    font-size:32px;
+  }
+  .movie-info { padding:8px 10px;background:var(--bg2); }
+  .movie-title-card { font-size:12px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+  .movie-year { font-size:11px;color:var(--muted); }
+  .movie-rating-badge {
+    position:absolute;top:6px;right:6px;
+    background:#EF9F2799;backdrop-filter:blur(4px);
+    border-radius:5px;padding:2px 6px;
+    font-size:10px;font-weight:600;color:#fff;
+  }
+
+  /* GAME LIST */
+  .game-list { display:flex;flex-direction:column;gap:10px; }
+  .game-card {
+    background:var(--bg2);border:0.5px solid var(--border);
+    border-radius:12px;padding:14px 16px;
+    display:flex;align-items:center;gap:14px;
+    cursor:pointer;text-decoration:none;
+    transition:border-color .2s,transform .2s;
+  }
+  .game-card:hover { border-color:#7F77DD50;transform:translateX(4px); }
+  .game-icon-box {
+    width:48px;height:48px;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:22px;flex-shrink:0;
+  }
+  .game-info-box { flex:1;min-width:0; }
+  .game-name-card { font-size:14px;font-weight:500;color:var(--text); }
+  .game-meta-card { font-size:12px;color:var(--muted);margin-top:2px; }
+  .game-badge {
+    font-size:11px;padding:3px 10px;border-radius:12px;
+    font-weight:500;flex-shrink:0;
+  }
+  .badge-free { background:#1D9E7520;color:#5DCAA5;border:0.5px solid #1D9E7540; }
+  .badge-paid { background:#EF9F2720;color:#EF9F27;border:0.5px solid #EF9F2740; }
+
+  /* ADS */
+  .ad-section { padding:0 24px 24px; }
+  .ad-banner {
+    background:linear-gradient(135deg,#7F77DD15,#1D9E7515);
+    border:0.5px solid #7F77DD30;
+    border-radius:12px;padding:16px 20px;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+  }
+  .ad-title { font-size:14px;font-weight:500;color:var(--purple-light); }
+  .ad-desc { font-size:12px;color:var(--muted);margin-top:2px; }
+  .ad-btn {
+    padding:8px 18px;background:var(--purple);border:none;
+    border-radius:8px;color:#fff;font-size:13px;font-weight:500;
+    cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif;
+    transition:background .2s;text-decoration:none;display:inline-block;
+  }
+  .ad-btn:hover { background:#534AB7; }
+
+  /* DIVIDER */
+  .divider { height:0.5px;background:var(--border);margin:0 24px; }
+
+  /* FOOTER */
+  footer {
+    text-align:center;padding:24px;
+    font-size:12px;color:var(--muted);
+    border-top:0.5px solid var(--border);
+  }
+  .footer-logo { font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:var(--purple-light);margin-bottom:6px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">nabooshy</div>
+  <div class="nav-links">
+    <a href="#movies" class="nav-link">🎬 Кино</a>
+    <a href="#games" class="nav-link">🎮 Тоглоом</a>
+    <a href="#weather" class="nav-link">🌤 Цаг</a>
+    <a href="#ads" class="nav-link">📢 Зар</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-orb orb1"></div>
+  <div class="hero-orb orb2"></div>
+  <div class="hero-orb orb3"></div>
+
+  <div class="logo-hero">
+    <div class="logo-letters">
+      <span>n</span><span>a</span><span>b</span><span>o</span><span>o</span><span>s</span><span>h</span><span>y</span>
+    </div>
+    <div class="logo-underline"></div>
+  </div>
+  <div class="hero-tagline">✦ &nbsp; монголын хамгийн шилдэг &nbsp; ✦</div>
+
+  <div id="weather" class="weather-widget">
+    <div class="w-icon" id="w-icon">🌤</div>
+    <div>
+      <div class="w-temp" id="w-temp">--°</div>
+      <div class="w-info">
+        <div class="w-city" id="w-city">Улаанбаатар</div>
+        <div class="w-desc" id="w-desc">Уншиж байна...</div>
+        <div class="w-feels" id="w-feels"></div>
+      </div>
+    </div>
+  </div>
+  <div class="city-tabs" id="city-tabs"></div>
+  <div id="weather-loading"></div>
+</section>
+
+<section id="movies" class="section">
+  <div class="sec-header">
+    <div class="sec-title"><span class="sec-icon">🎬</span>Шилдэг кинонууд</div>
+  </div>
+  <div class="movie-grid" id="movie-grid">
+    <div style="color:var(--muted);font-size:13px">Уншиж байна...</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="games" class="section">
+  <div class="sec-header">
+    <div class="sec-title"><span class="sec-icon">🎮</span>Тоглоомууд</div>
+  </div>
+  <div class="game-list" id="game-list">
+    <div style="color:var(--muted);font-size:13px">Уншиж байна...</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="ads" class="ad-section" style="padding-top:32px">
+  <div id="ad-container"></div>
+</section>
+
+<footer>
+  <div class="footer-logo">nabooshy</div>
+  <div>© 2026 Nabooshy. Бүх эрх хамгаалагдсан.</div>
+</footer>
+
+<script>
+const API_KEY = "fc4b4a3ecd85839afed62a32911aa465";
+
+const weatherIcons = {
+  Clear: "☀️", Clouds: "☁️", Rain: "🌧️", Snow: "❄️",
+  Thunderstorm: "⛈️", Drizzle: "🌦️", Mist: "🌫️", Fog: "🌫️"
+};
+
+async function fetchWeather(cityQuery, cityName) {
+  document.getElementById('w-desc').textContent = "Уншиж байна...";
+  try {
+    const res = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${cityQuery}&appid=${API_KEY}&units=metric&lang=mn`
+    );
+    const d = await res.json();
+    if (d.cod !== 200) throw new Error();
+    document.getElementById('w-temp').textContent = Math.round(d.main.temp) + '°';
+    document.getElementById('w-city').textContent = cityName;
+    document.getElementById('w-desc').textContent = d.weather[0].description;
+    document.getElementById('w-feels').textContent = 'Мэдрэгдэх: ' + Math.round(d.main.feels_like) + '°';
+    document.getElementById('w-icon').textContent = weatherIcons[d.weather[0].main] || '🌤';
+  } catch(e) {
+    document.getElementById('w-desc').textContent = "Мэдээлэл авах боломжгүй";
+  }
+}
+
+fetch('data.json')
+  .then(r => r.json())
+  .then(data => {
+    // MOVIES
+    const grid = document.getElementById('movie-grid');
+    grid.innerHTML = '';
+    data.movies.forEach(m => {
+      const card = document.createElement('a');
+      card.href = m.link;
+      card.target = '_blank';
+      card.className = 'movie-card';
+      const colors = ['#1a1830','#0f1a14','#1a0f0f','#131a1a'];
+      const ci = Math.floor(Math.random()*colors.length);
+      card.innerHTML = `
+        <div class="movie-rating-badge">⭐ ${m.rating}</div>
+        ${m.poster
+          ? `<img class="movie-poster" src="${m.poster}" alt="${m.title}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+          : ''}
+        <div class="movie-poster-placeholder" style="background:${colors[ci]};${m.poster?'display:none':''}">🎬</div>
+        <div class="movie-info">
+          <div class="movie-title-card">${m.title}</div>
+          <div class="movie-year">${m.year}</div>
+        </div>`;
+      grid.appendChild(card);
+    });
+
+    // GAMES
+    const glist = document.getElementById('game-list');
+    glist.innerHTML = '';
+    const gColors = ['#7F77DD20','#1D9E7520','#D4537E20'];
+    const gEmoji = ['🎮','🕹️','⚔️'];
+    data.games.forEach((g, i) => {
+      const card = document.createElement('a');
+      card.href = g.link;
+      card.target = '_blank';
+      card.className = 'game-card';
+      card.innerHTML = `
+        <div class="game-icon-box" style="background:${gColors[i%gColors.length]}">${gEmoji[i%gEmoji.length]}</div>
+        <div class="game-info-box">
+          <div class="game-name-card">${g.title}</div>
+          <div class="game-meta-card">${g.genre} · ${g.platform.join(', ')}</div>
+        </div>
+        <span class="game-badge ${g.price==='Үнэгүй'?'badge-free':'badge-paid'}">${g.price}</span>`;
+      glist.appendChild(card);
+    });
+
+    // ADS
+    const adContainer = document.getElementById('ad-container');
+    adContainer.innerHTML = '';
+    data.ads.filter(a => a.active).forEach(ad => {
+      const div = document.createElement('div');
+      div.className = 'ad-banner';
+      div.style.marginBottom = '12px';
+      div.innerHTML = `
+        <div>
+          <div class="ad-title">📢 ${ad.title}</div>
+          <div class="ad-desc">${ad.description}</div>
+        </div>
+        <a href="${ad.link}" class="ad-btn">Холбоо барих</a>`;
+      adContainer.appendChild(div);
+    });
+
+    // WEATHER CITIES
+    const tabs = document.getElementById('city-tabs');
+    tabs.innerHTML = '';
+    data.weather.cities.forEach((c, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'city-tab' + (i===0?' active':'');
+      btn.textContent = c.name;
+      btn.onclick = () => {
+        document.querySelectorAll('.city-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        fetchWeather(c.query, c.name);
+      };
+      tabs.appendChild(btn);
+    });
+
+    fetchWeather(data.weather.cities[0].query, data.weather.cities[0].name);
+  })
+  .catch(() => {
+    document.getElementById('weather-loading').textContent = 'data.json ачааллахад алдаа гарлаа.';
+  });
+</script>
+</body>
+</html>
