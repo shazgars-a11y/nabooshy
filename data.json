@@ -196,6 +196,176 @@
       "rating": 7.6,
       "tmdb_id": 1208348,
       "link": "https://mglguide.top/news/tech/tursngerbul/"
+    },
+    {
+      "id": 16,
+      "title": "Encounter",
+      "year": 2018,
+      "rating": 8.3,
+      "tmdb_id": 83941,
+      "link": "",
+      "episodes": [
+        {
+          "title": "1 дугаар анги",
+          "link": "https://mglguide.top/news/tech/nzzluum1/"
+        },
+        {
+          "title": "2 дугаар анги",
+          "link": "https://mglguide.top/news/tech/nzzluum2/"
+        },
+        {
+          "title": "3 дугаар анги",
+          "link": "https://mglguide.top/news/tech/nzzluum3/"
+        },
+        {
+          "title": "4 дугаар анги",
+          "link": "https://mglguide.top/news/tech/nzzluum4/"
+        },
+        {
+          "title": "5 дугаар анги",
+          "link": "https://mglguide.top/news/tech/nzzluum5/"
+        },
+        {
+          "title": "6 дугаар анги",
+          "link": "https://mglguide.top/news/tech/nzzluum6/"
+        },
+        {
+          "title": "7 дугаар анги",
+          "link": "https://mglguide.top/news/tech/nzzluum7/"
+        },
+        {
+          "title": "8 дугаар анги",
+          "link": "https://mglguide.top/news/tech/nzzluum8/"
+        },
+        {
+          "title": "9 дугаар анги",
+          "link": "https://mglguide.top/news/tech/nzzluum9/"
+        },
+        {
+          "title": "10 дугаар анги",
+          "link": "https://mglguide.top/news/tech/nzzluum10/"
+        },
+        {
+          "title": "11 дугаар анги",
+          "link": "https://mglguide.top/news/tech/nzzluum11/"
+        },
+        {
+          "title": "12 дугаар анги",
+          "link": "https://mglguide.top/news/tech/nzzluum12/"
+        },
+        {
+          "title": "13 дугаар анги",
+          "link": "https://mglguide.top/news/tech/nzzluum13/"
+        },
+        {
+          "title": "14 дугаар анги",
+          "link": "https://mglguide.top/news/tech/nzzluum14/"
+        },
+        {
+          "title": "15 дугаар анги",
+          "link": "https://mglguide.top/news/tech/nzzluum15/"
+        },
+        {
+          "title": "16 дугаар анги",
+          "link": "https://mglguide.top/news/tech/nzzluum16/"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "title": "Elf",
+      "year": 2003,
+      "rating": 6.7,
+      "tmdb_id": 11517,
+      "link": "https://mglguide.top/news/tech/elf/"
+    },
+    {
+      "id": 18,
+      "title": "Enola Holmes",
+      "year": 2020,
+      "rating": 7.2,
+      "tmdb_id": 639721,
+      "link": "https://mglguide.top/news/tech/enola/"
+    },
+    {
+      "id": 19,
+      "title": "Sea Fog",
+      "year": 2014,
+      "rating": 6.9,
+      "tmdb_id": 248933,
+      "link": "https://mglguide.top/news/tech/seafog/"
+    },
+    {
+      "id": 20,
+      "title": "The Giver",
+      "year": 2014,
+      "rating": 6.6,
+      "tmdb_id": 166221,
+      "link": "https://mglguide.top/news/tech/giver/"
+    },
+    {
+      "id": 21,
+      "title": "My Neighbor Totoro",
+      "year": 1988,
+      "rating": 8.1,
+      "tmdb_id": 8392,
+      "link": "https://mglguide.top/news/tech/totoro/"
+    },
+    {
+      "id": 22,
+      "title": "Ghost in the Shell: Solid State Society",
+      "year": 2006,
+      "rating": 7.5,
+      "tmdb_id": 15697,
+      "link": "https://mglguide.top/news/tech/alone/"
+    },
+    {
+      "id": 23,
+      "title": "Kundo: Age of the Rampant",
+      "year": 2014,
+      "rating": 6.6,
+      "tmdb_id": 248633,
+      "link": "https://mglguide.top/news/tech/kundo/"
+    },
+    {
+      "id": 24,
+      "title": "R-Point",
+      "year": 2004,
+      "rating": 6.6,
+      "tmdb_id": 33875,
+      "link": "https://mglguide.top/news/tech/rpoint/"
+    },
+    {
+      "id": 25,
+      "title": "The Wrecking Crew",
+      "year": 2026,
+      "rating": 7.0,
+      "tmdb_id": 1168190,
+      "link": "https://mglguide.top/news/tech/wre/"
+    },
+    {
+      "id": 26,
+      "title": "Chained",
+      "year": 2012,
+      "rating": 6.9,
+      "tmdb_id": 96252,
+      "link": "https://mglguide.top/news/tech/chained/"
+    },
+    {
+      "id": 27,
+      "title": "Recall",
+      "year": 2025,
+      "rating": 7.0,
+      "poster": "",
+      "link": "https://mglguide.top/news/tech/recall/"
+    },
+    {
+      "id": 28,
+      "title": "Candyland",
+      "year": 2024,
+      "rating": 7.0,
+      "poster": "",
+      "link": "https://mglguide.top/news/tech/candyland/"
     }
   ],
   "games": [
