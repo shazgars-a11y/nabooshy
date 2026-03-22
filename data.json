@@ -272,38 +272,6 @@
       ]
     },
     {
-      "id": 17,
-      "title": "Elf",
-      "year": 2003,
-      "rating": 6.7,
-      "tmdb_id": 11517,
-      "link": "https://mglguide.top/news/tech/elf/"
-    },
-    {
-      "id": 18,
-      "title": "Enola Holmes",
-      "year": 2020,
-      "rating": 7.2,
-      "tmdb_id": 639721,
-      "link": "https://mglguide.top/news/tech/enola/"
-    },
-    {
-      "id": 19,
-      "title": "Sea Fog",
-      "year": 2014,
-      "rating": 6.9,
-      "tmdb_id": 248933,
-      "link": "https://mglguide.top/news/tech/seafog/"
-    },
-    {
-      "id": 20,
-      "title": "The Giver",
-      "year": 2014,
-      "rating": 6.6,
-      "tmdb_id": 166221,
-      "link": "https://mglguide.top/news/tech/giver/"
-    },
-    {
       "id": 21,
       "title": "My Neighbor Totoro",
       "year": 1988,
@@ -312,44 +280,12 @@
       "link": "https://mglguide.top/news/tech/totoro/"
     },
     {
-      "id": 22,
-      "title": "Ghost in the Shell: Solid State Society",
-      "year": 2006,
-      "rating": 7.5,
-      "tmdb_id": 15697,
-      "link": "https://mglguide.top/news/tech/alone/"
-    },
-    {
-      "id": 23,
-      "title": "Kundo: Age of the Rampant",
-      "year": 2014,
-      "rating": 6.6,
-      "tmdb_id": 281780,
-      "link": "https://mglguide.top/news/tech/kundo/"
-    },
-    {
-      "id": 24,
-      "title": "R-Point",
-      "year": 2004,
-      "rating": 6.6,
-      "tmdb_id": 33875,
-      "link": "https://mglguide.top/news/tech/rpoint/"
-    },
-    {
       "id": 25,
       "title": "The Wrecking Crew",
       "year": 2026,
       "rating": 7.0,
       "tmdb_id": 1168190,
       "link": "https://mglguide.top/news/tech/wre/"
-    },
-    {
-      "id": 26,
-      "title": "Chained",
-      "year": 2012,
-      "rating": 6.9,
-      "tmdb_id": 96252,
-      "link": "https://mglguide.top/news/tech/chained/"
     },
     {
       "id": 27,
@@ -494,90 +430,6 @@
       "rating": 7.5,
       "tmdb_id": 529816,
       "link": "https://mglguide.top/news/tech/dbs-broly/"
-    },
-    {
-      "id": 45,
-      "title": "Our Blues",
-      "year": 2022,
-      "rating": 7.5,
-      "tmdb_id": 199551,
-      "episodes": [
-        {
-          "title": "1 дугаар анги",
-          "link": "https://mglguide.top/news/tech/bdnibluzee1a/"
-        },
-        {
-          "title": "2 дугаар анги",
-          "link": "https://mglguide.top/news/tech/bidniibluzas2a/"
-        },
-        {
-          "title": "3 дугаар анги",
-          "link": "https://mglguide.top/news/tech/bidniibluchrla3a/"
-        },
-        {
-          "title": "4 дугаар анги",
-          "link": "https://mglguide.top/news/tech/bidniiblssee4a/"
-        },
-        {
-          "title": "5 дугаар анги",
-          "link": "https://mglguide.top/news/tech/bidniibulus5a/"
-        },
-        {
-          "title": "6 дугаар анги",
-          "link": "https://mglguide.top/news/tech/bidniibluss8a/"
-        },
-        {
-          "title": "7 дугаар анги",
-          "link": "https://mglguide.top/news/tech/bidniibluezzs10a/"
-        },
-        {
-          "title": "8 дугаар анги",
-          "link": "https://mglguide.top/news/tech/bidniibluses14a/"
-        },
-        {
-          "title": "9 дугаар анги",
-          "link": "https://mglguide.top/news/tech/bidniiblussa15a/"
-        },
-        {
-          "title": "10 дугаар анги",
-          "link": "https://mglguide.top/news/tech/bdniibulsse16a/"
-        },
-        {
-          "title": "11 дугаар анги",
-          "link": "https://mglguide.top/news/tech/bdiniibuluses17a/"
-        },
-        {
-          "title": "12 дугаар анги",
-          "link": "https://mglguide.top/news/tech/binidniibluse18a/"
-        }
-      ],
-      "link": ""
-    },
-    {
-      "id": 46,
-      "title": "Ghost Doctor",
-      "year": 2022,
-      "rating": 7.5,
-      "tmdb_id": 119455,
-      "episodes": [
-        {
-          "title": "1 дугаар анги",
-          "link": "https://mglguide.top/news/tech/snsenecmhe1a/"
-        },
-        {
-          "title": "2 дугаар анги",
-          "link": "https://mglguide.top/news/tech/sunsemche2a/"
-        },
-        {
-          "title": "3 дугаар анги",
-          "link": "https://mglguide.top/news/tech/sunsemch3a/"
-        },
-        {
-          "title": "4 дугаар анги",
-          "link": "https://mglguide.top/news/tech/snsnemche8a/"
-        }
-      ],
-      "link": ""
     },
     {
       "id": 47,
