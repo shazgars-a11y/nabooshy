@@ -34,6 +34,7 @@ nav{background:rgba(10,9,16,0.96);backdrop-filter:blur(12px);border-bottom:0.5px
 .ll span:nth-child(7){animation-delay:.48s;background:linear-gradient(135deg,#1D9E75,#D4537E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .ll span:nth-child(8){animation-delay:.56s;background:linear-gradient(135deg,#D4537E,#534AB7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 @keyframes lf{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes hfade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .lb{height:3px;border-radius:2px;background:linear-gradient(90deg,#534AB7,#1D9E75,#D4537E,#EF9F27,#534AB7);background-size:300% 100%;animation:gm 3s linear infinite;margin-top:8px;position:relative;z-index:2;}
 .hs{position:relative;z-index:2;font-size:12px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-top:10px;}
 .page{display:grid;grid-template-columns:1fr 260px;gap:20px;max-width:1240px;margin:0 auto;padding:20px;}
@@ -126,6 +127,39 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-t
   <div class="ll"><span>n</span><span>a</span><span>b</span><span>o</span><span>o</span><span>s</span><span>h</span><span>y</span></div>
   <div class="lb"></div>
   <div class="hs">✦ &nbsp; монголын хамгийн шилдэг &nbsp; ✦</div>
+
+  <div style="position:relative;z-index:2;margin-top:18px;animation:hfade .8s ease .1s both">
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,3vw,21px);font-weight:600;color:#e8e6ff;line-height:1.4">Нэг сайт. Бүх зугаа. Тэг төлбөр.</div>
+    <div style="font-size:13px;color:#6b6880;margin-top:8px;line-height:1.7">
+      Кино үзэх, тоглоом тоглох, цаг агаар мэдэх — бүгд нэг дор.<br>
+      Бүртгэл шаардахгүй. Мөнгө нэхэхгүй. Луйвраас ангид.
+    </div>
+  </div>
+
+  <div style="position:relative;z-index:2;display:flex;gap:8px;justify-content:center;margin-top:16px;flex-wrap:wrap;animation:hfade .8s ease .25s both">
+    <div style="background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.09);border-radius:10px;padding:12px 16px;text-align:center;min-width:100px;flex:1;max-width:150px">
+      <div style="font-size:20px;margin-bottom:5px">🎬</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:#e8e6ff">Кино & цуврал</div>
+      <div style="font-size:10px;color:#6b6880;margin-top:2px">Монгол хадмалтай</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.09);border-radius:10px;padding:12px 16px;text-align:center;min-width:100px;flex:1;max-width:150px">
+      <div style="font-size:20px;margin-bottom:5px">🎮</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:#e8e6ff">50+ тоглоом</div>
+      <div style="font-size:10px;color:#6b6880;margin-top:2px">Дарахад тоглоно</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.09);border-radius:10px;padding:12px 16px;text-align:center;min-width:100px;flex:1;max-width:150px">
+      <div style="font-size:20px;margin-bottom:5px">🌤</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:#e8e6ff">21 аймаг</div>
+      <div style="font-size:10px;color:#6b6880;margin-top:2px">Бодит цаг агаар</div>
+    </div>
+  </div>
+
+  <div style="position:relative;z-index:2;display:flex;justify-content:center;gap:6px;margin-top:14px;flex-wrap:wrap;animation:hfade .8s ease .4s both">
+    <span style="font-size:11px;padding:4px 12px;border-radius:16px;border:0.5px solid rgba(255,255,255,0.1);color:#888780;background:rgba(255,255,255,0.04)">✓ Үнэгүй</span>
+    <span style="font-size:11px;padding:4px 12px;border-radius:16px;border:0.5px solid rgba(255,255,255,0.1);color:#888780;background:rgba(255,255,255,0.04)">✓ Бүртгэлгүй</span>
+    <span style="font-size:11px;padding:4px 12px;border-radius:16px;border:0.5px solid rgba(255,255,255,0.1);color:#888780;background:rgba(255,255,255,0.04)">✓ Луйвраас ангид</span>
+    <span style="font-size:11px;padding:4px 12px;border-radius:16px;border:0.5px solid rgba(255,255,255,0.1);color:#888780;background:rgba(255,255,255,0.04)">✓ Монголоор</span>
+  </div>
 </div>
 
 <div class="page">
