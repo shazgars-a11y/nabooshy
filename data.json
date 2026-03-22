@@ -26,59 +26,73 @@
   "movies": [
     {
       "id": 1,
-      "title": "Тоглогч",
-      "year": 2026,
-      "rating": 8.5,
-      "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5YFqmmKx92V5DOHooqH5gsjZhLSf3YfhTUA&s",
-      "link": "https://www.youtube.com/watch?v=u-l8SWVADrk"
+      "title": "Inception",
+      "year": 2010,
+      "rating": 8.8,
+      "poster": "https://image.tmdb.org/t/p/w500/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg",
+      "link": "https://www.imdb.com/title/tt1375666/"
     },
     {
       "id": 2,
-      "title": "Захиас",
-      "year": 2026,
-      "rating": 8.5,
-      "poster": "https://nutag.mn/uploads/posts/2020-08/1597992772_5f3e55ef442b2.jpeg",
-      "link": "https://www.youtube.com/watch?v=dVvijGg1IT4"
+      "title": "Interstellar",
+      "year": 2014,
+      "rating": 8.6,
+      "poster": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+      "link": "https://www.imdb.com/title/tt0816692/"
     },
     {
       "id": 3,
-      "title": "Байтаг богд",
-      "year": 2026,
-      "rating": 8.5,
-      "poster": "https://cdn.greensoft.mn/cache/images/9/2/9/b/6/929b603529c33b39320447efbb4c043aa4783501.jpg",
-      "link": "https://www.youtube.com/watch?v=dv55qjGuwuU"
-    },
-    {
-      "id": 4,
-      "title": "Годзиллагын эсрэг Конг",
-      "year": 2026,
-      "rating": 8.5,
-      "poster": "https://i0.wp.com/lolokino.fan/wp-content/uploads/2021/04/pgqgaUx1cJb5oZQQ5v0tNARCeBp.jpg?fit=200%2C300&ssl=1",
-      "link": "https://mglguide.top/news/tech/araatanuud/"
+      "title": "The Dark Knight",
+      "year": 2008,
+      "rating": 9.0,
+      "poster": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+      "link": "https://www.imdb.com/title/tt0468569/"
     },
     {
       "id": 5,
-      "title": "Миний нөхөртэй гэрлээч 1-р Анги",
-      "year": 2026,
-      "rating": 8.5,
-      "poster": "https://i0.wp.com/lolokino.fan/wp-content/uploads/2024/01/dQiZHHa23M1lbggcF6pPUF7i862.jpg?fit=200%2C300&ssl=1",
-      "link": ""
+      "title": "Marry My Husband",
+      "year": 2024,
+      "rating": 9.5,
+      "poster": "https://image.tmdb.org/t/p/w500/hnc3Zf1XlA7cHjGOhKY2UBzCXgT.jpg",
+      "link": "https://lolokino.fan/tvshows/marry-my-husband/",
       "episodes": [
-    { "title": "1 дугаар анги", "link": "https://mglguide.top/news/tech/mynhurteigerle1/" },
-    { "title": "2 дугаар анги", "link": "https://mglguide.top/news/tech/nuhurtmngerlch2/" },
-    { "title": "3 дугаар анги", "link": "https://mglguide.top/news/tech/nuhrtmingerle3/" }
+        {
+          "title": "1 дугаар анги",
+          "link": "https://lolokino.fan/tvshows/marry-my-husband/"
+        },
+        {
+          "title": "2 дугаар анги",
+          "link": "https://lolokino.fan/tvshows/marry-my-husband/"
+        },
+        {
+          "title": "3 дугаар анги",
+          "link": "https://lolokino.fan/tvshows/marry-my-husband/"
+        },
+        {
+          "title": "4 дугаар анги",
+          "link": "https://lolokino.fan/tvshows/marry-my-husband/"
+        },
+        {
+          "title": "5 дугаар анги",
+          "link": "https://lolokino.fan/tvshows/marry-my-husband/"
+        }
+      ]
     }
   ],
   "games": [
     {
-  "id": 1,
-  "title": "Дайби",
-  "genre": "Action",
-  "platform": ["PC", "Mobile"],
-  "rating": 9.5,
-  "link": "daibi.html",
-  "price": "Үнэгүй"
-},
+      "id": 1,
+      "title": "Minecraft",
+      "genre": "Sandbox",
+      "platform": [
+        "PC",
+        "Mobile",
+        "Console"
+      ],
+      "rating": 9.2,
+      "link": "https://www.minecraft.net",
+      "price": "Төлбөртэй"
+    },
     {
       "id": 2,
       "title": "Roblox",
