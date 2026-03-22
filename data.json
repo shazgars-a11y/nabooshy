@@ -324,7 +324,7 @@
       "title": "Kundo: Age of the Rampant",
       "year": 2014,
       "rating": 6.6,
-      "tmdb_id": 248633,
+      "tmdb_id": 281780,
       "link": "https://mglguide.top/news/tech/kundo/"
     },
     {
@@ -366,6 +366,236 @@
       "rating": 7.0,
       "poster": "",
       "link": "https://mglguide.top/news/tech/candyland/"
+    },
+    {
+      "id": 29,
+      "title": "Werewolf by Night",
+      "year": 2022,
+      "rating": 7.5,
+      "tmdb_id": 880084,
+      "link": "https://mglguide.top/news/tech/werewolfbynight/"
+    },
+    {
+      "id": 30,
+      "title": "Hellraiser",
+      "year": 2022,
+      "rating": 7.5,
+      "tmdb_id": 932783,
+      "link": "https://mglguide.top/news/tech/hellraiser/"
+    },
+    {
+      "id": 31,
+      "title": "Athena",
+      "year": 2022,
+      "rating": 7.5,
+      "tmdb_id": 882598,
+      "link": "https://mglguide.top/news/tech/athena/"
+    },
+    {
+      "id": 32,
+      "title": "Children of Men",
+      "year": 2006,
+      "rating": 7.5,
+      "tmdb_id": 9693,
+      "link": "https://mglguide.top/news/tech/childrenofmen/"
+    },
+    {
+      "id": 33,
+      "title": "Ninja Assassin",
+      "year": 2009,
+      "rating": 7.5,
+      "tmdb_id": 18720,
+      "link": "https://mglguide.top/news/tech/ninjaassa/"
+    },
+    {
+      "id": 34,
+      "title": "Don't Breathe",
+      "year": 2016,
+      "rating": 7.5,
+      "tmdb_id": 333371,
+      "link": "https://mglguide.top/news/tech/dontbrea/"
+    },
+    {
+      "id": 35,
+      "title": "Batman v Superman: Dawn of Justice",
+      "year": 2016,
+      "rating": 7.5,
+      "tmdb_id": 209112,
+      "link": "https://mglguide.top/news/tech/batvsup/"
+    },
+    {
+      "id": 36,
+      "title": "Justice League",
+      "year": 2017,
+      "rating": 7.5,
+      "tmdb_id": 141052,
+      "link": "https://mglguide.top/news/tech/justicelea/"
+    },
+    {
+      "id": 37,
+      "title": "Terminator Salvation",
+      "year": 2009,
+      "rating": 7.5,
+      "tmdb_id": 534,
+      "link": "https://mglguide.top/news/tech/terminasalv/"
+    },
+    {
+      "id": 38,
+      "title": "Terminator: Dark Fate",
+      "year": 2019,
+      "rating": 7.5,
+      "tmdb_id": 290859,
+      "link": "https://mglguide.top/news/tech/terminatordf/"
+    },
+    {
+      "id": 39,
+      "title": "Pulp Fiction",
+      "year": 1994,
+      "rating": 7.5,
+      "tmdb_id": 680,
+      "link": "https://mglguide.top/news/tech/pulpfic/"
+    },
+    {
+      "id": 40,
+      "title": "Spirited Away",
+      "year": 2001,
+      "rating": 7.5,
+      "tmdb_id": 129,
+      "link": "https://mglguide.top/news/tech/spritaway/"
+    },
+    {
+      "id": 41,
+      "title": "King Arthur: Legend of the Sword",
+      "year": 2017,
+      "rating": 7.5,
+      "tmdb_id": 268896,
+      "link": "https://mglguide.top/news/tech/kngarthur/"
+    },
+    {
+      "id": 42,
+      "title": "The Woman in Black",
+      "year": 2012,
+      "rating": 7.5,
+      "tmdb_id": 77374,
+      "link": "https://mglguide.top/news/tech/womaninblac/"
+    },
+    {
+      "id": 43,
+      "title": "Love and Monsters",
+      "year": 2020,
+      "rating": 7.5,
+      "tmdb_id": 590706,
+      "link": "https://mglguide.top/news/tech/lovemonsts/"
+    },
+    {
+      "id": 44,
+      "title": "Dragon Ball Super: Broly",
+      "year": 2018,
+      "rating": 7.5,
+      "tmdb_id": 529816,
+      "link": "https://mglguide.top/news/tech/dbs-broly/"
+    },
+    {
+      "id": 45,
+      "title": "Our Blues",
+      "year": 2022,
+      "rating": 7.5,
+      "tmdb_id": 199551,
+      "episodes": [
+        {
+          "title": "1 дугаар анги",
+          "link": "https://mglguide.top/news/tech/bdnibluzee1a/"
+        },
+        {
+          "title": "2 дугаар анги",
+          "link": "https://mglguide.top/news/tech/bidniibluzas2a/"
+        },
+        {
+          "title": "3 дугаар анги",
+          "link": "https://mglguide.top/news/tech/bidniibluchrla3a/"
+        },
+        {
+          "title": "4 дугаар анги",
+          "link": "https://mglguide.top/news/tech/bidniiblssee4a/"
+        },
+        {
+          "title": "5 дугаар анги",
+          "link": "https://mglguide.top/news/tech/bidniibulus5a/"
+        },
+        {
+          "title": "6 дугаар анги",
+          "link": "https://mglguide.top/news/tech/bidniibluss8a/"
+        },
+        {
+          "title": "7 дугаар анги",
+          "link": "https://mglguide.top/news/tech/bidniibluezzs10a/"
+        },
+        {
+          "title": "8 дугаар анги",
+          "link": "https://mglguide.top/news/tech/bidniibluses14a/"
+        },
+        {
+          "title": "9 дугаар анги",
+          "link": "https://mglguide.top/news/tech/bidniiblussa15a/"
+        },
+        {
+          "title": "10 дугаар анги",
+          "link": "https://mglguide.top/news/tech/bdniibulsse16a/"
+        },
+        {
+          "title": "11 дугаар анги",
+          "link": "https://mglguide.top/news/tech/bdiniibuluses17a/"
+        },
+        {
+          "title": "12 дугаар анги",
+          "link": "https://mglguide.top/news/tech/binidniibluse18a/"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "id": 46,
+      "title": "Ghost Doctor",
+      "year": 2022,
+      "rating": 7.5,
+      "tmdb_id": 119455,
+      "episodes": [
+        {
+          "title": "1 дугаар анги",
+          "link": "https://mglguide.top/news/tech/snsenecmhe1a/"
+        },
+        {
+          "title": "2 дугаар анги",
+          "link": "https://mglguide.top/news/tech/sunsemche2a/"
+        },
+        {
+          "title": "3 дугаар анги",
+          "link": "https://mglguide.top/news/tech/sunsemch3a/"
+        },
+        {
+          "title": "4 дугаар анги",
+          "link": "https://mglguide.top/news/tech/snsnemche8a/"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "id": 47,
+      "title": "Pachinko",
+      "year": 2022,
+      "rating": 7.5,
+      "tmdb_id": 110316,
+      "episodes": [
+        {
+          "title": "1 дугаар анги",
+          "link": "https://mglguide.top/news/tech/pchnko2a/"
+        },
+        {
+          "title": "2 дугаар анги",
+          "link": "https://mglguide.top/news/tech/pachnko4a/"
+        }
+      ],
+      "link": ""
     }
   ],
   "games": [
