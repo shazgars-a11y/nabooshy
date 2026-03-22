@@ -15,7 +15,6 @@
       "sidebar_3": "🖥️ Баруун доор 260x200"
     }
   },
-
   "contact": {
     "email": "gnarantsend@gmail.com",
     "phone": "99376238",
@@ -24,7 +23,6 @@
     "email_link": "mailto:gnarantsend@gmail.com",
     "email_subject": "Nabooshy — Зар байршуулах хүсэлт"
   },
-
   "movies": [
     {
       "id": 1,
@@ -49,23 +47,18 @@
       "rating": 9.0,
       "poster": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
       "link": "https://www.imdb.com/title/tt0468569/"
-    },
-    {
-      "id": 4,
-      "title": "Годзиллагын эсрэг Конг",
-      "year": 2021,
-      "rating": 8.5,
-      "poster": "https://i0.wp.com/lolokino.fan/wp-content/uploads/2021/04/pgqgaUx1cJb5oZQQ5v0tNARCeBp.jpg?fit=200%2C300&ssl=1",
-      "link": "https://mglguide.top/news/tech/araatanuud/"
     }
   ],
-
   "games": [
     {
       "id": 1,
       "title": "Minecraft",
       "genre": "Sandbox",
-      "platform": ["PC", "Mobile", "Console"],
+      "platform": [
+        "PC",
+        "Mobile",
+        "Console"
+      ],
       "rating": 9.2,
       "link": "https://www.minecraft.net",
       "price": "Төлбөртэй"
@@ -74,7 +67,10 @@
       "id": 2,
       "title": "Roblox",
       "genre": "MMO",
-      "platform": ["PC", "Mobile"],
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
       "rating": 8.5,
       "link": "https://www.roblox.com",
       "price": "Үнэгүй"
@@ -83,48 +79,88 @@
       "id": 3,
       "title": "Genshin Impact",
       "genre": "RPG",
-      "platform": ["PC", "Mobile", "Console"],
+      "platform": [
+        "PC",
+        "Mobile",
+        "Console"
+      ],
       "rating": 8.7,
       "link": "https://genshin.hoyoverse.com",
       "price": "Үнэгүй"
-    },
-    {
-  "id": 4,
-  "title": "Дайби",
-  "genre": "Action",
-  "platform": ["PC", "Mobile"],
-  "rating": 9.5,
-  "link": "daibi.html",
-  "price": "Үнэгүй"
-}
+    }
   ],
-
   "weather": {
     "cities": [
-      { "name": "Улаанбаатар", "query": "Ulaanbaatar" },
-      { "name": "Дархан",      "query": "Darkhan"      },
-      { "name": "Эрдэнэт",    "query": "Erdenet"      },
-      { "name": "Өлгий",      "query": "Olgii"        },
-      { "name": "Чойбалсан",  "query": "Choibalsan"   }
+      {
+        "name": "Улаанбаатар",
+        "query": "Ulaanbaatar"
+      },
+      {
+        "name": "Дархан",
+        "query": "Darkhan"
+      },
+      {
+        "name": "Эрдэнэт",
+        "query": "Erdenet"
+      },
+      {
+        "name": "Өлгий",
+        "query": "Olgii"
+      },
+      {
+        "name": "Чойбалсан",
+        "query": "Choibalsan"
+      }
     ]
   },
-
   "ads": [
     {
-      "id": 1,
-      "position": "mob_1",
-      "active": true,
-      "image": "spo.jpg",
-      "video": "",
-      "link": "mailto:gnarantsend@gmail.com?subject=Nabooshy — Зар байршуулах хүсэлт"
-    },
-    {
-      "id": 2,
-      "position": "mob_2",
+      "id": 201,
+      "position": "mob_h1",
       "active": true,
       "image": "",
       "video": "",
-      "link": "mailto:gnarantsend@gmail.com?subject=Nabooshy — Зар байршуулах хүсэлт"
+      "link": "#"
+    },
+    {
+      "id": 202,
+      "position": "mob_h2",
+      "active": true,
+      "image": "",
+      "video": "",
+      "link": "#"
+    },
+    {
+      "id": 203,
+      "position": "mob_h3",
+      "active": true,
+      "image": "",
+      "video": "",
+      "link": "#"
+    },
+    {
+      "id": 211,
+      "position": "mob_v1",
+      "active": true,
+      "image": "",
+      "video": "",
+      "link": "#"
+    },
+    {
+      "id": 212,
+      "position": "mob_v2",
+      "active": true,
+      "image": "",
+      "video": "",
+      "link": "#"
+    },
+    {
+      "id": 213,
+      "position": "mob_v3",
+      "active": true,
+      "image": "",
+      "video": "",
+      "link": "#"
     },
     {
       "id": 3,
