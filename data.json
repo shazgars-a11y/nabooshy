@@ -190,7 +190,7 @@
     {
       "id": 10,
       "title": "Chess",
-      "genre": "Puzzle",
+      "genre": "Тэрлэг",
       "platform": [
         "PC",
         "Mobile"
@@ -203,7 +203,7 @@
     {
       "id": 11,
       "title": "Sudoku",
-      "genre": "Puzzle",
+      "genre": "Оньсого",
       "platform": [
         "PC",
         "Mobile"
@@ -216,7 +216,7 @@
     {
       "id": 12,
       "title": "Checkers",
-      "genre": "Board",
+      "genre": "Тэрлэг",
       "platform": [
         "PC",
         "Mobile"
@@ -229,7 +229,7 @@
     {
       "id": 13,
       "title": "Solitaire",
-      "genre": "Card",
+      "genre": "Картын",
       "platform": [
         "PC",
         "Mobile"
@@ -241,73 +241,34 @@
     },
     {
       "id": 14,
-      "title": "Slope",
-      "genre": "Action",
-      "platform": [
-        "PC",
-        "Mobile"
-      ],
-      "rating": 9.3,
-      "link": "https://y8.com/embed/slope",
-      "price": "Үнэгүй",
-      "embed": "https://y8.com/embed/slope"
-    },
-    {
-      "id": 15,
-      "title": "Wordle",
-      "genre": "Puzzle",
-      "platform": [
-        "PC",
-        "Mobile"
-      ],
-      "rating": 9.0,
-      "link": "https://cdn.bubbleshooter.net/games/wordle/",
-      "price": "Үнэгүй",
-      "embed": "https://cdn.bubbleshooter.net/games/wordle/"
-    },
-    {
-      "id": 16,
-      "title": "Tetris",
-      "genre": "Puzzle",
-      "platform": [
-        "PC",
-        "Mobile"
-      ],
-      "rating": 9.4,
-      "link": "https://cdn.bubbleshooter.net/games/tetris-cube/",
-      "price": "Үнэгүй",
-      "embed": "https://cdn.bubbleshooter.net/games/tetris-cube/"
-    },
-    {
-      "id": 17,
-      "title": "Flappy Bird",
-      "genre": "Action",
-      "platform": [
-        "PC",
-        "Mobile"
-      ],
-      "rating": 8.9,
-      "link": "https://funhtml5games.com?embed=flappy",
-      "price": "Үнэгүй",
-      "embed": "https://funhtml5games.com?embed=flappy"
-    },
-    {
-      "id": 18,
-      "title": "Gravity Guy",
-      "genre": "Action",
+      "title": "Reversi",
+      "genre": "Тэрлэг",
       "platform": [
         "PC",
         "Mobile"
       ],
       "rating": 8.7,
-      "link": "https://iDev.Games/embed/gravity-guy",
+      "link": "https://playpager.com/embed/reversi/index.html",
       "price": "Үнэгүй",
-      "embed": "https://iDev.Games/embed/gravity-guy"
+      "embed": "https://playpager.com/embed/reversi/index.html"
     },
     {
-      "id": 19,
+      "id": 15,
+      "title": "Word Puzzle",
+      "genre": "Оньсого",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.9,
+      "link": "https://playpager.com/embed/wordpuzzle/index.html",
+      "price": "Үнэгүй",
+      "embed": "https://playpager.com/embed/wordpuzzle/index.html"
+    },
+    {
+      "id": 16,
       "title": "Falling Cubes",
-      "genre": "Puzzle",
+      "genre": "Оньсого",
       "platform": [
         "PC",
         "Mobile"
@@ -316,6 +277,84 @@
       "link": "https://playpager.com/embed/cubes/index.html",
       "price": "Үнэгүй",
       "embed": "https://playpager.com/embed/cubes/index.html"
+    },
+    {
+      "id": 17,
+      "title": "Mini Chess",
+      "genre": "Тэрлэг",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.8,
+      "link": "https://playpager.com/embed/minichess/index.html",
+      "price": "Үнэгүй",
+      "embed": "https://playpager.com/embed/minichess/index.html"
+    },
+    {
+      "id": 18,
+      "title": "Gravity Guy",
+      "genre": "Үйл",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.9,
+      "link": "https://iDev.Games/embed/gravity-guy",
+      "price": "Үнэгүй",
+      "embed": "https://iDev.Games/embed/gravity-guy"
+    },
+    {
+      "id": 19,
+      "title": "Road to Rage",
+      "genre": "Үйл",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.7,
+      "link": "https://iDev.Games/embed/road-to-rage",
+      "price": "Үнэгүй",
+      "embed": "https://iDev.Games/embed/road-to-rage"
+    },
+    {
+      "id": 20,
+      "title": "Burger Empire",
+      "genre": "Стратеги",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.6,
+      "link": "https://iDev.Games/embed/burger-empire",
+      "price": "Үнэгүй",
+      "embed": "https://iDev.Games/embed/burger-empire"
+    },
+    {
+      "id": 21,
+      "title": "Hadros",
+      "genre": "Үйл",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.5,
+      "link": "https://iDev.Games/embed/hadros",
+      "price": "Үнэгүй",
+      "embed": "https://iDev.Games/embed/hadros"
+    },
+    {
+      "id": 22,
+      "title": "Salsa Disparos",
+      "genre": "Үйл",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.4,
+      "link": "https://iDev.Games/embed/salsa-disparos",
+      "price": "Үнэгүй",
+      "embed": "https://iDev.Games/embed/salsa-disparos"
     }
   ],
   "weather": {
