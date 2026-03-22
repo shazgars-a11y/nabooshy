@@ -1,18 +1,28 @@
 {
   "_ZAAVAR": {
-    "kino_nemeh": "movies[] доор нэмнэ — poster: зурагийн URL, link: IMDB эсвэл тоглуулах сайт",
+    "kino_nemeh": "movies[] доор нэмнэ — poster: зурагийн URL, link: тоглуулах сайт",
     "togloom_nemeh": "games[] доор нэмнэ — price: Үнэгүй эсвэл Төлбөртэй",
-    "zar_nemeh": "ads[] доор image талбарт зурагийн URL оруулна, link: очих хаяг",
-    "zar_bairshal": {
-      "banner_top": "Компьютер — кино дээр",
-      "banner_mid": "Компьютер — кино тоглоомын хооронд",
-      "banner_bot": "Компьютер — тоглоомын доор",
-      "sidebar_1": "Компьютер — баруун дээр 260x250",
-      "sidebar_2": "Компьютер — баруун дунд 260x300",
-      "sidebar_3": "Компьютер — баруун доор 260x200",
-      "mob_1": "Гар утас — хамгийн дээр",
-      "mob_2": "Гар утас — дараа нь"
+    "zar_nemeh": "ads[] доор — image: зурагийн URL эсвэл нэр, video: .mp4 URL, link: очих хаяг",
+    "zar_idevshuuleh": "active: true харуулна, false нуугдана",
+    "position_tailbar": {
+      "mob_1": "📱 Гар утас хамгийн дээр",
+      "mob_2": "📱 Гар утас 2-р байр",
+      "banner_top": "🖥️ Компьютер кино-н дээр",
+      "banner_mid": "🖥️ Компьютер дунд",
+      "banner_bot": "🖥️ Компьютер доор",
+      "sidebar_1": "🖥️ Баруун дээр 260x250",
+      "sidebar_2": "🖥️ Баруун дунд 260x300",
+      "sidebar_3": "🖥️ Баруун доор 260x200"
     }
+  },
+
+  "contact": {
+    "email": "gnarantsend@gmail.com",
+    "phone": "99376238",
+    "phone_display": "9937-6238",
+    "phone_link": "tel:+97699376238",
+    "email_link": "mailto:gnarantsend@gmail.com",
+    "email_subject": "Nabooshy — Зар байршуулах хүсэлт"
   },
 
   "movies": [
@@ -87,57 +97,65 @@
       "id": 1,
       "position": "mob_1",
       "active": true,
-      "image": "",
-      "link": "mailto:nabooshy@gmail.com"
+      "image": "spo.jpg",
+      "video": "",
+      "link": "mailto:gnarantsend@gmail.com?subject=Nabooshy — Зар байршуулах хүсэлт"
     },
     {
       "id": 2,
       "position": "mob_2",
       "active": true,
       "image": "",
-      "link": "mailto:nabooshy@gmail.com"
+      "video": "",
+      "link": "mailto:gnarantsend@gmail.com?subject=Nabooshy — Зар байршуулах хүсэлт"
     },
     {
       "id": 3,
       "position": "banner_top",
       "active": true,
-      "image": "",
-      "link": "mailto:nabooshy@gmail.com"
+      "image": "spo.jpg",
+      "video": "",
+      "link": "mailto:gnarantsend@gmail.com?subject=Nabooshy — Зар байршуулах хүсэлт"
     },
     {
       "id": 4,
       "position": "banner_mid",
       "active": true,
       "image": "",
-      "link": "mailto:nabooshy@gmail.com"
+      "video": "",
+      "link": "mailto:gnarantsend@gmail.com?subject=Nabooshy — Зар байршуулах хүсэлт"
     },
     {
       "id": 5,
       "position": "banner_bot",
       "active": true,
       "image": "",
-      "link": "mailto:nabooshy@gmail.com"
+      "video": "",
+      "link": "mailto:gnarantsend@gmail.com?subject=Nabooshy — Зар байршуулах хүсэлт"
     },
     {
       "id": 6,
       "position": "sidebar_1",
       "active": true,
-      "image": "",
-      "link": "mailto:nabooshy@gmail.com"
+      "image": "spo.jpg",
+      "video": "",
+      "link": "mailto:gnarantsend@gmail.com?subject=Nabooshy — Зар байршуулах хүсэлт"
     },
     {
       "id": 7,
       "position": "sidebar_2",
       "active": true,
       "image": "",
-      "link": "mailto:nabooshy@gmail.com"
+      "video": "",
+      "link": "mailto:gnarantsend@gmail.com?subject=Nabooshy — Зар байршуулах хүсэлт"
     },
     {
       "id": 8,
       "position": "sidebar_3",
       "active": true,
       "image": "",
-      "link": "mailto:nabooshy@gmail.com"
+      "video": "",
+      "link": "mailto:gnarantsend@gmail.com?subject=Nabooshy — Зар байршуулах хүсэлт"
     }
   ]
 }
