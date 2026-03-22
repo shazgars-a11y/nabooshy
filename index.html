@@ -89,7 +89,10 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-t
   .mob-ads{display:flex;flex-direction:column;gap:8px;padding:8px 14px;}
   .hero{padding:20px 14px 14px;}
 }
-.mob-ad{width:100%;height:60px;background:var(--bg2);border:1px dashed #7F77DD35;border-radius:8px;display:flex;align-items:center;justify-content:center;text-decoration:none;overflow:hidden;}
+.mob-ad-h{width:100%;height:60px;background:var(--bg2);border:1px dashed #7F77DD35;border-radius:8px;display:flex;align-items:center;justify-content:center;text-decoration:none;overflow:hidden;}
+.mob-ad-v{flex:1;height:160px;background:var(--bg2);border:1px dashed #7F77DD35;border-radius:8px;display:flex;align-items:center;justify-content:center;text-decoration:none;overflow:hidden;}
+.mob-ad-h img,.mob-ad-v img{width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;}
+.mob-ad-h video,.mob-ad-v video{width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;pointer-events:none;}
 </style>
 </head>
 <body>
@@ -107,8 +110,14 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-t
 <div id="top"></div>
 
 <div class="mob-ads">
-  <a class="mob-ad" id="mob-ad-1" href="#"></a>
-  <a class="mob-ad" id="mob-ad-2" href="#"></a>
+  <a class="mob-ad-h" id="mob-h-1" href="#"></a>
+  <a class="mob-ad-h" id="mob-h-2" href="#"></a>
+  <a class="mob-ad-h" id="mob-h-3" href="#"></a>
+  <div style="display:flex;gap:8px;">
+    <a class="mob-ad-v" id="mob-v-1" href="#"></a>
+    <a class="mob-ad-v" id="mob-v-2" href="#"></a>
+    <a class="mob-ad-v" id="mob-v-3" href="#"></a>
+  </div>
 </div>
 
 <div class="hero">
@@ -341,7 +350,8 @@ fetch('data.json')
 
     var map={banner_top:'banner-top',banner_mid:'banner-mid',banner_bot:'banner-bot',
              sidebar_1:'sidebar-ad-1',sidebar_2:'sidebar-ad-2',sidebar_3:'sidebar-ad-3',
-             mob_1:'mob-ad-1',mob_2:'mob-ad-2'};
+             mob_h1:'mob-h-1',mob_h2:'mob-h-2',mob_h3:'mob-h-3',
+             mob_v1:'mob-v-1',mob_v2:'mob-v-2',mob_v3:'mob-v-3'};
     if(data.ads)data.ads.forEach(function(ad){if(map[ad.position])setAd(map[ad.position],ad);});
 
     fetchWeather(data.weather.cities[0].query,data.weather.cities[0].name);
