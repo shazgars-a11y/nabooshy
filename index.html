@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nabooshy — Монголын хамгийн шилдэг</title>
+<title>Nabooshy</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0a0910;--bg2:#13121f;--bg3:#1c1b2e;--border:#ffffff14;--text:#e8e6ff;--muted:#6b6880;--purple:#7F77DD;--pl:#AFA9EC;--teal:#1D9E75;--tl:#5DCAA5;--pink:#D4537E;--amber:#EF9F27;}
+:root{--bg:#0a0910;--bg2:#13121f;--bg3:#1c1b2e;--border:#ffffff14;--text:#e8e6ff;--muted:#6b6880;--purple:#7F77DD;--pl:#AFA9EC;--tl:#5DCAA5;--amber:#EF9F27;}
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
@@ -36,14 +36,13 @@ nav{background:rgba(10,9,16,0.96);backdrop-filter:blur(12px);border-bottom:0.5px
 @keyframes lf{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 .lb{height:3px;border-radius:2px;background:linear-gradient(90deg,#534AB7,#1D9E75,#D4537E,#EF9F27,#534AB7);background-size:300% 100%;animation:gm 3s linear infinite;margin-top:8px;position:relative;z-index:2;}
 .hs{position:relative;z-index:2;font-size:12px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-top:10px;}
-.page{display:grid;grid-template-columns:1fr 260px;gap:20px;max-width:1240px;margin:0 auto;padding:20px 20px;}
+.page{display:grid;grid-template-columns:1fr 260px;gap:20px;max-width:1240px;margin:0 auto;padding:20px;}
 .main{min-width:0;}
 .sidebar{display:flex;flex-direction:column;gap:14px;}
 .bad{width:100%;background:var(--bg2);border:1px dashed #7F77DD35;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;text-decoration:none;overflow:hidden;transition:border-color .2s;margin-bottom:16px;}
 .bad:hover{border-color:#7F77DD70;}
-.bad img{width:100%;height:100%;object-fit:cover;border-radius:10px;}
-.bad-ph{font-size:11px;color:var(--muted);text-align:center;line-height:1.9;padding:12px;}
-.bad-ph b{display:block;font-size:12px;color:var(--pl);margin-bottom:2px;}
+.bad-ph{font-size:12px;color:var(--muted);text-align:center;padding:12px;line-height:1.8;}
+.bad-ph b{display:block;font-size:13px;color:var(--pl);margin-bottom:3px;}
 .wb{background:var(--bg2);border:0.5px solid var(--border);border-radius:12px;padding:12px 18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:16px;}
 .wt{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:600;color:var(--tl);}
 .wi{font-size:28px;}
@@ -74,26 +73,23 @@ nav{background:rgba(10,9,16,0.96);backdrop-filter:blur(12px);border-bottom:0.5px
 .gbp{background:#EF9F2718;color:var(--amber);border:0.5px solid #EF9F2735;}
 .saw{background:var(--bg2);border:0.5px solid var(--border);border-radius:12px;padding:14px;}
 .sst{font-size:12px;font-weight:500;color:var(--pl);margin-bottom:10px;}
-.scl{display:flex;flex-direction:column;gap:5px;}
-.scb{font-size:12px;padding:6px 10px;border-radius:7px;background:transparent;border:0.5px solid var(--border);color:var(--muted);cursor:pointer;text-align:left;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.scb{font-size:12px;padding:6px 10px;border-radius:7px;background:transparent;border:0.5px solid var(--border);color:var(--muted);cursor:pointer;text-align:left;font-family:'DM Sans',sans-serif;transition:all .2s;display:block;width:100%;}
 .scb:hover,.scb.active{background:#1D9E7515;border-color:#1D9E7545;color:var(--tl);}
-.swd{margin-top:10px;padding-top:10px;border-top:0.5px solid var(--border);}
-.swt{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:600;color:var(--tl);}
-.swc{font-size:12px;color:var(--tl);margin-top:2px;}
-.swd2{font-size:11px;color:var(--muted);}
 .sad{background:var(--bg2);border:1px dashed #7F77DD35;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;text-decoration:none;overflow:hidden;transition:border-color .2s;}
 .sad:hover{border-color:#7F77DD70;}
-.sad img{width:100%;height:100%;object-fit:cover;border-radius:10px;}
-.sad-ph{font-size:11px;color:var(--muted);text-align:center;line-height:1.9;padding:16px;width:100%;}
-.sad-ph b{display:block;font-size:12px;color:var(--pl);margin-bottom:3px;}
+.sad-ph{font-size:11px;color:var(--muted);text-align:center;padding:16px;width:100%;line-height:1.8;}
+.sad-ph b{display:block;font-size:12px;color:var(--pl);margin-bottom:4px;}
 footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-top:0.5px solid var(--border);max-width:1240px;margin:0 auto;}
 .fl{font-family:'Space Grotesk',sans-serif;font-size:15px;color:var(--pl);margin-bottom:5px;}
-@media(max-width:860px){.page{grid-template-columns:1fr;}.sidebar{display:none;}.bad{height:60px!important;}.mob-ads{display:flex;flex-direction:column;gap:8px;padding:8px 14px;}.hero{padding:20px 14px 14px;}}
-@media(min-width:861px){.mob-ads{display:none;}}
+.mob-ads{display:none;}
+@media(max-width:860px){
+  .page{grid-template-columns:1fr;}
+  .sidebar{display:none;}
+  .bad{height:60px!important;}
+  .mob-ads{display:flex;flex-direction:column;gap:8px;padding:8px 14px;}
+  .hero{padding:20px 14px 14px;}
+}
 .mob-ad{width:100%;height:60px;background:var(--bg2);border:1px dashed #7F77DD35;border-radius:8px;display:flex;align-items:center;justify-content:center;text-decoration:none;overflow:hidden;}
-.mob-ad img{width:100%;height:100%;object-fit:cover;border-radius:8px;}
-.mob-ad-ph{font-size:11px;color:var(--muted);text-align:center;}
-.mob-ad-ph b{font-size:11px;color:var(--pl);display:block;}
 </style>
 </head>
 <body>
@@ -110,13 +106,9 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-t
 
 <div id="top"></div>
 
-<div class="mob-ads" id="mob-ads">
-  <a class="mob-ad" id="mob-ad-1" href="/cdn-cgi/l/email-protection#600e01020f0f13081920070d01090c4e030f0d">
-    <div class="mob-ad-ph"><b>📢 Зар 1 — мобайл дээд</b><span class="__cf_email__" data-cfemail="94faf5f6fbfbe7fcedd4f3f9f5fdf8baf7fbf9">[email&#160;protected]</span></div>
-  </a>
-  <a class="mob-ad" id="mob-ad-2" href="/cdn-cgi/l/email-protection#aac4cbc8c5c5d9c2d3eacdc7cbc3c684c9c5c7">
-    <div class="mob-ad-ph"><b>📢 Зар 2 — мобайл дээд</b><span class="__cf_email__" data-cfemail="f69897949999859e8fb6919b979f9ad895999b">[email&#160;protected]</span></div>
-  </a>
+<div class="mob-ads">
+  <a class="mob-ad" id="mob-ad-1" href="#"></a>
+  <a class="mob-ad" id="mob-ad-2" href="#"></a>
 </div>
 
 <div class="hero">
@@ -130,8 +122,8 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-t
 <div class="page">
   <div class="main">
 
-    <a class="bad" id="banner-top" style="height:90px" href="/cdn-cgi/l/email-protection#412f20232e2e32293801262c20282d6f222e2c">
-      <div class="bad-ph"><b>📢 Дээд байрлалын зар — 728×90</b>Энд таны зар байрлана · <span class="__cf_email__" data-cfemail="90fef1f2ffffe3f8e9d0f7fdf1f9fcbef3fffd">[email&#160;protected]</span></div>
+    <a class="bad" id="banner-top" style="height:90px" href="#">
+      <div class="bad-ph" id="bph-top"><b>📢 Дээд байрлалын зар — 728×90</b>Зар байршуулах холбоо барина уу</div>
     </a>
 
     <div id="weather-sec" class="wb">
@@ -149,8 +141,8 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-t
       <div class="mg" id="movie-grid"><div style="color:var(--muted);font-size:13px;grid-column:1/-1">Уншиж байна...</div></div>
     </div>
 
-    <a class="bad" id="banner-mid" style="height:90px" href="/cdn-cgi/l/email-protection#caa4aba8a5a5b9a2b38aada7aba3a6e4a9a5a7">
-      <div class="bad-ph"><b>📢 Дунд байрлалын зар — 728×90</b>Энд таны зар байрлана · <span class="__cf_email__" data-cfemail="a8c6c9cac7c7dbc0d1e8cfc5c9c1c486cbc7c5">[email&#160;protected]</span></div>
+    <a class="bad" id="banner-mid" style="height:90px" href="#">
+      <div class="bad-ph" id="bph-mid"><b>📢 Дунд байрлалын зар — 728×90</b>Зар байршуулах холбоо барина уу</div>
     </a>
 
     <div id="games">
@@ -158,37 +150,35 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-t
       <div class="gl" id="game-list"><div style="color:var(--muted);font-size:13px">Уншиж байна...</div></div>
     </div>
 
-    <a class="bad" id="banner-bot" style="height:90px" href="/cdn-cgi/l/email-protection#107e71727f7f63786950777d71797c3e737f7d">
-      <div class="bad-ph"><b>📢 Доод байрлалын зар — 728×90</b>Энд таны зар байрлана · <span class="__cf_email__" data-cfemail="0a646b6865657962734a6d676b636624696567">[email&#160;protected]</span></div>
+    <a class="bad" id="banner-bot" style="height:90px" href="#">
+      <div class="bad-ph" id="bph-bot"><b>📢 Доод байрлалын зар — 728×90</b>Зар байршуулах холбоо барина уу</div>
     </a>
 
   </div>
 
   <div class="sidebar">
-
-    <a class="sad" id="sidebar-ad-1" style="height:250px" href="/cdn-cgi/l/email-protection#5e303f3c31312d36271e39333f3732703d3133">
-      <div class="sad-ph"><b>📢 Sidebar зар 1</b>260 × 250 px<br>Их хүн харна<br><span class="__cf_email__" data-cfemail="c3ada2a1acacb0abba83a4aea2aaafeda0acae">[email&#160;protected]</span></div>
+    <a class="sad" id="sidebar-ad-1" style="height:250px" href="#">
+      <div class="sad-ph" id="sph-1"><b>📢 Sidebar зар 1</b>260 × 250 px<br>Их хүн харна</div>
     </a>
 
     <div class="saw">
       <div class="sst">🌤 Цаг агаар</div>
-      <div class="scl" id="sidebar-cities"></div>
-      <div class="swd">
+      <div id="sidebar-cities" style="display:flex;flex-direction:column;gap:5px;"></div>
+      <div style="margin-top:10px;padding-top:10px;border-top:0.5px solid var(--border);">
         <div style="font-size:22px" id="sw-icon">🌤</div>
-        <div class="swt" id="sw-temp">--°</div>
-        <div class="swc" id="sw-city">Улаанбаатар</div>
-        <div class="swd2" id="sw-desc">Уншиж байна...</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:600;color:var(--tl)" id="sw-temp">--°</div>
+        <div style="font-size:12px;color:var(--tl);margin-top:2px" id="sw-city">Улаанбаатар</div>
+        <div style="font-size:11px;color:var(--muted)" id="sw-desc">Уншиж байна...</div>
       </div>
     </div>
 
-    <a class="sad" id="sidebar-ad-2" style="height:300px" href="/cdn-cgi/l/email-protection#f59b94979a9a869d8cb59298949c99db969a98">
-      <div class="sad-ph"><b>📢 Sidebar зар 2</b>260 × 300 px<br><span class="__cf_email__" data-cfemail="6a040b0805051902132a0d070b030644090507">[email&#160;protected]</span></div>
+    <a class="sad" id="sidebar-ad-2" style="height:300px" href="#">
+      <div class="sad-ph" id="sph-2"><b>📢 Sidebar зар 2</b>260 × 300 px</div>
     </a>
 
-    <a class="sad" id="sidebar-ad-3" style="height:200px" href="/cdn-cgi/l/email-protection#026c63606d6d716a7b42656f636b6e2c616d6f">
-      <div class="sad-ph"><b>📢 Sidebar зар 3</b>260 × 200 px<br><span class="__cf_email__" data-cfemail="1876797a77776b7061587f75797174367b7775">[email&#160;protected]</span></div>
+    <a class="sad" id="sidebar-ad-3" style="height:200px" href="#">
+      <div class="sad-ph" id="sph-3"><b>📢 Sidebar зар 3</b>260 × 200 px</div>
     </a>
-
   </div>
 </div>
 
@@ -205,15 +195,15 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-t
           <div style="font-size:11px;color:#5DCAA5;margin-bottom:2px">Утас — дарахад залгана</div>
           <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:#5DCAA5">9937-6238</div>
         </div>
-        <span style="font-size:11px;color:#5DCAA5;opacity:0.7;cursor:pointer;padding:4px 8px;border:0.5px solid #1D9E7440;border-radius:6px;flex-shrink:0" onclick="event.preventDefault();navigator.clipboard.writeText('99376238').then(()=>{this.textContent='✓ Хуулагдлаа';setTimeout(()=>this.textContent='copy',1500)})">copy</span>
+        <span style="font-size:11px;color:#5DCAA5;opacity:0.7;cursor:pointer;padding:4px 8px;border:0.5px solid #1D9E7440;border-radius:6px;" id="ph-copy">copy</span>
       </a>
-      <a id="email-link" href="#" style="display:flex;align-items:center;gap:12px;background:#7F77DD18;border:0.5px solid #7F77DD40;border-radius:10px;padding:12px 18px;text-decoration:none;">
+      <a id="em-btn" href="#" style="display:flex;align-items:center;gap:12px;background:#7F77DD18;border:0.5px solid #7F77DD40;border-radius:10px;padding:12px 18px;text-decoration:none;">
         <span style="font-size:22px">✉️</span>
         <div style="flex:1;min-width:0">
           <div style="font-size:11px;color:#AFA9EC;margin-bottom:2px">И-мэйл — дарахад бичих болно</div>
-          <div id="email-txt" style="font-size:12px;font-weight:500;color:#AFA9EC"></div>
+          <div id="em-txt" style="font-size:12px;font-weight:500;color:#AFA9EC"></div>
         </div>
-        <span id="email-copy" style="font-size:11px;color:#AFA9EC;opacity:0.7;cursor:pointer;padding:4px 8px;border:0.5px solid #7F77DD40;border-radius:6px;flex-shrink:0">copy</span>
+        <span style="font-size:11px;color:#AFA9EC;opacity:0.7;cursor:pointer;padding:4px 8px;border:0.5px solid #7F77DD40;border-radius:6px;" id="em-copy">copy</span>
       </a>
     </div>
   </div>
@@ -221,25 +211,42 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-t
 
 <footer>
   <div class="fl">nabooshy</div>
-  <div style="margin-top:4px">© 2026 Nabooshy &nbsp;·&nbsp; <span id="footer-email" style="color:#7F77DD;cursor:pointer"></span> &nbsp;·&nbsp; <a href="tel:+97699376238" style="color:#5DCAA5;text-decoration:none">9937-6238</a></div>
+  <div style="margin-top:4px" id="footer-txt">© 2026 Nabooshy</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const API_KEY="fc4b4a3ecd85839afed62a32911aa465";
-const WI={Clear:"☀️",Clouds:"☁️",Rain:"🌧️",Snow:"❄️",Thunderstorm:"⛈️",Drizzle:"🌦️",Mist:"🌫️",Fog:"🌫️"};
+<script>
+const _e = (function(){const a='gnarantsend',b='gmail',c='com';return a+'@'+b+'.'+c;})();
+const _p = '99376238';
+const _ph = '9937-6238';
+const _sub = 'Nabooshy%20%D0%B7%D0%B0%D1%80%20%D0%B1%D0%B0%D0%B9%D1%80%D1%88%D1%83%D1%83%D0%BB%D0%B0%D1%85';
 
-(function(){
-  const u='gnarantsend',d='gmail.com',e=u+'@'+d;
-  const sub='Nabooshy зар байршуулах';
-  const el=document.getElementById('email-link');
-  const txt=document.getElementById('email-txt');
-  const cp=document.getElementById('email-copy');
-  const fe=document.getElementById('footer-email');
-  if(el)el.href='mailto:'+e+'?subject='+encodeURIComponent(sub);
-  if(txt)txt.textContent=e;
-  if(cp)cp.onclick=function(ev){ev.preventDefault();navigator.clipboard.writeText(e).then(()=>{cp.textContent='✓ Хуулагдлаа';setTimeout(()=>cp.textContent='copy',1500)});};
-  if(fe){fe.textContent=e;fe.onclick=function(){window.location='mailto:'+e+'?subject='+encodeURIComponent(sub);};}
-})();
+function _initContact(){
+  const btn=document.getElementById('em-btn');
+  const txt=document.getElementById('em-txt');
+  const cp=document.getElementById('em-copy');
+  const phcp=document.getElementById('ph-copy');
+  const ft=document.getElementById('footer-txt');
+  if(btn)btn.href='mailto:'+_e+'?subject='+_sub;
+  if(txt)txt.textContent=_e;
+  if(cp)cp.onclick=function(ev){ev.preventDefault();navigator.clipboard.writeText(_e).then(()=>{cp.textContent='✓';setTimeout(()=>cp.textContent='copy',1500)});};
+  if(phcp)phcp.onclick=function(ev){ev.preventDefault();navigator.clipboard.writeText(_p).then(()=>{phcp.textContent='✓';setTimeout(()=>phcp.textContent='copy',1500)});};
+  if(ft)ft.innerHTML='© 2026 Nabooshy &nbsp;·&nbsp; <span style="color:#7F77DD;cursor:pointer" onclick="window.location=\'mailto:'+_e+'?subject='+_sub+'\'">'+_e+'</span> &nbsp;·&nbsp; <a href="tel:+97699376238" style="color:#5DCAA5;text-decoration:none">'+_ph+'</a>';
+  const slots=['banner-top','banner-mid','banner-bot','sidebar-ad-1','sidebar-ad-2','sidebar-ad-3','mob-ad-1','mob-ad-2'];
+  slots.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el&&el.href==='#'||el&&el.getAttribute('href')==='#'){
+      el.href='mailto:'+_e+'?subject='+_sub;
+    }
+  });
+  const phs=['bph-top','bph-mid','bph-bot','sph-1','sph-2','sph-3'];
+  phs.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el){const b=el.querySelector('b');if(b&&!el.querySelector('span'))el.insertAdjacentHTML('beforeend','<span style="color:var(--pl)">'+_e+'</span>');}
+  });
+}
+
+const API_KEY='fc4b4a3ecd85839afed62a32911aa465';
+const WI={Clear:'☀️',Clouds:'☁️',Rain:'🌧️',Snow:'❄️',Thunderstorm:'⛈️',Drizzle:'🌦️',Mist:'🌫️',Fog:'🌫️'};
 
 function goTo(id){
   if(id==='top'){window.scrollTo({top:0,behavior:'smooth'});return;}
@@ -249,7 +256,7 @@ function goTo(id){
 
 async function fetchWeather(q,name){
   try{
-    const r=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${q}&appid=${API_KEY}&units=metric&lang=mn`);
+    const r=await fetch('https://api.openweathermap.org/data/2.5/weather?q='+q+'&appid='+API_KEY+'&units=metric&lang=mn');
     const d=await r.json();
     if(d.cod!==200)throw new Error();
     const ic=WI[d.weather[0].main]||'🌤';
@@ -263,7 +270,7 @@ async function fetchWeather(q,name){
     document.getElementById('sw-temp').textContent=t;
     document.getElementById('sw-city').textContent=name;
     document.getElementById('sw-desc').textContent=desc;
-  }catch{
+  }catch(e){
     document.getElementById('w-desc').textContent='API идэвхжиж байна — 2 цаг дараа дахин оролдоно уу';
     document.getElementById('sw-desc').textContent='Боломжгүй';
   }
@@ -273,34 +280,78 @@ function setAd(slotId,ad){
   if(!ad||!ad.active)return;
   const el=document.getElementById(slotId);
   if(!el)return;
-  el.href=ad.link||'#';
+  if(ad.link)el.href=ad.link;
   if(ad.video){
-    el.innerHTML=`<video src="${ad.video}" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;pointer-events:none"></video>`;
-  } else if(ad.image){
-    el.innerHTML=`<img src="${ad.image}" alt="ad" style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:block">`;
+    el.innerHTML='<video src="'+ad.video+'" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;pointer-events:none"></video>';
+  }else if(ad.image){
+    el.innerHTML='<img src="'+ad.image+'" alt="ad" style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:block">';
   }
 }
 
-fetch('data.json').then(r=>r.json()).then(data=>{
+_initContact();
 
-  // MOVIES
-  const grid=document.getElementById('movie-grid');
-  grid.innerHTML='';
-  data.movies.forEach(m=>{
-    const a=document.createElement('a');
-    a.href=m.link;a.target='_blank';a.className='mc';
-    a.innerHTML=`<div class="rb">⭐${m.rating}</div>
-      ${m.poster?`<img class="mp" src="${m.poster}" alt="${m.title}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`:'' }
-      <div class="mph" style="${m.poster?'display:none':''}">🎬</div>
-      <div class="mi"><div class="mt">${m.title}</div><div class="my">${m.year}</div></div>`;
-    grid.appendChild(a);
+fetch('data.json')
+  .then(function(r){return r.json();})
+  .then(function(data){
+
+    var grid=document.getElementById('movie-grid');
+    grid.innerHTML='';
+    data.movies.forEach(function(m){
+      var a=document.createElement('a');
+      a.href=m.link;a.target='_blank';a.className='mc';
+      a.innerHTML='<div class="rb">⭐'+m.rating+'</div>'
+        +(m.poster?'<img class="mp" src="'+m.poster+'" alt="'+m.title+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">':'')
+        +'<div class="mph" style="'+(m.poster?'display:none':'')+'">🎬</div>'
+        +'<div class="mi"><div class="mt">'+m.title+'</div><div class="my">'+m.year+'</div></div>';
+      grid.appendChild(a);
+    });
+
+    var gl=document.getElementById('game-list');
+    gl.innerHTML='';
+    var gc=['#7F77DD18','#1D9E7518','#D4537E18'];
+    var ge=['🎮','🕹️','⚔️'];
+    data.games.forEach(function(g,i){
+      var a=document.createElement('a');
+      a.href=g.link;a.target='_blank';a.className='gc';
+      a.innerHTML='<div class="gib" style="background:'+gc[i%gc.length]+'">'+ge[i%ge.length]+'</div>'
+        +'<div style="flex:1;min-width:0"><div class="gn">'+g.title+'</div><div class="gm2">'+g.genre+' · '+g.platform.join(', ')+' · ⭐'+g.rating+'</div></div>'
+        +'<span class="gb '+(g.price==='Үнэгүй'?'gbf':'gbp')+'">'+g.price+'</span>';
+      gl.appendChild(a);
+    });
+
+    var tabs=document.getElementById('city-tabs');
+    var stabs=document.getElementById('sidebar-cities');
+    tabs.innerHTML='';stabs.innerHTML='';
+    data.weather.cities.forEach(function(c,i){
+      var btn=document.createElement('button');
+      btn.className='ctab'+(i===0?' active':'');
+      btn.textContent=c.name;
+      btn.onclick=function(){
+        document.querySelectorAll('.ctab,.scb').forEach(function(b){b.classList.remove('active');});
+        document.querySelectorAll('.ctab,.scb').forEach(function(b){if(b.textContent===c.name)b.classList.add('active');});
+        fetchWeather(c.query,c.name);
+      };
+      tabs.appendChild(btn);
+      var sb=document.createElement('button');
+      sb.className='scb'+(i===0?' active':'');
+      sb.textContent=c.name;
+      sb.onclick=btn.onclick;
+      stabs.appendChild(sb);
+    });
+
+    var map={banner_top:'banner-top',banner_mid:'banner-mid',banner_bot:'banner-bot',
+             sidebar_1:'sidebar-ad-1',sidebar_2:'sidebar-ad-2',sidebar_3:'sidebar-ad-3',
+             mob_1:'mob-ad-1',mob_2:'mob-ad-2'};
+    if(data.ads)data.ads.forEach(function(ad){if(map[ad.position])setAd(map[ad.position],ad);});
+
+    fetchWeather(data.weather.cities[0].query,data.weather.cities[0].name);
+
+  })
+  .catch(function(err){
+    console.error('data.json алдаа:',err);
+    document.getElementById('movie-grid').innerHTML='<div style="color:var(--muted);font-size:13px;grid-column:1/-1">data.json файл олдсонгүй</div>';
+    document.getElementById('game-list').innerHTML='<div style="color:var(--muted);font-size:13px">data.json файл олдсонгүй</div>';
   });
-
-  // GAMES
-  const gl=document.getElementById('game-list');
-  gl.innerHTML='';
-  const gc2=['#7F77DD18','#1D9E7518','#D4537E18'];
-  const ge=['🎮','🕹️','⚔️'];
-  data.games.forEach((g,i)=>{
-    const a=document.createElement('a');
-    a.href=g.link;a.target='_blank';
+</script>
+</body>
+</html>
