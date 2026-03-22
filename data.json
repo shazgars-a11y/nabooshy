@@ -5,16 +5,22 @@
     "logo": {
       "text": "nabooshy",
       "favicon": "favicon.ico",
-      "colors": ["#534AB7", "#1D9E75", "#D4537E"]
+      "colors": [
+        "#534AB7",
+        "#1D9E75",
+        "#D4537E"
+      ]
     }
   },
-
   "movies": [
     {
       "id": 1,
       "title": "Inception",
       "year": 2010,
-      "genre": ["Sci-Fi", "Thriller"],
+      "genre": [
+        "Sci-Fi",
+        "Thriller"
+      ],
       "rating": 8.8,
       "poster": "https://image.tmdb.org/t/p/w500/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg",
       "link": "https://www.imdb.com/title/tt1375666/",
@@ -25,7 +31,10 @@
       "id": 2,
       "title": "Interstellar",
       "year": 2014,
-      "genre": ["Sci-Fi", "Drama"],
+      "genre": [
+        "Sci-Fi",
+        "Drama"
+      ],
       "rating": 8.6,
       "poster": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
       "link": "https://www.imdb.com/title/tt0816692/",
@@ -36,7 +45,10 @@
       "id": 3,
       "title": "The Dark Knight",
       "year": 2008,
-      "genre": ["Action", "Crime"],
+      "genre": [
+        "Action",
+        "Crime"
+      ],
       "rating": 9.0,
       "poster": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
       "link": "https://www.imdb.com/title/tt0468569/",
@@ -44,68 +56,100 @@
       "featured": false
     }
   ],
-
   "games": [
     {
       "id": 1,
       "title": "Minecraft",
       "genre": "Sandbox",
-      "platform": ["PC", "Mobile", "Console"],
+      "platform": [
+        "PC",
+        "Mobile",
+        "Console"
+      ],
       "rating": 9.2,
       "image": "https://upload.wikimedia.org/wikipedia/en/5/51/Minecraft_cover.png",
       "link": "https://www.minecraft.net",
       "price": "Төлбөртэй",
       "description": "Блокоор дэлхий байгуулж, мангасуудаас хамгаалагдах тоглоом.",
-      "tags": ["Олон тоглогч", "Бүтээлч"],
+      "tags": [
+        "Олон тоглогч",
+        "Бүтээлч"
+      ],
       "featured": true
     },
     {
       "id": 2,
       "title": "Roblox",
       "genre": "MMO",
-      "platform": ["PC", "Mobile"],
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
       "rating": 8.5,
       "image": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_black.svg",
       "link": "https://www.roblox.com",
       "price": "Үнэгүй",
       "description": "Өөрийн тоглоом хийж, бусдын тоглоомд орж тоглох платформ.",
-      "tags": ["Үнэгүй", "Олон тоглогч"],
+      "tags": [
+        "Үнэгүй",
+        "Олон тоглогч"
+      ],
       "featured": true
     },
     {
       "id": 3,
       "title": "Genshin Impact",
       "genre": "RPG",
-      "platform": ["PC", "Mobile", "Console"],
+      "platform": [
+        "PC",
+        "Mobile",
+        "Console"
+      ],
       "rating": 8.7,
       "image": "https://upload.wikimedia.org/wikipedia/en/0/0d/Genshin_Impact_logo.png",
       "link": "https://genshin.hoyoverse.com",
       "price": "Үнэгүй",
       "description": "Уран зөгнөлт ертөнцөд аялж, дайсдыг ялах RPG тоглоом.",
-      "tags": ["Үнэгүй", "Нээлттэй ертөнц"],
+      "tags": [
+        "Үнэгүй",
+        "Нээлттэй ертөнц"
+      ],
       "featured": false
     }
   ],
-
   "weather": {
     "default_city": "Ulaanbaatar",
     "api_source": "OpenWeatherMap",
     "api_key_placeholder": "TANII_API_KEY_ENERGY",
     "api_url": "https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric&lang=mn",
     "cities": [
-      { "name": "Улаанбаатар", "query": "Ulaanbaatar" },
-      { "name": "Дархан", "query": "Darkhan" },
-      { "name": "Эрдэнэт", "query": "Erdenet" },
-      { "name": "Өлгий", "query": "Olgii" },
-      { "name": "Чойбалсан", "query": "Choibalsan" }
+      {
+        "name": "Улаанбаатар",
+        "query": "Ulaanbaatar"
+      },
+      {
+        "name": "Дархан",
+        "query": "Darkhan"
+      },
+      {
+        "name": "Эрдэнэт",
+        "query": "Erdenet"
+      },
+      {
+        "name": "Өлгий",
+        "query": "Olgii"
+      },
+      {
+        "name": "Чойбалсан",
+        "query": "Choibalsan"
+      }
     ]
   },
-
   "ads": [
     {
       "id": 1,
-      "title": "Nabooshy Premium",
-      "description": "Зар сурталчилгаагаа манай сайтад байршуулаарай!",
+      "title": "Энд таны зар",
+      "description": "Дээд баннер байршил",
       "image": "",
       "link": "mailto:nabooshy@gmail.com",
       "position": "banner_top",
@@ -115,23 +159,101 @@
     {
       "id": 2,
       "title": "Энд таны зар",
-      "description": "Сайдар байршил — их хүн үзнэ",
+      "description": "Дунд баннер байршил",
       "image": "",
       "link": "mailto:nabooshy@gmail.com",
-      "position": "sidebar",
+      "position": "banner_mid",
+      "active": true,
+      "contact": "nabooshy@gmail.com"
+    },
+    {
+      "id": 3,
+      "title": "Энд таны зар",
+      "description": "Доод баннер байршил",
+      "image": "",
+      "link": "mailto:nabooshy@gmail.com",
+      "position": "banner_bot",
+      "active": true,
+      "contact": "nabooshy@gmail.com"
+    },
+    {
+      "id": 4,
+      "title": "Sidebar зар 1",
+      "description": "260x250",
+      "image": "",
+      "link": "mailto:nabooshy@gmail.com",
+      "position": "sidebar_1",
+      "active": true,
+      "contact": "nabooshy@gmail.com"
+    },
+    {
+      "id": 5,
+      "title": "Sidebar зар 2",
+      "description": "260x300",
+      "image": "",
+      "link": "mailto:nabooshy@gmail.com",
+      "position": "sidebar_2",
+      "active": true,
+      "contact": "nabooshy@gmail.com"
+    },
+    {
+      "id": 6,
+      "title": "Sidebar зар 3",
+      "description": "260x200",
+      "image": "",
+      "link": "mailto:nabooshy@gmail.com",
+      "position": "sidebar_3",
+      "active": true,
+      "contact": "nabooshy@gmail.com"
+    },
+    {
+      "id": 7,
+      "title": "Мобайл зар 1",
+      "description": "Гар утасны дээд байрлал",
+      "image": "",
+      "link": "mailto:nabooshy@gmail.com",
+      "position": "mob_1",
+      "active": true,
+      "contact": "nabooshy@gmail.com"
+    },
+    {
+      "id": 8,
+      "title": "Мобайл зар 2",
+      "description": "Гар утасны дээд байрлал",
+      "image": "",
+      "link": "mailto:nabooshy@gmail.com",
+      "position": "mob_2",
       "active": true,
       "contact": "nabooshy@gmail.com"
     }
   ],
-
   "navigation": [
-    { "label": "Нүүр", "href": "#home", "icon": "home" },
-    { "label": "Кино", "href": "#movies", "icon": "film" },
-    { "label": "Тоглоом", "href": "#games", "icon": "gamepad" },
-    { "label": "Цаг агаар", "href": "#weather", "icon": "cloud" },
-    { "label": "Зар", "href": "#ads", "icon": "megaphone" }
+    {
+      "label": "Нүүр",
+      "href": "#home",
+      "icon": "home"
+    },
+    {
+      "label": "Кино",
+      "href": "#movies",
+      "icon": "film"
+    },
+    {
+      "label": "Тоглоом",
+      "href": "#games",
+      "icon": "gamepad"
+    },
+    {
+      "label": "Цаг агаар",
+      "href": "#weather",
+      "icon": "cloud"
+    },
+    {
+      "label": "Зар",
+      "href": "#ads",
+      "icon": "megaphone"
+    }
   ],
-
   "meta": {
     "version": "1.0.0",
     "last_updated": "2026-03-22",
