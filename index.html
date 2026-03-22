@@ -207,13 +207,13 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-t
         </div>
         <span style="font-size:11px;color:#5DCAA5;opacity:0.7;cursor:pointer;padding:4px 8px;border:0.5px solid #1D9E7440;border-radius:6px;flex-shrink:0" onclick="event.preventDefault();navigator.clipboard.writeText('99376238').then(()=>{this.textContent='✓ Хуулагдлаа';setTimeout(()=>this.textContent='copy',1500)})">copy</span>
       </a>
-      <a href="mailto:gnarantsend@gmail.com?subject=Nabooshy зар байршуулах" style="display:flex;align-items:center;gap:12px;background:#7F77DD18;border:0.5px solid #7F77DD40;border-radius:10px;padding:12px 18px;text-decoration:none;">
+      <a id="email-link" href="#" style="display:flex;align-items:center;gap:12px;background:#7F77DD18;border:0.5px solid #7F77DD40;border-radius:10px;padding:12px 18px;text-decoration:none;">
         <span style="font-size:22px">✉️</span>
         <div style="flex:1;min-width:0">
           <div style="font-size:11px;color:#AFA9EC;margin-bottom:2px">И-мэйл — дарахад бичих болно</div>
-          <div style="font-size:12px;font-weight:500;color:#AFA9EC">gnarantsend@gmail.com</div>
+          <div id="email-txt" style="font-size:12px;font-weight:500;color:#AFA9EC"></div>
         </div>
-        <span style="font-size:11px;color:#AFA9EC;opacity:0.7;cursor:pointer;padding:4px 8px;border:0.5px solid #7F77DD40;border-radius:6px;flex-shrink:0" onclick="event.preventDefault();navigator.clipboard.writeText('gnarantsend@gmail.com').then(()=>{this.textContent='✓ Хуулагдлаа';setTimeout(()=>this.textContent='copy',1500)})">copy</span>
+        <span id="email-copy" style="font-size:11px;color:#AFA9EC;opacity:0.7;cursor:pointer;padding:4px 8px;border:0.5px solid #7F77DD40;border-radius:6px;flex-shrink:0">copy</span>
       </a>
     </div>
   </div>
@@ -221,12 +221,25 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-t
 
 <footer>
   <div class="fl">nabooshy</div>
-  <div style="margin-top:4px">© 2026 Nabooshy &nbsp;·&nbsp; <a href="mailto:gnarantsend@gmail.com" style="color:#7F77DD;text-decoration:none">gnarantsend@gmail.com</a> &nbsp;·&nbsp; <a href="tel:+97699376238" style="color:#5DCAA5;text-decoration:none">9937-6238</a></div>
+  <div style="margin-top:4px">© 2026 Nabooshy &nbsp;·&nbsp; <span id="footer-email" style="color:#7F77DD;cursor:pointer"></span> &nbsp;·&nbsp; <a href="tel:+97699376238" style="color:#5DCAA5;text-decoration:none">9937-6238</a></div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const API_KEY="fc4b4a3ecd85839afed62a32911aa465";
 const WI={Clear:"☀️",Clouds:"☁️",Rain:"🌧️",Snow:"❄️",Thunderstorm:"⛈️",Drizzle:"🌦️",Mist:"🌫️",Fog:"🌫️"};
+
+(function(){
+  const u='gnarantsend',d='gmail.com',e=u+'@'+d;
+  const sub='Nabooshy зар байршуулах';
+  const el=document.getElementById('email-link');
+  const txt=document.getElementById('email-txt');
+  const cp=document.getElementById('email-copy');
+  const fe=document.getElementById('footer-email');
+  if(el)el.href='mailto:'+e+'?subject='+encodeURIComponent(sub);
+  if(txt)txt.textContent=e;
+  if(cp)cp.onclick=function(ev){ev.preventDefault();navigator.clipboard.writeText(e).then(()=>{cp.textContent='✓ Хуулагдлаа';setTimeout(()=>cp.textContent='copy',1500)});};
+  if(fe){fe.textContent=e;fe.onclick=function(){window.location='mailto:'+e+'?subject='+encodeURIComponent(sub);};}
+})();
 
 function goTo(id){
   if(id==='top'){window.scrollTo({top:0,behavior:'smooth'});return;}
@@ -290,12 +303,4 @@ fetch('data.json').then(r=>r.json()).then(data=>{
   const ge=['🎮','🕹️','⚔️'];
   data.games.forEach((g,i)=>{
     const a=document.createElement('a');
-    a.href=g.link;a.target='_blank';a.className='gc';
-    a.innerHTML=`<div class="gib" style="background:${gc2[i%gc2.length]}">${ge[i%ge.length]}</div>
-      <div style="flex:1;min-width:0"><div class="gn">${g.title}</div><div class="gm2">${g.genre} · ${g.platform.join(', ')} · ⭐${g.rating}</div></div>
-      <span class="gb ${g.price==='Үнэгүй'?'gbf':'gbp'}">${g.price}</span>`;
-    gl.appendChild(a);
-  });
-
-  // WEATHER TABS
-  const tabs=document.getEl
+    a.href=g.link;a.target='_blank';
