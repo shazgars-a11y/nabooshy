@@ -793,20 +793,88 @@
         "query": "Ulaanbaatar"
       },
       {
-        "name": "Дархан",
+        "name": "Архангай",
+        "query": "Arkhangai"
+      },
+      {
+        "name": "Баян-Өлгий",
+        "query": "Bayan-Olgii"
+      },
+      {
+        "name": "Баянхонгор",
+        "query": "Bayankhongor"
+      },
+      {
+        "name": "Булган",
+        "query": "Bulgan"
+      },
+      {
+        "name": "Говь-Алтай",
+        "query": "Govi-Altai"
+      },
+      {
+        "name": "Говьсүмбэр",
+        "query": "Govisumber"
+      },
+      {
+        "name": "Дархан-Уул",
         "query": "Darkhan"
       },
       {
-        "name": "Эрдэнэт",
+        "name": "Дорнод",
+        "query": "Dornod"
+      },
+      {
+        "name": "Дорноговь",
+        "query": "Dornogovi"
+      },
+      {
+        "name": "Дундговь",
+        "query": "Dundgovi"
+      },
+      {
+        "name": "Завхан",
+        "query": "Zavkhan"
+      },
+      {
+        "name": "Орхон",
         "query": "Erdenet"
       },
       {
-        "name": "Өлгий",
-        "query": "Olgii"
+        "name": "Өвөрхангай",
+        "query": "Uvurkhangai"
       },
       {
-        "name": "Чойбалсан",
-        "query": "Choibalsan"
+        "name": "Өмнөговь",
+        "query": "Umnugovi"
+      },
+      {
+        "name": "Сүхбаатар",
+        "query": "Sukhbaatar"
+      },
+      {
+        "name": "Сэлэнгэ",
+        "query": "Selenge"
+      },
+      {
+        "name": "Төв",
+        "query": "Tov"
+      },
+      {
+        "name": "Увс",
+        "query": "Uvs"
+      },
+      {
+        "name": "Ховд",
+        "query": "Hovd"
+      },
+      {
+        "name": "Хөвсгөл",
+        "query": "Khuvsgul"
+      },
+      {
+        "name": "Хэнтий",
+        "query": "Khentii"
       }
     ]
   },
