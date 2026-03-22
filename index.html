@@ -407,29 +407,52 @@ function closeGame(){
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeGame();closeEp();}});
 
+var TMDB_KEY='0b34540c864eaaf51207c87c28dabb36';
+
+async function getTMDBPoster(movie){
+  if(movie.poster)return movie.poster;
+  if(!movie.tmdb_id&&!movie.title)return '';
+  try{
+    var url=movie.tmdb_id
+      ?'https://api.themoviedb.org/3/movie/'+movie.tmdb_id+'?api_key='+TMDB_KEY
+      :'https://api.themoviedb.org/3/search/movie?api_key='+TMDB_KEY+'&query='+encodeURIComponent(movie.title)+'&year='+(movie.year||'');
+    var r=await fetch(url);
+    var d=await r.json();
+    var res=movie.tmdb_id?d:(d.results&&d.results[0]);
+    if(res&&res.poster_path)return 'https://image.tmdb.org/t/p/w300'+res.poster_path;
+    return '';
+  }catch(e){return '';}
+}
+
 fetch('data.json')
   .then(function(r){return r.json();})
-  .then(function(data){
+  .then(async function(data){
 
     var grid=document.getElementById('movie-grid');
     grid.innerHTML='';
-    data.movies.forEach(function(m){
+
+    for(var mi=0;mi<data.movies.length;mi++){
+      var m=data.movies[mi];
+      var poster=await getTMDBPoster(m);
+
       var a=document.createElement('a');
       a.className='mc';
       if(m.episodes&&m.episodes.length>0){
-        a.href='#';
-        a.onclick=function(e){e.preventDefault();showEpisodes(m);};
+        (function(mv){
+          a.href='#';
+          a.onclick=function(e){e.preventDefault();showEpisodes(mv);};
+        })(m);
       }else{
         a.href=m.link||'#';
         a.target='_blank';
       }
       a.innerHTML='<div class="rb">⭐'+m.rating+'</div>'
         +(m.episodes&&m.episodes.length?'<div style="position:absolute;top:6px;left:6px;background:#7F77DD99;color:#fff;font-size:9px;padding:2px 5px;border-radius:4px;font-weight:600">'+m.episodes.length+' анги</div>':'')
-        +(m.poster?'<img class="mp" src="'+m.poster+'" alt="'+m.title+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">':'')
-        +'<div class="mph" style="'+(m.poster?'display:none':'')+'">🎬</div>'
+        +(poster?'<img class="mp" src="'+poster+'" alt="'+m.title+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">':'')
+        +'<div class="mph" style="'+(poster?'display:none':'')+'">🎬</div>'
         +'<div class="mi"><div class="mt">'+m.title+'</div><div class="my">'+m.year+'</div></div>';
       grid.appendChild(a);
-    });
+    }
 
     var _allGames=data.games;
     var _shownCount=12;
