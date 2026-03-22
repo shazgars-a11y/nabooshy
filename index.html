@@ -271,10 +271,10 @@
 <nav>
   <div class="nav-logo">nabooshy</div>
   <div class="nav-links">
-    <a href="#movies" class="nav-link">🎬 Кино</a>
-    <a href="#games" class="nav-link">🎮 Тоглоом</a>
-    <a href="#weather" class="nav-link">🌤 Цаг</a>
-    <a href="#ads" class="nav-link">📢 Зар</a>
+    <a href="javascript:void(0)" onclick="goTo('movies')" class="nav-link">🎬 Кино</a>
+    <a href="javascript:void(0)" onclick="goTo('games')" class="nav-link">🎮 Тоглоом</a>
+    <a href="javascript:void(0)" onclick="goTo('weather')" class="nav-link">🌤 Цаг</a>
+    <a href="javascript:void(0)" onclick="goTo('ads')" class="nav-link">📢 Зар</a>
   </div>
 </nav>
 
@@ -338,6 +338,11 @@
 </footer>
 
 <script>
+function goTo(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
+
 const API_KEY = "fc4b4a3ecd85839afed62a32911aa465";
 
 const weatherIcons = {
