@@ -118,6 +118,7 @@
       "id": 201,
       "position": "mob_h1",
       "active": true,
+      "html": "ad-template-mobile.html",
       "image": "",
       "video": "",
       "link": "#"
@@ -126,6 +127,7 @@
       "id": 202,
       "position": "mob_h2",
       "active": true,
+      "html": "ad-template-mobile.html",
       "image": "",
       "video": "",
       "link": "#"
@@ -134,6 +136,7 @@
       "id": 203,
       "position": "mob_h3",
       "active": true,
+      "html": "ad-template-mobile.html",
       "image": "",
       "video": "",
       "link": "#"
@@ -142,6 +145,7 @@
       "id": 211,
       "position": "mob_v1",
       "active": true,
+      "html": "ad-template-sidebar.html",
       "image": "",
       "video": "",
       "link": "#"
@@ -150,6 +154,7 @@
       "id": 212,
       "position": "mob_v2",
       "active": true,
+      "html": "ad-template-sidebar.html",
       "image": "",
       "video": "",
       "link": "#"
@@ -158,57 +163,64 @@
       "id": 213,
       "position": "mob_v3",
       "active": true,
+      "html": "ad-template-sidebar.html",
       "image": "",
       "video": "",
       "link": "#"
     },
     {
-      "id": 3,
+      "id": 301,
       "position": "banner_top",
       "active": true,
-      "image": "spo.jpg",
+      "html": "ad-template-banner.html",
+      "image": "",
       "video": "",
-      "link": "mailto:gnarantsend@gmail.com?subject=Nabooshy — Зар байршуулах хүсэлт"
+      "link": "#"
     },
     {
-      "id": 4,
+      "id": 302,
       "position": "banner_mid",
       "active": true,
+      "html": "ad-template-banner.html",
       "image": "",
       "video": "",
-      "link": "mailto:gnarantsend@gmail.com?subject=Nabooshy — Зар байршуулах хүсэлт"
+      "link": "#"
     },
     {
-      "id": 5,
+      "id": 303,
       "position": "banner_bot",
       "active": true,
+      "html": "ad-template-banner.html",
       "image": "",
       "video": "",
-      "link": "mailto:gnarantsend@gmail.com?subject=Nabooshy — Зар байршуулах хүсэлт"
+      "link": "#"
     },
     {
-      "id": 6,
+      "id": 401,
       "position": "sidebar_1",
       "active": true,
-      "image": "spo.jpg",
+      "html": "ad-template-sidebar.html",
+      "image": "",
       "video": "",
-      "link": "mailto:gnarantsend@gmail.com?subject=Nabooshy — Зар байршуулах хүсэлт"
+      "link": "#"
     },
     {
-      "id": 7,
+      "id": 402,
       "position": "sidebar_2",
       "active": true,
+      "html": "ad-template-sidebar.html",
       "image": "",
       "video": "",
-      "link": "mailto:gnarantsend@gmail.com?subject=Nabooshy — Зар байршуулах хүсэлт"
+      "link": "#"
     },
     {
-      "id": 8,
+      "id": 403,
       "position": "sidebar_3",
       "active": true,
+      "html": "ad-template-sidebar.html",
       "image": "",
       "video": "",
-      "link": "mailto:gnarantsend@gmail.com?subject=Nabooshy — Зар байршуулах хүсэлт"
+      "link": "#"
     }
   ]
 }

@@ -290,7 +290,9 @@ function setAd(slotId,ad){
   const el=document.getElementById(slotId);
   if(!el)return;
   if(ad.link)el.href=ad.link;
-  if(ad.video){
+  if(ad.html){
+    el.innerHTML='<iframe src="'+ad.html+'" style="width:100%;height:100%;border:none;border-radius:8px;pointer-events:none" scrolling="no"></iframe>';
+  }else if(ad.video){
     el.innerHTML='<video src="'+ad.video+'" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;pointer-events:none"></video>';
   }else if(ad.image){
     el.innerHTML='<img src="'+ad.image+'" alt="ad" style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:block">';
