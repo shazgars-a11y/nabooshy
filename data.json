@@ -346,7 +346,7 @@
     {
       "id": 22,
       "title": "Salsa Disparos",
-      "genre": "Үйл",
+      "genre": "Буудлага",
       "platform": [
         "PC",
         "Mobile"
@@ -355,6 +355,435 @@
       "link": "https://iDev.Games/embed/salsa-disparos",
       "price": "Үнэгүй",
       "embed": "https://iDev.Games/embed/salsa-disparos"
+    },
+    {
+      "id": 23,
+      "title": "Super Tucano",
+      "genre": "Буудлага",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.6,
+      "link": "https://iDev.Games/embed/super-tucano-score-combat",
+      "price": "Үнэгүй",
+      "embed": "https://iDev.Games/embed/super-tucano-score-combat"
+    },
+    {
+      "id": 30,
+      "title": "The Cargo 2",
+      "genre": "Жолоодлого",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.5,
+      "link": "https://1000webgames.com/games/thecargo2/play.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/thecargo2/play.php"
+    },
+    {
+      "id": 31,
+      "title": "Park The Taxi 3",
+      "genre": "Зогсоол",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.3,
+      "link": "https://1000webgames.com/games/parkthetaxi3/play.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/parkthetaxi3/play.php"
+    },
+    {
+      "id": 32,
+      "title": "Warfare Area 3",
+      "genre": "Буудлага",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.7,
+      "link": "https://1000webgames.com/games/warfarearea3/play.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/warfarearea3/play.php"
+    },
+    {
+      "id": 33,
+      "title": "Truck Space 2",
+      "genre": "Жолоодлого",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.4,
+      "link": "https://1000webgames.com/games/truckspace2/play.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/truckspace2/play.php"
+    },
+    {
+      "id": 34,
+      "title": "Hard Wheels Winter 2",
+      "genre": "Жолоодлого",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.5,
+      "link": "https://1000webgames.com/games/hardwheelswinter2/play.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/hardwheelswinter2/play.php"
+    },
+    {
+      "id": 35,
+      "title": "Assault Time",
+      "genre": "Буудлага",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.6,
+      "link": "https://1000webgames.com/games/assaulttime/play.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/assaulttime/play.php"
+    },
+    {
+      "id": 36,
+      "title": "Tractor Trial 2",
+      "genre": "Жолоодлого",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.3,
+      "link": "https://1000webgames.com/games/tractortrial2/play.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/tractortrial2/play.php"
+    },
+    {
+      "id": 37,
+      "title": "Trials Ride 2",
+      "genre": "Жолоодлого",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.7,
+      "link": "https://1000webgames.com/games/trialsride2/play.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/trialsride2/play.php"
+    },
+    {
+      "id": 38,
+      "title": "Hard Wheels Winter",
+      "genre": "Жолоодлого",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.4,
+      "link": "https://1000webgames.com/games/hardwheelswinter/play.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/hardwheelswinter/play.php"
+    },
+    {
+      "id": 39,
+      "title": "Park The Taxi 2",
+      "genre": "Зогсоол",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.2,
+      "link": "https://1000webgames.com/games/parkthetaxi2/play.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/parkthetaxi2/play.php"
+    },
+    {
+      "id": 40,
+      "title": "Truck Space",
+      "genre": "Жолоодлого",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.3,
+      "link": "https://1000webgames.com/games/truckspace/play.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/truckspace/play.php"
+    },
+    {
+      "id": 41,
+      "title": "Warfare Area 2",
+      "genre": "Буудлага",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.5,
+      "link": "https://1000webgames.com/games/warfarearea2/play.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/warfarearea2/play.php"
+    },
+    {
+      "id": 42,
+      "title": "The Cargo",
+      "genre": "Жолоодлого",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.3,
+      "link": "https://1000webgames.com/games/thecargo/play.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/thecargo/play.php"
+    },
+    {
+      "id": 43,
+      "title": "Bullet Fury 2",
+      "genre": "Буудлага",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.8,
+      "link": "https://1000webgames.com/games/bulletfury2/bulletfury2.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/bulletfury2/bulletfury2.php"
+    },
+    {
+      "id": 44,
+      "title": "Trials Ice Ride",
+      "genre": "Жолоодлого",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.5,
+      "link": "https://1000webgames.com/games/trialsiceride/play.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/trialsiceride/play.php"
+    },
+    {
+      "id": 45,
+      "title": "Hard Wheels 2",
+      "genre": "Жолоодлого",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.4,
+      "link": "https://1000webgames.com/games/hardwheels2/hardwheels2.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/hardwheels2/hardwheels2.php"
+    },
+    {
+      "id": 46,
+      "title": "Parking Slot",
+      "genre": "Зогсоол",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.1,
+      "link": "https://1000webgames.com/games/parkingslot/parkingslot.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/parkingslot/parkingslot.php"
+    },
+    {
+      "id": 47,
+      "title": "Assault Zone",
+      "genre": "Буудлага",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.4,
+      "link": "https://1000webgames.com/games/assaultzone/assaultzone.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/assaultzone/assaultzone.php"
+    },
+    {
+      "id": 48,
+      "title": "Drive To Wreck",
+      "genre": "Жолоодлого",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.3,
+      "link": "https://1000webgames.com/games/drivetowreck/drivetowreck.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/drivetowreck/drivetowreck.php"
+    },
+    {
+      "id": 49,
+      "title": "4x4 Monster",
+      "genre": "Жолоодлого",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.5,
+      "link": "https://1000webgames.com/games/4x4monster/4x4monster.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/4x4monster/4x4monster.php"
+    },
+    {
+      "id": 50,
+      "title": "Battle Area",
+      "genre": "Буудлага",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.6,
+      "link": "https://1000webgames.com/games/battlearea/battlearea.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/battlearea/battlearea.php"
+    },
+    {
+      "id": 51,
+      "title": "Tractor Trial",
+      "genre": "Жолоодлого",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.2,
+      "link": "https://1000webgames.com/games/tractortrial/html5.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/tractortrial/html5.php"
+    },
+    {
+      "id": 52,
+      "title": "Warfare Area",
+      "genre": "Буудлага",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.4,
+      "link": "https://1000webgames.com/games/warfarearea/warfarearea.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/warfarearea/warfarearea.php"
+    },
+    {
+      "id": 53,
+      "title": "Trials Ride",
+      "genre": "Жолоодлого",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.5,
+      "link": "https://1000webgames.com/games/trialsride/trialsride.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/trialsride/trialsride.php"
+    },
+    {
+      "id": 54,
+      "title": "Park The Taxi",
+      "genre": "Зогсоол",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.1,
+      "link": "https://1000webgames.com/games/parkthetaxi/parkthetaxi.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/parkthetaxi/parkthetaxi.php"
+    },
+    {
+      "id": 55,
+      "title": "Bullet Fury",
+      "genre": "Буудлага",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.6,
+      "link": "https://1000webgames.com/games/bulletfury/bulletfury.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/bulletfury/bulletfury.php"
+    },
+    {
+      "id": 56,
+      "title": "Hard Wheels",
+      "genre": "Жолоодлого",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.3,
+      "link": "https://1000webgames.com/games/hardwheels/hardwheels.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/hardwheels/hardwheels.php"
+    },
+    {
+      "id": 57,
+      "title": "Park The Police Car",
+      "genre": "Зогсоол",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.2,
+      "link": "https://1000webgames.com/games/parkthepolicecar/play.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/parkthepolicecar/play.php"
+    },
+    {
+      "id": 58,
+      "title": "Time To Park 2",
+      "genre": "Зогсоол",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.1,
+      "link": "https://1000webgames.com/games/timetopark2/timetopark2.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/timetopark2/timetopark2.php"
+    },
+    {
+      "id": 59,
+      "title": "Parking Space",
+      "genre": "Зогсоол",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.0,
+      "link": "https://1000webgames.com/games/parkingspace/parkingspace.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/parkingspace/parkingspace.php"
+    },
+    {
+      "id": 60,
+      "title": "OK Parking",
+      "genre": "Зогсоол",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 8.0,
+      "link": "https://1000webgames.com/games/okparking/okparking-html5.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/okparking/okparking-html5.php"
+    },
+    {
+      "id": 61,
+      "title": "Time To Park",
+      "genre": "Зогсоол",
+      "platform": [
+        "PC",
+        "Mobile"
+      ],
+      "rating": 7.9,
+      "link": "https://1000webgames.com/games/timetopark/timetopark.php",
+      "price": "Үнэгүй",
+      "embed": "https://1000webgames.com/games/timetopark/timetopark.php"
     }
   ],
   "weather": {
