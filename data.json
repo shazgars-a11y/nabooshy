@@ -79,7 +79,16 @@
       "rating": 8.7,
       "link": "https://genshin.hoyoverse.com",
       "price": "Үнэгүй"
-    }
+    },
+    {
+  "id": 4,
+  "title": "Дайби",
+  "genre": "Action",
+  "platform": ["PC", "Mobile"],
+  "rating": 9.5,
+  "link": "daibi.html",
+  "price": "Үнэгүй"
+}
   ],
 
   "weather": {
