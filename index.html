@@ -402,31 +402,6 @@ function setAd(slotId,ad){
 
 _initContact();
 
-// ── Hero poster grid ─────────────────────────────────────────
-(function(){
-  var HERO_TMDB_IDS=[
-    530915,1168190,880084,932783,9693,333371,209112,
-    529816,590706,8392,680,129,268896,77374,
-    1317288,83941,27576,1208348,110316,119455
-  ];
-  var grid=document.getElementById('hero-posters');
-  if(!grid)return;
-  HERO_TMDB_IDS.forEach(function(tid){
-    var img=document.createElement('img');
-    img.src='https://image.tmdb.org/t/p/w300'+'/placeholder.jpg';
-    img.style.cssText='width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s;border-radius:4px;';
-    fetch('https://api.themoviedb.org/3/movie/'+tid+'?api_key='+TMDB_KEY)
-      .then(function(r){return r.json();})
-      .then(function(d){
-        if(d.poster_path){
-          img.src='https://image.tmdb.org/t/p/w300'+d.poster_path;
-          img.onload=function(){img.style.opacity='0.55';};
-        }
-      }).catch(function(){});
-    grid.appendChild(img);
-  });
-})();
-
 var _epPopup=document.createElement('div');
 _epPopup.id='ep-popup';
 _epPopup.style.cssText='display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;padding:20px;';
@@ -541,6 +516,10 @@ fetch('data.json')
       return true;
     });
 
+    // Hero poster grid — татагдсан poster URL-уудыг цуглуулна
+    var _heroPosterUrls=[];
+    var _heroPosterMax=14;
+
     // Кино card үүсгэх функц
     function makeCard(m,poster){
       var a=document.createElement('a');
@@ -596,6 +575,18 @@ fetch('data.json')
       (function(rowEl,movies){
         movies.forEach(function(m,idx){
           getTMDBPoster(m).then(function(poster){
+            // Hero grid-д нэмнэ
+            if(poster&&_heroPosterUrls.length<_heroPosterMax){
+              _heroPosterUrls.push(poster);
+              var grid=document.getElementById('hero-posters');
+              if(grid){
+                var img=document.createElement('img');
+                img.src=poster;
+                img.style.cssText='width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s;border-radius:4px;';
+                img.onload=function(){this.style.opacity='0.6';};
+                grid.appendChild(img);
+              }
+            }
             var card=makeCard(m,poster);
             card.style.width='130px';
             var ph=rowEl.children[idx];
