@@ -863,20 +863,8 @@ fetch('data.json')
     // Ангиллын дараалал — Row бүрийн гарчиг энд тохируулна
     var CATEGORIES=[
       {key:'new',     label:'🆕 Шинээр нэмэгдсэн', filter:function(m){return true;}, sort:function(a,b){return b.id-a.id;}, limit:20},
-      {key:'top',     label:'⭐ Шилдэг кинонууд',   filter:function(m){return m.rating>=8.5;}},
-      {key:'mn',      label:'🇲🇳 Монгол кино',       filter:function(m){return m.category==='mn';}},
-      {key:'action',  label:'💥 Экшн & Тулаан',      filter:function(m){return m.category==='action';}},
-      {key:'thriller',label:'🔪 Триллер & Детектив', filter:function(m){return m.category==='thriller';}},
-      {key:'horror',  label:'😱 Аймшиг',             filter:function(m){return m.category==='horror';}},
-      {key:'romance', label:'💕 Хайр дурлал',        filter:function(m){return m.category==='romance';}},
-      {key:'scifi',   label:'🚀 Sci-Fi & Fantasy',   filter:function(m){return m.category==='scifi';}},
-      {key:'anime',   label:'🎌 Анимэ',              filter:function(m){return m.category==='anime';}},
-      {key:'comedy',  label:'😂 Инээдмийн',          filter:function(m){return m.category==='comedy';}},
-      {key:'war',     label:'🕰️ Дайн & Түүх',       filter:function(m){return m.category==='war';}},
-      {key:'drama',   label:'🎭 Драм',               filter:function(m){return m.category==='drama';}},
-      {key:'adult',   label:'🔞 +18',                filter:function(m){return m.category==='adult';}},
-      {key:'series',  label:'📺 Цуврал',             filter:function(m){return m.category==='series';}},
-      {key:'world',   label:'🌍 Бусад',              filter:function(m){return m.category==='world';}},
+      {key:'top',     label:'⭐ Шилдэг кинонууд',   filter:function(m){return m.rating>=8;}},
+      {key:'world',   label:'🎬 Бүх кино',           filter:function(m){return true;}, limit:30},
     ];
 
     // Давхцсан id-г нэг удаа л харуулна
@@ -916,7 +904,7 @@ fetch('data.json')
     }
 
     // Mobile зарын байрлал — row-ны дараа оруулах
-    var MOB_AD_AFTER=['new','horror'];
+    var MOB_AD_AFTER=['new','top'];
     var _mobAdIdx=0;
     var MOB_AD_IDS=['mob-h-1','mob-h-2','mob-h-3'];
 
