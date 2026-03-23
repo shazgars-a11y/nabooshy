@@ -403,14 +403,11 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-t
     </a>
 
     <div id="games" style="scroll-margin-top:60px">
-      <div class="st">🎮 Тоглоомууд</div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;" id="genre-tabs">
-        <button class="ctab active" onclick="filterGames('бүгд',this)">Бүгд</button>
-      </div>
-      <input id="game-search" type="text" placeholder="🔍 Тоглоом хайх..." oninput="filterGames(null,null)" style="width:100%;background:var(--bg2);border:0.5px solid var(--border);border-radius:8px;padding:8px 14px;font-size:13px;color:var(--text);outline:none;margin-bottom:12px;font-family:'DM Sans',sans-serif;">
-      <div class="gl" id="game-list"><div style="color:var(--muted);font-size:13px">Уншиж байна...</div></div>
-      <div id="load-more-wrap" style="text-align:center;margin-top:8px;display:none">
-        <button onclick="loadMoreGames()" style="background:var(--bg2);border:0.5px solid #7F77DD50;border-radius:8px;color:var(--pl);font-size:13px;padding:10px 28px;cursor:pointer;font-family:'DM Sans',sans-serif;">Цааш харах ↓</button>
+      <input id="game-search" type="text" placeholder="🔍 Тоглоом хайх..." oninput="searchGames(this.value)" style="width:100%;background:var(--bg2);border:0.5px solid var(--border);border-radius:8px;padding:8px 14px;font-size:13px;color:var(--text);outline:none;margin-bottom:16px;font-family:'DM Sans',sans-serif;">
+      <div id="game-rows"></div>
+      <div id="game-search-results" style="display:none">
+        <div class="row-header"><div class="row-title">🔍 Хайлтын үр дүн</div><span class="row-count" id="game-search-count">0</span></div>
+        <div class="gl" id="game-search-list"></div>
       </div>
     </div>
 
@@ -982,81 +979,109 @@ fetch('data.json')
     }
 
     var _allGames=data.games;
-    var _shownCount=12;
-    var _activeGenre='бүгд';
-    var gc=['#7F77DD18','#1D9E7518','#D4537E18','#D4537E18','#EF9F2718'];
-    var ge=['🎮','🕹️','⚔️','🏎️','🔫'];
+    window._allGames=_allGames;
 
-    var genres=['бүгд'];
-    _allGames.forEach(function(g){if(g.genre&&genres.indexOf(g.genre)<0)genres.push(g.genre);});
-    var gtabs=document.getElementById('genre-tabs');
-    gtabs.innerHTML='';
-    genres.forEach(function(gn){
-      var b=document.createElement('button');
-      b.className='ctab'+(gn==='бүгд'?' active':'');
-      b.textContent=gn==='бүгд'?'Бүгд':gn;
-      b.onclick=function(){filterGames(gn,b);};
-      gtabs.appendChild(b);
+    // Тоглоомын ангиллын Row-ууд — нэр + genre жагсаалт
+    var GAME_ROWS=[
+      {label:'⭐ Шилдэг тоглоомууд', filter:function(g){return g.rating>=9;}},
+      {label:'🆕 Шинэ тоглоомууд',   filter:function(g){return g.genre==='Шинэ';}},
+      {label:'💥 Экшн & Буудлага',   filter:function(g){return ['Экшн','Буудлага','Снайпер','Тулаан'].indexOf(g.genre)>=0;}},
+      {label:'🚗 Машин & Уралдаан',  filter:function(g){return ['Машин','Жолоодлого','Уралдаан','Зогсоол','Монстр машин','Мотоцикл','Машин засах'].indexOf(g.genre)>=0;}},
+      {label:'🧩 Тааварт & Логик',   filter:function(g){return ['Тааварт','Дарж тоглох','Физик','Оньсого'].indexOf(g.genre)>=0;}},
+      {label:'⚔️ Тулаан & Стратеги', filter:function(g){return ['Стратеги','Нийгэм'].indexOf(g.genre)>=0;}},
+      {label:'🎨 Чимэглэлийн',       filter:function(g){return ['Будаж чимэглэх','Засаж чимэглэх','Өрөө засах','Хоол'].indexOf(g.genre)>=0;}},
+      {label:'🕹️ Аркад & Спорт',    filter:function(g){return ['Аркад','Спорт'].indexOf(g.genre)>=0;}},
+      {label:'🎭 Бусад',             filter:function(g){
+        var used=['Шинэ','Экшн','Буудлага','Снайпер','Тулаан','Машин','Жолоодлого','Уралдаан','Зогсоол','Монстр машин','Мотоцикл','Машин засах','Тааварт','Дарж тоглох','Физик','Оньсого','Стратеги','Нийгэм','Будаж чимэглэх','Засаж чимэглэх','Өрөө засах','Хоол','Аркад','Спорт'];
+        return used.indexOf(g.genre)<0;
+      }},
+    ];
+
+    // Game card үүсгэх
+    function makeGameCard(g,i){
+      var a=document.createElement('a');
+      a.className='mc';
+      a.style.cssText='width:130px;flex-shrink:0;scroll-snap-align:start;';
+      if(g.embed){
+        a.href='#';
+        a.onclick=function(e){e.preventDefault();openGame(g);};
+      }else{
+        a.href=g.link||'#';
+        a.target='_blank';
+      }
+      var colors=['#818cf818','#34d39918','#f472b618','#fbbf2418','#a78bfa18'];
+      var icons=['🎮','🕹️','⚔️','🏎️','🔫','🧩','🏆','🎯'];
+      var col=colors[i%colors.length];
+      var ico=icons[i%icons.length];
+      a.innerHTML='<div style="width:100%;aspect-ratio:2/3;background:'+col+';display:flex;align-items:center;justify-content:center;font-size:32px;border-radius:10px 10px 0 0">'+ico+'</div>'
+        +'<div class="rb">⭐'+g.rating+'</div>'
+        +'<div class="mi"><div class="mt">'+g.title+'</div><div class="my">'+g.genre+'</div></div>';
+      return a;
+    }
+
+    // Game row үүсгэх
+    function makeGameRow(label, games){
+      if(!games.length) return null;
+      var sec=document.createElement('div');
+      sec.className='movie-section';
+      sec.innerHTML='<div class="row-header"><div class="row-title">'+label+'</div><span class="row-count">'+games.length+'</span></div>';
+      var row=document.createElement('div');
+      row.className='movie-row';
+      games.forEach(function(g,i){ row.appendChild(makeGameCard(g,i)); });
+      sec.appendChild(row);
+      return sec;
+    }
+
+    // Row-уудыг render хийнэ
+    var rowsEl=document.getElementById('game-rows');
+    rowsEl.innerHTML='';
+    GAME_ROWS.forEach(function(cat){
+      var filtered=_allGames.filter(cat.filter);
+      var sec=makeGameRow(cat.label, filtered);
+      if(sec) rowsEl.appendChild(sec);
     });
 
-    window._allGames=_allGames;
-    window._shownCount=_shownCount;
-    window._activeGenre=_activeGenre;
-
-    function getFiltered(){
-      var q=(document.getElementById('game-search').value||'').toLowerCase();
-      var ag=window._activeGenre;
-      return window._allGames.filter(function(g){
-        var matchG=ag==='бүгд'||(g.genre&&g.genre===ag);
-        var matchQ=!q||g.title.toLowerCase().indexOf(q)>=0||(g.genre&&g.genre.toLowerCase().indexOf(q)>=0);
-        return matchG&&matchQ;
+    // Хайлт
+    window.searchGames=function(q){
+      q=(q||'').toLowerCase().trim();
+      var rowsEl=document.getElementById('game-rows');
+      var srEl=document.getElementById('game-search-results');
+      var slEl=document.getElementById('game-search-list');
+      var scEl=document.getElementById('game-search-count');
+      if(!q){
+        rowsEl.style.display='';
+        srEl.style.display='none';
+        return;
+      }
+      rowsEl.style.display='none';
+      srEl.style.display='block';
+      var res=_allGames.filter(function(g){
+        return g.title.toLowerCase().indexOf(q)>=0||(g.genre&&g.genre.toLowerCase().indexOf(q)>=0);
       });
-    }
-
-    window.filterGames=function(genre,btn){
-      if(genre!==null){
-        window._activeGenre=genre;
-        window._shownCount=12;
-        document.querySelectorAll('#genre-tabs .ctab').forEach(function(b){b.classList.remove('active');});
-        if(btn)btn.classList.add('active');
+      if(scEl) scEl.textContent=res.length;
+      slEl.innerHTML='';
+      if(!res.length){
+        slEl.innerHTML='<div style="color:var(--muted);font-size:13px;padding:12px 0">Тоглоом олдсонгүй</div>';
+        return;
       }
-      renderGames();
-    };
-
-    window.loadMoreGames=function(){
-      window._shownCount+=12;
-      renderGames();
-    };
-
-    function renderGames(){
-      var filtered=getFiltered();
-      var shown=filtered.slice(0,window._shownCount);
-      var gl=document.getElementById('game-list');
-      gl.innerHTML='';
-      if(shown.length===0){
-        gl.innerHTML='<div style="color:var(--muted);font-size:13px;padding:12px 0">Тоглоом олдсонгүй</div>';
-      }
-      shown.forEach(function(g,i){
+      res.slice(0,30).forEach(function(g,i){
         var a=document.createElement('a');
         a.className='gc';
-        if(g.embed){
-          a.href='#';
-          a.onclick=function(e){e.preventDefault();openGame(g);};
-        }else{
-          a.href=g.link;a.target='_blank';
-        }
-        a.innerHTML='<div class="gib" style="background:'+gc[i%gc.length]+'">'+ge[i%ge.length]+'</div>'
-          +'<div style="flex:1;min-width:0"><div class="gn">'+g.title+'</div><div class="gm2">'+g.genre+' · '+g.platform.join(', ')+'</div></div>'
-          +'<span style="font-size:10px;color:var(--muted);flex-shrink:0">⭐'+g.rating+'</span>';
-        gl.appendChild(a);
+        if(g.embed){a.href='#';a.onclick=function(e){e.preventDefault();openGame(g);};}
+        else{a.href=g.link||'#';a.target='_blank';}
+        var gc2=['#818cf818','#34d39918','#f472b618','#fbbf2418','#a78bfa18'];
+        var ge2=['🎮','🕹️','⚔️','🏎️','🔫'];
+        a.innerHTML='<div class="gib" style="background:'+gc2[i%gc2.length]+'">'+ge2[i%ge2.length]+'</div>'
+          +'<div style="flex:1;min-width:0"><div class="gn">'+g.title+'</div><div class="gm2">'+g.genre+'</div></div>'
+          +'<span style="font-size:10px;color:var(--muted)">⭐'+g.rating+'</span>';
+        slEl.appendChild(a);
       });
-      var lm=document.getElementById('load-more-wrap');
-      lm.style.display=filtered.length>window._shownCount?'block':'none';
-      var cnt=document.querySelector('#games .st');
-      if(cnt)cnt.textContent='🎮 Тоглоомууд ('+filtered.length+')';
-    }
+    };
 
-    renderGames();
+    // Хуучин функцуудыг хэвээр үлдээнэ — хайлт overlay-д ашиглагдана
+    window._allGamesData=_allGames;
+    window.filterGames=function(){};
+    window.loadMoreGames=function(){};
 
     var tabs=document.getElementById('city-tabs');
     var stabs=document.getElementById('sidebar-cities');
