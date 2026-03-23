@@ -836,7 +836,7 @@ async function getTMDBPoster(movie){
       if(d2.poster_path)return 'https://image.tmdb.org/t/p/w300'+d2.poster_path;
     }
     // 2. Нэрээр movie хайна
-    var sq=encodeURIComponent(movie.title);
+    var sq=encodeURIComponent(movie.title_en||movie.title);
     var yr=movie.year?'&year='+movie.year:'';
     var r3=await fetch('https://api.themoviedb.org/3/search/movie?api_key='+TMDB_KEY+'&query='+sq+yr);
     var d3=await r3.json();
