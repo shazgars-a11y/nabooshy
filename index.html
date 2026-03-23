@@ -16,8 +16,49 @@ nav{background:rgba(7,9,15,0.88);backdrop-filter:blur(16px);border-bottom:0.5px 
 .nav-right{display:flex;align-items:center;gap:4px;}
 .nav-link{font-size:13px;color:var(--muted);padding:6px 12px;border-radius:8px;cursor:pointer;text-decoration:none;transition:all .2s;}
 .nav-link:hover{color:var(--pl);background:#7F77DD15;}
-.nav-search{background:var(--bg2);border:0.5px solid var(--border);border-radius:8px;padding:6px 14px;font-size:13px;color:var(--text);outline:none;width:180px;font-family:'DM Sans',sans-serif;}
+.nav-search{background:var(--bg2);border:0.5px solid var(--border);border-radius:8px;padding:6px 14px;font-size:13px;color:var(--text);outline:none;width:180px;font-family:'DM Sans',sans-serif;transition:width .3s;}
+.nav-search:focus{width:240px;border-color:#818cf850;}
 .nav-search::placeholder{color:var(--muted);}
+/* Search overlay */
+.search-overlay{display:none;position:fixed;inset:0;z-index:999;background:rgba(7,9,15,0.92);backdrop-filter:blur(8px);padding:80px 20px 20px;overflow-y:auto;}
+.search-overlay.active{display:block;}
+.search-box{max-width:700px;margin:0 auto;}
+.search-input-wrap{position:relative;margin-bottom:20px;}
+.search-big{width:100%;background:var(--bg2);border:1px solid #818cf840;border-radius:12px;padding:14px 20px 14px 48px;font-size:18px;color:var(--text);outline:none;font-family:'DM Sans',sans-serif;}
+.search-big::placeholder{color:var(--muted);}
+.search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:18px;pointer-events:none;}
+.search-close{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:transparent;border:none;color:var(--muted);font-size:20px;cursor:pointer;padding:4px;}
+.search-section{margin-bottom:20px;}
+.search-section-title{font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;padding-left:4px;}
+.search-movies-grid{display:flex;gap:8px;flex-wrap:wrap;}
+.search-games-list{display:flex;flex-direction:column;gap:6px;}
+.search-empty{text-align:center;color:var(--muted);font-size:14px;padding:40px 0;}
+/* Preview popup */
+.preview-popup{display:none;position:fixed;inset:0;z-index:998;background:rgba(7,9,15,0.88);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:20px;}
+.preview-popup.active{display:flex;}
+.preview-box{background:var(--bg2);border:0.5px solid #818cf830;border-radius:16px;max-width:480px;width:100%;overflow:hidden;box-shadow:0 0 60px rgba(129,140,248,0.15);}
+.preview-poster-wrap{position:relative;width:100%;height:200px;overflow:hidden;}
+.preview-poster-wrap img{width:100%;height:100%;object-fit:cover;}
+.preview-poster-wrap .preview-grad{position:absolute;inset:0;background:linear-gradient(to top,var(--bg2) 0%,transparent 60%);}
+.preview-close{position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.6);border:0.5px solid rgba(255,255,255,0.2);border-radius:8px;color:#fff;width:32px;height:32px;cursor:pointer;font-size:16px;}
+.preview-body{padding:16px 20px 20px;}
+.preview-title{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:var(--text);margin-bottom:6px;}
+.preview-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+.preview-tag{font-size:10px;padding:2px 8px;border-radius:12px;background:var(--bg3);border:0.5px solid var(--border);color:var(--muted);}
+.preview-actions{display:flex;gap:8px;}
+.preview-watch{flex:1;background:linear-gradient(135deg,#818cf8,#6366f1);border:none;border-radius:10px;padding:11px;color:#fff;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;text-align:center;text-decoration:none;display:block;}
+.preview-watch:hover{opacity:0.9;}
+.preview-bookmark{background:var(--bg3);border:0.5px solid var(--border);border-radius:10px;padding:11px 14px;cursor:pointer;font-size:18px;transition:all .2s;}
+.preview-bookmark:hover{border-color:#818cf860;}
+.preview-bookmark.saved{background:#818cf820;border-color:#818cf860;}
+/* Bookmark button on cards */
+.card-bm{position:absolute;bottom:38px;right:5px;background:rgba(0,0,0,0.7);border:none;border-radius:4px;width:22px;height:22px;cursor:pointer;font-size:11px;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;}
+.mc:hover .card-bm{opacity:1;}
+.card-bm.saved{opacity:1;color:#fbbf24;}
+/* Bookmark row in sidebar */
+.bm-empty{font-size:11px;color:var(--muted);padding:8px 0;}
+/* New badge on cards */
+.new-badge{position:absolute;top:6px;left:6px;background:linear-gradient(135deg,#34d399,#059669);color:#fff;font-size:8px;padding:2px 5px;border-radius:4px;font-weight:700;letter-spacing:.5px;}
 .hero{text-align:center;padding:56px 20px 40px;position:relative;overflow:hidden;min-height:480px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
 .hero-posters{position:absolute;inset:0;display:grid;grid-template-columns:repeat(7,1fr);grid-template-rows:repeat(2,1fr);gap:4px;z-index:0;pointer-events:none;transform:skewY(-2deg) scale(1.08);transform-origin:center;}
 .hero-posters img{width:100%;height:100%;object-fit:cover;opacity:0.55;border-radius:4px;}
@@ -156,6 +197,48 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-t
 .movie-row .mc{scroll-snap-align:start;flex-shrink:0;width:130px;}
 @media(max-width:480px){.movie-row .mc{width:110px;}}
 @media(max-width:360px){.movie-row .mc{width:95px;}}
+
+/* ── Глобал хайлт ── */
+.search-wrap{position:relative;}
+.nav-search{background:var(--bg2);border:0.5px solid var(--border);border-radius:8px;padding:6px 14px;font-size:13px;color:var(--text);outline:none;width:180px;font-family:'DM Sans',sans-serif;transition:width .3s,border-color .2s;}
+.nav-search:focus{width:260px;border-color:#818cf860;}
+.search-drop{display:none;position:absolute;top:calc(100% + 6px);right:0;width:320px;background:#0d1117;border:0.5px solid #818cf830;border-radius:12px;overflow:hidden;z-index:999;box-shadow:0 8px 32px rgba(0,0,0,0.5);}
+.search-drop.open{display:block;}
+.search-drop-inner{max-height:400px;overflow-y:auto;}
+.search-drop-inner::-webkit-scrollbar{width:3px;}
+.search-drop-inner::-webkit-scrollbar-thumb{background:#818cf840;border-radius:4px;}
+.search-sec{padding:8px 12px 4px;font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;border-bottom:0.5px solid var(--border);}
+.search-item{display:flex;align-items:center;gap:10px;padding:9px 12px;cursor:pointer;transition:background .15s;text-decoration:none;}
+.search-item:hover{background:#818cf810;}
+.search-thumb{width:32px;height:48px;object-fit:cover;border-radius:4px;background:var(--bg3);flex-shrink:0;}
+.search-thumb-ph{width:32px;height:48px;border-radius:4px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.search-item-title{font-size:12px;font-weight:500;color:var(--text);}
+.search-item-meta{font-size:10px;color:var(--muted);margin-top:2px;}
+.search-empty{padding:20px;text-align:center;font-size:12px;color:var(--muted);}
+
+/* ── Preview Popup ── */
+.prev-popup{display:none;position:fixed;inset:0;z-index:998;background:rgba(0,0,0,0.8);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;}
+.prev-popup.open{display:flex;}
+.prev-box{background:#0d1117;border:0.5px solid #818cf825;border-radius:16px;max-width:420px;width:100%;overflow:hidden;position:relative;box-shadow:0 24px 64px rgba(0,0,0,0.7);}
+.prev-poster{width:100%;height:220px;object-fit:cover;display:block;}
+.prev-poster-ph{width:100%;height:220px;display:flex;align-items:center;justify-content:center;font-size:48px;background:var(--bg3);}
+.prev-body{padding:18px 20px 20px;}
+.prev-title{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:var(--text);margin-bottom:6px;}
+.prev-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+.prev-rating{font-size:12px;font-weight:600;color:var(--amber);background:rgba(251,191,36,0.12);border:0.5px solid rgba(251,191,36,0.25);border-radius:6px;padding:2px 8px;}
+.prev-year{font-size:12px;color:var(--muted);}
+.prev-cat{font-size:11px;color:var(--pl);background:#818cf812;border:0.5px solid #818cf825;border-radius:6px;padding:2px 8px;}
+.prev-actions{display:flex;gap:8px;margin-top:4px;}
+.prev-watch{flex:1;background:#818cf8;color:#fff;border:none;border-radius:10px;padding:11px 16px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s;text-decoration:none;text-align:center;}
+.prev-watch:hover{background:#6d66e8;}
+.prev-bm{width:44px;height:44px;background:var(--bg3);border:0.5px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;transition:all .2s;flex-shrink:0;}
+.prev-bm:hover{border-color:#818cf850;background:#818cf815;}
+.prev-bm.saved{background:#818cf820;border-color:#818cf860;}
+.prev-close{position:absolute;top:10px;right:10px;width:30px;height:30px;background:rgba(0,0,0,0.6);border:none;border-radius:50%;color:#fff;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+
+/* ── Bookmark row ── */
+.bm-dot{position:absolute;top:4px;left:4px;width:8px;height:8px;background:#818cf8;border-radius:50%;border:1.5px solid var(--bg2);}
+.new-badge{position:absolute;top:6px;left:6px;background:linear-gradient(135deg,#34d399,#818cf8);color:#fff;font-size:8px;padding:2px 5px;border-radius:4px;font-weight:700;letter-spacing:.5px;}
 </style>
 </head>
 <body>
@@ -163,12 +246,44 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-t
 <nav>
   <div class="nav-logo" onclick="goTo('top')">nabooshy</div>
   <div class="nav-right">
-    <input class="nav-search" type="text" placeholder="🔍 Хайх...">
+    <input class="nav-search" id="nav-search" type="text" placeholder="🔍 Хайх..." onclick="openSearch()" readonly>
     <a href="javascript:void(0)" onclick="goTo('movies')" class="nav-link">🎬 Кино</a>
     <a href="javascript:void(0)" onclick="goTo('games')" class="nav-link">🎮 Тоглоом</a>
     <a href="javascript:void(0)" onclick="goTo('weather-sec')" class="nav-link">🌤 Цаг</a>
   </div>
 </nav>
+
+<!-- Search Overlay -->
+<div class="search-overlay" id="search-overlay" onclick="if(event.target===this)closeSearch()">
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <span class="search-icon">🔍</span>
+      <input class="search-big" id="search-big-input" type="text" placeholder="Кино, цуврал, тоглоом хайх..." oninput="doSearch(this.value)" autofocus>
+      <button class="search-close" onclick="closeSearch()">✕</button>
+    </div>
+    <div id="search-results"></div>
+  </div>
+</div>
+
+<!-- Preview Popup -->
+<div class="preview-popup" id="preview-popup" onclick="if(event.target===this)closePreview()">
+  <div class="preview-box">
+    <div class="preview-poster-wrap">
+      <img id="pv-poster" src="" alt="">
+      <div class="preview-grad"></div>
+      <button class="preview-close" onclick="closePreview()">✕</button>
+    </div>
+    <div class="preview-body">
+      <div class="preview-title" id="pv-title"></div>
+      <div class="preview-meta" id="pv-meta"></div>
+      <div class="preview-actions">
+        <a class="preview-watch" id="pv-watch" href="#" target="_blank">▶ Үзэх</a>
+        <button class="preview-bookmark" id="pv-bm" onclick="toggleBookmarkCurrent()">🔖</button>
+      </div>
+      <div id="pv-episodes" style="margin-top:12px;display:flex;flex-direction:column;gap:5px;max-height:200px;overflow-y:auto;"></div>
+    </div>
+  </div>
+</div>
 
 <div id="top"></div>
 
@@ -267,6 +382,11 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-t
   </div>
 
   <div class="sidebar">
+    <div class="saw" id="bm-sidebar">
+      <div class="sst">🔖 Хадгалсан кинонууд</div>
+      <div id="bm-list"><div class="bm-empty">Одоогоор хоосон байна</div></div>
+    </div>
+
     <a class="sad" id="sidebar-ad-1" style="height:250px" href="#">
       <div class="sad-ph" id="sph-1"><b>📢 Sidebar зар 1</b>260 × 250 px<br>Их хүн харна</div>
     </a>
@@ -400,6 +520,176 @@ function setAd(slotId,ad){
   }
 }
 
+// ── Global data store ───────────────────────────────────────
+var _allMoviesData=[];
+var _allGamesData=[];
+
+// ── Bookmark (localStorage) ──────────────────────────────────
+function getBookmarks(){try{return JSON.parse(localStorage.getItem('nbs_bm')||'[]');}catch(e){return[];}}
+function saveBookmarks(arr){try{localStorage.setItem('nbs_bm',JSON.stringify(arr));}catch(e){}}
+
+function renderBookmarks(){
+  var bms=getBookmarks();
+  var el=document.getElementById('bm-list');
+  if(!el)return;
+  if(!bms.length){el.innerHTML='<div class="bm-empty">Одоогоор хоосон байна</div>';return;}
+  var movies=_allMoviesData.filter(function(m){return bms.indexOf(m.id)>=0;});
+  if(!movies.length){el.innerHTML='<div class="bm-empty">Одоогоор хоосон байна</div>';return;}
+  el.innerHTML='';
+  movies.forEach(function(m){
+    var d=document.createElement('div');
+    d.style.cssText='display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:0.5px solid var(--border);cursor:pointer;';
+    d.onclick=function(){openPreview(m,m._cachedPoster||'');};
+    var poster=m._cachedPoster||'';
+    d.innerHTML=(poster?'<img src="'+poster+'" style="width:32px;height:46px;object-fit:cover;border-radius:4px;flex-shrink:0">':'<div style="width:32px;height:46px;background:var(--bg3);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px">🎬</div>')
+      +'<div style="flex:1;min-width:0"><div style="font-size:11px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+m.title+'</div><div style="font-size:10px;color:var(--muted)">'+m.year+'</div></div>'
+      +'<button onclick="event.stopPropagation();removeBookmark('+m.id+')" style="background:transparent;border:none;color:var(--muted);cursor:pointer;font-size:14px;padding:2px 4px;">✕</button>';
+    el.appendChild(d);
+  });
+}
+
+function removeBookmark(id){
+  var bms=getBookmarks();
+  var idx=bms.indexOf(id);
+  if(idx>=0)bms.splice(idx,1);
+  saveBookmarks(bms);
+  // card товч шинэчлэх
+  var cardBtn=document.querySelector('.card-bm[data-id="'+id+'"]');
+  if(cardBtn)cardBtn.classList.remove('saved');
+  var pvBm=document.getElementById('pv-bm');
+  if(pvBm&&parseInt(pvBm.dataset.id)===id)pvBm.classList.remove('saved');
+  renderBookmarks();
+}
+
+function toggleBookmark(id,btn){
+  var bms=getBookmarks();
+  var idx=bms.indexOf(id);
+  if(idx>=0){bms.splice(idx,1);}else{bms.push(id);}
+  saveBookmarks(bms);
+  var saved=bms.indexOf(id)>=0;
+  if(btn){btn.classList.toggle('saved',saved);}
+  var pvBm=document.getElementById('pv-bm');
+  if(pvBm&&parseInt(pvBm.dataset.id)===id){pvBm.classList.toggle('saved',saved);}
+  renderBookmarks();
+}
+function toggleBookmarkCurrent(){
+  var pvBm=document.getElementById('pv-bm');
+  if(!pvBm)return;
+  var id=parseInt(pvBm.dataset.id);
+  // card дээрх товчийг ч олж шинэчилнэ
+  var cardBtn=document.querySelector('.card-bm[data-id="'+id+'"]');
+  toggleBookmark(id,cardBtn);
+}
+
+// ── Preview Popup ────────────────────────────────────────────
+var _pvCurrent=null;
+var CAT_LABELS={'mn':'🇲🇳 Монгол','horror':'😱 Аймшиг','action':'💥 Экшн','adult':'🔞 +18','anime':'🎌 Анимэ','war':'🕰️ Дайн','thriller':'🔪 Триллер','romance':'💕 Хайр','series':'📺 Цуврал','world':'🌍 Гадаад'};
+
+function openPreview(m,poster){
+  _pvCurrent=m;
+  document.getElementById('pv-title').textContent=m.title;
+  var poster_el=document.getElementById('pv-poster');
+  poster_el.src=poster||'';
+  poster_el.style.display=poster?'block':'none';
+  // meta tags
+  var meta=document.getElementById('pv-meta');
+  meta.innerHTML='<span class="preview-tag">📅 '+m.year+'</span>'
+    +'<span class="preview-tag">⭐ '+m.rating+'</span>'
+    +(CAT_LABELS[m.category]?'<span class="preview-tag">'+CAT_LABELS[m.category]+'</span>':'')
+    +(m.episodes&&m.episodes.length?'<span class="preview-tag">'+m.episodes.length+' анги</span>':'');
+  // bookmark
+  var pvBm=document.getElementById('pv-bm');
+  pvBm.dataset.id=m.id;
+  var bms=getBookmarks();
+  pvBm.classList.toggle('saved',bms.indexOf(m.id)>=0);
+  // watch button / episodes
+  var pvWatch=document.getElementById('pv-watch');
+  var pvEp=document.getElementById('pv-episodes');
+  pvEp.innerHTML='';
+  if(m.episodes&&m.episodes.length>0){
+    pvWatch.style.display='none';
+    pvEp.style.display='flex';
+    m.episodes.forEach(function(ep,i){
+      var a=document.createElement('a');
+      a.href=ep.link;a.target='_blank';
+      a.style.cssText='display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--bg3);border:0.5px solid var(--border);border-radius:7px;text-decoration:none;font-size:12px;color:var(--text);';
+      a.innerHTML='<span style="color:var(--purple);font-weight:600;min-width:20px">'+(i+1)+'</span><span style="flex:1">'+ep.title+'</span><span style="color:var(--purple);font-size:11px">▶</span>';
+      pvEp.appendChild(a);
+    });
+  }else{
+    pvWatch.style.display='block';
+    pvWatch.href=m.link||'#';
+    pvEp.style.display='none';
+  }
+  var popup=document.getElementById('preview-popup');
+  popup.classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closePreview(){
+  document.getElementById('preview-popup').classList.remove('active');
+  document.body.style.overflow='';
+  _pvCurrent=null;
+}
+
+// ── Global Search ────────────────────────────────────────────
+function openSearch(){
+  document.getElementById('search-overlay').classList.add('active');
+  document.body.style.overflow='hidden';
+  setTimeout(function(){
+    var inp=document.getElementById('search-big-input');
+    if(inp){inp.focus();inp.value='';}
+    document.getElementById('search-results').innerHTML='<div class="search-empty">Хайх үгээ бичнэ үү...</div>';
+  },50);
+}
+function closeSearch(){
+  document.getElementById('search-overlay').classList.remove('active');
+  document.body.style.overflow='';
+}
+function doSearch(q){
+  q=(q||'').toLowerCase().trim();
+  var res=document.getElementById('search-results');
+  if(!q){res.innerHTML='<div class="search-empty">Хайх үгээ бичнэ үү...</div>';return;}
+  // Movies
+  var mRes=_allMoviesData.filter(function(m){return m.title.toLowerCase().indexOf(q)>=0;}).slice(0,12);
+  // Games
+  var gRes=_allGamesData.filter(function(g){return g.title.toLowerCase().indexOf(q)>=0||(g.genre&&g.genre.toLowerCase().indexOf(q)>=0);}).slice(0,6);
+  if(!mRes.length&&!gRes.length){res.innerHTML='<div class="search-empty">«'+q+'» — олдсонгүй</div>';return;}
+  var html='';
+  if(mRes.length){
+    html+='<div class="search-section"><div class="search-section-title">🎬 Кино & цуврал</div><div class="search-movies-grid">';
+    mRes.forEach(function(m){
+      var poster=m._cachedPoster||'';
+      html+='<div onclick="closeSearch();openPreview(window._allMoviesData.find(function(x){return x.id==='+m.id+'}) ,\''+poster+'\')" style="cursor:pointer;width:90px;flex-shrink:0">'
+        +'<div style="width:90px;aspect-ratio:2/3;border-radius:7px;overflow:hidden;background:var(--bg3);position:relative">'
+        +(poster?'<img src="'+poster+'" style="width:100%;height:100%;object-fit:cover">':'<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:22px">🎬</div>')
+        +'</div>'
+        +'<div style="font-size:10px;color:var(--text);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+m.title+'</div>'
+        +'<div style="font-size:9px;color:var(--muted)">'+m.year+'</div>'
+        +'</div>';
+    });
+    html+='</div></div>';
+  }
+  if(gRes.length){
+    html+='<div class="search-section"><div class="search-section-title">🎮 Тоглоомууд</div><div class="search-games-list">';
+    gRes.forEach(function(g){
+      var href=g.embed?'#':''+g.link;
+      var onclick=g.embed?'openGame(window._allGamesData.find(function(x){return x.id==='+g.id+'}))':'window.open(\''+g.link+'\',\'_blank\')';
+      html+='<div onclick="closeSearch();'+onclick+'" style="cursor:pointer;display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--bg2);border:0.5px solid var(--border);border-radius:8px">'
+        +'<span style="font-size:16px">🎮</span>'
+        +'<div style="flex:1"><div style="font-size:12px;font-weight:500;color:var(--text)">'+g.title+'</div><div style="font-size:10px;color:var(--muted)">'+g.genre+'</div></div>'
+        +'<span style="font-size:10px;color:var(--muted)">⭐'+g.rating+'</span>'
+        +'</div>';
+    });
+    html+='</div></div>';
+  }
+  res.innerHTML=html;
+}
+
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){closeSearch();closePreview();}
+  if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();openSearch();}
+});
+
 _initContact();
 
 var _epPopup=document.createElement('div');
@@ -495,6 +785,7 @@ fetch('data.json')
 
     // Ангиллын дараалал — Row бүрийн гарчиг энд тохируулна
     var CATEGORIES=[
+      {key:'new',     label:'🆕 Шинээр нэмэгдсэн', filter:function(m){return true;}, sort:function(a,b){return b.id-a.id;}, limit:20},
       {key:'top',     label:'⭐ Шилдэг кинонууд', filter:function(m){return m.rating>=8.5;}},
       {key:'mn',      label:'🇲🇳 Монгол кино',     filter:function(m){return m.category==='mn';}},
       {key:'horror',  label:'😱 Аймшиг',           filter:function(m){return m.category==='horror';}},
@@ -516,27 +807,30 @@ fetch('data.json')
       return true;
     });
 
+    // Global data store дүүргэнэ — хайлт ажиллахын тулд
+    _allMoviesData=uniqueMovies;
+    _allGamesData=data.games;
+
     // Hero poster grid — татагдсан poster URL-уудыг цуглуулна
     var _heroPosterUrls=[];
     var _heroPosterMax=14;
 
-    // Кино card үүсгэх функц
-    function makeCard(m,poster){
+    // Кино card үүсгэх функц — preview popup нээнэ
+    function makeCard(m,poster,isNew){
       var a=document.createElement('a');
       a.className='mc';
-      if(m.episodes&&m.episodes.length>0){
-        (function(mv){
-          a.href='#';
-          a.onclick=function(e){e.preventDefault();showEpisodes(mv);};
-        })(m);
-      }else{
-        a.href=m.link||'#';
-        a.target='_blank';
-      }
-      a.innerHTML='<div class="rb">⭐'+m.rating+'</div>'
+      a.href='#';
+      var bms=getBookmarks();
+      var isSaved=bms.indexOf(m.id)>=0;
+      (function(mv,ps){
+        a.onclick=function(e){e.preventDefault();openPreview(mv,ps);};
+      })(m,poster);
+      a.innerHTML=(isNew?'<div class="new-badge">NEW</div>':'')
+        +'<div class="rb">⭐'+m.rating+'</div>'
         +(m.episodes&&m.episodes.length?'<div style="position:absolute;top:6px;left:6px;background:#818cf899;color:#fff;font-size:9px;padding:2px 5px;border-radius:4px;font-weight:600">'+m.episodes.length+' анги</div>':'')
         +(poster?'<img class="mp" src="'+poster+'" alt="'+m.title+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">':'')
         +'<div class="mph" style="'+(poster?'display:none':'')+'">🎬</div>'
+        +'<button class="card-bm'+(isSaved?' saved':'')+'" data-id="'+m.id+'" onclick="event.preventDefault();event.stopPropagation();toggleBookmark('+m.id+',this)">'+(isSaved?'🔖':'🔖')+'</button>'
         +'<div class="mi"><div class="mt">'+m.title+'</div><div class="my">'+m.year+'</div></div>';
       return a;
     }
@@ -545,7 +839,10 @@ fetch('data.json')
     for(var ci=0;ci<CATEGORIES.length;ci++){
       var cat=CATEGORIES[ci];
       var filtered=uniqueMovies.filter(cat.filter);
+      if(cat.sort)filtered=filtered.slice().sort(cat.sort);
+      if(cat.limit)filtered=filtered.slice(0,cat.limit);
       if(filtered.length===0)continue;
+      var isNewRow=(cat.key==='new');
 
       var section=document.createElement('div');
       section.className='movie-section';
@@ -572,10 +869,11 @@ fetch('data.json')
       moviesEl.appendChild(section);
 
       // Poster-уудыг async татаж placeholder-г солино
-      (function(rowEl,movies){
+      (function(rowEl,movies,newRow){
         movies.forEach(function(m,idx){
           getTMDBPoster(m).then(function(poster){
-            // Hero grid-д нэмнэ
+            // Poster-г кино объект дээр cache хийнэ — хайлтад ашиглана
+            m._cachedPoster=poster;
             if(poster&&_heroPosterUrls.length<_heroPosterMax){
               _heroPosterUrls.push(poster);
               var grid=document.getElementById('hero-posters');
@@ -587,13 +885,13 @@ fetch('data.json')
                 grid.appendChild(img);
               }
             }
-            var card=makeCard(m,poster);
+            var card=makeCard(m,poster,newRow);
             card.style.width='130px';
             var ph=rowEl.children[idx];
             if(ph)rowEl.replaceChild(card,ph);
           });
         });
-      })(row,filtered);
+      })(row,filtered,isNewRow);
     }
 
     var _allGames=data.games;
