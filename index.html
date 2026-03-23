@@ -862,9 +862,9 @@ fetch('data.json')
 
     // Ангиллын дараалал — Row бүрийн гарчиг энд тохируулна
     var CATEGORIES=[
-      {key:'new',     label:'🆕 Шинээр нэмэгдсэн', filter:function(m){return true;}, sort:function(a,b){return b.id-a.id;}, limit:20},
-      {key:'top',     label:'⭐ Шилдэг кинонууд',   filter:function(m){return m.rating>=8;}},
-      {key:'world',   label:'🎬 Бүх кино',           filter:function(m){return true;}, limit:30},
+      {key:'new',   label:'🆕 Шинээр нэмэгдсэн', filter:function(m){return true;}, sort:function(a,b){return b.id-a.id;}, limit:20},
+      {key:'top',   label:'⭐ Шилдэг кинонууд',   filter:function(m){return m.rating>=8;}},
+      {key:'world', label:'🎬 Бүх кино',           filter:function(m){return true;}},
     ];
 
     // Давхцсан id-г нэг удаа л харуулна
