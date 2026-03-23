@@ -6,11 +6,11 @@
 <title>Nabooshy</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0a0910;--bg2:#13121f;--bg3:#1c1b2e;--border:#ffffff14;--text:#e8e6ff;--muted:#6b6880;--purple:#7F77DD;--pl:#AFA9EC;--tl:#5DCAA5;--amber:#EF9F27;}
+:root{--bg:#07090f;--bg2:#0d1117;--bg3:#161b27;--border:#ffffff14;--text:#e8e6ff;--muted:#6b7280;--purple:#818cf8;--pl:#c4b5fd;--tl:#34d399;--amber:#fbbf24;}
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
-nav{background:rgba(10,9,16,0.96);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:54px;position:sticky;top:0;z-index:200;}
+body{font-family:'DM Sans',sans-serif;background-color:var(--bg);background-image:radial-gradient(circle,#ffffff16 1px,transparent 1px);background-size:28px 28px;color:var(--text);min-height:100vh;overflow-x:hidden;}
+nav{background:rgba(7,9,15,0.88);backdrop-filter:blur(16px);border-bottom:0.5px solid #818cf822;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:54px;position:sticky;top:0;z-index:200;}
 .nav-logo{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;background:linear-gradient(90deg,#7F77DD,#1D9E75,#D4537E,#EF9F27,#7F77DD);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gm 4s linear infinite;cursor:pointer;}
 @keyframes gm{0%{background-position:0%}100%{background-position:100%}}
 .nav-right{display:flex;align-items:center;gap:4px;}
@@ -20,8 +20,8 @@ nav{background:rgba(10,9,16,0.96);backdrop-filter:blur(12px);border-bottom:0.5px
 .nav-search::placeholder{color:var(--muted);}
 .hero{text-align:center;padding:32px 20px 24px;position:relative;overflow:hidden;}
 .orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
-.o1{width:400px;height:400px;background:#7F77DD18;top:-100px;left:-80px;animation:of 9s ease-in-out infinite;}
-.o2{width:280px;height:280px;background:#1D9E7518;bottom:-60px;right:-60px;animation:of 11s ease-in-out infinite 2s;}
+.o1{width:520px;height:520px;background:#818cf822;top:-120px;left:-100px;animation:of 9s ease-in-out infinite;}
+.o2{width:360px;height:360px;background:#34d39918;bottom:-80px;right:-80px;animation:of 11s ease-in-out infinite 2s;}
 @keyframes of{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,-20px)}}
 .ll{display:flex;gap:2px;font-family:'Space Grotesk',sans-serif;font-size:clamp(44px,7vw,76px);font-weight:600;line-height:1;justify-content:center;position:relative;z-index:2;}
 .ll span{display:inline-block;animation:lf 2.4s ease-in-out infinite;}
@@ -40,8 +40,8 @@ nav{background:rgba(10,9,16,0.96);backdrop-filter:blur(12px);border-bottom:0.5px
 .page{display:grid;grid-template-columns:1fr 260px;gap:20px;max-width:1240px;margin:0 auto;padding:20px;}
 .main{min-width:0;}
 .sidebar{display:flex;flex-direction:column;gap:14px;}
-.bad{width:100%;background:var(--bg2);border:1px dashed #7F77DD35;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;text-decoration:none;overflow:hidden;transition:border-color .2s;margin-bottom:16px;}
-.bad:hover{border-color:#7F77DD70;}
+.bad{width:100%;background:var(--bg2);border:1px dashed #818cf830;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;text-decoration:none;overflow:hidden;transition:border-color .2s;margin-bottom:16px;}
+.bad:hover{border-color:#818cf860;}
 .bad-ph{font-size:12px;color:var(--muted);text-align:center;padding:12px;line-height:1.8;}
 .bad-ph b{display:block;font-size:13px;color:var(--pl);margin-bottom:3px;}
 .wb{background:var(--bg2);border:0.5px solid var(--border);border-radius:12px;padding:12px 18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:16px;}
@@ -55,8 +55,8 @@ nav{background:rgba(10,9,16,0.96);backdrop-filter:blur(12px);border-bottom:0.5px
 .ctab:hover,.ctab.active{background:#1D9E7520;border-color:#1D9E7555;color:var(--tl);}
 .st{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:8px;border-left:3px solid var(--purple);padding-left:10px;}
 .mg{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:20px;}
-.mc{border-radius:10px;overflow:hidden;border:0.5px solid var(--border);cursor:pointer;position:relative;transition:transform .2s,border-color .2s;text-decoration:none;background:var(--bg2);}
-.mc:hover{transform:translateY(-4px);border-color:#7F77DD55;}
+.mc{border-radius:10px;overflow:hidden;border:0.5px solid var(--border);cursor:pointer;position:relative;transition:transform .2s,border-color .2s,box-shadow .2s;text-decoration:none;background:var(--bg2);box-shadow:0 0 0 0.5px #818cf812,0 4px 20px #00000030;}
+.mc:hover{transform:translateY(-4px);border-color:#818cf840;box-shadow:0 0 20px #818cf822,0 8px 32px #00000040;}
 .mp{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;background:var(--bg3);}
 .mph{width:100%;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;font-size:32px;background:var(--bg3);}
 .mi{padding:7px 9px;}
@@ -64,25 +64,26 @@ nav{background:rgba(10,9,16,0.96);backdrop-filter:blur(12px);border-bottom:0.5px
 .my{font-size:10px;color:var(--muted);}
 .rb{position:absolute;top:5px;right:5px;background:rgba(0,0,0,0.75);backdrop-filter:blur(4px);border-radius:4px;padding:2px 5px;font-size:9px;font-weight:600;color:var(--amber);}
 .gl{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
-.gc{background:var(--bg2);border:0.5px solid var(--border);border-radius:10px;padding:11px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;text-decoration:none;transition:border-color .2s,transform .2s;}
-.gc:hover{border-color:#7F77DD45;transform:translateX(3px);}
+.gc{background:var(--bg2);border:0.5px solid var(--border);border-radius:10px;padding:11px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;text-decoration:none;transition:border-color .2s,transform .2s,box-shadow .2s;box-shadow:0 2px 12px #00000028;}
+.gc:hover{border-color:#818cf835;transform:translateX(3px);box-shadow:0 0 16px #818cf818;}
 .gib{width:42px;height:42px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;}
 .gn{font-size:13px;font-weight:500;color:var(--text);}
 .gm2{font-size:11px;color:var(--muted);margin-top:2px;}
 .gb{font-size:10px;padding:3px 9px;border-radius:10px;font-weight:500;flex-shrink:0;}
 .gbf{background:#1D9E7518;color:var(--tl);border:0.5px solid #1D9E7435;}
 .gbp{background:#EF9F2718;color:var(--amber);border:0.5px solid #EF9F2735;}
-.saw{background:var(--bg2);border:0.5px solid var(--border);border-radius:12px;padding:14px;}
+.saw{background:var(--bg2);border:0.5px solid var(--border);border-radius:12px;padding:14px;box-shadow:0 0 0 0.5px #34d39912,0 4px 20px #00000028;}
 .sst{font-size:12px;font-weight:500;color:var(--pl);margin-bottom:10px;}
 .scb{font-size:12px;padding:6px 10px;border-radius:7px;background:transparent;border:0.5px solid var(--border);color:var(--muted);cursor:pointer;text-align:left;font-family:'DM Sans',sans-serif;transition:all .2s;display:block;width:100%;}
 .scb:hover,.scb.active{background:#1D9E7515;border-color:#1D9E7545;color:var(--tl);}
-.sad{background:var(--bg2);border:1px dashed #7F77DD35;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;text-decoration:none;overflow:hidden;transition:border-color .2s;}
-.sad:hover{border-color:#7F77DD70;}
+.sad{background:var(--bg2);border:1px dashed #818cf830;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;text-decoration:none;overflow:hidden;transition:border-color .2s;}
+.sad:hover{border-color:#818cf860;}
 .sad-ph{font-size:11px;color:var(--muted);text-align:center;padding:16px;width:100%;line-height:1.8;}
 .sad-ph b{display:block;font-size:12px;color:var(--pl);margin-bottom:4px;}
 footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-top:0.5px solid var(--border);max-width:1240px;margin:0 auto;}
 .fl{font-family:'Space Grotesk',sans-serif;font-size:15px;color:var(--pl);margin-bottom:5px;}
 .mob-ads{display:none;}
+/* 860px — Таблет хэвтээ */
 @media(max-width:860px){
   .page{grid-template-columns:1fr;}
   .sidebar{display:none;}
@@ -90,10 +91,68 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-t
   .mob-ads{display:flex;flex-direction:column;gap:8px;padding:8px 14px;}
   .hero{padding:20px 14px 14px;}
 }
-.mob-ad-h{width:100%;height:60px;background:var(--bg2);border:1px dashed #7F77DD35;border-radius:8px;display:flex;align-items:center;justify-content:center;text-decoration:none;overflow:hidden;}
-.mob-ad-v{flex:1;height:160px;background:var(--bg2);border:1px dashed #7F77DD35;border-radius:8px;display:flex;align-items:center;justify-content:center;text-decoration:none;overflow:hidden;}
+/* 640px — Таблет босоо / том утас */
+@media(max-width:640px){
+  nav{padding:0 16px;}
+  .nav-search{display:none;}
+  .nav-link{font-size:12px;padding:5px 8px;}
+  .page{padding:14px 12px;}
+  .wb{padding:10px 14px;gap:10px;}
+  .wt{font-size:26px;}
+}
+/* 480px — Дундаж утас */
+@media(max-width:480px){
+  .hero{padding:16px 12px 12px;}
+  .ll{font-size:clamp(38px,9vw,76px);}
+  .mg{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;}
+  .page{padding:12px 10px;}
+  .bad{height:52px!important;}
+  .nav-link{font-size:11px;padding:4px 7px;}
+  .wb{flex-wrap:wrap;}
+  .winfo{min-width:80px;}
+  .ctabs{gap:4px;}
+  .ctab{font-size:10px;padding:3px 8px;}
+  .st{font-size:13px;}
+  .gc{padding:9px 11px;}
+  .gn{font-size:12px;}
+  .gm2{font-size:10px;}
+}
+/* 360px — Жижиг утас */
+@media(max-width:360px){
+  .nav-logo{font-size:18px;}
+  nav{padding:0 12px;}
+  .nav-link{padding:4px 5px;font-size:10px;}
+  .hero{padding:12px 10px 10px;}
+  .ll{font-size:clamp(32px,9vw,76px);}
+  .hs{font-size:10px;letter-spacing:2px;}
+  .page{padding:10px 8px;}
+  .mg{grid-template-columns:repeat(auto-fill,minmax(95px,1fr));gap:6px;}
+  .mt{font-size:10px;}
+  .my{font-size:9px;}
+  .wt{font-size:22px;}
+  .wc{font-size:12px;}
+  .wd{font-size:10px;}
+  .st{font-size:12px;}
+  .gc{padding:8px 10px;gap:8px;}
+  .gib{width:36px;height:36px;font-size:16px;}
+}
+.mob-ad-h{width:100%;height:60px;background:var(--bg2);border:1px dashed #818cf830;border-radius:8px;display:flex;align-items:center;justify-content:center;text-decoration:none;overflow:hidden;}
+.mob-ad-v{flex:1;height:160px;background:var(--bg2);border:1px dashed #818cf830;border-radius:8px;display:flex;align-items:center;justify-content:center;text-decoration:none;overflow:hidden;}
 .mob-ad-h img,.mob-ad-v img{width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;}
 .mob-ad-h video,.mob-ad-v video{width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;pointer-events:none;}
+/* Netflix Row Styles */
+.movie-section{margin-bottom:28px;}
+.row-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.row-title{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:8px;border-left:3px solid var(--purple);padding-left:10px;}
+.row-count{font-size:11px;color:var(--muted);background:var(--bg2);border:0.5px solid var(--border);border-radius:10px;padding:2px 8px;}
+.movie-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;}
+.movie-row::-webkit-scrollbar{height:3px;}
+.movie-row::-webkit-scrollbar-track{background:transparent;}
+.movie-row::-webkit-scrollbar-thumb{background:#818cf840;border-radius:4px;}
+.movie-row::-webkit-scrollbar-thumb:hover{background:#818cf870;}
+.movie-row .mc{scroll-snap-align:start;flex-shrink:0;width:130px;}
+@media(max-width:480px){.movie-row .mc{width:110px;}}
+@media(max-width:360px){.movie-row .mc{width:95px;}}
 </style>
 </head>
 <body>
@@ -180,8 +239,7 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-t
     </div>
 
     <div id="movies">
-      <div class="st">🎬 Шилдэг кинонууд</div>
-      <div class="mg" id="movie-grid"><div style="color:var(--muted);font-size:13px;grid-column:1/-1">Уншиж байна...</div></div>
+      <div style="color:var(--muted);font-size:13px;padding:8px 0" id="movies-loading">🎬 Уншиж байна...</div>
     </div>
 
     <a class="bad" id="banner-mid" style="height:90px" href="#">
@@ -428,13 +486,35 @@ fetch('data.json')
   .then(function(r){return r.json();})
   .then(async function(data){
 
-    var grid=document.getElementById('movie-grid');
-    grid.innerHTML='';
+    // ── Кино ангилал ──────────────────────────────────────────────
+    var movieLoader=document.getElementById('movies-loading');
+    if(movieLoader)movieLoader.remove();
+    var moviesEl=document.getElementById('movies');
 
-    for(var mi=0;mi<data.movies.length;mi++){
-      var m=data.movies[mi];
-      var poster=await getTMDBPoster(m);
+    // Ангиллын тодорхойлолт — дарааллыг энд тохируулна
+    var CATEGORIES=[
+      {key:'top',    label:'⭐ Шилдэг кинонууд', filter:function(m){return m.rating>=9;}},
+      {key:'mn',     label:'🇲🇳 Монгол кино',     filter:function(m){return m.category==='mn';}},
+      {key:'series', label:'📺 Цуврал',           filter:function(m){return m.episodes&&m.episodes.length>0&&m.category!=='mn';}},
+      {key:'world',  label:'🌍 Гадаад кино',      filter:function(m){return (!m.episodes||!m.episodes.length)&&m.category!=='mn'&&m.rating<9;}},
+    ];
 
+    // Монгол кино гэж тэмдэглэх (title-ээр шалгана)
+    var MN_TITLES=['Тоглогч','Байтаг Богд','Хүний ээж'];
+    data.movies.forEach(function(m){
+      if(MN_TITLES.indexOf(m.title)>=0)m.category='mn';
+    });
+
+    // Давхцсан id-г нэг удаа л харуулна
+    var seenIds={};
+    var uniqueMovies=data.movies.filter(function(m){
+      if(seenIds[m.id])return false;
+      seenIds[m.id]=true;
+      return true;
+    });
+
+    // Кино card үүсгэх функц
+    function makeCard(m,poster){
       var a=document.createElement('a');
       a.className='mc';
       if(m.episodes&&m.episodes.length>0){
@@ -447,11 +527,54 @@ fetch('data.json')
         a.target='_blank';
       }
       a.innerHTML='<div class="rb">⭐'+m.rating+'</div>'
-        +(m.episodes&&m.episodes.length?'<div style="position:absolute;top:6px;left:6px;background:#7F77DD99;color:#fff;font-size:9px;padding:2px 5px;border-radius:4px;font-weight:600">'+m.episodes.length+' анги</div>':'')
+        +(m.episodes&&m.episodes.length?'<div style="position:absolute;top:6px;left:6px;background:#818cf899;color:#fff;font-size:9px;padding:2px 5px;border-radius:4px;font-weight:600">'+m.episodes.length+' анги</div>':'')
         +(poster?'<img class="mp" src="'+poster+'" alt="'+m.title+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">':'')
         +'<div class="mph" style="'+(poster?'display:none':'')+'">🎬</div>'
         +'<div class="mi"><div class="mt">'+m.title+'</div><div class="my">'+m.year+'</div></div>';
-      grid.appendChild(a);
+      return a;
+    }
+
+    // Row бүрийг async дараалан байгуулна
+    for(var ci=0;ci<CATEGORIES.length;ci++){
+      var cat=CATEGORIES[ci];
+      var filtered=uniqueMovies.filter(cat.filter);
+      if(filtered.length===0)continue;
+
+      var section=document.createElement('div');
+      section.className='movie-section';
+
+      var header=document.createElement('div');
+      header.className='row-header';
+      header.innerHTML='<div class="row-title">'+cat.label+'</div>'
+        +'<span class="row-count">'+filtered.length+'</span>';
+      section.appendChild(header);
+
+      var row=document.createElement('div');
+      row.className='movie-row';
+
+      // Placeholder card-уудыг нэн даруй харуулна
+      filtered.forEach(function(m){
+        var ph=document.createElement('div');
+        ph.className='mc';
+        ph.style.cssText='width:130px;flex-shrink:0;';
+        ph.innerHTML='<div class="mph">🎬</div>'
+          +'<div class="mi"><div class="mt">'+m.title+'</div><div class="my">'+m.year+'</div></div>';
+        row.appendChild(ph);
+      });
+      section.appendChild(row);
+      moviesEl.appendChild(section);
+
+      // Poster-уудыг async татаж placeholder-г солино
+      (function(rowEl,movies){
+        movies.forEach(function(m,idx){
+          getTMDBPoster(m).then(function(poster){
+            var card=makeCard(m,poster);
+            card.style.width='130px';
+            var ph=rowEl.children[idx];
+            if(ph)rowEl.replaceChild(card,ph);
+          });
+        });
+      })(row,filtered);
     }
 
     var _allGames=data.games;
@@ -562,7 +685,8 @@ fetch('data.json')
   })
   .catch(function(err){
     console.error('data.json алдаа:',err);
-    document.getElementById('movie-grid').innerHTML='<div style="color:var(--muted);font-size:13px;grid-column:1/-1">data.json файл олдсонгүй</div>';
+    var ml=document.getElementById('movies-loading');
+    if(ml)ml.textContent='data.json файл олдсонгүй';
     document.getElementById('game-list').innerHTML='<div style="color:var(--muted);font-size:13px">data.json файл олдсонгүй</div>';
   });
 </script>
