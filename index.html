@@ -653,7 +653,13 @@ function openPreview(m,poster){
   var pvWatch=document.getElementById('pv-watch');
   var pvEp=document.getElementById('pv-episodes');
   pvEp.innerHTML='';
-  if(m.episodes&&m.episodes.length>0){
+  // embed_url байвал шууд iframe-д тоглуулна
+  if(m.embed_url){
+    pvWatch.style.display='none';
+    pvEp.style.display='flex';
+    pvEp.style.flexDirection='column';
+    pvEp.innerHTML='<iframe src="'+m.embed_url+'" style="width:100%;height:340px;border:none;border-radius:10px;background:#000" allowfullscreen allow="autoplay"></iframe>';
+  }else if(m.episodes&&m.episodes.length>0){
     pvWatch.style.display='none';
     pvEp.style.display='flex';
     m.episodes.forEach(function(ep,i){
