@@ -491,19 +491,20 @@ fetch('data.json')
     if(movieLoader)movieLoader.remove();
     var moviesEl=document.getElementById('movies');
 
-    // Ангиллын тодорхойлолт — дарааллыг энд тохируулна
+    // Ангиллын дараалал — Row бүрийн гарчиг энд тохируулна
     var CATEGORIES=[
-      {key:'top',    label:'⭐ Шилдэг кинонууд', filter:function(m){return m.rating>=9;}},
-      {key:'mn',     label:'🇲🇳 Монгол кино',     filter:function(m){return m.category==='mn';}},
-      {key:'series', label:'📺 Цуврал',           filter:function(m){return m.episodes&&m.episodes.length>0&&m.category!=='mn';}},
-      {key:'world',  label:'🌍 Гадаад кино',      filter:function(m){return (!m.episodes||!m.episodes.length)&&m.category!=='mn'&&m.rating<9;}},
+      {key:'top',     label:'⭐ Шилдэг кинонууд', filter:function(m){return m.rating>=8.5;}},
+      {key:'mn',      label:'🇲🇳 Монгол кино',     filter:function(m){return m.category==='mn';}},
+      {key:'horror',  label:'😱 Аймшиг',           filter:function(m){return m.category==='horror';}},
+      {key:'action',  label:'💥 Экшн & Тулаан',    filter:function(m){return m.category==='action';}},
+      {key:'adult',   label:'🔞 +18',              filter:function(m){return m.category==='adult';}},
+      {key:'anime',   label:'🎌 Анимэ',            filter:function(m){return m.category==='anime';}},
+      {key:'war',     label:'🕰️ Дайн & Түүх',     filter:function(m){return m.category==='war';}},
+      {key:'thriller',label:'🔪 Триллер & Детектив',filter:function(m){return m.category==='thriller';}},
+      {key:'romance', label:'💕 Хайр дурлал',      filter:function(m){return m.category==='romance';}},
+      {key:'series',  label:'📺 Цуврал',           filter:function(m){return m.category==='series';}},
+      {key:'world',   label:'🌍 Гадаад кино',      filter:function(m){return m.category==='world';}},
     ];
-
-    // Монгол кино гэж тэмдэглэх (title-ээр шалгана)
-    var MN_TITLES=['Тоглогч','Байтаг Богд','Хүний ээж'];
-    data.movies.forEach(function(m){
-      if(MN_TITLES.indexOf(m.title)>=0)m.category='mn';
-    });
 
     // Давхцсан id-г нэг удаа л харуулна
     var seenIds={};
