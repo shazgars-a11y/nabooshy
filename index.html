@@ -819,13 +819,28 @@ async function getTMDBPoster(movie){
   if(movie.poster)return movie.poster;
   if(!movie.tmdb_id&&!movie.title)return '';
   try{
-    var url=movie.tmdb_id
-      ?'https://api.themoviedb.org/3/movie/'+movie.tmdb_id+'?api_key='+TMDB_KEY
-      :'https://api.themoviedb.org/3/search/movie?api_key='+TMDB_KEY+'&query='+encodeURIComponent(movie.title)+'&year='+(movie.year||'');
-    var r=await fetch(url);
-    var d=await r.json();
-    var res=movie.tmdb_id?d:(d.results&&d.results[0]);
-    if(res&&res.poster_path)return 'https://image.tmdb.org/t/p/w300'+res.poster_path;
+    // 1. tmdb_id байвал movie endpoint
+    if(movie.tmdb_id){
+      var r1=await fetch('https://api.themoviedb.org/3/movie/'+movie.tmdb_id+'?api_key='+TMDB_KEY);
+      var d1=await r1.json();
+      if(d1.poster_path)return 'https://image.tmdb.org/t/p/w300'+d1.poster_path;
+      // Movie-д олдохгүй бол TV series-ээс хайна
+      var r2=await fetch('https://api.themoviedb.org/3/tv/'+movie.tmdb_id+'?api_key='+TMDB_KEY);
+      var d2=await r2.json();
+      if(d2.poster_path)return 'https://image.tmdb.org/t/p/w300'+d2.poster_path;
+    }
+    // 2. Нэрээр movie хайна
+    var sq=encodeURIComponent(movie.title);
+    var yr=movie.year?'&year='+movie.year:'';
+    var r3=await fetch('https://api.themoviedb.org/3/search/movie?api_key='+TMDB_KEY+'&query='+sq+yr);
+    var d3=await r3.json();
+    if(d3.results&&d3.results[0]&&d3.results[0].poster_path)
+      return 'https://image.tmdb.org/t/p/w300'+d3.results[0].poster_path;
+    // 3. Нэрээр TV хайна — цуврал байж болно
+    var r4=await fetch('https://api.themoviedb.org/3/search/tv?api_key='+TMDB_KEY+'&query='+sq);
+    var d4=await r4.json();
+    if(d4.results&&d4.results[0]&&d4.results[0].poster_path)
+      return 'https://image.tmdb.org/t/p/w300'+d4.results[0].poster_path;
     return '';
   }catch(e){return '';}
 }
