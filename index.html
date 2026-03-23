@@ -127,13 +127,25 @@ nav{background:rgba(7,9,15,0.88);backdrop-filter:blur(16px);border-bottom:0.5px 
 footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-top:0.5px solid var(--border);max-width:1240px;margin:0 auto;}
 .fl{font-family:'Space Grotesk',sans-serif;font-size:15px;color:var(--pl);margin-bottom:5px;}
 .mob-ads{display:none;}
+/* ── Bottom Navigation (mobile only) ── */
+.bot-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:300;background:rgba(7,9,15,0.96);backdrop-filter:blur(16px);border-top:0.5px solid #818cf825;padding:0;height:58px;}
+.bot-nav-inner{display:flex;align-items:stretch;height:100%;}
+.bot-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;border:none;background:transparent;color:var(--muted);font-family:'DM Sans',sans-serif;transition:color .2s;padding:0;-webkit-tap-highlight-color:transparent;}
+.bot-btn:active{opacity:0.7;}
+.bot-btn.active{color:var(--purple);}
+.bot-btn-icon{font-size:18px;line-height:1;}
+.bot-btn-label{font-size:9px;letter-spacing:.2px;}
+/* ── Mobile inline ad banner ── */
+.mob-inline-ad{width:100%;height:80px;background:var(--bg2);border:1px dashed #818cf825;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin:4px 0 16px;text-decoration:none;}
+.mob-inline-ad-ph{font-size:10px;color:var(--muted);text-align:center;line-height:1.6;}
 /* 860px — Таблет хэвтээ */
 @media(max-width:860px){
   .page{grid-template-columns:1fr;}
   .sidebar{display:none;}
   .bad{height:60px!important;}
-  .mob-ads{display:flex;flex-direction:column;gap:8px;padding:8px 14px;}
-  .hero{padding:20px 14px 14px;}
+  .bot-nav{display:flex;}
+  body{padding-bottom:58px;}
+  .hero{min-height:320px!important;}
 }
 /* 640px — Таблет босоо / том утас */
 @media(max-width:640px){
@@ -287,16 +299,31 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-t
 
 <div id="top"></div>
 
-<div class="mob-ads">
-  <a class="mob-ad-h" id="mob-h-1" href="#"></a>
-  <a class="mob-ad-h" id="mob-h-2" href="#"></a>
-  <a class="mob-ad-h" id="mob-h-3" href="#"></a>
-  <div style="display:flex;gap:8px;">
-    <a class="mob-ad-v" id="mob-v-1" href="#"></a>
-    <a class="mob-ad-v" id="mob-v-2" href="#"></a>
-    <a class="mob-ad-v" id="mob-v-3" href="#"></a>
+<!-- Bottom Navigation (mobile) -->
+<nav class="bot-nav">
+  <div class="bot-nav-inner">
+    <button class="bot-btn active" id="bn-home" onclick="botNav('home')">
+      <span class="bot-btn-icon">🏠</span>
+      <span class="bot-btn-label">Нүүр</span>
+    </button>
+    <button class="bot-btn" id="bn-search" onclick="botNav('search')">
+      <span class="bot-btn-icon">🔍</span>
+      <span class="bot-btn-label">Хайх</span>
+    </button>
+    <button class="bot-btn" id="bn-movies" onclick="botNav('movies')">
+      <span class="bot-btn-icon">🎬</span>
+      <span class="bot-btn-label">Кино</span>
+    </button>
+    <button class="bot-btn" id="bn-games" onclick="botNav('games')">
+      <span class="bot-btn-icon">🎮</span>
+      <span class="bot-btn-label">Тоглоом</span>
+    </button>
+    <button class="bot-btn" id="bn-saved" onclick="botNav('saved')">
+      <span class="bot-btn-icon">🔖</span>
+      <span class="bot-btn-label">Хадгалсан</span>
+    </button>
   </div>
-</div>
+</nav>
 
 <div class="hero">
   <div class="hero-posters" id="hero-posters"></div>
@@ -363,7 +390,12 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-t
       <div class="bad-ph" id="bph-mid"><b>📢 Дунд байрлалын зар — 728×90</b>Зар байршуулах холбоо барина уу</div>
     </a>
 
-    <div id="games">
+    <!-- Mobile зар — тоглоомын өмнө -->
+    <a class="mob-inline-ad" id="mob-h-3" href="#" style="display:none">
+      <div class="mob-inline-ad-ph"><b style="color:var(--pl);display:block;font-size:11px;margin-bottom:2px">📢 Зар байршуулах</b>320×80 · Тоглоомын өмнө</div>
+    </a>
+
+    <div id="games" style="scroll-margin-top:60px">
       <div class="st">🎮 Тоглоомууд</div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;" id="genre-tabs">
         <button class="ctab active" onclick="filterGames('бүгд',this)">Бүгд</button>
@@ -382,7 +414,7 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-t
   </div>
 
   <div class="sidebar">
-    <div class="saw" id="bm-sidebar">
+    <div class="saw" id="saved-section">
       <div class="sst">🔖 Хадгалсан кинонууд</div>
       <div id="bm-list"><div class="bm-empty">Одоогоор хоосон байна</div></div>
     </div>
@@ -482,6 +514,17 @@ function goTo(id){
   if(id==='top'){window.scrollTo({top:0,behavior:'smooth'});return;}
   const el=document.getElementById(id);
   if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function botNav(tab){
+  document.querySelectorAll('.bot-btn').forEach(function(b){b.classList.remove('active');});
+  var btn=document.getElementById('bn-'+tab);
+  if(btn)btn.classList.add('active');
+  if(tab==='home'){window.scrollTo({top:0,behavior:'smooth'});}
+  else if(tab==='search'){openSearch();}
+  else if(tab==='movies'){goTo('movies');}
+  else if(tab==='games'){goTo('games');}
+  else if(tab==='saved'){goTo('saved-section');}
 }
 
 async function fetchWeather(q,name){
@@ -692,6 +735,15 @@ document.addEventListener('keydown',function(e){
 
 _initContact();
 
+// Mobile inline зар — mob-h-3 (тоглоомын өмнө)
+(function(){
+  var el=document.getElementById('mob-h-3');
+  if(!el)return;
+  function check(){el.style.display=window.innerWidth<=860?'flex':'none';}
+  check();
+  window.addEventListener('resize',check);
+})();
+
 var _epPopup=document.createElement('div');
 _epPopup.id='ep-popup';
 _epPopup.style.cssText='display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;padding:20px;';
@@ -835,6 +887,11 @@ fetch('data.json')
       return a;
     }
 
+    // Mobile зарын байрлал — row-ны дараа оруулах
+    var MOB_AD_AFTER=['new','horror'];
+    var _mobAdIdx=0;
+    var MOB_AD_IDS=['mob-h-1','mob-h-2','mob-h-3'];
+
     // Row бүрийг async дараалан байгуулна
     for(var ci=0;ci<CATEGORIES.length;ci++){
       var cat=CATEGORIES[ci];
@@ -866,6 +923,26 @@ fetch('data.json')
         row.appendChild(ph);
       });
       section.appendChild(row);
+
+      // Mobile inline зар — стратегийн row-уудын дараа
+      if(MOB_AD_AFTER.indexOf(cat.key)>=0&&_mobAdIdx<MOB_AD_IDS.length){
+        var adWrap=document.createElement('a');
+        adWrap.className='mob-inline-ad';
+        adWrap.id=MOB_AD_IDS[_mobAdIdx];
+        adWrap.href='#';
+        adWrap.style.cssText='display:none;'; // JS-ээр зөвхөн mobile дээр харуулна
+        adWrap.innerHTML='<div class="mob-inline-ad-ph"><b style="color:var(--pl);display:block;font-size:11px;margin-bottom:2px">📢 Зар байршуулах</b>320×80 · Их хүн харна</div>';
+        section.appendChild(adWrap);
+        // Mobile дээр л харуулна
+        (function(el){
+          if(window.innerWidth<=860)el.style.display='flex';
+          window.addEventListener('resize',function(){
+            el.style.display=window.innerWidth<=860?'flex':'none';
+          });
+        })(adWrap);
+        _mobAdIdx++;
+      }
+
       moviesEl.appendChild(section);
 
       // Poster-уудыг async татаж placeholder-г солино
