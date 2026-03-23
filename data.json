@@ -35,7 +35,8 @@
       "rating": 8.5,
       "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5YFqmmKx92V5DOHooqH5gsjZhLSf3YfhTUA&s",
       "link": "https://www.youtube.com/watch?v=u-l8SWVADrk",
-      "category": "mn"
+      "category": "mn",
+      "embed_url": "https://www.youtube.com/watch?v=u-l8SWVADrk"
     },
     {
       "id": 2,
@@ -44,7 +45,8 @@
       "rating": 10,
       "poster": "https://cdn.greensoft.mn/cache/images/9/2/9/b/6/929b603529c33b39320447efbb4c043aa4783501.jpg",
       "link": "https://www.youtube.com/watch?v=dv55qjGuwuU&t=1438s",
-      "category": "mn"
+      "category": "mn",
+      "embed_url": "https://www.youtube.com/watch?v=dv55qjGuwuU&t=1438s"
     },
     {
       "id": 3,
@@ -53,7 +55,8 @@
       "rating": 10,
       "poster": "https://zero.mn/Files/films/vert-7850.jpg",
       "link": "https://www.youtube.com/watch?v=hcq5TMKZ-i8",
-      "category": "mn"
+      "category": "mn",
+      "embed_url": "https://www.youtube.com/watch?v=hcq5TMKZ-i8"
     },
     {
       "id": 5,
@@ -161,7 +164,8 @@
       "poster": "",
       "link": "https://mglguide.top/news/tech/arvanesonmyangaarvandoloo/",
       "tmdb_id": 530915,
-      "category": "war"
+      "category": "war",
+      "embed_url": "https://mglguide.top/news/tech/arvanesonmyangaarvandoloo/"
     },
     {
       "id": 11,
@@ -170,7 +174,8 @@
       "rating": 7.4,
       "tmdb_id": 1317288,
       "link": "https://mglguide.top/news/tech/msup/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/msup/"
     },
     {
       "id": 12,
@@ -179,7 +184,8 @@
       "rating": 7.0,
       "tmdb_id": 1168190,
       "link": "https://mglguide.top/news/tech/evdegchbag/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/evdegchbag/"
     },
     {
       "id": 13,
@@ -188,7 +194,8 @@
       "rating": 4.0,
       "tmdb_id": 680493,
       "link": "https://mglguide.top/news/tech/chmguitlgodbutsnni/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/chmguitlgodbutsnni/"
     },
     {
       "id": 14,
@@ -197,7 +204,8 @@
       "rating": 6.5,
       "tmdb_id": 27576,
       "link": "https://mglguide.top/news/tech/davsevlinn/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/davsevlinn/"
     },
     {
       "id": 15,
@@ -206,7 +214,8 @@
       "rating": 7.6,
       "tmdb_id": 1208348,
       "link": "https://mglguide.top/news/tech/tursngerbul/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/tursngerbul/"
     },
     {
       "id": 16,
@@ -290,7 +299,8 @@
       "rating": 8.1,
       "tmdb_id": 8392,
       "link": "https://mglguide.top/news/tech/totoro/",
-      "category": "anime"
+      "category": "anime",
+      "embed_url": "https://mglguide.top/news/tech/totoro/"
     },
     {
       "id": 25,
@@ -299,7 +309,8 @@
       "rating": 7.0,
       "tmdb_id": 1168190,
       "link": "https://mglguide.top/news/tech/wre/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/wre/"
     },
     {
       "id": 27,
@@ -308,7 +319,8 @@
       "rating": 7.0,
       "poster": "",
       "link": "https://mglguide.top/news/tech/recall/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/recall/"
     },
     {
       "id": 28,
@@ -317,7 +329,8 @@
       "rating": 7.0,
       "poster": "",
       "link": "https://mglguide.top/news/tech/candyland/",
-      "category": "adult"
+      "category": "adult",
+      "embed_url": "https://mglguide.top/news/tech/candyland/"
     },
     {
       "id": 29,
@@ -326,7 +339,8 @@
       "rating": 7.5,
       "tmdb_id": 880084,
       "link": "https://mglguide.top/news/tech/werewolfbynight/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/werewolfbynight/"
     },
     {
       "id": 30,
@@ -335,7 +349,8 @@
       "rating": 7.5,
       "tmdb_id": 932783,
       "link": "https://mglguide.top/news/tech/hellraiser/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/hellraiser/"
     },
     {
       "id": 31,
@@ -344,7 +359,8 @@
       "rating": 7.5,
       "tmdb_id": 882598,
       "link": "https://mglguide.top/news/tech/athena/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/athena/"
     },
     {
       "id": 32,
@@ -353,7 +369,8 @@
       "rating": 7.5,
       "tmdb_id": 9693,
       "link": "https://mglguide.top/news/tech/childrenofmen/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/childrenofmen/"
     },
     {
       "id": 33,
@@ -362,7 +379,8 @@
       "rating": 7.5,
       "tmdb_id": 18720,
       "link": "https://mglguide.top/news/tech/ninjaassa/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/ninjaassa/"
     },
     {
       "id": 34,
@@ -371,7 +389,8 @@
       "rating": 7.5,
       "tmdb_id": 333371,
       "link": "https://mglguide.top/news/tech/dontbrea/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/dontbrea/"
     },
     {
       "id": 35,
@@ -380,7 +399,8 @@
       "rating": 7.5,
       "tmdb_id": 209112,
       "link": "https://mglguide.top/news/tech/batvsup/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/batvsup/"
     },
     {
       "id": 36,
@@ -389,7 +409,8 @@
       "rating": 7.5,
       "tmdb_id": 141052,
       "link": "https://mglguide.top/news/tech/justicelea/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/justicelea/"
     },
     {
       "id": 37,
@@ -398,7 +419,8 @@
       "rating": 7.5,
       "tmdb_id": 534,
       "link": "https://mglguide.top/news/tech/terminasalv/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/terminasalv/"
     },
     {
       "id": 38,
@@ -407,7 +429,8 @@
       "rating": 7.5,
       "tmdb_id": 290859,
       "link": "https://mglguide.top/news/tech/terminatordf/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/terminatordf/"
     },
     {
       "id": 39,
@@ -416,7 +439,8 @@
       "rating": 7.5,
       "tmdb_id": 680,
       "link": "https://mglguide.top/news/tech/pulpfic/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/pulpfic/"
     },
     {
       "id": 40,
@@ -425,7 +449,8 @@
       "rating": 7.5,
       "tmdb_id": 129,
       "link": "https://mglguide.top/news/tech/spritaway/",
-      "category": "anime"
+      "category": "anime",
+      "embed_url": "https://mglguide.top/news/tech/spritaway/"
     },
     {
       "id": 41,
@@ -434,7 +459,8 @@
       "rating": 7.5,
       "tmdb_id": 268896,
       "link": "https://mglguide.top/news/tech/kngarthur/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/kngarthur/"
     },
     {
       "id": 42,
@@ -443,7 +469,8 @@
       "rating": 7.5,
       "tmdb_id": 77374,
       "link": "https://mglguide.top/news/tech/womaninblac/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/womaninblac/"
     },
     {
       "id": 43,
@@ -452,7 +479,8 @@
       "rating": 7.5,
       "tmdb_id": 590706,
       "link": "https://mglguide.top/news/tech/lovemonsts/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/lovemonsts/"
     },
     {
       "id": 44,
@@ -461,7 +489,8 @@
       "rating": 7.5,
       "tmdb_id": 529816,
       "link": "https://mglguide.top/news/tech/dbs-broly/",
-      "category": "anime"
+      "category": "anime",
+      "embed_url": "https://mglguide.top/news/tech/dbs-broly/"
     },
     {
       "id": 47,
@@ -489,7 +518,8 @@
       "rating": 8.0,
       "tmdb_id": 11517,
       "link": "https://mglguide.top/news/tech/elf/",
-      "category": "comedy"
+      "category": "comedy",
+      "embed_url": "https://mglguide.top/news/tech/elf/"
     },
     {
       "id": 49,
@@ -498,7 +528,8 @@
       "rating": 8.0,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/pkybldrs/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/pkybldrs/"
     },
     {
       "id": 50,
@@ -1099,7 +1130,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/akosk1-5/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/akosk1-5/"
     },
     {
       "id": 67,
@@ -1351,7 +1383,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/jighchnzuils5-8/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/jighchnzuils5-8/"
     },
     {
       "id": 77,
@@ -1580,7 +1613,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/heltrhiihot8/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/heltrhiihot8/"
     },
     {
       "id": 86,
@@ -1589,7 +1623,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/nugelinntuluuc10/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/nugelinntuluuc10/"
     },
     {
       "id": 87,
@@ -1672,7 +1707,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/ahlhsurglinbtar8/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/ahlhsurglinbtar8/"
     },
     {
       "id": 90,
@@ -1743,7 +1779,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/snstaiordon9/",
-      "category": "series"
+      "category": "series",
+      "embed_url": "https://mglguide.top/news/tech/snstaiordon9/"
     },
     {
       "id": 93,
@@ -1969,7 +2006,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/arvnnaimnnas/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/arvnnaimnnas/"
     },
     {
       "id": 101,
@@ -2016,7 +2054,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/wednesd/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/wednesd/"
     },
     {
       "id": 104,
@@ -2075,7 +2114,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/emchiinamdrl4/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/emchiinamdrl4/"
     },
     {
       "id": 107,
@@ -2084,7 +2124,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/haanittmthatan4/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/haanittmthatan4/"
     },
     {
       "id": 108,
@@ -2186,7 +2227,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/narniurs16/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/narniurs16/"
     },
     {
       "id": 112,
@@ -2214,7 +2256,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tamsirsenshugch14/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/tamsirsenshugch14/"
     },
     {
       "id": 114,
@@ -2265,7 +2308,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/nuurrtul12/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/nuurrtul12/"
     },
     {
       "id": 117,
@@ -2274,7 +2318,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/bogjnchuchh2-3/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/bogjnchuchh2-3/"
     },
     {
       "id": 118,
@@ -2326,7 +2371,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/sainnhamtrgch6/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/sainnhamtrgch6/"
     },
     {
       "id": 120,
@@ -2511,7 +2557,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/rmtcemch3-12/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/rmtcemch3-12/"
     },
     {
       "id": 125,
@@ -2547,7 +2594,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/muudrsmjarilgch8/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/muudrsmjarilgch8/"
     },
     {
       "id": 127,
@@ -2827,7 +2875,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/nyonazguizlu10/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/nyonazguizlu10/"
     },
     {
       "id": 137,
@@ -2836,7 +2885,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hrtaibolhoro4/",
-      "category": "romance"
+      "category": "romance",
+      "embed_url": "https://mglguide.top/news/tech/hrtaibolhoro4/"
     },
     {
       "id": 138,
@@ -2845,7 +2895,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/eejinznhu5/",
-      "category": "romance"
+      "category": "romance",
+      "embed_url": "https://mglguide.top/news/tech/eejinznhu5/"
     },
     {
       "id": 139,
@@ -2854,7 +2905,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/if/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/if/"
     },
     {
       "id": 140,
@@ -2863,7 +2915,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/shunudororhun2/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/shunudororhun2/"
     },
     {
       "id": 141,
@@ -2922,7 +2975,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/grfmuurniadal/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/grfmuurniadal/"
     },
     {
       "id": 144,
@@ -2931,7 +2985,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/duuliansoll12/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/duuliansoll12/"
     },
     {
       "id": 145,
@@ -2940,7 +2995,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/mototsikchid/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/mototsikchid/"
     },
     {
       "id": 146,
@@ -2972,7 +3028,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/dktrrwhyu2/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/dktrrwhyu2/"
     },
     {
       "id": 148,
@@ -2981,7 +3038,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/nugdri2/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/nugdri2/"
     },
     {
       "id": 149,
@@ -2990,7 +3048,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/blmjguigrlt10/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/blmjguigrlt10/"
     },
     {
       "id": 150,
@@ -3056,7 +3115,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tohioldlgju3/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/tohioldlgju3/"
     },
     {
       "id": 154,
@@ -3065,7 +3125,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/kamui/",
-      "category": "anime"
+      "category": "anime",
+      "embed_url": "https://mglguide.top/news/tech/kamui/"
     },
     {
       "id": 155,
@@ -3171,7 +3232,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/salltinmergh4/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/salltinmergh4/"
     },
     {
       "id": 159,
@@ -3341,7 +3403,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/lok2-5/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/lok2-5/"
     },
     {
       "id": 167,
@@ -3392,7 +3455,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/husell/",
-      "category": "romance"
+      "category": "romance",
+      "embed_url": "https://mglguide.top/news/tech/husell/"
     },
     {
       "id": 170,
@@ -3401,7 +3465,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/maboroshi/",
-      "category": "anime"
+      "category": "anime",
+      "embed_url": "https://mglguide.top/news/tech/maboroshi/"
     },
     {
       "id": 171,
@@ -3410,7 +3475,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/prmndntlgm4/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/prmndntlgm4/"
     },
     {
       "id": 172,
@@ -3419,7 +3485,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tsustaibrgar/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/tsustaibrgar/"
     },
     {
       "id": 173,
@@ -3447,7 +3514,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/nmaighrlazur4/",
-      "category": "romance"
+      "category": "romance",
+      "embed_url": "https://mglguide.top/news/tech/nmaighrlazur4/"
     },
     {
       "id": 175,
@@ -3498,7 +3566,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/smdrutavtmoril9/",
-      "category": "romance"
+      "category": "romance",
+      "embed_url": "https://mglguide.top/news/tech/smdrutavtmoril9/"
     },
     {
       "id": 178,
@@ -3534,7 +3603,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/bosogchsarp1/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/bosogchsarp1/"
     },
     {
       "id": 180,
@@ -3543,7 +3613,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tagnulchhuhdud/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/tagnulchhuhdud/"
     },
     {
       "id": 181,
@@ -3637,7 +3708,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hairttmbks11/",
-      "category": "romance"
+      "category": "romance",
+      "embed_url": "https://mglguide.top/news/tech/hairttmbks11/"
     },
     {
       "id": 185,
@@ -3669,7 +3741,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/bllrnna/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/bllrnna/"
     },
     {
       "id": 187,
@@ -3678,7 +3751,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/appendage/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/appendage/"
     },
     {
       "id": 188,
@@ -3768,7 +3842,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/grntrnmia/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/grntrnmia/"
     },
     {
       "id": 192,
@@ -3777,7 +3852,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/jurmtemgti2/",
-      "category": "war"
+      "category": "war",
+      "embed_url": "https://mglguide.top/news/tech/jurmtemgti2/"
     },
     {
       "id": 193,
@@ -3813,7 +3889,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/buteegch/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/buteegch/"
     },
     {
       "id": 195,
@@ -3822,7 +3899,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/oppi/",
-      "category": "world"
+      "category": "world",
+      "embed_url": "https://mglguide.top/news/tech/oppi/"
     },
     {
       "id": 196,
@@ -3831,7 +3909,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hunaalzcrsswb/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/hunaalzcrsswb/"
     },
     {
       "id": 197,
@@ -3840,7 +3919,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/meg2/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/meg2/"
     },
     {
       "id": 198,
@@ -3884,7 +3964,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/ongorsonamidral/",
-      "category": "drama"
+      "category": "drama",
+      "embed_url": "https://mglguide.top/news/tech/ongorsonamidral/"
     },
     {
       "id": 200,
@@ -3939,7 +4020,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/kngzochilbuudal14/",
-      "category": "romance"
+      "category": "romance",
+      "embed_url": "https://mglguide.top/news/tech/kngzochilbuudal14/"
     },
     {
       "id": 203,
@@ -4037,7 +4119,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/ele/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/ele/"
     },
     {
       "id": 207,
@@ -4046,7 +4129,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hearthstone/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/hearthstone/"
     },
     {
       "id": 208,
@@ -4118,7 +4202,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/gotg-p3/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/gotg-p3/"
     },
     {
       "id": 210,
@@ -4146,7 +4231,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/aldartannn12/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/aldartannn12/"
     },
     {
       "id": 212,
@@ -4155,7 +4241,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/henchchamaigavrahgui/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/henchchamaigavrahgui/"
     },
     {
       "id": 213,
@@ -4164,7 +4251,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/bb/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/bb/"
     },
     {
       "id": 214,
@@ -4196,7 +4284,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/aqmanii/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/aqmanii/"
     },
     {
       "id": 216,
@@ -4293,7 +4382,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hovsdogch1/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/hovsdogch1/"
     },
     {
       "id": 221,
@@ -4468,7 +4558,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/lutherm/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/lutherm/"
     },
     {
       "id": 228,
@@ -4477,7 +4568,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tengerlegidl11/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/tengerlegidl11/"
     },
     {
       "id": 229,
@@ -4536,7 +4628,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/dbs-sh/",
-      "category": "anime"
+      "category": "anime",
+      "embed_url": "https://mglguide.top/news/tech/dbs-sh/"
     },
     {
       "id": 232,
@@ -4595,7 +4688,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hartaski2-11/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/hartaski2-11/"
     },
     {
       "id": 235,
@@ -4737,7 +4831,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/usangarig2/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/usangarig2/"
     },
     {
       "id": 239,
@@ -4792,7 +4887,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/it2/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/it2/"
     },
     {
       "id": 242,
@@ -4801,7 +4897,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/jkr/",
-      "category": "adult"
+      "category": "adult",
+      "embed_url": "https://mglguide.top/news/tech/jkr/"
     },
     {
       "id": 243,
@@ -4810,7 +4907,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hurd10x/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/hurd10x/"
     },
     {
       "id": 244,
@@ -4819,7 +4917,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/bidnii-buh-zuil2/",
-      "category": "romance"
+      "category": "romance",
+      "embed_url": "https://mglguide.top/news/tech/bidnii-buh-zuil2/"
     },
     {
       "id": 245,
@@ -4828,7 +4927,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hashgiraanzurgaa/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/hashgiraanzurgaa/"
     },
     {
       "id": 246,
@@ -4837,7 +4937,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tsus-sorogchin-tuslah/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/tsus-sorogchin-tuslah/"
     },
     {
       "id": 247,
@@ -4846,7 +4947,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/sisu11/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/sisu11/"
     },
     {
       "id": 248,
@@ -4855,7 +4957,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/smb/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/smb/"
     },
     {
       "id": 249,
@@ -4864,7 +4967,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/eejnf/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/eejnf/"
     },
     {
       "id": 250,
@@ -4873,7 +4977,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tomorhalga/",
-      "category": "anime"
+      "category": "anime",
+      "embed_url": "https://mglguide.top/news/tech/tomorhalga/"
     },
     {
       "id": 251,
@@ -4882,7 +4987,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/zuudninuh/",
-      "category": "romance"
+      "category": "romance",
+      "embed_url": "https://mglguide.top/news/tech/zuudninuh/"
     },
     {
       "id": 252,
@@ -4891,7 +4997,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/bytshn-strt1/",
-      "category": "drama"
+      "category": "drama",
+      "embed_url": "https://mglguide.top/news/tech/bytshn-strt1/"
     },
     {
       "id": 253,
@@ -4900,7 +5007,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/orilonn/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/orilonn/"
     },
     {
       "id": 254,
@@ -4909,7 +5017,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/miniitsonhor2/",
-      "category": "romance"
+      "category": "romance",
+      "embed_url": "https://mglguide.top/news/tech/miniitsonhor2/"
     },
     {
       "id": 255,
@@ -4918,7 +5027,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/bugdiin-baatar/",
-      "category": "romance"
+      "category": "romance",
+      "embed_url": "https://mglguide.top/news/tech/bugdiin-baatar/"
     },
     {
       "id": 256,
@@ -4927,7 +5037,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/huitennud/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/huitennud/"
     },
     {
       "id": 257,
@@ -4936,7 +5047,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/shorgoolj-qntm/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/shorgoolj-qntm/"
     },
     {
       "id": 258,
@@ -4945,7 +5057,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/ipmsulintulan/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/ipmsulintulan/"
     },
     {
       "id": 259,
@@ -4954,7 +5067,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tohirgerlelt/",
-      "category": "romance"
+      "category": "romance",
+      "embed_url": "https://mglguide.top/news/tech/tohirgerlelt/"
     },
     {
       "id": 260,
@@ -4963,7 +5077,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/ylaa-ajillaga/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/ylaa-ajillaga/"
     },
     {
       "id": 261,
@@ -4972,7 +5087,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/avrall/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/avrall/"
     },
     {
       "id": 262,
@@ -4981,7 +5097,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/gngemeenar/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/gngemeenar/"
     },
     {
       "id": 263,
@@ -4990,7 +5107,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/14ild/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/14ild/"
     },
     {
       "id": 264,
@@ -4999,7 +5117,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/651/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/651/"
     },
     {
       "id": 265,
@@ -5008,7 +5127,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/crd_iii/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/crd_iii/"
     },
     {
       "id": 266,
@@ -5017,7 +5137,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/boksonig-ustga/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/boksonig-ustga/"
     },
     {
       "id": 267,
@@ -5049,7 +5170,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/agentlag4/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/agentlag4/"
     },
     {
       "id": 269,
@@ -5163,7 +5285,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/zorchldon10/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/zorchldon10/"
     },
     {
       "id": 273,
@@ -5172,7 +5295,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hamgaalagchid/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/hamgaalagchid/"
     },
     {
       "id": 274,
@@ -5181,7 +5305,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/soundoflow/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/soundoflow/"
     },
     {
       "id": 275,
@@ -5190,7 +5315,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/annoybro/",
-      "category": "romance"
+      "category": "romance",
+      "embed_url": "https://mglguide.top/news/tech/annoybro/"
     },
     {
       "id": 276,
@@ -5601,7 +5727,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/silencd/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/silencd/"
     },
     {
       "id": 279,
@@ -5610,7 +5737,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/pvteye/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/pvteye/"
     },
     {
       "id": 280,
@@ -5619,7 +5747,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/badguysdiefr/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/badguysdiefr/"
     },
     {
       "id": 281,
@@ -5628,7 +5757,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/jnglallthway/",
-      "category": "comedy"
+      "category": "comedy",
+      "embed_url": "https://mglguide.top/news/tech/jnglallthway/"
     },
     {
       "id": 282,
@@ -5637,7 +5767,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/bettrtmrw/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/bettrtmrw/"
     },
     {
       "id": 283,
@@ -5646,7 +5777,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/vip/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/vip/"
     },
     {
       "id": 284,
@@ -5655,7 +5787,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/seafog/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/seafog/"
     },
     {
       "id": 285,
@@ -5664,7 +5797,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/luundain/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/luundain/"
     },
     {
       "id": 286,
@@ -5673,7 +5807,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/horinnas/",
-      "category": "comedy"
+      "category": "comedy",
+      "embed_url": "https://mglguide.top/news/tech/horinnas/"
     },
     {
       "id": 287,
@@ -5682,7 +5817,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/okmadam/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/okmadam/"
     },
     {
       "id": 288,
@@ -5691,7 +5827,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/informer/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/informer/"
     },
     {
       "id": 289,
@@ -5700,7 +5837,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/devilalltt/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/devilalltt/"
     },
     {
       "id": 290,
@@ -5709,7 +5847,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/daichidiinhaalga/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/daichidiinhaalga/"
     },
     {
       "id": 291,
@@ -5718,7 +5857,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/publene/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/publene/"
     },
     {
       "id": 292,
@@ -5727,7 +5867,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/chained/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/chained/"
     },
     {
       "id": 293,
@@ -5736,7 +5877,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/visit/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/visit/"
     },
     {
       "id": 294,
@@ -5745,7 +5887,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/giver/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/giver/"
     },
     {
       "id": 295,
@@ -5754,7 +5897,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/commu/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/commu/"
     },
     {
       "id": 296,
@@ -5763,7 +5907,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/mayhm/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/mayhm/"
     },
     {
       "id": 297,
@@ -5772,7 +5917,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/secrtzo/",
-      "category": "comedy"
+      "category": "comedy",
+      "embed_url": "https://mglguide.top/news/tech/secrtzo/"
     },
     {
       "id": 298,
@@ -5781,7 +5927,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/enola/",
-      "category": "romance"
+      "category": "romance",
+      "embed_url": "https://mglguide.top/news/tech/enola/"
     },
     {
       "id": 299,
@@ -5790,7 +5937,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/5tsus/",
-      "category": "war"
+      "category": "war",
+      "embed_url": "https://mglguide.top/news/tech/5tsus/"
     },
     {
       "id": 300,
@@ -5799,7 +5947,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/unsgeljin/",
-      "category": "romance"
+      "category": "romance",
+      "embed_url": "https://mglguide.top/news/tech/unsgeljin/"
     },
     {
       "id": 301,
@@ -5827,7 +5976,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/dersendundshono/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/dersendundshono/"
     },
     {
       "id": 303,
@@ -5836,7 +5986,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tseverlegee/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/tseverlegee/"
     },
     {
       "id": 304,
@@ -5845,7 +5996,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tseverlegeeoorchlolt/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/tseverlegeeoorchlolt/"
     },
     {
       "id": 305,
@@ -5854,7 +6006,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tseverlegeesonguuli/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/tseverlegeesonguuli/"
     },
     {
       "id": 306,
@@ -5863,7 +6016,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/ehniitseverlegee/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/ehniitseverlegee/"
     },
     {
       "id": 307,
@@ -5872,7 +6026,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/uurdiintseverlegee/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/uurdiintseverlegee/"
     },
     {
       "id": 308,
@@ -5881,7 +6036,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/uurdiinluunuud/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/uurdiinluunuud/"
     },
     {
       "id": 309,
@@ -5890,7 +6046,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/uragsha/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/uragsha/"
     },
     {
       "id": 310,
@@ -5899,7 +6056,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hotiinanguuch/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/hotiinanguuch/"
     },
     {
       "id": 311,
@@ -5908,7 +6066,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/amitaniiemch/",
-      "category": "world"
+      "category": "world",
+      "embed_url": "https://mglguide.top/news/tech/amitaniiemch/"
     },
     {
       "id": 312,
@@ -5917,7 +6076,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/dain/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/dain/"
     },
     {
       "id": 313,
@@ -5965,7 +6125,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hertlet/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/hertlet/"
     },
     {
       "id": 315,
@@ -5974,7 +6135,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/herteltshinesar/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/herteltshinesar/"
     },
     {
       "id": 316,
@@ -5983,7 +6145,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/suuliinagaarin/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/suuliinagaarin/"
     },
     {
       "id": 317,
@@ -5992,7 +6155,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/zaraa/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/zaraa/"
     },
     {
       "id": 318,
@@ -6001,7 +6165,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/buleenbiy/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/buleenbiy/"
     },
     {
       "id": 319,
@@ -6010,7 +6175,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hertelthert/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/hertelthert/"
     },
     {
       "id": 320,
@@ -6019,7 +6185,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/herteltp1/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/herteltp1/"
     },
     {
       "id": 321,
@@ -6028,7 +6195,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hugshinhuu/",
-      "category": "adult"
+      "category": "adult",
+      "embed_url": "https://mglguide.top/news/tech/hugshinhuu/"
     },
     {
       "id": 322,
@@ -6037,7 +6205,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hurdanbashuchtei/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/hurdanbashuchtei/"
     },
     {
       "id": 323,
@@ -6046,7 +6215,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/miniiuhliighussenhumuus/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/miniiuhliighussenhumuus/"
     },
     {
       "id": 324,
@@ -6055,7 +6225,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/suuder/",
-      "category": "world"
+      "category": "world",
+      "embed_url": "https://mglguide.top/news/tech/suuder/"
     },
     {
       "id": 325,
@@ -6064,7 +6235,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/naidvar/",
-      "category": "world"
+      "category": "world",
+      "embed_url": "https://mglguide.top/news/tech/naidvar/"
     },
     {
       "id": 326,
@@ -6073,7 +6245,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/nogoonnom/",
-      "category": "drama"
+      "category": "drama",
+      "embed_url": "https://mglguide.top/news/tech/nogoonnom/"
     },
     {
       "id": 327,
@@ -6082,7 +6255,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/anirgui-gazar-2/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/anirgui-gazar-2/"
     },
     {
       "id": 328,
@@ -6091,7 +6265,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/musunzam/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/musunzam/"
     },
     {
       "id": 329,
@@ -6100,7 +6275,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/etseg/",
-      "category": "romance"
+      "category": "romance",
+      "embed_url": "https://mglguide.top/news/tech/etseg/"
     },
     {
       "id": 330,
@@ -6109,7 +6285,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/gologdoluud/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/gologdoluud/"
     },
     {
       "id": 331,
@@ -6118,7 +6295,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/zugt/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/zugt/"
     },
     {
       "id": 332,
@@ -6127,7 +6305,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/huvaalt/",
-      "category": "world"
+      "category": "world",
+      "embed_url": "https://mglguide.top/news/tech/huvaalt/"
     },
     {
       "id": 333,
@@ -6136,7 +6315,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/ovchin/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/ovchin/"
     },
     {
       "id": 334,
@@ -6145,7 +6325,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/baigaliinduud/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/baigaliinduud/"
     },
     {
       "id": 335,
@@ -6154,7 +6335,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/shuvuunuud/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/shuvuunuud/"
     },
     {
       "id": 336,
@@ -6163,7 +6345,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/soyoltoizals/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/soyoltoizals/"
     },
     {
       "id": 337,
@@ -6172,7 +6355,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/dotorgoouzes/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/dotorgoouzes/"
     },
     {
       "id": 338,
@@ -6181,7 +6365,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/miniitagnuulch/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/miniitagnuulch/"
     },
     {
       "id": 339,
@@ -6190,7 +6375,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/yastsugluulagch/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/yastsugluulagch/"
     },
     {
       "id": 340,
@@ -6199,7 +6385,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/odorevdegch/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/odorevdegch/"
     },
     {
       "id": 341,
@@ -6208,7 +6395,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/haygdsan/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/haygdsan/"
     },
     {
       "id": 342,
@@ -6217,7 +6405,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/degee/",
-      "category": "comedy"
+      "category": "comedy",
+      "embed_url": "https://mglguide.top/news/tech/degee/"
     },
     {
       "id": 343,
@@ -6226,7 +6415,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/arslan/",
-      "category": "drama"
+      "category": "drama",
+      "embed_url": "https://mglguide.top/news/tech/arslan/"
     },
     {
       "id": 344,
@@ -6235,7 +6425,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/nuutshun/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/nuutshun/"
     },
     {
       "id": 345,
@@ -6244,7 +6435,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tulh/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/tulh/"
     },
     {
       "id": 346,
@@ -6253,7 +6445,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/euaylal/",
-      "category": "adult"
+      "category": "adult",
+      "embed_url": "https://mglguide.top/news/tech/euaylal/"
     },
     {
       "id": 347,
@@ -6262,7 +6455,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/anuginuzesgelent/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/anuginuzesgelent/"
     },
     {
       "id": 348,
@@ -6271,7 +6465,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/garighoorondiinaylal/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/garighoorondiinaylal/"
     },
     {
       "id": 349,
@@ -6280,7 +6475,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/erhcholooteiheeeveer/",
-      "category": "world"
+      "category": "world",
+      "embed_url": "https://mglguide.top/news/tech/erhcholooteiheeeveer/"
     },
     {
       "id": 350,
@@ -6289,7 +6485,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/yagtsagtaa/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/yagtsagtaa/"
     },
     {
       "id": 351,
@@ -6298,7 +6495,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/narantsetseg/",
-      "category": "drama"
+      "category": "drama",
+      "embed_url": "https://mglguide.top/news/tech/narantsetseg/"
     },
     {
       "id": 352,
@@ -6307,7 +6505,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/noynbamralt/",
-      "category": "comedy"
+      "category": "comedy",
+      "embed_url": "https://mglguide.top/news/tech/noynbamralt/"
     },
     {
       "id": 353,
@@ -6316,7 +6515,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/noynbn/",
-      "category": "comedy"
+      "category": "comedy",
+      "embed_url": "https://mglguide.top/news/tech/noynbn/"
     },
     {
       "id": 354,
@@ -6325,7 +6525,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tagnubndahindairalt/",
-      "category": "comedy"
+      "category": "comedy",
+      "embed_url": "https://mglguide.top/news/tech/tagnubndahindairalt/"
     },
     {
       "id": 355,
@@ -6334,7 +6535,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tagnubndahintorolt/",
-      "category": "comedy"
+      "category": "comedy",
+      "embed_url": "https://mglguide.top/news/tech/tagnubndahintorolt/"
     },
     {
       "id": 356,
@@ -6343,7 +6545,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/guurhorinneg/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/guurhorinneg/"
     },
     {
       "id": 357,
@@ -6352,7 +6555,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/avragchid/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/avragchid/"
     },
     {
       "id": 358,
@@ -6361,7 +6565,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/ahmad/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/ahmad/"
     },
     {
       "id": 359,
@@ -6370,7 +6575,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/12dahsejigten/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/12dahsejigten/"
     },
     {
       "id": 360,
@@ -6379,7 +6585,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/nuutstagnuulch/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/nuutstagnuulch/"
     },
     {
       "id": 361,
@@ -6388,7 +6595,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/zmgazarhoyr/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/zmgazarhoyr/"
     },
     {
       "id": 362,
@@ -6397,7 +6605,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/ursahtomor/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/ursahtomor/"
     },
     {
       "id": 363,
@@ -6406,7 +6615,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/luugiineld/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/luugiineld/"
     },
     {
       "id": 364,
@@ -6415,7 +6625,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/omsgol/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/omsgol/"
     },
     {
       "id": 365,
@@ -6424,7 +6635,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/bihenbe/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/bihenbe/"
     },
     {
       "id": 366,
@@ -6433,7 +6645,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/buduunluu/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/buduunluu/"
     },
     {
       "id": 367,
@@ -6442,7 +6655,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/muuzaluusg/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/muuzaluusg/"
     },
     {
       "id": 368,
@@ -6451,7 +6665,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/ergelt/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/ergelt/"
     },
     {
       "id": 369,
@@ -6460,7 +6675,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/ulaanhuu/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/ulaanhuu/"
     },
     {
       "id": 370,
@@ -6469,7 +6685,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/bhuuhed/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/bhuuhed/"
     },
     {
       "id": 371,
@@ -6478,7 +6695,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/gbtosol/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/gbtosol/"
     },
     {
       "id": 372,
@@ -6487,7 +6705,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/gemshilgui/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/gemshilgui/"
     },
     {
       "id": 373,
@@ -6496,7 +6715,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hyazgaarguindain/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/hyazgaarguindain/"
     },
     {
       "id": 374,
@@ -6505,7 +6725,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/gemgui/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/gemgui/"
     },
     {
       "id": 375,
@@ -6514,7 +6735,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/nocturne/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/nocturne/"
     },
     {
       "id": 376,
@@ -6523,7 +6745,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/huurhdglagazar/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/huurhdglagazar/"
     },
     {
       "id": 377,
@@ -6532,7 +6755,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/udirdagch/",
-      "category": "comedy"
+      "category": "comedy",
+      "embed_url": "https://mglguide.top/news/tech/udirdagch/"
     },
     {
       "id": 378,
@@ -6579,7 +6803,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/moriiteitoghaan2/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/moriiteitoghaan2/"
     },
     {
       "id": 381,
@@ -6588,7 +6813,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/huzurhaan/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/huzurhaan/"
     },
     {
       "id": 382,
@@ -6597,7 +6823,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/vanishingtime/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/vanishingtime/"
     },
     {
       "id": 383,
@@ -6606,7 +6833,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/asura/",
-      "category": "adult"
+      "category": "adult",
+      "embed_url": "https://mglguide.top/news/tech/asura/"
     },
     {
       "id": 384,
@@ -6615,7 +6843,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/mongoniimangas/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/mongoniimangas/"
     },
     {
       "id": 385,
@@ -6643,7 +6872,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/room7/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/room7/"
     },
     {
       "id": 387,
@@ -6652,7 +6882,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/koja/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/koja/"
     },
     {
       "id": 388,
@@ -6661,7 +6892,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hindsight/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/hindsight/"
     },
     {
       "id": 389,
@@ -6708,7 +6940,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hariihan/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/hariihan/"
     },
     {
       "id": 392,
@@ -6717,7 +6950,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/aratnudesregharihan/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/aratnudesregharihan/"
     },
     {
       "id": 393,
@@ -6726,7 +6960,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/aratanud/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/aratanud/"
     },
     {
       "id": 394,
@@ -6735,7 +6970,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/araatan/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/araatan/"
     },
     {
       "id": 395,
@@ -6744,7 +6980,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/harihanvsaratan/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/harihanvsaratan/"
     },
     {
       "id": 396,
@@ -6753,7 +6990,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/bujigchid/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/bujigchid/"
     },
     {
       "id": 397,
@@ -6762,7 +7000,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tolgoi/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/tolgoi/"
     },
     {
       "id": 398,
@@ -6771,7 +7010,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/ondrusgitzalu/",
-      "category": "romance"
+      "category": "romance",
+      "embed_url": "https://mglguide.top/news/tech/ondrusgitzalu/"
     },
     {
       "id": 399,
@@ -6780,7 +7020,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hurshud/",
-      "category": "comedy"
+      "category": "comedy",
+      "embed_url": "https://mglguide.top/news/tech/hurshud/"
     },
     {
       "id": 400,
@@ -6789,7 +7030,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/isawdvl/",
-      "category": "adult"
+      "category": "adult",
+      "embed_url": "https://mglguide.top/news/tech/isawdvl/"
     },
     {
       "id": 401,
@@ -6798,7 +7040,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/daysofwrath/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/daysofwrath/"
     },
     {
       "id": 402,
@@ -6807,7 +7050,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/howlmcas/",
-      "category": "anime"
+      "category": "anime",
+      "embed_url": "https://mglguide.top/news/tech/howlmcas/"
     },
     {
       "id": 403,
@@ -6816,7 +7060,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/ganbro/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/ganbro/"
     },
     {
       "id": 404,
@@ -6825,7 +7070,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/urilgagui-zochin/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/urilgagui-zochin/"
     },
     {
       "id": 405,
@@ -6834,7 +7080,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/krie/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/krie/"
     },
     {
       "id": 406,
@@ -6843,7 +7090,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/sptnik/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/sptnik/"
     },
     {
       "id": 407,
@@ -6852,7 +7100,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/rehlel/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/rehlel/"
     },
     {
       "id": 408,
@@ -6861,7 +7110,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/chadvalhulgail/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/chadvalhulgail/"
     },
     {
       "id": 409,
@@ -6870,7 +7120,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/mergenbuuch/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/mergenbuuch/"
     },
     {
       "id": 410,
@@ -6879,7 +7130,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/toglogch/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/toglogch/"
     },
     {
       "id": 411,
@@ -6888,7 +7140,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/suirel/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/suirel/"
     },
     {
       "id": 412,
@@ -6897,7 +7150,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/saihanodruud/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/saihanodruud/"
     },
     {
       "id": 413,
@@ -6906,7 +7160,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/zaag/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/zaag/"
     },
     {
       "id": 414,
@@ -6915,7 +7170,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/huuchin/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/huuchin/"
     },
     {
       "id": 415,
@@ -6924,7 +7180,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tsag/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/tsag/"
     },
     {
       "id": 416,
@@ -6933,7 +7190,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/jaransecund/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/jaransecund/"
     },
     {
       "id": 417,
@@ -6942,7 +7200,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tavdahimahbodi/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/tavdahimahbodi/"
     },
     {
       "id": 418,
@@ -6951,7 +7210,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/arvanguravdaich/",
-      "category": "war"
+      "category": "war",
+      "embed_url": "https://mglguide.top/news/tech/arvanguravdaich/"
     },
     {
       "id": 419,
@@ -6960,7 +7220,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tagnuulchch/",
-      "category": "comedy"
+      "category": "comedy",
+      "embed_url": "https://mglguide.top/news/tech/tagnuulchch/"
     },
     {
       "id": 420,
@@ -6969,7 +7230,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/nuutsajillagaa/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/nuutsajillagaa/"
     },
     {
       "id": 421,
@@ -6978,7 +7240,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/aadarboroo/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/aadarboroo/"
     },
     {
       "id": 422,
@@ -6987,7 +7250,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/arissoliltsoo/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/arissoliltsoo/"
     },
     {
       "id": 423,
@@ -6996,7 +7260,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/harh/",
-      "category": "world"
+      "category": "world",
+      "embed_url": "https://mglguide.top/news/tech/harh/"
     },
     {
       "id": 424,
@@ -7005,7 +7270,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/rpoint/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/rpoint/"
     },
     {
       "id": 425,
@@ -7014,7 +7280,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/proffino/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/proffino/"
     },
     {
       "id": 426,
@@ -7023,7 +7290,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/haralszurh/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/haralszurh/"
     },
     {
       "id": 427,
@@ -7032,7 +7300,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/accnt/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/accnt/"
     },
     {
       "id": 428,
@@ -7041,7 +7310,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/midnfm/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/midnfm/"
     },
     {
       "id": 429,
@@ -7050,7 +7320,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/araatanuud/",
-      "category": "drama"
+      "category": "drama",
+      "embed_url": "https://mglguide.top/news/tech/araatanuud/"
     },
     {
       "id": 430,
@@ -7059,7 +7330,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/ulaananhaaruulga/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/ulaananhaaruulga/"
     },
     {
       "id": 431,
@@ -7068,7 +7340,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/uurtai/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/uurtai/"
     },
     {
       "id": 432,
@@ -7077,7 +7350,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/onchin/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/onchin/"
     },
     {
       "id": 433,
@@ -7086,7 +7360,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/suitbusgui/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/suitbusgui/"
     },
     {
       "id": 434,
@@ -7095,7 +7370,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tsagdaaa/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/tsagdaaa/"
     },
     {
       "id": 435,
@@ -7104,7 +7380,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/ariunnuudel/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/ariunnuudel/"
     },
     {
       "id": 436,
@@ -7113,7 +7390,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/uurhilen/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/uurhilen/"
     },
     {
       "id": 437,
@@ -7122,7 +7400,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/negdsen/",
-      "category": "war"
+      "category": "war",
+      "embed_url": "https://mglguide.top/news/tech/negdsen/"
     },
     {
       "id": 438,
@@ -7131,7 +7410,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/harbastsenher/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/harbastsenher/"
     },
     {
       "id": 439,
@@ -7140,7 +7420,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/sahiusantengeruud/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/sahiusantengeruud/"
     },
     {
       "id": 440,
@@ -7149,7 +7430,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/uzesgelentei/",
-      "category": "drama"
+      "category": "drama",
+      "embed_url": "https://mglguide.top/news/tech/uzesgelentei/"
     },
     {
       "id": 441,
@@ -7158,7 +7440,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/uruu/",
-      "category": "drama"
+      "category": "drama",
+      "embed_url": "https://mglguide.top/news/tech/uruu/"
     },
     {
       "id": 442,
@@ -7167,7 +7450,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/ayultai-hudalug/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/ayultai-hudalug/"
     },
     {
       "id": 443,
@@ -7176,7 +7460,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/uhliinsovin/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/uhliinsovin/"
     },
     {
       "id": 444,
@@ -7185,7 +7470,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/resistnce/",
-      "category": "war"
+      "category": "war",
+      "embed_url": "https://mglguide.top/news/tech/resistnce/"
     },
     {
       "id": 445,
@@ -7194,7 +7480,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/zmbipura/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/zmbipura/"
     },
     {
       "id": 446,
@@ -7203,7 +7490,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/abe/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/abe/"
     },
     {
       "id": 447,
@@ -7212,7 +7500,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/recall/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/recall/"
     },
     {
       "id": 448,
@@ -7221,7 +7510,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hytdhoroll/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/hytdhoroll/"
     },
     {
       "id": 449,
@@ -7230,7 +7520,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/brkngin/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/brkngin/"
     },
     {
       "id": 450,
@@ -8139,7 +8430,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/indijones/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/indijones/"
     },
     {
       "id": 463,
@@ -8148,7 +8440,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/indijonesii/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/indijonesii/"
     },
     {
       "id": 464,
@@ -8157,7 +8450,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/indijonescrykng/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/indijonescrykng/"
     },
     {
       "id": 465,
@@ -8166,7 +8460,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/uhliinodor1/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/uhliinodor1/"
     },
     {
       "id": 466,
@@ -8175,7 +8470,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/uhliinodor2/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/uhliinodor2/"
     },
     {
       "id": 467,
@@ -8184,7 +8480,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/sarmagchinhaan/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/sarmagchinhaan/"
     },
     {
       "id": 468,
@@ -8193,7 +8490,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/sarmagchinhaan2/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/sarmagchinhaan2/"
     },
     {
       "id": 469,
@@ -8202,7 +8500,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/sarmagchinhaan3/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/sarmagchinhaan3/"
     },
     {
       "id": 470,
@@ -8211,7 +8510,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/nrniiineg/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/nrniiineg/"
     },
     {
       "id": 471,
@@ -8220,7 +8520,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/nrniituuhhoyr/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/nrniituuhhoyr/"
     },
     {
       "id": 472,
@@ -8229,7 +8530,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/nrnntuuhaylgach/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/nrnntuuhaylgach/"
     },
     {
       "id": 473,
@@ -8273,7 +8575,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/uhliintulaan/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/uhliintulaan/"
     },
     {
       "id": 475,
@@ -8282,7 +8585,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/uhliintulaan2/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/uhliintulaan2/"
     },
     {
       "id": 476,
@@ -8291,7 +8595,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/termina1/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/termina1/"
     },
     {
       "id": 477,
@@ -8300,7 +8605,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/termina3/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/termina3/"
     },
     {
       "id": 478,
@@ -10765,7 +11071,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/saaralhun/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/saaralhun/"
     },
     {
       "id": 519,
@@ -10774,7 +11081,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/adamtusul/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/adamtusul/"
     },
     {
       "id": 520,
@@ -10837,7 +11145,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/500udur/",
-      "category": "romance"
+      "category": "romance",
+      "embed_url": "https://mglguide.top/news/tech/500udur/"
     },
     {
       "id": 523,
@@ -10881,7 +11190,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/mtrdnser/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/mtrdnser/"
     },
     {
       "id": 525,
@@ -10925,7 +11235,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/httrnsva/",
-      "category": "comedy"
+      "category": "comedy",
+      "embed_url": "https://mglguide.top/news/tech/httrnsva/"
     },
     {
       "id": 527,
@@ -10972,7 +11283,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/mongo/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/mongo/"
     },
     {
       "id": 530,
@@ -11038,7 +11350,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/2yrtsonts/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/2yrtsonts/"
     },
     {
       "id": 534,
@@ -11047,7 +11360,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/startup/",
-      "category": "romance"
+      "category": "romance",
+      "embed_url": "https://mglguide.top/news/tech/startup/"
     },
     {
       "id": 535,
@@ -11056,7 +11370,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/alone/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/alone/"
     },
     {
       "id": 536,
@@ -11065,7 +11380,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/btshangunj/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/btshangunj/"
     },
     {
       "id": 537,
@@ -11074,7 +11390,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/facelessb/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/facelessb/"
     },
     {
       "id": 538,
@@ -11083,7 +11400,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hogiinaylal/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/hogiinaylal/"
     },
     {
       "id": 539,
@@ -11092,7 +11410,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/oshoav/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/oshoav/"
     },
     {
       "id": 540,
@@ -11101,7 +11420,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/shoniigdav/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/shoniigdav/"
     },
     {
       "id": 541,
@@ -11110,7 +11430,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/erensurvalj/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/erensurvalj/"
     },
     {
       "id": 542,
@@ -11119,7 +11440,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/haranhui/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/haranhui/"
     },
     {
       "id": 543,
@@ -11128,7 +11450,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/haantuls/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/haantuls/"
     },
     {
       "id": 544,
@@ -11247,7 +11570,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/pandor/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/pandor/"
     },
     {
       "id": 547,
@@ -11422,7 +11746,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/gemguineg/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/gemguineg/"
     },
     {
       "id": 550,
@@ -11431,7 +11756,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/burhniblg/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/burhniblg/"
     },
     {
       "id": 551,
@@ -11539,7 +11865,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/dorovnegdorov/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/dorovnegdorov/"
     },
     {
       "id": 553,
@@ -11548,7 +11875,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/yakgunj/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/yakgunj/"
     },
     {
       "id": 554,
@@ -11557,7 +11885,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/etssiinhalztulaan/",
-      "category": "war"
+      "category": "war",
+      "embed_url": "https://mglguide.top/news/tech/etssiinhalztulaan/"
     },
     {
       "id": 555,
@@ -11566,7 +11895,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/anhaarbuutoglo/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/anhaarbuutoglo/"
     },
     {
       "id": 556,
@@ -11598,7 +11928,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hurga/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/hurga/"
     },
     {
       "id": 558,
@@ -11697,7 +12028,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/har-suljee/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/har-suljee/"
     },
     {
       "id": 561,
@@ -11706,7 +12038,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/har-aalz/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/har-aalz/"
     },
     {
       "id": 562,
@@ -11715,7 +12048,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/uhehurtel/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/uhehurtel/"
     },
     {
       "id": 563,
@@ -11724,7 +12058,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/ireeduin-dain/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/ireeduin-dain/"
     },
     {
       "id": 564,
@@ -11733,7 +12068,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/gariinttsarts/",
-      "category": "adult"
+      "category": "adult",
+      "embed_url": "https://mglguide.top/news/tech/gariinttsarts/"
     },
     {
       "id": 565,
@@ -11840,7 +12176,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/galzuuhurdyes/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/galzuuhurdyes/"
     },
     {
       "id": 568,
@@ -11849,7 +12186,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/jurertonts/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/jurertonts/"
     },
     {
       "id": 569,
@@ -11858,7 +12196,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hunchonohuu/",
-      "category": "romance"
+      "category": "romance",
+      "embed_url": "https://mglguide.top/news/tech/hunchonohuu/"
     },
     {
       "id": 570,
@@ -11867,7 +12206,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/mogointolgoi/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/mogointolgoi/"
     },
     {
       "id": 571,
@@ -11876,7 +12216,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/hulgaichid/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/hulgaichid/"
     },
     {
       "id": 572,
@@ -11885,7 +12226,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/jmhuuchin/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/jmhuuchin/"
     },
     {
       "id": 573,
@@ -11894,7 +12236,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/jmdaraagiinue/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/jmdaraagiinue/"
     },
     {
       "id": 574,
@@ -11903,7 +12246,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/jmshrengedtavtaimo/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/jmshrengedtavtaimo/"
     },
     {
       "id": 575,
@@ -11912,7 +12256,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/halluurh/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/halluurh/"
     },
     {
       "id": 576,
@@ -11921,7 +12266,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/sunsniibayar/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/sunsniibayar/"
     },
     {
       "id": 577,
@@ -11930,7 +12276,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/sunsniibayrallaga/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/sunsniibayrallaga/"
     },
     {
       "id": 578,
@@ -11939,7 +12286,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/yarsanni/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/yarsanni/"
     },
     {
       "id": 579,
@@ -11948,7 +12296,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/sanaandguitagnuulch/",
-      "category": "comedy"
+      "category": "comedy",
+      "embed_url": "https://mglguide.top/news/tech/sanaandguitagnuulch/"
     },
     {
       "id": 580,
@@ -11976,7 +12325,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/nuutshereg/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/nuutshereg/"
     },
     {
       "id": 582,
@@ -11985,7 +12335,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/uhelbidniigsalgahhurtel/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/uhelbidniigsalgahhurtel/"
     },
     {
       "id": 583,
@@ -11994,7 +12345,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/survfamily/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/survfamily/"
     },
     {
       "id": 584,
@@ -12003,7 +12355,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/daini-sahiusan-tngr/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/daini-sahiusan-tngr/"
     },
     {
       "id": 585,
@@ -12012,7 +12365,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/avrah-ajilga2/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/avrah-ajilga2/"
     },
     {
       "id": 586,
@@ -12021,7 +12375,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tsashanzlgch/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/tsashanzlgch/"
     },
     {
       "id": 587,
@@ -12030,7 +12385,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/nogoonhulegbaatar/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/nogoonhulegbaatar/"
     },
     {
       "id": 588,
@@ -12039,7 +12395,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/mogoinnud/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/mogoinnud/"
     },
     {
       "id": 589,
@@ -12048,7 +12405,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/shuniinbaishin/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/shuniinbaishin/"
     },
     {
       "id": 590,
@@ -12057,7 +12415,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tordotorhdaisan/",
-      "category": "war"
+      "category": "war",
+      "embed_url": "https://mglguide.top/news/tech/tordotorhdaisan/"
     },
     {
       "id": 591,
@@ -12066,7 +12425,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/harmongo/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/harmongo/"
     },
     {
       "id": 592,
@@ -12075,7 +12435,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tolovlogooter/",
-      "category": "thriller"
+      "category": "thriller",
+      "embed_url": "https://mglguide.top/news/tech/tolovlogooter/"
     },
     {
       "id": 593,
@@ -12103,7 +12464,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/zochidbuudrw/",
-      "category": "war"
+      "category": "war",
+      "embed_url": "https://mglguide.top/news/tech/zochidbuudrw/"
     },
     {
       "id": 595,
@@ -12112,7 +12474,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/odor-ba-oroi/",
-      "category": "world"
+      "category": "world",
+      "embed_url": "https://mglguide.top/news/tech/odor-ba-oroi/"
     },
     {
       "id": 596,
@@ -12121,7 +12484,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/scarecamp/",
-      "category": "horror"
+      "category": "horror",
+      "embed_url": "https://mglguide.top/news/tech/scarecamp/"
     },
     {
       "id": 597,
@@ -12130,7 +12494,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tsagaanherem/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/tsagaanherem/"
     },
     {
       "id": 598,
@@ -12139,7 +12504,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/kundo/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/kundo/"
     },
     {
       "id": 599,
@@ -12148,7 +12514,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/ododiindainsergeltyes/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/ododiindainsergeltyes/"
     },
     {
       "id": 600,
@@ -12157,7 +12524,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tsustbuudalt/",
-      "category": "action"
+      "category": "action",
+      "embed_url": "https://mglguide.top/news/tech/tsustbuudalt/"
     },
     {
       "id": 601,
@@ -12166,7 +12534,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/kuantumpsy/",
-      "category": "adult"
+      "category": "adult",
+      "embed_url": "https://mglguide.top/news/tech/kuantumpsy/"
     },
     {
       "id": 602,
@@ -12175,7 +12544,8 @@
       "rating": 7.5,
       "tmdb_id": null,
       "link": "https://mglguide.top/news/tech/tomjijigtsereg/",
-      "category": "scifi"
+      "category": "scifi",
+      "embed_url": "https://mglguide.top/news/tech/tomjijigtsereg/"
     },
     {
       "id": 603,
