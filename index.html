@@ -453,6 +453,24 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 40p
   .auth-box{padding:30px 20px}
   .scroll-btn{display:none}
 }
+
+/* ── SERIES CARD ── */
+.ep-badge{position:absolute;top:8px;left:8px;background:rgba(229,9,20,.9);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;backdrop-filter:blur(4px);letter-spacing:.5px;z-index:2}
+.s-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.s-tab{padding:7px 18px;border-radius:20px;border:1px solid var(--border2);background:rgba(255,255,255,.05);color:var(--text2);font-size:13px;cursor:pointer;transition:all .2s}
+.s-tab.on{background:var(--red);border-color:var(--red);color:#fff}
+.ep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;max-height:300px;overflow-y:auto;padding-right:4px;margin-bottom:20px}
+.ep-grid::-webkit-scrollbar{width:4px}
+.ep-grid::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:2px}
+.ep-item{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 8px;cursor:pointer;transition:all .2s;text-align:center}
+.ep-item:hover{background:var(--bg4);border-color:var(--red);transform:translateY(-2px)}
+.ep-item.playing{background:var(--red);border-color:var(--red);color:#fff}
+.ep-num{font-size:17px;font-weight:700;font-family:'Oswald',sans-serif}
+.ep-label{font-size:10px;color:var(--text3);margin-top:2px}
+.ep-item.playing .ep-label{color:rgba(255,255,255,.7)}
+.s-ep-header{font-size:13px;color:var(--text2);margin-bottom:12px;font-weight:500}
+.m-series-wrap{border-top:1px solid var(--border);padding-top:24px;margin-top:8px}
+.m-series-title{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:16px}
 </style>
 </head>
 <body>
@@ -471,6 +489,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 40p
     <button class="nav-tab" id="t-movies" onclick="gotoPage('movies')"><span class="tab-icon">🎬</span><span>КИНО</span></button>
     <button class="nav-tab" id="t-games" onclick="gotoPage('games')"><span class="tab-icon">🎮</span><span>ТОГЛООМ</span></button>
     <button class="nav-tab" id="t-weather" onclick="gotoPage('weather')"><span class="tab-icon">🌤</span><span>ЦАГ АГААР</span></button>
+    <button class="nav-tab" id="t-series" onclick="gotoPage('series')"><span class="tab-icon">📺</span><span>ЦУВРАЛ</span></button>
     <button class="nav-tab" id="t-contact" onclick="gotoPage('contact')"><span class="tab-icon">📞</span><span>ХОЛБОО</span></button>
   </div>
   <div class="nav-right">
@@ -572,6 +591,19 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 40p
       </div>
     </section>
 
+    <!-- SERIES ROW -->
+    <section class="sec">
+      <div class="sec-head">
+        <div class="sec-title">Цуврал кино</div>
+        <button class="sec-more" onclick="gotoPage('series')">Бүгд <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+      <div class="row-wrap">
+        <button class="scroll-btn left" onclick="scrollRow('rowSeries', -600)">❮</button>
+        <div class="scroll-row" id="rowSeries"></div>
+        <button class="scroll-btn right" onclick="scrollRow('rowSeries', 600)">❯</button>
+      </div>
+    </section>
+
     <!-- GAMES ROW -->
     <section class="sec">
       <div class="sec-head">
@@ -584,6 +616,25 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 40p
         <button class="scroll-btn right" onclick="scrollRow('rowGames', 600)">❯</button>
       </div>
     </section>
+  </main>
+</div>
+
+
+<!-- ══════════ SERIES PAGE ══════════ -->
+<div class="page" id="page-series">
+  <main>
+    <div class="sec-title" style="font-size:28px;margin-bottom:24px">Цуврал кино</div>
+    <div class="genre-bar" id="seriesGenreBar"></div>
+    <div class="sort-bar">
+      <label>Эрэмбэлэх:</label>
+      <select class="sel" onchange="sortSeriesPage(this.value)">
+        <option value="new">Шинэ нь эхэнд</option>
+        <option value="rating">Үнэлгээгээр</option>
+        <option value="name">Нэрээр</option>
+      </select>
+      <div class="cnt" id="sCount"></div>
+    </div>
+    <div class="mgrid" id="seriesGrid"></div>
   </main>
 </div>
 
@@ -662,7 +713,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 40p
       <div class="contact-item" onclick="window.location='mailto:gnarantsend@gmail.com'">
         <div class="ci-icon">📧</div>
         <div class="ci-label">Имэйл хаяг</div>
-        <div class="ci-val"><a href="mailto:gnarantsend@gmail.com">gnarantsend@gmail.com</a></div>
+        <div class="ci-val"><a href="/cdn-cgi/l/email-protection#caada4abb8aba4beb9afa4ae8aada7aba3a6e4a9a5a7"><span class="__cf_email__" data-cfemail="4f28212e3d2e213b3c2a212b0f28222e2623612c2022">[email&#160;protected]</span></a></div>
       </div>
       <div class="contact-item" onclick="window.location='tel:+97699376238'">
         <div class="ci-icon">📱</div>
@@ -771,7 +822,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 40p
       <h4>Холбоос</h4>
       <ul>
         <li><a href="#" onclick="gotoPage('contact')">Холбоо барих</a></li>
-        <li><a href="mailto:gnarantsend@gmail.com">gnarantsend@gmail.com</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#15727b7467747b6166707b71557278747c793b767a78"><span class="__cf_email__" data-cfemail="34535a5546555a4047515a50745359555d581a575b59">[email&#160;protected]</span></a></li>
         <li><a href="tel:+97699376238">9937-6238</a></li>
       </ul>
     </div>
@@ -780,6 +831,26 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 40p
     <span>© 2026 Nabooshy. Бүх эрх хуулиар хамгаалагдсан.</span>
   </div>
 </footer>
+
+
+<!-- ══════════ SERIES MODAL ══════════ -->
+<div class="modal-bg" id="seriesModal" onclick="closeMb(event,'seriesModal')">
+  <div class="modal" style="max-width:900px">
+    <button class="mcls" onclick="closeM('seriesModal')">✕</button>
+    <div class="m-hero" id="smHero"><div class="m-hero-g"></div></div>
+    <div class="m-body">
+      <div class="m-title" id="smTitle"></div>
+      <div class="m-meta" id="smMeta"></div>
+      <div class="m-desc" id="smDesc"></div>
+      <div class="m-series-wrap">
+        <div class="m-series-title">Ангиуд</div>
+        <div class="s-tabs" id="smSeasonTabs"></div>
+        <div class="s-ep-header" id="smEpHeader"></div>
+        <div class="ep-grid" id="smEpGrid"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ══════════ MOVIE DETAIL MODAL ══════════ -->
 <div class="modal-bg" id="movieModal" onclick="closeMb(event,'movieModal')">
@@ -823,7 +894,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 40p
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ══════════════════════════════════════════
 // TMDB API (Зураг татах ухаалаг функц)
 // ══════════════════════════════════════════
@@ -888,6 +959,11 @@ const MOVIES =[
   {id:6018,title:"Агшин гялбаа",title_en:"The Flash",year:2023,rating:6.7,poster:"https://image.tmdb.org/t/p/w300/rktDFPbfHfUbArZ6OOOKsXcv0Bm.jpg",embed:"https://infi.xtremestream.co/player/index.php?data=c0d0e461de8d0024aebcb0a7c68836df",cat:"action",desc:"The Flash"},
   {id:6019,title:"Ахмад",title_en:"Captain Phillips",year:2013,rating:7.8,poster:"https://image.tmdb.org/t/p/w300/eh2a4RP6rJ4pAEylMdXNkgkxJAU.jpg",embed:"https://www.fembed.com/v/n0r5ws2-x1ger0e",cat:"thriller",desc:"Captain Phillips"},
 
+  // Movies from data.json
+  {id:6020,title:"Аквамэн 2",title_en:"Aquaman and the Lost Kingdom",year:2023,rating:5.6,poster:"https://image.tmdb.org/t/p/w300/83Q2I2V1MCGDBiJe2xoyY4eE7P9.jpg",embed:"https://infi.xtremestream.co/player/index.php?data=780965ae22ea6aee11935f3fb73da841",cat:"action",desc:"Aquaman and the Lost Kingdom"},
+  {id:6021,title:"Чимээгүй газар 2",title_en:"A Quiet Place Part II",year:2020,rating:7.2,poster:"https://image.tmdb.org/t/p/w300/pWte3B2y5aIsSgR3aAmWffjH0fI.jpg",embed:"https://ninjastream.to/watch/5MVQGJl6vAEPj",cat:"horror",desc:"A Quiet Place Part II"},
+  {id:6022,title:"Афина",title_en:"Athena",year:2022,rating:6.7,poster:"https://image.tmdb.org/t/p/w300/wTW2t84RHFqLRmI2sL0A4yI4u4F.jpg",embed:"https://infi.xtremestream.co/player/index.php?data=c6bff625bdb0393992c9d4db0c6bbe45",cat:"action",desc:"Athena"},
+
   // 🎵 MUSIC (Монгол дуунууд)
   {id:7001,title:"The HU - Wolf Totem",title_en:"The HU - Wolf Totem",year:2018,rating:9.8,poster:"https://img.youtube.com/vi/jM8dCGIm6yc/maxresdefault.jpg",embed:"https://www.youtube.com/embed/jM8dCGIm6yc",cat:"music",desc:"Монгол рок хамтлаг The HU"},
   {id:7002,title:"The HU - Yuve Yuve Yu",title_en:"The HU - Yuve Yuve Yu",year:2018,rating:9.7,poster:"https://img.youtube.com/vi/v4xZUr0BEfE/maxresdefault.jpg",embed:"https://www.youtube.com/embed/v4xZUr0BEfE",cat:"music",desc:"Монгол рок хамтлаг The HU"},
@@ -932,6 +1008,715 @@ const GAMES =[
 const WEATHER_CITIES =[
   {name:"Улаанбаатар",q:"Ulaanbaatar,MN"},{name:"Архангай",q:"Tsetserleg,MN"},{name:"Баян-Өлгий",q:"Olgii,MN"},{name:"Баянхонгор",q:"Bayankhongor,MN"},{name:"Булган",q:"Bulgan,MN"},{name:"Говь-Алтай",q:"Altai,MN"},{name:"Говьсүмбэр",q:"Choyr,MN"},{name:"Дархан-Уул",q:"Darkhan,MN"},{name:"Дорнод",q:"Choibalsan,MN"},{name:"Дорноговь",q:"Sainshand,MN"},{name:"Дундговь",q:"Mandalgovi,MN"},{name:"Завхан",q:"Uliastai,MN"},{name:"Орхон",q:"Erdenet,MN"},{name:"Өвөрхангай",q:"Arvaikheer,MN"},{name:"Өмнөговь",q:"Dalanzadgad,MN"},{name:"Сүхбаатар",q:"Baruun-Urt,MN"},{name:"Сэлэнгэ",q:"Sukhbaatar,MN"},{name:"Увс",q:"Ulaangom,MN"},{name:"Ховд",q:"Khovd,MN"},{name:"Хөвсгөл",q:"Murun,MN"},{name:"Хэнтий",q:"Ondorkhaan,MN"}
 ];
+
+
+// ══════════════════════════════════════════
+// SERIES DATA (Цуврал кинонууд)
+// ══════════════════════════════════════════
+function xi(d){return 'https://infi.xtremestream.xyz/player/index.php?data='+d+'&cdn=1&p2p=1&player=3';}
+function xc(d){return 'https://infi.xtremestream.co/player/index.php?data='+d;}
+
+const SERIES = [
+  {id:101,title:"Бидний хайрласан зун",title_en:"Our Beloved Summer",genre:"Romance, Drama",rating:8.2,year:2021,poster:"",
+   seasons:[
+    {s:1,episodes:[
+      {ep:1,embed:xi("3ab6be46e1d6b21d59a3c3a0b9d0f6ef")},
+      {ep:2,embed:xi("c4098249cc953bd98b54e57a1ad89d12")},
+      {ep:3,embed:xi("07e87c2f4fc7f7c96116d8e2a92790f5")},
+      {ep:4,embed:xi("609c5e5089a9aa967232aba2a4d03114")},
+      {ep:5,embed:xi("587b7b833034299fdd5f4b10e7dc9fca")},
+      {ep:6,embed:xi("bdc363788b2b48c031bf406cf15aa252")},
+      {ep:7,embed:xi("64c26b2a2dcf068c49894bd07e0e6389")},
+      {ep:8,embed:xi("41a6fd31aa2e75c3c6d427db3d17ea80")},
+      {ep:9,embed:xi("1f5f5b265100daad35b3a491e1c55351")},
+      {ep:10,embed:xi("139042a4157a773f209847829d80894d")},
+      {ep:11,embed:xi("44e6b86aeefa3eca5832a98043a7b6fa")},
+      {ep:12,embed:xi("5b4e9aa703d0bfa11041debaa2d1b633")}
+    ]},
+    {s:2,episodes:[
+      {ep:1,embed:xi("785736838d7b51f2cabb00e6b28a8969")},
+      {ep:2,embed:xi("e1cd50f4a9880333cdad4a24ee9d550c")},
+      {ep:3,embed:xi("2e855f9489df0712b4bd8ea9e2848c5a")},
+      {ep:4,embed:xi("ae0e08163d22befd4635f47bef1b6e3f")},
+      {ep:5,embed:xi("4ffb0d2ba92f664c2281970110a2e071")},
+      {ep:6,embed:xi("d903e9608cfbf08910611e4346a0ba44")}
+    ]}
+   ]},
+
+  {id:102,title:"Биеийн хүч: Ази",title_en:"Physical 100",genre:"Reality-TV, Sport",rating:7.6,year:2023,poster:"",
+   seasons:[
+    {s:1,episodes:[
+      {ep:1,embed:xc("1d6408264d31d453d556c60fe7d0459e")},
+      {ep:2,embed:xc("2c27a260f16ad3098393cc529f391f4a")},
+      {ep:3,embed:xc("351869bde8b9d6ad1e3090bd173f600d")},
+      {ep:4,embed:xc("b3848d61bbbc6207c6668a8a9e2730ed")},
+      {ep:5,embed:xc("ca172e964907a97d5ebd876bfdd4adbd")},
+      {ep:6,embed:xc("faad95253aee7437871781018bdf3309")},
+      {ep:7,embed:xc("08048a9c5630ccb67789a198f35d30ec")},
+      {ep:8,embed:xc("9f4768b4bd4a205e1d3a60398ab022a2")},
+      {ep:9,embed:xc("739cf54211aa6b75dd3001d54064e7a7")},
+      {ep:10,embed:xc("237168031d88451c78fd8d6d6378c0b2")},
+      {ep:11,embed:xc("73d915c91b99b170993ea97d875a6330")},
+      {ep:12,embed:xc("197838c579c3b78927e0cd15ba4c9689")}
+    ]},
+    {s:2,episodes:[
+      {ep:1,embed:xc("2836be05e71a8f34902a6e6b37350134")},
+      {ep:2,embed:xc("dc6e224a8d74ce03bf301152d6e33e97")},
+      {ep:3,embed:xc("c1502ae5a4d514baec129f72948c266e")},
+      {ep:4,embed:xc("3f5ee243547dee91fbd053c1c4a845aa")},
+      {ep:5,embed:xc("f14bc21be7eaeed046fed206a492e652")},
+      {ep:6,embed:xc("d3157f2f0212a80a5d042c127522a2d5")},
+      {ep:7,embed:xc("1706f191d760c78dfcec5012e43b6714")},
+      {ep:8,embed:xc("3b5020bb891119b9f5130f1fea9bd773")},
+      {ep:9,embed:xc("ada5e0b63ef60e2239fa8abdd4aa2f8e")}
+    ]}
+   ]},
+
+  {id:103,title:"Бууны гох",title_en:"Trigger",genre:"Action, Thriller",rating:7.5,year:2023,poster:"",
+   episodes:[
+    {ep:1,embed:xi("42778ef0b5805a96f9511e20b5611fce")},
+    {ep:2,embed:xi("01b6397888c09d84f3dc89d807aa1004")},
+    {ep:3,embed:xi("de905148259ea27fa49e2303ef2e0017")},
+    {ep:4,embed:xi("b645e524a1512ce68947d3b9c948aa46")},
+    {ep:5,embed:xi("b65f2ecd2900ba6ae49a14d9c4b16fb4")},
+    {ep:6,embed:xi("91665c93b72f55b2e4f1048fc8289d04")},
+    {ep:7,embed:xi("39dd987a9d27f1045aa0ad3ed5995dd2")},
+    {ep:8,embed:xi("ebad33b3c9fa1d10327bb55f9e79e2f3")},
+    {ep:9,embed:xi("91299a41773c667d2ee8cddc3f6eeb64")},
+    {ep:10,embed:xi("dfc6aa246e88ab3e32caeaaecf433550")}
+   ]},
+
+  {id:104,title:"Баян Батны ах нар",title_en:"The Good Bad Mother",genre:"Drama, Comedy",rating:8.0,year:2023,poster:"",
+   episodes:[
+    {ep:3,embed:xi("77305c2f862ad1d353f55bf38e5a5183")},
+    {ep:4,embed:xi("dbc4d84bfcfe2284ba11beffb853a8c4")},
+    {ep:5,embed:xi("f937c8fddbe66ab03c563f16d5cfa50c")},
+    {ep:6,embed:xi("4e46e93a054f94c059e1fa4701f5a892")},
+    {ep:7,embed:xi("60dcc0d0012f3056175c01d54c2e1722")},
+    {ep:8,embed:xi("34f9a343f945196b66f807e0eb6249fd")},
+    {ep:9,embed:xi("438124b4c06f3a5caffab2c07863b617")},
+    {ep:10,embed:xi("1731592aca5fb4d789c4119c65c10b4b")},
+    {ep:11,embed:xi("bbc92a647199b832ec90d7cf57074e9e")},
+    {ep:12,embed:xi("752d2c9ecfe079e5e5f3539f4d750e5c")}
+   ]},
+
+  {id:105,title:"Бид салж байна",title_en:"Now We Are Breaking Up",genre:"Romance, Drama",rating:7.0,year:2021,poster:"",
+   episodes:[
+    {ep:1,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2F21961b414fa817.upcdnx.com%2Fzd%2FkTIQxIBb3PsA_jMXhc14pA%2F1637854387%2Fe1ip7l9hapnd%2Fnful6io83cdn%2Fv.mp4&id=1752&type=mp4"},
+    {ep:2,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2Fe9f8015b1a5c50.upcdnx.com%2Fzd%2F2Pr4KZdcrI7d8NBAyrG7eQ%2F1637940555%2Flczxvxonvgzs%2Fl92cupzzt4hw%2Fv.mp4&id=1757&type=mp4"},
+    {ep:3,embed:"https://embedsb.com/e/l3en6v9ycal6.html"},
+    {ep:4,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2Fe9f8015b1a5c50.upcdnx.com%2Fzd%2FyRKQgIp14TeiD6co9W4zQw%2F1637735326%2Frlni0dl1jyca%2Faat47vbdv9w2%2Fv.mp4&id=1779&type=mp4"},
+    {ep:5,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2Fe9f8015b1a5c50.upcdnx.com%2Fzd%2FjF90lRruy9OLtT-r0n_k-g%2F1638266909%2Frbn5e06qafyx%2Fxzqs6ngb7arw%2Fv.mp4&id=1795&type=mp4"},
+    {ep:6,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2Fe178b0126081e9.upcdnx.com%2Fzd%2FDteWMQNDe_vwslYbNoX2wg%2F1638357955%2F6cmvyjrqczop%2F4egyg2p2w4sp%2Fv.mp4&id=1800&type=mp4"},
+    {ep:7,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2Fe9f8015b1a5c50.upcdnx.com%2Fzd%2FpkGyPvGd4K8_O064ZvvFUQ%2F1638861856%2Flo4ooy4l2ohz%2Febo74qd9ccjq%2Fv.mp4&id=1820&type=mp4"},
+    {ep:8,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2Ff9a974e59f0b1c.upcdnx.com%2Fzd%2F321Lta-0stMACTitkKFPCg%2F1638947845%2Fynj1y9sdmhuy%2F5dgandbslpns%2Fv.mp4&id=1823&type=mp4"},
+    {ep:9,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2F54db0afe37faa7.upcdnx.com%2Fzd%2Fteiy3P5piMVXMAEuNrrTJA%2F1639477008%2Fr8lwphba3yof%2Fsts14pf5gwab%2Fv.mp4&id=1850&type=mp4"},
+    {ep:10,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2Fb06a1941a02567.upcdnx.com%2Fzd%2FL8fsWtNF3pCEXx-NlATG3A%2F1639552923%2Fkjb5us6bkw9s%2Fckjd67bolknu%2Fv.mp4&id=1856&type=mp4"},
+    {ep:11,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2Fb06a1941a02567.upcdnx.com%2Fzd%2FNuu2cPAWkhQEvdFD-vG0yg%2F1640164106%2Fg43d9277nd2k%2Ftsvfcsjnjwdz%2Fv.mp4&id=1881&type=mp4"},
+    {ep:12,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2Fb06a1941a02567.upcdnx.com%2Fzd%2F6wWaad7rIleRtun-Z00u5g%2F1640680848%2Ffgm3tbsims9a%2Flnvnuofl1sff%2Fv.mp4&id=1911&type=mp4"},
+    {ep:13,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2Ff9a974e59f0b1c.upcdnx.com%2Fzd%2FI8_gCV9iUAG0XNjk3iW7ww%2F1640787022%2Fi01ktgehcraj%2Fz1mncu2oi8pn%2Fv.mp4&id=1914&type=mp4"},
+    {ep:14,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2Fe2e5dbc90b1492.upcdnx.com%2Fzd%2FJtEwwa24nvjfAnMCj-N5Hg%2F1641383898%2Fvmrglavdru4y%2Fn0bcjtlnvxun%2Fv.mp4&id=2035&type=mp4"},
+    {ep:15,embed:"https://watchsb.com/e/9m4dx4nz1xa8.html"},
+    {ep:16,embed:"https://watchsb.com/e/i6i6k66y3ddi.html"}
+   ]},
+
+  {id:106,title:"Бид бүгд үхсэн",title_en:"All of Us Are Dead",genre:"Horror, Zombie",rating:7.6,year:2022,poster:"",
+   episodes:[
+    {ep:1,embed:xc("65b9eea6e1cc6bb9f0cd2a47751a186f")},
+    {ep:2,embed:xc("a97da629b098b75c294dffdc3e463904")},
+    {ep:3,embed:xc("a3c65c2974270fd093ee8a9bf8ae7d0b")},
+    {ep:4,embed:xc("2723d092b63885e0d7c260cc007e8b9d")},
+    {ep:5,embed:xc("5f93f983524def3dca464469d2cf9f3e")},
+    {ep:6,embed:xc("698d51a19d8a121ce581499d7b701668")},
+    {ep:7,embed:xc("7f6ffaa6bb0b408017b62254211691b5")},
+    {ep:8,embed:xc("73278a4a86960eeb576a8fd4c9ec6997")},
+    {ep:9,embed:xc("07e1cd7dca89a1678042477183b7ac3f")},
+    {ep:10,embed:xc("da4fb5c6e93e74d3df8527599fa62642")},
+    {ep:11,embed:xc("4c56ff4ce4aaf9573aa5dff913df997a")},
+    {ep:12,embed:xc("a0a080f42e6f13b3a2df133f073095dd")}
+   ]},
+
+  {id:107,title:"Баянбүрд",title_en:"Oasis",genre:"Drama, History",rating:7.5,year:2023,poster:"",
+   episodes:[
+    {ep:1,embed:xc("84c6494d30851c63a55cdb8cb047fadd")},
+    {ep:2,embed:xc("97d98119037c5b8a9663cb21fb8ebf47")},
+    {ep:3,embed:xc("96a93ba89a5b5c6c226e49b88973f46e")},
+    {ep:4,embed:xc("299570476c6f0309545110c592b6a63b")},
+    {ep:5,embed:xc("db957c626a8cd7a27231adfbf51e20eb")},
+    {ep:6,embed:xc("052335232b11864986bb2fa20fa38748")},
+    {ep:7,embed:xc("645098b086d2f9e1e0e939c27f9f2d6f")},
+    {ep:8,embed:xc("5b6ba13f79129a74a3e819b78e36b922")},
+    {ep:9,embed:xc("d757719ed7c2b66dd17dcee2a3cb29f4")},
+    {ep:10,embed:xc("85f007f8c50dd25f5a45fca73cad64bd")},
+    {ep:11,embed:xc("49ad23d1ec9fa4bd8d77d02681df5cfa")},
+    {ep:12,embed:xc("3c947bc2f7ff007b86a9428b74654de5")},
+    {ep:13,embed:xc("7e9e346dc5fd268b49bf418523af8679")},
+    {ep:14,embed:xc("c45008212f7bdf6eab6050c2a564435a")},
+    {ep:15,embed:xc("44968aece94f667e4095002d140b5896")},
+    {ep:16,embed:xc("9f6992966d4c363ea0162a056cb45fe5")}
+   ]},
+
+  {id:108,title:"Бидний блюз",title_en:"Our Blues",genre:"Drama, Romance",rating:8.0,year:2022,poster:"",
+   episodes:[
+    {ep:1,embed:xc("cd00692c3bfe59267d5ecfac5310286c")},
+    {ep:2,embed:xc("fe73f687e5bc5280214e0486b273a5f9")},
+    {ep:3,embed:xc("13f9896df61279c928f19721878fac41")},
+    {ep:4,embed:xc("0bb4aec1710521c12ee76289d9440817")},
+    {ep:5,embed:xc("bac9162b47c56fc8a4d2a519803d51b3")},
+    {ep:8,embed:xc("39461a19e9eddfb385ea76b26521ea48")},
+    {ep:10,embed:xc("f4f6dce2f3a0f9dada0c2b5b66452017")},
+    {ep:11,embed:xc("66368270ffd51418ec58bd793f2d9b1b")},
+    {ep:12,embed:xc("a49e9411d64ff53eccfdd09ad10a15b3")},
+    {ep:14,embed:xc("9431c87f273e507e6040fcb07dcb4509")},
+    {ep:15,embed:xc("559cb990c9dffd8675f6bc2186971dc2")},
+    {ep:16,embed:xc("55a7cf9c71f1c9c495413f934dd1a158")},
+    {ep:17,embed:xc("10a7cdd970fe135cf4f7bb55c0e3b59f")},
+    {ep:18,embed:xc("f3f27a324736617f20abbf2ffd806f6d")}
+   ]},
+
+  {id:109,title:"Бусад нь хамаагүй",title_en:"Its Okay to Not Be Okay",genre:"Romance, Drama",rating:8.5,year:2020,poster:"",
+   episodes:[
+    {ep:1,embed:xc("b51a15f382ac914391a58850ab343b00")},
+    {ep:2,embed:xc("e00406144c1e7e35240afed70f34166a")},
+    {ep:3,embed:xc("242c100dc94f871b6d7215b868a875f8")},
+    {ep:4,embed:xc("944bdd9636749a0801c39b6e449dbedc")},
+    {ep:5,embed:xc("bb7946e7d85c81a9e69fee1cea4a087c")},
+    {ep:6,embed:xc("17fafe5f6ce2f1904eb09d2e80a4cbf6")},
+    {ep:7,embed:xc("861dc9bd7f4e7dd3cccd534d0ae2a2e9")},
+    {ep:8,embed:xi("3e313b9badf12632cdae5452d20e1af6")},
+    {ep:9,embed:xc("ea8fcd92d59581717e06eb187f10666d")},
+    {ep:10,embed:xc("4e0d67e54ad6626e957d15b08ae128a6")},
+    {ep:11,embed:xc("7895fc13088ee37f511913bac71fa66f")},
+    {ep:12,embed:xc("1f3202d820180a39f736f20fce790de8")}
+   ]},
+
+  {id:110,title:"Баян айлын хүү",title_en:"Reborn Rich",genre:"Drama, Fantasy",rating:7.9,year:2022,poster:"",
+   episodes:[
+    {ep:2,embed:xc("2df45244f09369e16ea3f9117ca45157")},
+    {ep:3,embed:xc("4476b929e30dd0c4e8bdbcc82c6ba23a")},
+    {ep:7,embed:xc("effc299a1addb07e7089f9b269c31f2f")},
+    {ep:8,embed:xc("6c1da886822c67822bcf3679d04369fa")},
+    {ep:9,embed:xc("d9731321ef4e063ebbee79298fa36f56")},
+    {ep:10,embed:xi("59f51fd6937412b7e56ded1ea2470c25")},
+    {ep:11,embed:xc("856fc81623da2150ba2210ba1b51d241")},
+    {ep:12,embed:xc("afe434653a898da20044041262b3ac74")},
+    {ep:13,embed:xc("80a8155eb153025ea1d513d0b2c4b675")},
+    {ep:14,embed:xc("0a1bf96b7165e962e90cb14648c9462d")},
+    {ep:16,embed:xc("8a146f1a3da4700cbf03cdc55e2daae6")}
+   ]},
+
+  {id:111,title:"Санал",title_en:"Business Proposal",genre:"Romance, Comedy",rating:8.2,year:2022,poster:"",
+   episodes:[
+    {ep:1,embed:xc("b1d10e7bafa4421218a51b1e1f1b0ba2")},
+    {ep:2,embed:xc("eb163727917cbba1eea208541a643e74")},
+    {ep:3,embed:xc("57aeee35c98205091e18d1140e9f38cf")},
+    {ep:4,embed:xc("6da9003b743b65f4c0ccd295cc484e57")},
+    {ep:5,embed:xc("38db3aed920cf82ab059bfccbd02be6a")},
+    {ep:6,embed:xc("6c9882bbac1c7093bd25041881277658")},
+    {ep:7,embed:xc("f7664060cc52bc6f3d620bcedc94a4b6")},
+    {ep:8,embed:xc("39059724f73a9969845dfe4146c5660e")},
+    {ep:9,embed:xc("1700002963a49da13542e0726b7bb758")},
+    {ep:10,embed:xc("6883966fd8f918a4aa29be29d2c386fb")},
+    {ep:11,embed:xc("950a4152c2b4aa3ad78bdd6b366cc179")},
+    {ep:12,embed:xc("758874998f5bd0c393da094e1967a72b")}
+   ]},
+
+  {id:112,title:"Масктай охин",title_en:"Mask Girl",genre:"Thriller, Drama",rating:7.2,year:2023,poster:"",
+   episodes:[
+    {ep:2,embed:xc("e77dbaf6759253c7c6d0efc5690369c7")},
+    {ep:4,embed:xc("7e3b7a5bafcb0fa8e8dfe3ea6aca9186")},
+    {ep:5,embed:xc("7b4773c039d539af17c883eb9283dd14")},
+    {ep:6,embed:xc("a3eb043e7bf775de87763e9f8121c953")},
+    {ep:7,embed:xc("806fec5af7f5b48b8a31a003e171f3fb")}
+   ]},
+
+  {id:113,title:"Сайн цагдаа",title_en:"The Good Detective",genre:"Crime, Drama",rating:8.0,year:2020,poster:"",
+   episodes:[
+    {ep:1,embed:xc("15cf76466b97264765356fcc56d801d1")},
+    {ep:2,embed:xc("1dba5eed8838571e1c80af145184e515")},
+    {ep:3,embed:xc("6e3197aae95c2ff8fcab35cb730f6a86")},
+    {ep:4,embed:xc("332647f433a1c10fa2e2ae04abfdf83e")},
+    {ep:5,embed:xc("a36b0dcd1e6384abc0e1867860ad3ee3")},
+    {ep:7,embed:xc("e22cb9d6bbb4c290a94e4fff4d68a831")},
+    {ep:8,embed:xc("0f21f0349462cacdc5796990d37760ae")},
+    {ep:9,embed:xc("b1b0432ceafb0ce714426e9114852ac7")},
+    {ep:10,embed:xc("769675d7c11f336ae6573e7e533570ec")},
+    {ep:11,embed:xc("3a61ed715ee66c48bacf237fa7bb5289")},
+    {ep:12,embed:xc("ee16fa83c0f151ef85e617f5aa3867a6")},
+    {ep:13,embed:xc("4fa177df22864518b2d7818d4db5db2d")},
+    {ep:14,embed:xc("5da713a690c067105aeb2fae32403405")},
+    {ep:15,embed:xc("f5496252609c43eb8a3d147ab9b9c006")},
+    {ep:16,embed:xc("bdb6920adcd0457aa17b53b22963dad9")}
+   ]},
+
+  {id:114,title:"Баяртай дэлхий",title_en:"Goodbye Earth",genre:"Sci-Fi, Drama",rating:7.5,year:2024,poster:"",
+   episodes:[
+    {ep:1,embed:xc("6a4d5952d4c018a1c1af9fa590a10dda")},
+    {ep:2,embed:xc("98b17f068d5d9b7668e19fb8ae470841")},
+    {ep:3,embed:xc("b299ad862b6f12cb57679f0538eca514")},
+    {ep:4,embed:xc("5e6d27a7a8a8330df4b53240737ccc85")},
+    {ep:5,embed:xc("20c86a628232a67e7bd46f76fba7ce12")},
+    {ep:6,embed:xc("ce393994e8cf430867408678d1a5a9c8")},
+    {ep:7,embed:xc("7a98af17e63a0ac09ce2e96d03992fbc")},
+    {ep:8,embed:xc("73e5080f0f3804cb9cf470a8ce895dac")},
+    {ep:9,embed:xc("976abf49974d4686f87192efa0513ae0")},
+    {ep:10,embed:xc("e8258e5140317ff36c7f8225a3bf9590")},
+    {ep:11,embed:xc("45c166d697d65080d54501403b433256")},
+    {ep:12,embed:xc("ce47be4abd80ac324c645fd57a27fc73")}
+   ]},
+
+  {id:115,title:"Ах дүүс",title_en:"Brothers",genre:"Drama",rating:7.5,year:2023,poster:"",
+   episodes:[
+    {ep:1,embed:xc("4e87337f366f72daa424dae11df0538c")},
+    {ep:2,embed:xc("19de10adbaa1b2ee13f77f679fa1483a")},
+    {ep:3,embed:xc("9fdb62f932adf55af2c0e09e55861964")},
+    {ep:4,embed:xc("d54e99a6c03704e95e6965532dec148b")},
+    {ep:5,embed:xc("29530de21430b7540ec3f65135f7323c")},
+    {ep:6,embed:xc("52d2752b150f9c35ccb6869cbf074e48")},
+    {ep:7,embed:xc("6a508a60aa3bf9510ea6acb021c94b48")},
+    {ep:8,embed:xc("a38b16173474ba8b1a95bcbc30d3b8a5")},
+    {ep:9,embed:xc("405e28906322882c5be9b4b27f4c35fd")},
+    {ep:10,embed:xc("798cebccb32617ad94123450fd137104")},
+    {ep:11,embed:xc("d7a84628c025d30f7b2c52c958767e76")},
+    {ep:12,embed:xc("95192c98732387165bf8e396c0f2dad2")},
+    {ep:13,embed:xc("d79c6256b9bdac53a55801a066b70da3")},
+    {ep:14,embed:xc("3875115bacc48cca24ac51ee4b0e7975")}
+   ]},
+
+  {id:116,title:"Барилгын эзэн",title_en:"Building Owner",genre:"Drama",rating:7.0,year:2022,poster:"",
+   episodes:[
+    {ep:1,embed:xi("db0513583c7b05237076d942baab7ce9")},
+    {ep:2,embed:xi("412604be30f701b1b1e3124c252065e6")},
+    {ep:3,embed:xi("9e886e4b377efe990f936dde0d9c98ca")},
+    {ep:4,embed:xi("ae3f58a127f6c1f12c4942432d1f246a")}
+   ]},
+
+  {id:117,title:"Бөгжний эзэн: Хүчний бөгжнүүд",title_en:"The Lord of the Rings The Rings of Power",genre:"Fantasy, Adventure",rating:7.0,year:2022,poster:"https://image.tmdb.org/t/p/w300/mYLOqiStMxDK3fYZFirgrMt8z5d.jpg",
+   seasons:[
+    {s:1,episodes:[
+      {ep:1,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2Ff9a974e59f0b1c.upcdnx.com%2Fzd%2FN8FWIyCoCG56YMeQON6wkg%2F1662508631%2Fhmebmtdujwwn%2Fy4kdsneb4nci%2Fv.mp4&id=284&type=mp4"},
+      {ep:3,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2Fe2e5dbc90b1492.upcdnx.com%2Fzd%2FtTiNjZ4Crgvo12OtmbVtZg%2F1662516122%2Fkh6ri3h67umz%2Fln6dogim0v7r%2Fv.mp4&id=286&type=mp4"},
+      {ep:4,embed:xc("08fe2621d8e716b02ec0da35256a998d")},
+      {ep:5,embed:xc("a0e2a2c563d57df27213ede1ac4ac780")},
+      {ep:6,embed:xc("818f4654ed39a1c147d1e51a00ffb4cb")},
+      {ep:8,embed:xc("55b1927fdafef39c48e5b73b5d61ea60")}
+    ]},
+    {s:2,episodes:[
+      {ep:1,embed:xc("afab3e9707435d6b0888b566d7ad3ff8")},
+      {ep:2,embed:xc("5a9d8bf5b7a4b35f3110dde8673bdda2")},
+      {ep:3,embed:xc("b99d193b66a6542917d2b7bee52c2574")},
+      {ep:4,embed:xi("285a25c17f351708754cdb6d56f3962e")},
+      {ep:5,embed:xi("aba53da2f6340a8b89dc96d09d0d0430")},
+      {ep:6,embed:xi("60a0575ee6ce460e1d86c0e9d281c4f1")},
+      {ep:7,embed:xi("cae82d4350cc23aca7fc9ae38dab38ab")},
+      {ep:8,embed:xi("a22d33b4a00c165507a61f3bed4b5149")},
+      {ep:"Sp",embed:xi("ee0e95249268b86ff2053bef214bfeda")}
+    ]}
+   ]},
+
+  // International Series
+  {id:201,title:"Аркейн",title_en:"Arcane",genre:"Animation, Action",rating:9.0,year:2021,poster:"https://image.tmdb.org/t/p/w300/fqldf2t8ztc9DPJEcewSmnjUJFT.jpg",
+   seasons:[
+    {s:1,episodes:[
+      {ep:1,embed:xi("b5b8c484824d8a06f4f3d570bc420313")},
+      {ep:2,embed:xi("46d3f6029f6170ebccb28945964d09bf")},
+      {ep:3,embed:xi("b7d0858d41a6c29b873e4aba411e6d04")},
+      {ep:4,embed:xi("cac8e13055d2e4f62b6322254203b293")},
+      {ep:5,embed:xi("ea9268cb43f55d1d12380fb6ea5bf572")},
+      {ep:6,embed:xi("65b1e92c585fd4c2159d5f33b5030ff2")},
+      {ep:7,embed:xi("243be2818a23c980ad664f30f48e5d19")},
+      {ep:8,embed:xi("1c66f4627f1b9679f8db47d1287d7e98")},
+      {ep:9,embed:xi("6e2eec9ca19c076736d19ac5426473af")}
+    ]},
+    {s:2,episodes:[
+      {ep:1,embed:xi("bca382c81484983f2d437f97d1e141f3")},
+      {ep:2,embed:xi("582967e09f1b30ca2539968da0a174fa")},
+      {ep:3,embed:xi("b9f35816f460ab999cbc168c4da26ff3")},
+      {ep:4,embed:xi("db346ccb62d491029b590bbbf0f5c412")},
+      {ep:5,embed:xi("2ed80f6311c1825feb854d78fa969d34")},
+      {ep:6,embed:xi("ccc81a97c1535f9a631b9db584a264e4")},
+      {ep:7,embed:xi("fd5ac6ce504b74460b93610f39e481f7")},
+      {ep:8,embed:xi("4837ba5cd49c7f03caaa423049e66daf")},
+      {ep:9,embed:xi("4fc848051e4459b8a6afeb210c3664ec")}
+    ]}
+   ]},
+
+  {id:202,title:"Ахсока",title_en:"Ahsoka",genre:"Action, Sci-Fi",rating:7.8,year:2023,poster:"https://image.tmdb.org/t/p/w300/5sqaV4h9dK0hWFx2f29hATwA4L3.jpg",
+   episodes:[
+    {ep:1,embed:xc("794288f252f45d35735a13853e605939")},
+    {ep:2,embed:xc("f7e2b2b75b04175610e5a00c1e221ebb")},
+    {ep:3,embed:xc("466accbac9a66b805ba50e42ad715740")},
+    {ep:4,embed:xc("063e26c670d07bb7c4d30e6fc69fe056")},
+    {ep:5,embed:xc("a9365bd906e11324065c35be476beb0c")},
+    {ep:6,embed:xc("b427426b8acd2c2e53827970f2c2f526")},
+    {ep:7,embed:xc("6a4cbdaedcbda0fa8ddc7ea32073c475")},
+    {ep:8,embed:xc("f8b932c70d0b2e6bf071729a4fa68dfc")}
+   ]},
+
+  {id:203,title:"Андор",title_en:"Andor",genre:"Sci-Fi, Drama",rating:8.4,year:2022,poster:"https://image.tmdb.org/t/p/w300/uDdx2K332Wk6a23a1wRXIe402xH.jpg",
+   episodes:[
+    {ep:2,embed:xc("537d9b6c927223c796cac288cced29df")},
+    {ep:3,embed:xc("1019c8091693ef5c5f55970346633f92")},
+    {ep:4,embed:xc("708f3cf8100d5e71834b1db77dfa15d6")},
+    {ep:5,embed:xc("20d135f0f28185b84a4cf7aa51f29500")},
+    {ep:6,embed:xc("ae5e3ce40e0404a45ecacaaf05e5f735")},
+    {ep:7,embed:xc("6c14da109e294d1e8155be8aa4b1ce8e")},
+    {ep:8,embed:xc("905056c1ac1dad141560467e0a99e1cf")},
+    {ep:9,embed:xc("dc4c44f624d600aa568390f1f1104aa0")},
+    {ep:10,embed:xc("193002e668758ea9762904da1a22337c")},
+    {ep:11,embed:xc("a0872cc5b5ca4cc25076f3d868e1bdf8")},
+    {ep:12,embed:xc("a9be4c2a4041cadbf9d61ae16dd1389e")}
+   ]},
+
+  {id:204,title:"Алис: Хилийн орон",title_en:"Alice in Borderland",genre:"Action, Mystery",rating:7.7,year:2020,poster:"https://image.tmdb.org/t/p/w300/dKqa850uvbOlCA9zGGjSMa0G0I.jpg",
+   seasons:[
+    {s:1,episodes:[
+      {ep:1,embed:xc("372d3f309fef061977fb2f7ba36d74d2")},
+      {ep:2,embed:xc("6d9cb7de5e8ac30bd5e8734bc96a35c1")},
+      {ep:3,embed:xc("0245952ecff55018e2a459517fdb40e3")},
+      {ep:4,embed:xc("cec6f62cfb44b1be110b7bf70c8362d8")},
+      {ep:5,embed:xc("991de292e76f74f3c285b3f6d57958d5")},
+      {ep:6,embed:xc("c913303f392ffc643f7240b180602652")},
+      {ep:7,embed:xc("42ffcf057e133f94c1b7b5cf543ef3bd")},
+      {ep:8,embed:xc("8b0d268963dd0cfb808aac48a549829f")}
+    ]},
+    {s:2,episodes:[
+      {ep:1,embed:xc("ac796a52db3f16bbdb6557d3d89d1c5a")},
+      {ep:2,embed:xc("7d6044e95a16761171b130dcb476a43e")},
+      {ep:3,embed:xc("571d3a9420bfd9219f65b643d0003bf4")},
+      {ep:4,embed:xc("97275a23ca44226c9964043c8462be96")},
+      {ep:5,embed:xc("78b9cab19959e4af8ff46156ee460c74")},
+      {ep:6,embed:xc("83cdcec08fbf90370fcf53bdd56604ff")},
+      {ep:7,embed:xc("dc09c97fd73d7a324bdbfe7c79525f64")}
+    ]}
+   ]},
+
+  {id:205,title:"Ашур",title_en:"Ashur",genre:"Crime, Drama",rating:8.1,year:2023,poster:"https://image.tmdb.org/t/p/w300/pI3T2jIe32g2sKxYh4YJzxjA5Z.jpg",
+   episodes:[
+    {ep:3,embed:xi("fea16e782bc1b1240e4b3c797012e289")},
+    {ep:4,embed:xi("edc27f139c3b4e4bb29d1cdbc45663f9")},
+    {ep:5,embed:xi("c90070e1f03e982448983975a0f52d57")},
+    {ep:6,embed:xi("5e69fda38cda2060819766569fd93aa5")},
+    {ep:7,embed:xi("21b29648a47a45ad16bb0da0c004dfba")},
+    {ep:8,embed:xi("3a246af2678dfad0d536e0a62cf49179")},
+    {ep:9,embed:xi("6b5ce5a5aa1b506c66ece16c4cd9138d")},
+    {ep:10,embed:xi("bb1443cc31d7396bf73e7858cea114e1")}
+   ]}
+
+  // ── Бидний хайрласан зун Season 2 (дунд ангиуд)
+  // Add season 2 to existing entry - handle via data patch below
+
+  {id:118,title:"Муу ба Галзуу",title_en:"Bad and Crazy",genre:"Action, Crime",rating:7.5,year:2021,poster:"",
+   episodes:[
+    {ep:1,embed:xc("e07bceab69529b0f0b43625953fbf2a0")},
+    {ep:2,embed:xc("bc4e356fee1972242c8f7eabf4dff517")},
+    {ep:3,embed:xc("02180771a9b609a26dcea07f272e141f")},
+    {ep:4,embed:xc("1b79b52d1bf6f71b2b1eb7ca08ed0776")},
+    {ep:5,embed:xc("b6d767d2f8ed5d21a44b0e5886680cb9")},
+    {ep:6,embed:xc("bc4e356fee1972242c8f7eabf4dff517")},
+    {ep:7,embed:xc("68d30a9594728bc39aa24be94b319d21")},
+    {ep:8,embed:xc("93db85ed909c13838ff95ccfa94cebd9")}
+   ]},
+
+  {id:119,title:"Буруу эргэлт",title_en:"Wrong Turn",genre:"Horror, Thriller",rating:6.5,year:2021,poster:"",
+   episodes:[
+    {ep:1,embed:"https://www.fembed.com/v/7gp-5bg6djq730-"},
+    {ep:2,embed:"https://www.fembed.com/v/qm61-fe3k2pg0-7"},
+    {ep:3,embed:"https://www.fembed.com/v/68r-ys04xdlxqk5"},
+    {ep:4,embed:"https://www.fembed.com/v/r27k-te4wlwdg-k"},
+    {ep:5,embed:"https://www.fembed.com/v/8n1-5b87zjm8ngn"},
+    {ep:6,embed:"https://short.ink/U2qm7RUyDE"}
+   ]},
+
+  {id:120,title:"Шулам: Цусан гарал үүсэл",title_en:"The Witcher Blood Origin",genre:"Fantasy, Action",rating:5.8,year:2022,poster:"",
+   episodes:[
+    {ep:1,embed:xc("55c567fd4395ecef6d936cf77b8d5b2b")},
+    {ep:2,embed:xc("ced556cd9f9c0c8315cfbe0744a3baf0")},
+    {ep:3,embed:xc("0f3d014eead934bbdbacb62a01dc4831")},
+    {ep:4,embed:xc("bc7316929fe1545bf0b98d114ee3ecb8")}
+   ]},
+
+  {id:121,title:"Бөгсөө буцааж ирсэн нь",title_en:"Return of the Butt",genre:"Comedy",rating:7.0,year:2022,poster:"",
+   episodes:[
+    {ep:1,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2Fpluto.kino99.club%2Fbugsu-butsaj-irsen-ni%2Fbugsu-butsaj-irsen-ni-1.mp4&id=3475&type=mp4"},
+    {ep:2,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2Fpluto.kino99.club%2Fbugsu-butsaj-irsen-ni%2Fbugsu-butsaj-irsen-ni-2.mp4&id=3476&type=mp4"},
+    {ep:3,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2Fpluto.kino99.club%2Fbugsu-butsaj-irsen-ni%2Fbugsu-butsaj-irsen-ni-3.mp4&id=3477&type=mp4"},
+    {ep:4,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2Fpluto.kino99.club%2Fbugsu-butsaj-irsen-ni%2Fbugsu-butsaj-irsen-ni-4.mp4&id=3478&type=mp4"},
+    {ep:5,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2Fpluto.kino99.club%2Fbugsu-butsaj-irsen-ni%2Fbugsu-butsaj-irsen-ni-5.mp4&id=3479&type=mp4"},
+    {ep:6,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2Fpluto.kino99.club%2Fbugsu-butsaj-irsen-ni%2Fbugsu-butsaj-irsen-ni-6.mp4&id=3481&type=mp4"},
+    {ep:7,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2Fpluto.kino99.club%2Fbugsu-butsaj-irsen-ni%2Fbugsu-butsaj-irsen-ni-7.mp4&id=3482&type=mp4"},
+    {ep:8,embed:"https://mglguide.top/news/jwplayer/?source=https%3A%2F%2Fpluto.kino99.club%2Fbugsu-butsaj-irsen-ni%2Fbugsu-butsaj-irsen-ni-8.mp4&id=3483&type=mp4"}
+   ]},
+
+  {id:122,title:"Гэрлэлт",title_en:"Marriage",genre:"Drama",rating:7.5,year:2023,poster:"",
+   episodes:[
+    {ep:3,embed:xc("a36e841c5230a79c2102036d2e259848")},
+    {ep:4,embed:xc("e93028bdc1aacdfb3687181f2031765d")},
+    {ep:5,embed:xc("a0ba2648acd23dc7a5829968ce531a7d")},
+    {ep:6,embed:xc("51be2fed6c55f5aa0c16ff14c140b187")},
+    {ep:"6b",embed:xc("2d95666e2649fcfc6e3af75e09f5adb9")},
+    {ep:"6c",embed:xc("b922ede9c9eb9eabec1c1fecbdecb45d")},
+    {ep:7,embed:xc("1aa057313c28fa4a40c5bc084b11d276")},
+    {ep:"7b",embed:xc("6fec24eac8f18ed793f5eaad3dd7977c")},
+    {ep:8,embed:xc("d8ab1a52f058358b947cdf8261b5e1a2")},
+    {ep:"8b",embed:xc("1bd4b29a8e0afccd9923fe29cecb4b29")},
+    {ep:9,embed:xc("2bb0502c80b7432eee4c5847a5fd077b")},
+    {ep:10,embed:xc("a081cab429ff7a3b96e0a07319f1049e")},
+    {ep:11,embed:xc("b23f52202479e957b9bada847c1175d7")},
+    {ep:"11b",embed:xc("60792d855cd8a912a97711f91a1f155c")},
+    {ep:12,embed:xc("cc3d69ed781b16bce06687822ae56e6d")},
+    {ep:"12b",embed:xc("62f91ce9b820a491ee78c108636db089")},
+    {ep:2,embed:xc("53a1320cb5d2f56130ad5222f93da374")},
+    {ep:1,embed:xc("51be2fed6c55f5aa0c16ff14c140b187")}
+   ]},
+
+  {id:123,title:"Булш ухагч",title_en:"Tomb Raider",genre:"Action, Adventure",rating:7.0,year:2022,poster:"",
+   episodes:[
+    {ep:1,embed:xc("3070e6addcd702cb58de5d7897bfdae1")},
+    {ep:2,embed:xc("1a6727711b84fd1efbb87fc565199d13")},
+    {ep:3,embed:xc("1397386b7a1507535c59764a15ee0c98")},
+    {ep:4,embed:xc("4491777b1aa8b5b32c2e8666dbe1a495")},
+    {ep:5,embed:xc("42a6845a557bef704ad8ac9cb4461d43")},
+    {ep:6,embed:xc("a226e450e214f350856e2980b6e55ac9")},
+    {ep:7,embed:"https://www.fembed.com/v/jdj40sd2ng31red"}
+   ]},
+
+  {id:124,title:"Босогч сар / Босоо мод",title_en:"Rebel Moon Standing Tree",genre:"Sci-Fi, Drama",rating:7.0,year:2023,poster:"",
+   episodes:[
+    {ep:1,embed:xc("6244b2ba957c48bc64582cf2bcec3d04")},
+    {ep:2,embed:xc("838e8afb1ca34354ac209f53d90c3a43")},
+    {ep:3,embed:xc("c32d9bf27a3da7ec8163957080c8628e")},
+    {ep:4,embed:xc("f4573fc71c731d5c362f0d7860945b88")},
+    {ep:5,embed:xc("f4a331b7a22d1b237565d8813a34d8ac")},
+    {ep:6,embed:xc("ad71c82b22f4f65b9398f76d8be4c615")},
+    {ep:7,embed:xc("cfa5301358b9fcbe7aa45b1ceea088c6")},
+    {ep:8,embed:xc("5cbdfd0dfa22a3fca7266376887f549b")},
+    {ep:9,embed:xc("df12ecd077efc8c23881028604dbb8cc")},
+    {ep:16,embed:xc("6490791e7abf6b29a381288cc23a8223")}
+   ]},
+
+  {id:125,title:"Бяцхан гүнж / цэрэг",title_en:"Little Princess Soldier",genre:"Family, Drama",rating:7.5,year:2022,poster:"",
+   episodes:[
+    {ep:1,embed:xc("9232fe81225bcaef853ae32870a2b0fe")},
+    {ep:2,embed:xc("ef4e3b775c934dada217712d76f3d51f")},
+    {ep:3,embed:xc("692f93be8c7a41525c0baf2076aecfb4")},
+    {ep:4,embed:xc("2bcab9d935d219641434683dd9d18a03")},
+    {ep:5,embed:xc("766d856ef1a6b02f93d894415e6bfa0e")},
+    {ep:6,embed:xc("0768281a05da9f27df178b5c39a51263")},
+    {ep:7,embed:xc("456ac9b0d15a8b7f1e71073221059886")},
+    {ep:8,embed:xc("4a08142c38dbe374195d41c04562d9f8")},
+    {ep:11,embed:xc("3a15c7d0bbe60300a39f76f8a5ba6896")},
+    {ep:12,embed:xc("c21002f464c5fc5bee3b98ced83963b8")},
+    {ep:13,embed:"https://hqq.to/e/NGcwS04xTVFaYVpPSU93Z3A4NlhwZz09"},
+    {ep:14,embed:"https://dood.to/e/f6xqd7p6arxyqhm8femj36zlo5r8vkdu"},
+    {ep:"S1",embed:"https://www.fembed.com/v/l7d5wannp2pd186"},
+    {ep:"S2",embed:"https://short.ink/7oUSSjMkA"},
+    {ep:"S3",embed:"https://short.ink/lmXLzEF9L"}
+   ]},
+
+  {id:126,title:"Бидний зун",title_en:"Our Summer",genre:"Romance, Drama",rating:7.5,year:2022,poster:"",
+   episodes:[
+    {ep:3,embed:"https://short.ink/vL_No0hSD"},
+    {ep:4,embed:"https://short.ink/LihaHLvRW"},
+    {ep:5,embed:"https://voe.sx/e/ipw5rk3r7om4"},
+    {ep:6,embed:"https://voe.sx/e/j02nid2xvqfr"},
+    {ep:7,embed:"https://voe.sx/e/7g9rrs7t8vwg"},
+    {ep:8,embed:"https://voe.sx/e/5w1o2yi243oi"},
+    {ep:9,embed:xc("941e1aaaba585b952b62c14a3a175a61")},
+    {ep:12,embed:xc("aab3238922bcc25a6f606eb525ffdc56")},
+    {ep:13,embed:xc("d645920e395fedad7bbbed0eca3fe2e0")}
+   ]},
+
+  {id:127,title:"Нэвтрүүлэг",title_en:"Broadcasting",genre:"TV Show",rating:7.0,year:2022,poster:"",
+   episodes:[
+    {ep:1,embed:xc("73b817090081cef1bca77232f4532c5d")},
+    {ep:2,embed:xc("b5b03f06271f8917685d14cea7c6c50a")},
+    {ep:3,embed:xc("dba31bb5c75992690f20c2d3b370ec7c")},
+    {ep:7,embed:xc("5dc126b503e374b0e08231344a7f493f")},
+    {ep:12,embed:xc("b91b1facf3b3a7890177f02ac188f14c")},
+    {ep:14,embed:xc("cb12d7f933e7d102c52231bf62b8a678")},
+    {ep:16,embed:xc("a0b83c02d720415dada82e08bc09e9f3")}
+   ]},
+
+  {id:128,title:"Үүлс",title_en:"Clouds",genre:"Drama",rating:7.0,year:2022,poster:"",
+   episodes:[
+    {ep:1,embed:xc("16ba72172e6a4f1de54d11ab6967e371")},
+    {ep:2,embed:xc("f8bf09f5fceaea80e1f864a1b48938bf")},
+    {ep:3,embed:xc("850af92f8d9903e7a4e0559a98ecc857")},
+    {ep:4,embed:xc("e0a209539d1e74ab9fe46b9e01a19a97")},
+    {ep:5,embed:xc("1a0a283bfe7c549dee6c638a05200e32")},
+    {ep:9,embed:xc("0d73a25092e5c1c9769a9f3255caa65a")},
+    {ep:10,embed:xc("e21e4e58ad9ab56e8a4634046da90113")}
+   ]},
+
+  {id:129,title:"BBFT",title_en:"BBFT",genre:"Drama",rating:7.0,year:2022,poster:"",
+   episodes:[
+    {ep:1,embed:xc("d2ddea18f00665ce8623e36bd4e3c7c5")},
+    {ep:2,embed:xc("ad61ab143223efbc24c7d2583be69251")},
+    {ep:3,embed:xc("1f0e3dad99908345f7439f8ffabdffc4")},
+    {ep:4,embed:xc("32bb90e8976aab5298d5da10fe66f21d")},
+    {ep:5,embed:xc("c9e1074f5b3f9fc8ea15d152add07294")},
+    {ep:6,embed:xc("65ded5353c5ee48d0b7d48c591b8f430")},
+    {ep:7,embed:xc("47d1e990583c9c67424d369f3414728e")}
+   ]},
+
+  // The Acolyte (from data.json)
+  {id:206,title:"Ашидын шавь",title_en:"The Acolyte",genre:"Sci-Fi, Action",rating:3.6,year:2024,poster:"https://image.tmdb.org/t/p/w300/7IksfppB3lIIySj6s0Q3g2sK03S.jpg",
+   episodes:[
+    {ep:1,embed:xc("d54ce9de9df77c579775a7b6b1a4bdc0")},
+    {ep:2,embed:xc("95177e528f8d6c7c28a5473fd5a471b6")},
+    {ep:3,embed:xc("d7aab42e6b85c49c0f1d3a115e939c74")},
+    {ep:4,embed:xc("334467d41d5cf21e234465a1530ba647")},
+    {ep:5,embed:xi("20b02dc95171540bc52912baf3aa709d")},
+    {ep:6,embed:xi("0987b8b338d6c90bbedd8631bc499221")},
+    {ep:7,embed:xi("165a59f7cf3b5c4396ba65953d679f17")},
+    {ep:8,embed:xi("384babc3e7faa44cf1ca671b74499c3b")}
+   ]},
+];
+
+// ══════════════════════════════════════════
+// SERIES HELPERS
+// ══════════════════════════════════════════
+let currentSeries = null;
+let currentSeriesSeason = 0; // index into seasons array
+
+function getSeriesEps(s) {
+  if (s.seasons) return s.seasons[currentSeriesSeason]?.episodes || [];
+  return s.episodes || [];
+}
+function getSeriesEpCount(s) {
+  if (s.seasons) return s.seasons.reduce((acc,ss)=>acc+(ss.episodes||[]).length,0);
+  return (s.episodes||[]).length;
+}
+function getSeriesSeasons(s) {
+  return s.seasons ? s.seasons.length : 1;
+}
+
+// ── Series Card
+function makeSeriesCard(s) {
+  const d = document.createElement('div');
+  d.className = 'mcard';
+  const epCount = getSeriesEpCount(s);
+  const seasons = getSeriesSeasons(s);
+  const badge = seasons > 1 ? `${seasons} улирал` : `${epCount} анги`;
+  d.innerHTML = `
+    <div class="mcard-poster-wrap">
+      <img class="mcard-poster" src="${s.poster || FALLBACK_IMAGE}" alt="${s.title}" loading="lazy"
+           data-title="${s.title_en}" data-year="${s.year}"
+           onerror="fixPoster(this,'${s.title_en}',${s.year})">
+      <div class="ep-badge">📺 ${badge}</div>
+      <div class="mcard-ov">
+        <div class="mcard-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+      </div>
+    </div>
+    <div class="mcard-info">
+      <div class="mcard-title">${s.title}</div>
+      <div class="mcard-sub"><span class="st">★</span>${s.rating}<span>·</span>${s.year}</div>
+    </div>`;
+  d.addEventListener('click', () => openSeriesDetail(s));
+  // Auto-fix poster if empty
+  if (!s.poster) {
+    const img = d.querySelector('img');
+    setTimeout(() => fixPoster(img, s.title_en, s.year), 50);
+  }
+  return d;
+}
+
+function renderSeriesRow(id, list) {
+  const el = document.getElementById(id); if (!el) return; el.innerHTML = '';
+  list.forEach(s => el.appendChild(makeSeriesCard(s)));
+}
+function renderSeriesGrid(id, list) {
+  const el = document.getElementById(id); if (!el) return; el.innerHTML = '';
+  list.forEach(s => el.appendChild(makeSeriesCard(s)));
+}
+
+// ── Open Series Detail Modal
+function openSeriesDetail(s) {
+  currentSeries = s;
+  currentSeriesSeason = 0;
+  document.getElementById('smHero').style.backgroundImage = `url('${s.poster || FALLBACK_IMAGE}')`;
+  document.getElementById('smTitle').textContent = s.title;
+  document.getElementById('smMeta').innerHTML = `
+    <span class="st">⭐ ${s.rating}</span>
+    <span>${s.year}</span>
+    <span class="tag">${s.genre}</span>`;
+  document.getElementById('smDesc').textContent = s.title_en + ' — Монгол хадмал.';
+  // Season tabs
+  const tabsEl = document.getElementById('smSeasonTabs');
+  if (s.seasons && s.seasons.length > 1) {
+    tabsEl.innerHTML = s.seasons.map((ss, i) =>
+      `<div class="s-tab${i===0?' on':''}" onclick="switchSeriesSeason(${i},this)">Улирал ${ss.s}</div>`
+    ).join('');
+  } else {
+    tabsEl.innerHTML = '';
+  }
+  renderSeriesEps(0);
+  document.getElementById('seriesModal').classList.add('open');
+}
+
+function switchSeriesSeason(idx, btn) {
+  currentSeriesSeason = idx;
+  document.querySelectorAll('#smSeasonTabs .s-tab').forEach(t => t.classList.remove('on'));
+  if (btn) btn.classList.add('on');
+  renderSeriesEps(idx);
+}
+
+function renderSeriesEps(seasonIdx) {
+  const s = currentSeries;
+  const eps = s.seasons ? (s.seasons[seasonIdx]?.episodes || []) : (s.episodes || []);
+  const header = document.getElementById('smEpHeader');
+  const grid = document.getElementById('smEpGrid');
+  header.textContent = `${eps.length} анги байна`;
+  grid.innerHTML = eps.map(ep => `
+    <div class="ep-item" onclick="playSeriesEp(${ep.ep},'${ep.embed.replace(/'/g,"\\'")}',this)">
+      <div class="ep-num">${ep.ep}</div>
+      <div class="ep-label">Анги</div>
+    </div>`).join('');
+}
+
+function playSeriesEp(ep, embed, btn) {
+  if (!currentUser) {
+    closeM('seriesModal'); openAuth('login');
+    toast('Үзэхийн тулд нэвтэрнэ үү 🔐'); return;
+  }
+  document.querySelectorAll('#smEpGrid .ep-item').forEach(e => e.classList.remove('playing'));
+  if (btn) btn.classList.add('playing');
+  const wrap = document.getElementById('playerWrap');
+  wrap.innerHTML = `<iframe src="${embed}" allowfullscreen allow="autoplay; encrypted-media; fullscreen" style="width:100%;height:100%;border:none;background:#000;display:block"></iframe>`;
+  document.getElementById('pTitle').textContent = `${currentSeries.title} — ${ep}-р анги`;
+  document.getElementById('pMeta').innerHTML = `<span style="color:var(--gold)">⭐ ${currentSeries.rating}</span><span style="color:var(--text2);margin-left:10px">· ${currentSeries.year} · ${currentSeries.genre}</span>`;
+  closeM('seriesModal');
+  document.getElementById('playerModal').classList.add('open');
+}
+
+// ── Series Page
+let seriesSort = 'new';
+function initSeriesPage() {
+  const genres = ['Бүгд', ...new Set(SERIES.flatMap(s => s.genre.split(',').map(g=>g.trim())))];
+  const bar = document.getElementById('seriesGenreBar');
+  bar.innerHTML = genres.slice(0, 12).map(g =>
+    `<div class="gpill${g==='Бүгд'?' on':''}" onclick="setSeriesGenre('${g}',this)">${g}</div>`
+  ).join('');
+  applySeriesFilters();
+}
+let seriesGenre = 'Бүгд';
+function setSeriesGenre(g, btn) {
+  seriesGenre = g;
+  document.querySelectorAll('#seriesGenreBar .gpill').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  applySeriesFilters();
+}
+function sortSeriesPage(v) { seriesSort = v; applySeriesFilters(); }
+function applySeriesFilters() {
+  let list = [...SERIES];
+  if (seriesGenre !== 'Бүгд') list = list.filter(s => s.genre.includes(seriesGenre));
+  if (seriesSort === 'rating') list.sort((a,b) => b.rating - a.rating);
+  else if (seriesSort === 'name') list.sort((a,b) => a.title.localeCompare(b.title,'mn'));
+  else list.sort((a,b) => b.year - a.year);
+  renderSeriesGrid('seriesGrid', list);
+  document.getElementById('sCount').textContent = `${list.length} цуврал`;
+}
 
 const HERO_MOVIES = MOVIES.slice(0,6);
 
@@ -1253,7 +2038,7 @@ function doSearch(q){
 // ══════════════════════════════════════════
 // PAGE NAVIGATION
 // ══════════════════════════════════════════
-const PAGE_INIT={movies:initMoviesPage,games:initGamesPage,weather:initWeatherPage};
+const PAGE_INIT={movies:initMoviesPage,games:initGamesPage,weather:initWeatherPage,series:initSeriesPage};
 let pageInitsDone={movies:false,games:false,weather:false};
 
 function gotoPage(p,noScroll=false){
@@ -1271,6 +2056,7 @@ function gotoPage(p,noScroll=false){
     renderMovieRow('rowAction', MOVIES.filter(m => m.cat === 'action').slice(0,10));
     renderMovieRow('rowTvShows', MOVIES.filter(m => m.cat === 'tvshows').slice(0,10));
     renderMovieRow('rowMusic', MOVIES.filter(m => m.cat === 'music').slice(0,10));
+    renderSeriesRow('rowSeries', SERIES.filter(s=>s.rating>=8.0).slice(0,12));
     renderGameRow('rowGames', GAMES);
   }
   else if(PAGE_INIT[p] && !pageInitsDone[p]){
@@ -1348,21 +2134,20 @@ function updateNavUser(){
     document.getElementById('navAvatar').textContent=currentUser.name[0].toUpperCase();
     document.getElementById('navUserName').textContent=currentUser.name;
   } else {
-    lb.style.display='flex';ub.style.display='none';
+    lb.style.display='flex'; ub.style.display='none';
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+// ══════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════
+(function(){
   try {
-    var s = localStorage.getItem('nb_session');
-    if(s) {
-      currentUser = JSON.parse(s);
-      updateNavUser();
-    }
+    const s = localStorage.getItem('nb_session');
+    if(s){ currentUser = JSON.parse(s); updateNavUser(); }
   } catch(e) {}
   gotoPage('home');
-});
-
+})();
 </script>
 </body>
 </html>
