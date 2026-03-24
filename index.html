@@ -9,7 +9,6 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  /* MovieBox Style Colors */
   --red: #E50914; --red2: #B20710; --red-glow: rgba(229,9,20,.4);
   --gold: #FFC107; --blue: #1E88E5; --green: #43A047;
   --bg: #050505; --bg2: #111111; --bg3: #1A1A1A; --bg4: #222222; --bg5: #2A2A2A;
@@ -27,7 +26,7 @@ img{display:block;max-width:100%}
 button,select,input{font-family:'Inter',sans-serif}
 a{text-decoration:none;color:inherit}
 
-/* ── NAV (MovieBox Style) ── */
+/* ── NAV ── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:900;height:64px;
   display:flex;align-items:center;gap:0;padding:0 40px;
@@ -83,7 +82,7 @@ nav.scrolled {
 .page.active{display:block}
 .page:not(#page-home){padding-top:80px}
 
-/* ── HERO (MovieBox Style) ── */
+/* ── HERO ── */
 .hero{
   position:relative;height:80vh;min-height:550px;overflow:hidden;
   background:#000;
@@ -162,16 +161,16 @@ main{padding:0 40px}
 }
 .scroll-row::-webkit-scrollbar{display:none}
 
-/* ── MOVIE CARD (MovieBox Style) ── */
+/* ── MOVIE CARD ── */
 .mcard{
   flex-shrink:0;width:180px;border-radius:var(--r);
   background:transparent;cursor:pointer;position:relative;
 }
 .mcard-poster-wrap {
   width:100%;height:270px;border-radius:var(--r);overflow:hidden;position:relative;
-  box-shadow:0 4px 10px rgba(0,0,0,.5);transition:all .3s ease;
+  box-shadow:0 4px 10px rgba(0,0,0,.5);transition:all .3s ease; background:var(--bg3);
 }
-.mcard-poster{width:100%;height:100%;object-fit:cover;background:var(--bg3);transition:transform .3s}
+.mcard-poster{width:100%;height:100%;object-fit:cover;transition:transform .3s}
 .mcard:hover .mcard-poster-wrap { box-shadow:0 10px 25px rgba(0,0,0,.8); transform:scale(1.05); z-index:5; border:2px solid rgba(255,255,255,.1); }
 .mcard:hover .mcard-poster { transform:scale(1.1); }
 
@@ -453,7 +452,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 40p
   .w-featured .temp{font-size:60px}
   .contact-grid{grid-template-columns:1fr}
   .auth-box{padding:30px 20px}
-  .scroll-btn{display:none} /* Hide arrows on mobile, use touch scroll */
+  .scroll-btn{display:none}
 }
 </style>
 </head>
@@ -553,7 +552,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 40p
 <!-- ══════════ MOVIES PAGE ══════════ -->
 <div class="page" id="page-movies">
   <main>
-    <div class="sec-title" style="font-size:28px;margin-bottom:24px">Бүх кино</div>
+    <div class="sec-title" style="font-size:28px;margin-bottom:24px">Бүх контент</div>
     <div class="genre-bar" id="movieGenreBar"></div>
     <div class="sort-bar">
       <label>Эрэмбэлэх:</label>
@@ -724,10 +723,10 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 40p
     <div class="f-col">
       <h4>Төрөл</h4>
       <ul>
-        <li><a href="#" onclick="gotoPage('movies')">Экшн</a></li>
-        <li><a href="#" onclick="gotoPage('movies')">Драм</a></li>
-        <li><a href="#" onclick="gotoPage('movies')">Фантастик</a></li>
-        <li><a href="#" onclick="gotoPage('movies')">Аймшиг</a></li>
+        <li><a href="#" onclick="gotoPage('movies')">Action</a></li>
+        <li><a href="#" onclick="gotoPage('movies')">Drama</a></li>
+        <li><a href="#" onclick="gotoPage('movies')">Music</a></li>
+        <li><a href="#" onclick="gotoPage('movies')">TV Shows</a></li>
       </ul>
     </div>
     <div class="f-col">
@@ -788,33 +787,83 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 40p
 
 <script>
 // ══════════════════════════════════════════
-// DATA (Merged from data.json)
+// TMDB API (Зураг татах ухаалаг функц)
+// ══════════════════════════════════════════
+const TMDB_API_KEY = '0b34540c864eaaf51207c87c28dabb36';
+
+async function fixPoster(imgEl, title, year) {
+  if(imgEl.dataset.tried) return; // Нэг удаа оролдсон бол дахиж уншихгүй
+  imgEl.dataset.tried = "true";
+  try {
+    // Эхлээд Монгол нэрээр хайна
+    let res = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(title)}&language=mn-MN`);
+    let data = await res.json();
+    
+    if(data.results && data.results.length > 0 && data.results[0].poster_path) {
+      imgEl.src = `https://image.tmdb.org/t/p/w500${data.results[0].poster_path}`;
+    } else {
+      // Олдохгүй бол Англиар хайна
+      res = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(title)}`);
+      data = await res.json();
+      if(data.results && data.results.length > 0 && data.results[0].poster_path) {
+        imgEl.src = `https://image.tmdb.org/t/p/w500${data.results[0].poster_path}`;
+      } else {
+        imgEl.src = 'https://via.placeholder.com/300x450/222/777?text=Зураг+олдсонгүй';
+      }
+    }
+  } catch(e) {
+    imgEl.src = 'https://via.placeholder.com/300x450/222/777?text=Зураг+олдсонгүй';
+  }
+}
+
+// ══════════════════════════════════════════
+// DATA (Кино, Дуу, TV Shows)
 // ══════════════════════════════════════════
 const MOVIES =[
-  {id:647,title:"Секрет",year:2026,rating:7.0,poster:"https://image.tmdb.org/t/p/w300/rZqolYhxMEe6TZZTjSmFw9crDTD.jpg",link:"https://mglguide.top/news/tech/scrlt/",embed:"https://infi.xtremestream.xyz/player/index.php?data=81e3225c6ad49623167a4309eb4b2e75",cat:"world",badge:"mn",desc:"Secret"},
-  {id:1102,title:"Тэр",year:2026,rating:9.0,poster:"https://image.tmdb.org/t/p/w300/bpOrZGKbrdk9L0tfMk22o3zCkvz.jpg",link:"https://mglguide.top/news/tech/ter/",embed:"https://infi.xtremestream.xyz/player/index.php?data=415585bd389b69659223807d77a96791",cat:"world",badge:"mn",desc:"He / She / It"},
-  {id:1464,title:"Графт",year:2026,rating:8.0,poster:"https://image.tmdb.org/t/p/w300/cK89AAzR8laGnN6aNH6OX4kUkV6.jpg",link:"https://mglguide.top/news/tech/grft/",embed:"https://infi.xtremestream.co/player/index.php?data=6734fa703f6633ab896eecbdfad8953a",cat:"world",badge:"mn",desc:"Graft"},
-  {id:1480,title:"Culpa Mia",year:2026,rating:6.0,poster:"https://image.tmdb.org/t/p/w300/xuMZp0ZADSi0HEEQkCDkhNXgQEP.jpg",link:"https://mglguide.top/news/tech/mniiburuu1/",embed:"https://infi.xtremestream.xyz/player/index.php?data=c42f891cebbc81aa59f8f183243ac2b9",cat:"world",badge:"mn",desc:"My Fault 1"},
-  {id:1487,title:"What's Wrong with Secretary Kim",year:2026,rating:5.0,poster:"https://image.tmdb.org/t/p/w300/qmq7vKRPoK2VHOTeaUdwwe3l5bB.jpg",link:"https://mglguide.top/news/tech/mitugsnarnbichig7/",embed:"https://infi.xtremestream.xyz/player/index.php?data=a5ff5d4b0a0d7b3e4d64147037d8c344",cat:"world",badge:"mn",desc:"My Perfect Secretary 7"},
-  {id:3266,title:"Red Door",year:2026,rating:7.2,poster:"https://image.tmdb.org/t/p/w300/7fn5A5wUAacSEaCfKDUIDFfJj54.jpg",link:"https://mglguide.top/news/tech/red-door/",embed:"https://infi.xtremestream.co/player/index.php?data=716e1b8c6cd17b771da77391355749f3",cat:"world",badge:"sub",desc:""},
-  {id:3914,title:"Re Member",year:2026,rating:8.0,poster:"https://image.tmdb.org/t/p/w300/9njMmEXfPHVKWdAZg80F4yxlEnZ.jpg",link:"https://mglguide.top/news/tech/re-member/",embed:"https://infi.xtremestream.co/player/index.php?data=647c722bf90a49140184672e0d3723e3",cat:"world",badge:"sub",desc:""},
-  {id:5496,title:"Gun Us",year:2026,rating:6.3,poster:"https://image.tmdb.org/t/p/w300/kf1Jb1c2JAOqjuzA3H4oDM263uB.jpg",link:"https://mglguide.top/news/tech/gun-us/",embed:"https://infi.xtremestream.co/player/index.php?data=e56954b4f6347e897f954495eab16a88",cat:"world",badge:"sub",desc:""},
-  {id:6001,title:"Пелхэм 123",year:2009,rating:6.5,poster:"https://image.tmdb.org/t/p/w300/5cyqK4xMTT3o44IXFZ3N9rlAGRv.jpg",link:"https://mglguide.top/news/tech/123sxdsd/",embed:"https://infi.xtremestream.xyz/player/index.php?data=ac8cd1808dc30460a81cab1b0e6652fa",cat:"action",badge:"mn",desc:"The Taking of Pelham 123"},
-  {id:6002,title:"12 дахь сэжигтэн",year:2019,rating:7.0,poster:"https://image.tmdb.org/t/p/w300/q5MRJaodWV4mQ7bGIJEa1Q3NDXW.jpg",link:"https://mglguide.top/news/tech/12dahsejigten/",embed:"https://www.fembed.com/v/gx8-zs-mpe1y4rd",cat:"thriller",badge:"mn",desc:"The 12th Suspect"},
-  {id:6003,title:"13-ийн халдлага",year:2005,rating:6.4,poster:"https://image.tmdb.org/t/p/w300/wrSGnWgE6CmrSm4OyuCzNJnJxo4.jpg",link:"https://mglguide.top/news/tech/13iinhaldlaga/",embed:"//ok.ru/videoembed/1668829612593",cat:"action",badge:"mn",desc:"Assault on Precinct 13"},
-  {id:6004,title:"14 илд",year:2010,rating:6.3,poster:"https://image.tmdb.org/t/p/w300/kGfJFIjCDqdVBx5EsFHMaAqyPF1.jpg",link:"https://mglguide.top/news/tech/14ild/",embed:"//ok.ru/videoembed/1632050678321",cat:"action",badge:"mn",desc:"14 Blades"},
-  {id:6005,title:"28 жилийн дараа",year:2025,rating:7.5,poster:"https://image.tmdb.org/t/p/w300/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg",link:"https://mglguide.top/news/tech/28jiliindra/",embed:"https://infi.xtremestream.xyz/player/index.php?data=cb59b747f88a35e0d452377f60f7c25f",cat:"horror",badge:"sub",desc:"28 Years Later"},
-  {id:6006,title:"2 ертөнц",year:2021,rating:6.8,poster:"https://image.tmdb.org/t/p/w300/8IaHdEDMQiUAtINWVKHdOcMFAGO.jpg",link:"https://mglguide.top/news/tech/2yrtsonts/",embed:"https://hqq.to/e/TTU0U2xrNGlwRkF3NS90a1RQRUd1QT09",cat:"drama",badge:"sub",desc:"Between Two Worlds"},
-  {id:6007,title:"3 мянган жилийн хүсэл",year:2022,rating:7.0,poster:"https://image.tmdb.org/t/p/w300/eyhFMHBHNGHDsUiT61TzGXLfgxD.jpg",link:"https://mglguide.top/news/tech/3mjilhsvl/",embed:"https://infi.xtremestream.co/player/index.php?data=fba9d88164f3e2d9109ee770223212a0",cat:"drama",badge:"sub",desc:"Three Thousand Years of Longing"},
-  {id:6008,title:"500 өдөр",year:2009,rating:7.7,poster:"https://image.tmdb.org/t/p/w300/7i1HUFnrNSIVdvFq3sAfECzQFJY.jpg",link:"https://mglguide.top/news/tech/500udur/",embed:"https://watchsb.com/e/0p7ev6gkkbum.html",cat:"romance",badge:"mn",desc:"(500) Days of Summer"},
-  {id:6009,title:"5 цус",year:2020,rating:6.5,poster:"https://image.tmdb.org/t/p/w300/qSqHhG2svXhCXYIWeMh1cGJuRxC.jpg",link:"https://mglguide.top/news/tech/5tsus/",embed:"https://ninjastream.to/watch/dloABeG37mzRJ",cat:"war",badge:"mn",desc:"Da 5 Bloods"},
-  {id:6010,title:"6 дахь мэдрэхүй",year:1999,rating:8.1,poster:"https://image.tmdb.org/t/p/w300/jbXfDR4EvOMXsXEeSbAXpRWE7Kb.jpg",link:"https://mglguide.top/news/tech/6dhmrduns2ad/",embed:"https://infi.xtremestream.co/player/index.php?data=7fe1f8abaad094e0b5cb1b01d712f708",cat:"thriller",badge:"mn",desc:"The Sixth Sense"},
-  {id:6011,title:"Аадар бороо",year:1998,rating:5.8,poster:"https://image.tmdb.org/t/p/w300/jbXfDR4EvOMXsXEeSbAXpRWE7Kb.jpg",link:"https://mglguide.top/news/tech/aadarboroo/",embed:"https://short.ink/KjmITxMUfy",cat:"action",badge:"mn",desc:"Hard Rain"},
-  {id:6012,title:"Аалзан толгойт",year:2022,rating:5.4,poster:"https://image.tmdb.org/t/p/w300/jbXfDR4EvOMXsXEeSbAXpRWE7Kb.jpg",link:"https://mglguide.top/news/tech/aalzntolgoit/",embed:"https://infi.xtremestream.co/player/index.php?data=f29c21d4897f78948b91f03172341b7b",cat:"scifi",badge:"mn",desc:"Spiderhead"},
-  {id:6015,title:"Нягтлан",year:2016,rating:7.3,poster:"https://image.tmdb.org/t/p/w300/kkXAVzXyb8T2rBWHNPNrAIXqLXQ.jpg",link:"https://mglguide.top/news/tech/accnt/",embed:"https://www.fembed.com/v/4yd-5iznnk6-ylg",cat:"action",badge:"mn",desc:"The Accountant"},
-  {id:6016,title:"Адам төсөл",year:2022,rating:6.7,poster:"https://image.tmdb.org/t/p/w300/iuFNMS8vloBPC4SiMuoNwuqUIUk.jpg",link:"https://mglguide.top/news/tech/adamtusul/",embed:"https://infi.xtremestream.co/player/index.php?data=f340f1b1f65b6df5b5e3f94d95b11daf",cat:"scifi",badge:"mn",desc:"The Adam Project"},
-  {id:6018,title:"Агшин гялбаа",year:2023,rating:6.7,poster:"https://image.tmdb.org/t/p/w300/rktDFPbfHfUbArZ6OOOKsXcv0Bm.jpg",link:"https://mglguide.top/news/tech/agtnllagg16t/",embed:"https://infi.xtremestream.co/player/index.php?data=c0d0e461de8d0024aebcb0a7c68836df",cat:"action",badge:"mn",desc:"The Flash"},
-  {id:6019,title:"Ахмад",year:2013,rating:7.8,poster:"https://image.tmdb.org/t/p/w300/eh2a4RP6rJ4pAEylMdXNkgkxJAU.jpg",link:"https://mglguide.top/news/tech/ahmad/",embed:"https://www.fembed.com/v/n0r5ws2-x1ger0e",cat:"thriller",badge:"mn",desc:"Captain Phillips"}
+  // Кинонууд (Онуудыг зассан)
+  {id:647,title:"Секрет",title_en:"Secret",year:2007,rating:7.0,poster:"https://image.tmdb.org/t/p/w300/rZqolYhxMEe6TZZTjSmFw9crDTD.jpg",embed:"https://infi.xtremestream.xyz/player/index.php?data=81e3225c6ad49623167a4309eb4b2e75",cat:"drama",desc:"Secret"},
+  {id:1102,title:"Тэр",title_en:"He / She / It",year:2019,rating:9.0,poster:"https://image.tmdb.org/t/p/w300/bpOrZGKbrdk9L0tfMk22o3zCkvz.jpg",embed:"https://infi.xtremestream.xyz/player/index.php?data=415585bd389b69659223807d77a96791",cat:"drama",desc:"He / She / It"},
+  {id:1464,title:"Графт",title_en:"Graft",year:2015,rating:8.0,poster:"https://image.tmdb.org/t/p/w300/cK89AAzR8laGnN6aNH6OX4kUkV6.jpg",embed:"https://infi.xtremestream.co/player/index.php?data=6734fa703f6633ab896eecbdfad8953a",cat:"drama",desc:"Graft"},
+  {id:1480,title:"Culpa Mia",title_en:"My Fault",year:2023,rating:6.0,poster:"https://image.tmdb.org/t/p/w300/xuMZp0ZADSi0HEEQkCDkhNXgQEP.jpg",embed:"https://infi.xtremestream.xyz/player/index.php?data=c42f891cebbc81aa59f8f183243ac2b9",cat:"romance",desc:"My Fault 1"},
+  {id:1487,title:"What's Wrong with Secretary Kim",title_en:"What's Wrong with Secretary Kim",year:2018,rating:8.5,poster:"https://image.tmdb.org/t/p/w300/qmq7vKRPoK2VHOTeaUdwwe3l5bB.jpg",embed:"https://infi.xtremestream.xyz/player/index.php?data=a5ff5d4b0a0d7b3e4d64147037d8c344",cat:"romance",desc:"My Perfect Secretary 7"},
+  {id:3266,title:"Red Door",title_en:"Insidious: The Red Door",year:2023,rating:7.2,poster:"https://image.tmdb.org/t/p/w300/7fn5A5wUAacSEaCfKDUIDFfJj54.jpg",embed:"https://infi.xtremestream.co/player/index.php?data=716e1b8c6cd17b771da77391355749f3",cat:"horror",desc:"Аймшгийн кино"},
+  {id:3914,title:"Re Member",title_en:"Re/Member",year:2022,rating:8.0,poster:"https://image.tmdb.org/t/p/w300/9njMmEXfPHVKWdAZg80F4yxlEnZ.jpg",embed:"https://infi.xtremestream.co/player/index.php?data=647c722bf90a49140184672e0d3723e3",cat:"horror",desc:"Япон аймшиг"},
+  {id:5496,title:"Gun Us",title_en:"Gun Us",year:2021,rating:6.3,poster:"https://image.tmdb.org/t/p/w300/kf1Jb1c2JAOqjuzA3H4oDM263uB.jpg",embed:"https://infi.xtremestream.co/player/index.php?data=e56954b4f6347e897f954495eab16a88",cat:"action",desc:""},
+  {id:6001,title:"Пелхэм 123",title_en:"The Taking of Pelham 123",year:2009,rating:6.5,poster:"https://image.tmdb.org/t/p/w300/5cyqK4xMTT3o44IXFZ3N9rlAGRv.jpg",embed:"https://infi.xtremestream.xyz/player/index.php?data=ac8cd1808dc30460a81cab1b0e6652fa",cat:"action",desc:"The Taking of Pelham 123"},
+  {id:6002,title:"12 дахь сэжигтэн",title_en:"The 12th Suspect",year:2019,rating:7.0,poster:"https://image.tmdb.org/t/p/w300/q5MRJaodWV4mQ7bGIJEa1Q3NDXW.jpg",embed:"https://www.fembed.com/v/gx8-zs-mpe1y4rd",cat:"thriller",desc:"The 12th Suspect"},
+  {id:6003,title:"13-ийн халдлага",title_en:"Assault on Precinct 13",year:2005,rating:6.4,poster:"https://image.tmdb.org/t/p/w300/wrSGnWgE6CmrSm4OyuCzNJnJxo4.jpg",embed:"//ok.ru/videoembed/1668829612593",cat:"action",desc:"Assault on Precinct 13"},
+  {id:6004,title:"14 илд",title_en:"14 Blades",year:2010,rating:6.3,poster:"https://image.tmdb.org/t/p/w300/kGfJFIjCDqdVBx5EsFHMaAqyPF1.jpg",embed:"//ok.ru/videoembed/1632050678321",cat:"action",desc:"14 Blades"},
+  {id:6005,title:"28 жилийн дараа",title_en:"28 Weeks Later",year:2007,rating:7.5,poster:"https://image.tmdb.org/t/p/w300/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg",embed:"https://infi.xtremestream.xyz/player/index.php?data=cb59b747f88a35e0d452377f60f7c25f",cat:"horror",desc:"28 Weeks Later"},
+  {id:6006,title:"2 ертөнц",title_en:"Between Two Worlds",year:2021,rating:6.8,poster:"https://image.tmdb.org/t/p/w300/8IaHdEDMQiUAtINWVKHdOcMFAGO.jpg",embed:"https://hqq.to/e/TTU0U2xrNGlwRkF3NS90a1RQRUd1QT09",cat:"drama",desc:"Between Two Worlds"},
+  {id:6007,title:"3 мянган жилийн хүсэл",title_en:"Three Thousand Years of Longing",year:2022,rating:7.0,poster:"https://image.tmdb.org/t/p/w300/eyhFMHBHNGHDsUiT61TzGXLfgxD.jpg",embed:"https://infi.xtremestream.co/player/index.php?data=fba9d88164f3e2d9109ee770223212a0",cat:"drama",desc:"Three Thousand Years of Longing"},
+  {id:6008,title:"500 өдөр",title_en:"(500) Days of Summer",year:2009,rating:7.7,poster:"https://image.tmdb.org/t/p/w300/7i1HUFnrNSIVdvFq3sAfECzQFJY.jpg",embed:"https://watchsb.com/e/0p7ev6gkkbum.html",cat:"romance",desc:"(500) Days of Summer"},
+  {id:6009,title:"5 цус",title_en:"Da 5 Bloods",year:2020,rating:6.5,poster:"https://image.tmdb.org/t/p/w300/qSqHhG2svXhCXYIWeMh1cGJuRxC.jpg",embed:"https://ninjastream.to/watch/dloABeG37mzRJ",cat:"war",desc:"Da 5 Bloods"},
+  {id:6010,title:"6 дахь мэдрэхүй",title_en:"The Sixth Sense",year:1999,rating:8.1,poster:"https://image.tmdb.org/t/p/w300/jbXfDR4EvOMXsXEeSbAXpRWE7Kb.jpg",embed:"https://infi.xtremestream.co/player/index.php?data=7fe1f8abaad094e0b5cb1b01d712f708",cat:"thriller",desc:"The Sixth Sense"},
+  {id:6011,title:"Аадар бороо",title_en:"Hard Rain",year:1998,rating:5.8,poster:"https://image.tmdb.org/t/p/w300/jbXfDR4EvOMXsXEeSbAXpRWE7Kb.jpg",embed:"https://short.ink/KjmITxMUfy",cat:"action",desc:"Hard Rain"},
+  {id:6012,title:"Аалзан толгойт",title_en:"Spiderhead",year:2022,rating:5.4,poster:"https://image.tmdb.org/t/p/w300/jbXfDR4EvOMXsXEeSbAXpRWE7Kb.jpg",embed:"https://infi.xtremestream.co/player/index.php?data=f29c21d4897f78948b91f03172341b7b",cat:"scifi",desc:"Spiderhead"},
+  {id:6015,title:"Нягтлан",title_en:"The Accountant",year:2016,rating:7.3,poster:"https://image.tmdb.org/t/p/w300/kkXAVzXyb8T2rBWHNPNrAIXqLXQ.jpg",embed:"https://www.fembed.com/v/4yd-5iznnk6-ylg",cat:"action",desc:"The Accountant"},
+  {id:6016,title:"Адам төсөл",title_en:"The Adam Project",year:2022,rating:6.7,poster:"https://image.tmdb.org/t/p/w300/iuFNMS8vloBPC4SiMuoNwuqUIUk.jpg",embed:"https://infi.xtremestream.co/player/index.php?data=f340f1b1f65b6df5b5e3f94d95b11daf",cat:"scifi",desc:"The Adam Project"},
+  {id:6018,title:"Агшин гялбаа",title_en:"The Flash",year:2023,rating:6.7,poster:"https://image.tmdb.org/t/p/w300/rktDFPbfHfUbArZ6OOOKsXcv0Bm.jpg",embed:"https://infi.xtremestream.co/player/index.php?data=c0d0e461de8d0024aebcb0a7c68836df",cat:"action",desc:"The Flash"},
+  {id:6019,title:"Ахмад",title_en:"Captain Phillips",year:2013,rating:7.8,poster:"https://image.tmdb.org/t/p/w300/eh2a4RP6rJ4pAEylMdXNkgkxJAU.jpg",embed:"https://www.fembed.com/v/n0r5ws2-x1ger0e",cat:"thriller",desc:"Captain Phillips"},
+
+  // 🎵 MUSIC (Монгол дуунууд)
+  {id:7001,title:"The HU - Wolf Totem",title_en:"The HU - Wolf Totem",year:2018,rating:9.8,poster:"https://img.youtube.com/vi/jM8dCGIm6yc/maxresdefault.jpg",embed:"https://www.youtube.com/embed/jM8dCGIm6yc?autoplay=1",cat:"music",desc:"Монгол рок хамтлаг The HU"},
+  {id:7002,title:"The HU - Yuve Yuve Yu",title_en:"The HU - Yuve Yuve Yu",year:2018,rating:9.7,poster:"https://img.youtube.com/vi/v4xZUr0BEfE/maxresdefault.jpg",embed:"https://www.youtube.com/embed/v4xZUr0BEfE?autoplay=1",cat:"music",desc:"Монгол рок хамтлаг The HU"},
+  {id:7003,title:"Vandebo - Margaashgui",title_en:"Vandebo - Margaashgui",year:2019,rating:9.5,poster:"https://img.youtube.com/vi/1X_1X_1X_1X/maxresdefault.jpg",embed:"https://www.youtube.com/embed/1X_1X_1X_1X?autoplay=1",cat:"music",desc:"Vandebo"},
+  {id:7004,title:"Rokit Bay - Boroo",title_en:"Rokit Bay - Boroo",year:2015,rating:9.9,poster:"https://img.youtube.com/vi/2X_2X_2X_2X/maxresdefault.jpg",embed:"https://www.youtube.com/embed/2X_2X_2X_2X?autoplay=1",cat:"music",desc:"Rokit Bay"},
+  {id:7005,title:"Gangbay - Gangan Tsagaan",title_en:"Gangbay - Gangan Tsagaan",year:2020,rating:9.2,poster:"https://img.youtube.com/vi/3X_3X_3X_3X/maxresdefault.jpg",embed:"https://www.youtube.com/embed/3X_3X_3X_3X?autoplay=1",cat:"music",desc:"Gangbay"},
+  {id:7006,title:"Uka - Don't Stop",title_en:"Uka - Don't Stop",year:2018,rating:9.0,poster:"https://img.youtube.com/vi/4X_4X_4X_4X/maxresdefault.jpg",embed:"https://www.youtube.com/embed/4X_4X_4X_4X?autoplay=1",cat:"music",desc:"Uka"},
+  {id:7007,title:"Kiwis - Araatan",title_en:"Kiwis - Araatan",year:2010,rating:8.8,poster:"https://img.youtube.com/vi/5X_5X_5X_5X/maxresdefault.jpg",embed:"https://www.youtube.com/embed/5X_5X_5X_5X?autoplay=1",cat:"music",desc:"Kiwis"},
+  {id:7008,title:"Choijoo - Hairtai",title_en:"Choijoo - Hairtai",year:2021,rating:9.1,poster:"https://img.youtube.com/vi/6X_6X_6X_6X/maxresdefault.jpg",embed:"https://www.youtube.com/embed/6X_6X_6X_6X?autoplay=1",cat:"music",desc:"Choijoo"},
+  {id:7009,title:"Seryoja - Zaluu Nas",title_en:"Seryoja - Zaluu Nas",year:2012,rating:9.4,poster:"https://img.youtube.com/vi/7X_7X_7X_7X/maxresdefault.jpg",embed:"https://www.youtube.com/embed/7X_7X_7X_7X?autoplay=1",cat:"music",desc:"Seryoja"},
+  {id:7010,title:"Ginjin - Arasso",title_en:"Ginjin - Arasso",year:2019,rating:8.9,poster:"https://img.youtube.com/vi/8X_8X_8X_8X/maxresdefault.jpg",embed:"https://www.youtube.com/embed/8X_8X_8X_8X?autoplay=1",cat:"music",desc:"Ginjin"},
+
+  // 📺 TV SHOWS (Монгол болон Гадаад)
+  {id:8001,title:"37-р Точка",title_en:"37-r Tochka",year:2019,rating:9.5,poster:"https://image.tmdb.org/t/p/w300/placeholder.jpg",embed:"https://www.youtube.com/embed/placeholder?autoplay=1",cat:"tvshows",desc:"Монголын олон ангит уран сайхны кино"},
+  {id:8002,title:"Нийслэл Хүүхэн",title_en:"Niislel Huuhen",year:2021,rating:8.8,poster:"https://image.tmdb.org/t/p/w300/placeholder.jpg",embed:"https://www.youtube.com/embed/placeholder?autoplay=1",cat:"tvshows",desc:"Инээдмийн олон ангит кино"},
+  {id:8003,title:"Бүтэлгүй Новшнууд",title_en:"Butelgui Novshnuud",year:2022,rating:9.0,poster:"https://image.tmdb.org/t/p/w300/placeholder.jpg",embed:"https://www.youtube.com/embed/placeholder?autoplay=1",cat:"tvshows",desc:"Инээдмийн цуврал"},
+  {id:8004,title:"Breaking Bad",title_en:"Breaking Bad",year:2008,rating:9.9,poster:"https://image.tmdb.org/t/p/w300/ggFHVNu6YYI5L9pCfOacjizRGt.jpg",embed:"https://www.youtube.com/embed/placeholder?autoplay=1",cat:"tvshows",desc:"Breaking Bad"},
+  {id:8005,title:"Game of Thrones",title_en:"Game of Thrones",year:2011,rating:9.8,poster:"https://image.tmdb.org/t/p/w300/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg",embed:"https://www.youtube.com/embed/placeholder?autoplay=1",cat:"tvshows",desc:"Game of Thrones"}
 ];
 
 // All 383 games from data.json mapped compactly
@@ -945,9 +994,17 @@ function setHero(i){
 }
 
 // ══════════════════════════════════════════
-// BADGE / CAT LABELS
+// BADGE / CAT LABELS (Шинэ төрлүүд нэмэгдсэн)
 // ══════════════════════════════════════════
-function catLabel(c){const m={world:'Драм',action:'Экшн',thriller:'Триллер',horror:'Аймшиг',drama:'Драм',romance:'Романтик',scifi:'Фантастик',war:'Дайн'};return m[c]||c}
+function catLabel(c){
+  const m={
+    action:'Action', anime:'Anime', family:'Family', comedy:'Comedy',
+    drama:'Drama', horror:'Horror', music:'Music', mystery:'Mystery',
+    romance:'Romance', sports:'Sports', thriller:'Thriller', tvshows:'TV Shows',
+    crime:'Crime', war:'War'
+  };
+  return m[c]||c;
+}
 
 // ══════════════════════════════════════════
 // MOVIE CARD
@@ -957,7 +1014,7 @@ function makeMovieCard(m){
   d.className='mcard';
   d.innerHTML=`
     <div class="mcard-poster-wrap">
-      <img class="mcard-poster" src="${m.poster}" alt="${m.title}" loading="lazy" onerror="this.style.background='var(--bg4)';this.src=''">
+      <img class="mcard-poster" src="${m.poster}" alt="${m.title}" loading="lazy" onerror="fixPoster(this, '${m.title_en || m.title}', '${m.year}')">
       <div class="mcard-ov">
         <div class="mcard-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
       </div>
@@ -980,11 +1037,16 @@ function renderMovieGrid(id,list){
 }
 
 // ══════════════════════════════════════════
-// MOVIES PAGE
+// MOVIES PAGE (Шинэ төрлүүд)
 // ══════════════════════════════════════════
 let mGenre='Бүгд',mSort='new';
-const MOVIE_GENRES=['Бүгд','Экшн','Драм','Фантастик','Триллер','Аймшиг','Романтик','Дайн'];
-const GENRE_CAT={Экшн:'action',Драм:'drama',Фантастик:'scifi',Триллер:'thriller',Аймшиг:'horror',Романтик:'romance',Дайн:'war'};
+const MOVIE_GENRES=['Бүгд','Action','Anime','Family','Comedy','Drama','Horror','Music','Mystery','Romance','Sports','Thriller','TV Shows','Crime','War'];
+const GENRE_CAT={
+  'Action':'action', 'Anime':'anime', 'Family':'family', 'Comedy':'comedy',
+  'Drama':'drama', 'Horror':'horror', 'Music':'music', 'Mystery':'mystery',
+  'Romance':'romance', 'Sports':'sports', 'Thriller':'thriller',
+  'TV Shows':'tvshows', 'Crime':'crime', 'War':'war'
+};
 
 function initMoviesPage(){
   const bar=document.getElementById('movieGenreBar');
@@ -1004,7 +1066,7 @@ function applyMovieFilters(){
   else if(mSort==='name')list.sort((a,b)=>a.title.localeCompare(b.title,'mn'));
   else if(mSort==='year')list.sort((a,b)=>b.year-a.year);
   renderMovieGrid('moviesGrid',list);
-  document.getElementById('mCount').textContent=`${list.length} кино`;
+  document.getElementById('mCount').textContent=`${list.length} контент`;
 }
 
 // ══════════════════════════════════════════
@@ -1045,7 +1107,7 @@ function renderGameGrid(id,list){
 
 let gGenre='Бүгд',gSearch='';
 function initGamesPage(){
-  const genres=['Бүгд',...new Set(GAMES.map(g=>g.genre))].slice(0,10); // Top 10 genres
+  const genres=['Бүгд',...new Set(GAMES.map(g=>g.genre))].slice(0,10);
   const bar=document.getElementById('gameGenreBar');
   bar.innerHTML=genres.map(g=>`<div class="gpill${g==='Бүгд'?' on':''}" onclick="setGGenre('${g}',this)">${g}</div>`).join('');
   applyGameFilters();
@@ -1193,7 +1255,12 @@ function openPlayer(m){
   }
   const wrap=document.getElementById('playerWrap');
   if(m.embed){
-    wrap.innerHTML=`<iframe src="${m.embed}" allowfullscreen allow="autoplay; fullscreen" style="width:100%;height:100%;border:none;background:#000;display:block"></iframe>`;
+    // YouTube embed эсэхийг шалгах
+    let embedUrl = m.embed;
+    if(embedUrl.includes('youtube.com') && !embedUrl.includes('autoplay=1')) {
+      embedUrl += (embedUrl.includes('?') ? '&' : '?') + 'autoplay=1';
+    }
+    wrap.innerHTML=`<iframe src="${embedUrl}" allowfullscreen allow="autoplay; encrypted-media; fullscreen" style="width:100%;height:100%;border:none;background:#000;display:block"></iframe>`;
   } else {
     wrap.innerHTML=`<div style="width:100%;height:100%;background:#111;display:flex;align-items:center;justify-content:center;color:#666;font-size:16px">Тоглуулагч байхгүй</div>`;
   }
@@ -1282,7 +1349,7 @@ function toast(msg){
 }
 
 // ══════════════════════════════════════════
-// AUTH SYSTEM
+// AUTH SYSTEM (Refresh хийхэд гарахгүй болгож зассан)
 // ══════════════════════════════════════════
 let currentUser=null;
 function openAuth(mode){
@@ -1343,12 +1410,19 @@ function updateNavUser(){
     lb.style.display='flex';ub.style.display='none';
   }
 }
-(function(){
-  try{var s=localStorage.getItem('nb_session');if(s){currentUser=JSON.parse(s);updateNavUser();}}catch(e){}
-})();
 
-// INIT
-gotoPage('home');
+// DOM ачаалж дууссаны дараа Session шалгах (Refresh хийхэд гарахгүй байх)
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    var s = localStorage.getItem('nb_session');
+    if(s) {
+      currentUser = JSON.parse(s);
+      updateNavUser();
+    }
+  } catch(e) {}
+  gotoPage('home');
+});
+
 </script>
 </body>
 </html>
