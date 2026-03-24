@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#E50914">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Nabooshy - 2026 Оны Ухаалаг Платформ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red: #E50914; --red2: #B20710; --red-glow: rgba(229,9,20,.4);
+  --gold: #FFC107; --blue: #1E88E5; --green: #43A047;
+  --bg: #050505; --bg2: #111111; --bg3: #1A1A1A; --bg4: #222222; --bg5: #2A2A2A;
+  --text: #FFFFFF; --text2: #AAAAAA; --text3: #777777;
+  --border: rgba(255,255,255,.08); --border2: rgba(255,255,255,.15);
+  --r: 8px; --r2: 12px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.5;overflow-x:hidden}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--red)}
+img{display:block;max-width:100%}
+button,select,input{font-family:'Inter',sans-serif}
+a{text-decoration:none;color:inherit}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;height:64px;
+  display:flex;align-items:center;gap:0;padding:0 40px;
+  background:linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 100%);
+  transition:all .3s ease;
+}
+nav.scrolled {
+  background:rgba(5,5,5,.95);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(20px);
+}
+.nav-logo{display:flex;align-items:center;gap:10px;margin-right:36px;flex-shrink:0;cursor:pointer}
+.logo-mark{
+  width:32px;height:32px;background:var(--red);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Oswald',sans-serif;font-size:18px;font-weight:700;color:#fff;letter-spacing:-1px;
+  box-shadow: 0 4px 12px var(--red-glow);
+}
+.logo-name{font-family:'Oswald',sans-serif;font-size:24px;font-weight:600;letter-spacing:2px;color:var(--text)}
+.logo-name span{color:var(--red)}
+
+.nav-tabs{display:flex;align-items:center;gap:4px;flex:1}
+.nav-tab{
+  display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:20px;
+  font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;
+  border:none;background:none;transition:all .2s;white-space:nowrap
+}
+.nav-tab:hover{color:var(--text)}
+.nav-tab.active{background:rgba(255,255,255,.1);color:var(--text)}
+.nav-tab .tab-icon{font-size:15px}
+
+.nav-right{display:flex;align-items:center;gap:16px;margin-left:auto}
+.search-wrap{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.05);border:1px solid transparent;border-radius:20px;
+  padding:8px 16px;transition:all .3s
+}
+.search-wrap:focus-within{border-color:var(--red);background:rgba(0,0,0,.5);box-shadow:0 0 10px var(--red-glow)}
+.search-wrap input{
+  background:none;border:none;outline:none;color:var(--text);
+  font-size:13px;width:180px
+}
+.search-wrap input::placeholder{color:var(--text3)}
+
+.btn-install {
+  display:flex;align-items:center;gap:6px;padding:8px 16px;
+  background:rgba(255,255,255,.1);color:#fff;border:1px solid var(--border2);border-radius:20px;
+  font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;
+}
+.btn-install:hover { background:rgba(255,255,255,.2); transform:scale(1.05); }
+
+.nav-contact{
+  display:flex;align-items:center;gap:6px;padding:8px 20px;
+  background:var(--red);color:#fff;border:none;border-radius:20px;
+  font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap
+}
+.nav-contact:hover{background:var(--red2);transform:scale(1.05)}
+
+/* ── PAGES ── */
+.page{display:none;min-height:100vh;padding-bottom:60px}
+.page.active{display:block}
+.page:not(#page-home){padding-top:80px}
+
+/* ── HERO ── */
+.hero{
+  position:relative;height:80vh;min-height:550px;overflow:hidden;
+  background:#000;
+}
+.hero-bg{
+  position:absolute;inset:0;background-size:cover;background-position:top center;
+  opacity:.6;transition:all 1s ease;
+}
+.hero-vignette{
+  position:absolute;inset:0;
+  background:linear-gradient(to top, var(--bg) 0%, transparent 60%),
+              linear-gradient(to right, var(--bg) 0%, transparent 60%);
+}
+.hero-body{
+  position:relative;z-index:2;height:100%;display:flex;flex-direction:column;
+  justify-content:flex-end;padding:0 50px 80px;max-width:700px
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:5px;background:var(--red);color:#fff;
+  font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  padding:4px 12px;border-radius:4px;margin-bottom:16px;width:fit-content;
+  box-shadow: 0 4px 12px var(--red-glow);
+}
+.hero-title{
+  font-family:'Oswald',sans-serif;font-size:64px;font-weight:700;
+  letter-spacing:1px;line-height:1.1;margin-bottom:12px;text-shadow:2px 2px 10px rgba(0,0,0,.8)
+}
+.hero-meta{display:flex;align-items:center;gap:14px;margin-bottom:16px;flex-wrap:wrap;text-shadow:1px 1px 4px rgba(0,0,0,.8)}
+.hero-meta span{font-size:14px;color:var(--text);font-weight:500}
+.hero-meta .star{color:var(--gold);font-weight:700}
+.hero-meta .tag{background:rgba(255,255,255,.15);padding:2px 10px;border-radius:4px;font-size:12px;backdrop-filter:blur(4px)}
+.hero-desc{font-size:15px;color:var(--text2);line-height:1.6;margin-bottom:30px;max-width:550px;text-shadow:1px 1px 4px rgba(0,0,0,.8)}
+.hero-btns{display:flex;gap:12px}
+.btn-watch{
+  display:flex;align-items:center;gap:8px;background:var(--text);color:#000;
+  padding:12px 28px;border-radius:6px;font-size:15px;font-weight:700;
+  border:none;cursor:pointer;transition:all .2s;
+}
+.btn-watch:hover{background:rgba(255,255,255,.8);transform:scale(1.05)}
+.btn-party{
+  display:flex;align-items:center;gap:8px;background:var(--blue);color:#fff;
+  padding:12px 28px;border-radius:6px;font-size:15px;font-weight:700;
+  border:none;cursor:pointer;transition:all .2s; box-shadow: 0 4px 15px rgba(30,136,229,0.4);
+}
+.btn-party:hover{background:#1565C0;transform:scale(1.05)}
+.btn-more{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(109, 109, 110, 0.7);color:#fff;
+  padding:12px 28px;border-radius:6px;font-size:15px;font-weight:600;
+  border:none;cursor:pointer;transition:all .2s;
+}
+.btn-more:hover{background:rgba(109, 109, 110, 0.9);transform:scale(1.05)}
+.hero-dots{position:absolute;bottom:30px;right:50px;display:flex;gap:6px;z-index:3}
+.hero-dot{width:10px;height:10px;background:rgba(255,255,255,.3);border-radius:50%;cursor:pointer;transition:all .3s}
+.hero-dot.on{background:var(--text);transform:scale(1.3)}
+
+/* ── MAIN ── */
+main{padding:0 40px}
+
+/* ── SECTION & CAROUSEL ── */
+.sec{margin-bottom:40px;position:relative}
+.sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.sec-title{font-size:20px;font-weight:600;letter-spacing:.5px;color:var(--text)}
+.sec-more{color:var(--text2);font-size:13px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:4px;border:none;background:none;transition:color .2s}
+.sec-more:hover{color:var(--text)}
+
+.row-wrap { position: relative; display: flex; align-items: center; }
+.scroll-btn {
+  position: absolute; z-index: 10; top: 50%; transform: translateY(-50%);
+  background: rgba(0,0,0,0.6); color: white; border: none; font-size: 24px;
+  width: 40px; height: 100%; cursor: pointer; opacity: 0; transition: all 0.3s;
+  display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px);
+}
+.row-wrap:hover .scroll-btn { opacity: 1; }
+.scroll-btn:hover { background: rgba(0,0,0,0.9); color: var(--red); font-size: 30px; }
+.scroll-btn.left { left: -20px; border-radius: 0 8px 8px 0; }
+.scroll-btn.right { right: -20px; border-radius: 8px 0 0 8px; }
+
+.scroll-row{
+  display:flex;gap:16px;overflow-x:auto;padding:10px 0;
+  scroll-behavior:smooth;scrollbar-width:none;
+}
+.scroll-row::-webkit-scrollbar{display:none}
+
+/* ── MOVIE CARD (With Smart Preload Hover) ── */
+.mcard{
+  flex-shrink:0;width:180px;border-radius:var(--r);
+  background:transparent;cursor:pointer;position:relative;
+}
+.mcard-poster-wrap {
+  width:100%;height:270px;border-radius:var(--r);overflow:hidden;position:relative;
+  box-shadow:0 4px 10px rgba(0,0,0,.5);transition:all .3s ease; background:var(--bg3);
+}
+.mcard-poster{width:100%;height:100%;object-fit:cover;transition:transform .3s; position:relative; z-index:1;}
+.hover-vid {
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  z-index:2; opacity:0; transition:opacity 0.5s ease; pointer-events:none;
+}
+
+.mcard:hover .mcard-poster-wrap { box-shadow:0 10px 25px rgba(0,0,0,.8); transform:scale(1.05); z-index:5; border:2px solid rgba(255,255,255,.1); }
+.mcard:hover .mcard-poster { transform:scale(1.1); }
+.mcard:hover .hover-vid { opacity: 1; }
+
+.mcard-ov{
+  position:absolute;inset:0;background:rgba(0,0,0,.4);
+  opacity:0;transition:opacity .3s;display:flex;align-items:center;justify-content:center; z-index:3;
+}
+.mcard:hover .mcard-ov{opacity:1}
+.mcard-play{
+  width:50px;height:50px;background:rgba(229,9,20,.9);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 15px var(--red-glow); transform:scale(0.8); transition:transform .3s;
+}
+.mcard:hover .mcard-play { transform:scale(1); }
+.mcard-play svg { width:20px; height:20px; fill:white; margin-left:4px; }
+
+.mcard-info{padding:10px 4px; transition:opacity .3s;}
+.mcard-title{font-size:14px;font-weight:600;line-height:1.3;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.mcard-sub{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text2)}
+.mcard-sub .st{color:var(--gold)}
+
+/* ── MOVIES GRID ── */
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:20px}
+
+/* ── GENRE PILLS ── */
+.genre-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.gpill{
+  padding:8px 18px;border-radius:20px;border:1px solid var(--border2);
+  background:rgba(255,255,255,.05);color:var(--text);font-size:13px;font-weight:500;
+  cursor:pointer;transition:all .2s
+}
+.gpill:hover{background:rgba(255,255,255,.15)}
+.gpill.on{background:var(--text);color:#000;border-color:var(--text)}
+
+/* ── SORT BAR ── */
+.sort-bar{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.sort-bar label{font-size:13px;color:var(--text2)}
+.sel{
+  background:var(--bg3);border:1px solid var(--border2);color:var(--text);
+  padding:8px 12px;border-radius:6px;font-size:13px;outline:none;cursor:pointer
+}
+.sel:focus{border-color:var(--red)}
+.cnt{margin-left:auto;font-size:13px;color:var(--text3)}
+
+/* ── GAME CARD ── */
+.gcard{
+  flex-shrink:0;width:180px;border-radius:var(--r);
+  background:transparent;cursor:pointer;position:relative;
+}
+.gcard-poster-wrap {
+  width:100%;height:270px;border-radius:var(--r);overflow:hidden;position:relative;
+  box-shadow:0 4px 10px rgba(0,0,0,.5);transition:all .3s ease; background:var(--bg3);
+}
+.gcard-poster{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.gcard:hover .gcard-poster-wrap { box-shadow:0 10px 25px rgba(0,0,0,.8); transform:scale(1.05); z-index:5; border:2px solid rgba(255,255,255,.1); }
+.gcard:hover .gcard-poster { transform:scale(1.1); }
+
+.gcard-ov{
+  position:absolute;inset:0;background:rgba(0,0,0,.5);
+  opacity:0;transition:opacity .3s;display:flex;align-items:center;justify-content:center;
+}
+.gcard:hover .gcard-ov{opacity:1}
+.gcard-play{
+  width:50px;height:50px;background:rgba(67,160,71,.9);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 15px rgba(67,160,71,.5); transform:scale(0.8); transition:transform .3s;
+}
+.gcard:hover .gcard-play { transform:scale(1); }
+.gcard-play svg { width:20px; height:20px; fill:white; margin-left:4px; }
+
+.gcard-info{padding:10px 4px}
+.gcard-title{font-size:14px;font-weight:600;line-height:1.3;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.gcard-sub{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text2)}
+.gcard-sub .st{color:var(--gold)}
+.gcard-sub .genre{color:var(--green);font-weight:600;}
+
+/* ── GAME GRID ── */
+.ggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:20px}
+
+/* ── WEATHER ── */
+.weather-page{padding:0 40px}
+.w-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:32px}
+.w-card{
+  background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);
+  padding:20px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden
+}
+.w-card:hover{border-color:rgba(30,136,229,.5);transform:translateY(-5px);box-shadow:0 10px 30px rgba(0,0,0,.6)}
+.w-card::before{
+  content:'';position:absolute;top:-30px;right:-30px;
+  width:100px;height:100px;border-radius:50%;
+  background:rgba(30,136,229,.08);
+}
+.w-city-name{font-size:16px;font-weight:600;margin-bottom:4px}
+.w-temp{font-size:42px;font-weight:700;font-family:'Oswald',sans-serif;line-height:1;margin:10px 0 8px}
+.w-temp span{font-size:20px;font-weight:400;color:var(--text2)}
+.w-desc{font-size:13px;color:var(--text2);margin-bottom:16px;text-transform:capitalize}
+.w-details{display:flex;gap:16px;flex-wrap:wrap}
+.w-detail{font-size:12px;color:var(--text3);display:flex;flex-direction:column;gap:2px}
+.w-detail strong{font-size:14px;color:var(--text);font-weight:500}
+.w-icon{font-size:36px;position:absolute;top:20px;right:20px;opacity:.8}
+
+.w-featured{
+  background:linear-gradient(135deg,#0D1B2A,#1A2A4A);
+  border:1px solid rgba(30,136,229,.3);border-radius:var(--r2);
+  padding:32px 40px;margin-bottom:32px;position:relative;overflow:hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,.5);
+}
+.w-featured::after{
+  content:'';position:absolute;top:-60px;right:-60px;
+  width:250px;height:250px;border-radius:50%;
+  background:rgba(30,136,229,.1)
+}
+.w-featured .city{font-size:14px;color:rgba(255,255,255,.6);font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.w-featured .temp{font-family:'Oswald',sans-serif;font-size:80px;font-weight:700;line-height:1;color:#fff;text-shadow:2px 2px 10px rgba(0,0,0,.5)}
+.w-featured .temp sup{font-size:36px;color:rgba(255,255,255,.7)}
+.w-featured .desc{font-size:16px;color:rgba(255,255,255,.8);margin:8px 0 24px;text-transform:capitalize}
+.w-featured .extras{display:flex;gap:32px;flex-wrap:wrap}
+.w-featured .ex-item{display:flex;flex-direction:column;gap:4px}
+.w-featured .ex-item label{font-size:11px;color:rgba(255,255,255,.4);letter-spacing:1px;text-transform:uppercase}
+.w-featured .ex-item strong{font-size:16px;color:rgba(255,255,255,.9);font-weight:500}
+.w-featured .icon{position:absolute;right:40px;top:32px;font-size:100px;opacity:.2;z-index:0}
+
+.w-city-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.w-city-tab{
+  padding:8px 16px;border-radius:20px;border:1px solid var(--border2);
+  background:rgba(255,255,255,.05);color:var(--text2);font-size:13px;
+  cursor:pointer;transition:all .2s
+}
+.w-city-tab:hover{background:rgba(255,255,255,.15);color:var(--text)}
+.w-city-tab.on{background:var(--blue);border-color:var(--blue);color:#fff}
+
+/* ── MODALS ── */
+.modal-bg{
+  position:fixed;inset:0;background:rgba(0,0,0,.9);backdrop-filter:blur(10px);
+  z-index:1000;display:none;align-items:center;justify-content:center;padding:20px
+}
+.modal-bg.open{display:flex}
+.modal{
+  background:var(--bg2);border:1px solid var(--border2);border-radius:12px;
+  width:100%;max-width:850px;max-height:90vh;overflow-y:auto;position:relative;
+  animation:mIn .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 20px 50px rgba(0,0,0,.8);
+}
+@keyframes mIn{from{opacity:0;transform:scale(.9) translateY(20px)}to{opacity:1;transform:none}}
+.mcls{
+  position:absolute;top:16px;right:16px;
+  background:rgba(0,0,0,.6);border:none;color:#fff;
+  width:36px;height:36px;border-radius:50%;font-size:18px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  z-index:10;transition:all .2s;backdrop-filter:blur(4px);
+}
+.mcls:hover{background:var(--red);transform:scale(1.1)}
+.m-hero{height:350px;background-size:cover;background-position:top center;border-radius:12px 12px 0 0;position:relative}
+.m-hero-g{position:absolute;inset:0;background:linear-gradient(to top,var(--bg2) 0%,transparent 80%);border-radius:12px 12px 0 0}
+.m-body{padding:0 32px 32px; position:relative; z-index:2; margin-top:-60px;}
+.m-title{font-family:'Oswald',sans-serif;font-size:42px;font-weight:700;margin-bottom:10px;letter-spacing:.5px;text-shadow:2px 2px 8px rgba(0,0,0,.8)}
+.m-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:20px;font-size:14px;color:var(--text2)}
+.m-meta .st{color:var(--gold);font-weight:700}
+.m-meta .tag{background:rgba(255,255,255,.1);border:1px solid var(--border);padding:4px 12px;border-radius:4px;font-size:12px}
+.m-desc{font-size:15px;color:var(--text2);line-height:1.7;margin-bottom:24px}
+.m-acts{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.m-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;border-top:1px solid var(--border);padding-top:24px}
+.mgi label{display:block;font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.mgi span{font-size:14px;font-weight:500;color:var(--text)}
+
+/* ── PLAYER MODAL (With Watch Party Chat) ── */
+.pmodal{max-width:1100px; background:#000; overflow:hidden;}
+.player-layout { display:flex; width:100%; height: 600px; }
+.player-vid-sec { flex:1; background:#000; position:relative; }
+.player-chat-sec { 
+  width:320px; background:var(--bg2); border-left:1px solid var(--border);
+  display:none; flex-direction:column; 
+}
+.chat-header { padding:15px; border-bottom:1px solid var(--border); font-weight:600; display:flex; justify-content:space-between; align-items:center;}
+.chat-header span { color:var(--blue); font-size:12px; cursor:pointer; }
+.chat-messages { flex:1; overflow-y:auto; padding:15px; display:flex; flex-direction:column; gap:10px; font-size:13px;}
+.chat-msg { background:var(--bg3); padding:8px 12px; border-radius:8px; width:fit-content; max-width:90%;}
+.chat-msg.me { background:var(--blue); align-self:flex-end; }
+.chat-msg strong { display:block; font-size:11px; color:var(--text3); margin-bottom:2px;}
+.chat-msg.me strong { color:rgba(255,255,255,0.7); }
+.chat-input { display:flex; padding:15px; border-top:1px solid var(--border); gap:8px;}
+.chat-input input { flex:1; background:var(--bg3); border:1px solid var(--border); border-radius:20px; padding:8px 15px; color:#fff; outline:none;}
+.chat-input button { background:var(--blue); border:none; color:#fff; width:36px; height:36px; border-radius:50%; cursor:pointer;}
+
+/* P2P Indicator */
+.p2p-status {
+  position:absolute; top:15px; left:15px; background:rgba(0,0,0,0.6); color:#fff;
+  padding:6px 12px; border-radius:20px; font-size:12px; font-weight:600; z-index:10;
+  display:flex; align-items:center; gap:8px; backdrop-filter:blur(5px); border:1px solid rgba(255,255,255,0.1);
+}
+.p2p-dot { width:8px; height:8px; background:#0f0; border-radius:50%; box-shadow:0 0 8px #0f0; animation:blink 1.5s infinite; }
+@keyframes blink { 0%{opacity:1} 50%{opacity:0.3} 100%{opacity:1} }
+
+/* ── GAME MODAL ── */
+.gmodal{max-width:1000px; background:#000;}
+.gm-frame{width:100%;aspect-ratio:16/9;border:none;border-radius:12px 12px 0 0;background:#000}
+.gm-info{padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--bg2);border-radius:0 0 12px 12px;}
+.gm-title{font-family:'Oswald',sans-serif;font-size:28px;font-weight:600}
+.gm-meta{font-size:13px;color:var(--text2);display:flex;gap:12px;margin-top:6px}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:30px;right:30px;
+  background:var(--bg3);border:1px solid var(--border2);border-left:4px solid var(--red);
+  padding:16px 24px;border-radius:8px;font-size:14px;font-weight:500;z-index:9999;
+  opacity:0;transform:translateY(20px);transition:all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);pointer-events:none;box-shadow:0 10px 30px rgba(0,0,0,.5);
+}
+.toast.show{opacity:1;transform:none}
+
+/* ── CONTACT ── */
+.contact-hero{
+  background:linear-gradient(135deg,#111,#000);
+  padding:60px 40px 40px;margin-bottom:40px;
+  border-bottom:1px solid var(--border)
+}
+.contact-hero h1{font-family:'Oswald',sans-serif;font-size:42px;font-weight:700;margin-bottom:12px}
+.contact-hero p{color:var(--text2);font-size:16px;max-width:500px;line-height:1.6}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:800px;margin-bottom:40px}
+.contact-item{
+  background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);
+  padding:24px 30px;transition:all .3s;cursor:pointer
+}
+.contact-item:hover{border-color:var(--red);transform:translateY(-5px);box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.contact-item .ci-icon{font-size:32px;margin-bottom:16px}
+.contact-item .ci-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:6px}
+.contact-item .ci-val{font-size:16px;font-weight:600;color:var(--text)}
+.contact-item .ci-val a{color:var(--red)}
+
+/* ── FOOTER ── */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 40px 30px;margin-top:20px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.f-brand .logo-name{font-family:'Oswald',sans-serif;font-size:24px;letter-spacing:2px;margin-bottom:16px}
+.f-brand p{font-size:14px;color:var(--text3);line-height:1.7;max-width:280px}
+.f-col h4{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text);margin-bottom:20px}
+.f-col ul{list-style:none}
+.f-col ul li{margin-bottom:12px}
+.f-col ul li a{font-size:14px;color:var(--text2);transition:color .2s}
+.f-col ul li a:hover{color:var(--red)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:24px;border-top:1px solid var(--border);font-size:13px;color:var(--text3)}
+
+/* ── AUTH MODAL ── */
+.auth-modal-bg{
+  position:fixed;inset:0;background:rgba(0,0,0,.9);backdrop-filter:blur(10px);
+  z-index:1000;display:none;align-items:center;justify-content:center;padding:20px
+}
+.auth-modal-bg.open{display:flex}
+.auth-box{
+  background:var(--bg2);border:1px solid var(--border2);border-radius:12px;
+  width:100%;max-width:420px;padding:40px;position:relative;
+  animation:mIn .3s ease; box-shadow: 0 20px 50px rgba(0,0,0,.8);
+}
+.auth-logo{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:32px}
+.auth-title{font-family:'Oswald',sans-serif;font-size:28px;font-weight:600;text-align:center;margin-bottom:8px}
+.auth-sub{font-size:14px;color:var(--text3);text-align:center;margin-bottom:32px}
+.auth-field{margin-bottom:20px}
+.auth-field label{display:block;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text2);margin-bottom:8px}
+.auth-field input{
+  width:100%;background:rgba(255,255,255,.05);border:1px solid var(--border2);border-radius:6px;
+  padding:14px 16px;color:var(--text);font-size:15px;outline:none;transition:all .3s
+}
+.auth-field input:focus{border-color:var(--red);background:rgba(0,0,0,.5);box-shadow:0 0 10px var(--red-glow)}
+.auth-btn{
+  width:100%;padding:14px;background:var(--red);color:#fff;border:none;border-radius:6px;
+  font-size:16px;font-weight:700;cursor:pointer;margin-top:10px;transition:all .3s;
+}
+.auth-btn:hover{background:var(--red2);transform:scale(1.02);box-shadow:0 8px 20px var(--red-glow)}
+.auth-switch{text-align:center;font-size:14px;color:var(--text3);margin-top:24px}
+.auth-switch a{color:var(--text);cursor:pointer;font-weight:600;transition:color .2s}
+.auth-switch a:hover{color:var(--red)}
+
+/* user avatar in nav */
+.nav-user{
+  display:flex;align-items:center;gap:10px;padding:8px 16px;
+  background:rgba(255,255,255,.05);border:1px solid transparent;border-radius:20px;
+  cursor:pointer;transition:all .3s;font-size:14px;font-weight:500
+}
+.nav-user:hover{background:rgba(255,255,255,.1)}
+.nav-avatar{
+  width:28px;height:28px;background:var(--red);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  nav{padding:0 20px;height:60px}
+  .nav-tabs .nav-tab span:not(.tab-icon){display:none}
+  .nav-tabs .nav-tab{padding:8px 12px}
+  .search-wrap{display:none}
+  .hero{height:60vh;min-height:450px}
+  .hero-body{padding:0 20px 40px;}
+  .hero-title{font-size:36px}
+  .hero-desc{font-size:13px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  main,.weather-page{padding:0 20px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .m-grid{grid-template-columns:1fr 1fr}
+  .mcard, .gcard {width:140px}
+  .mcard-poster-wrap, .gcard-poster-wrap {height:210px}
+  .w-featured{padding:24px}
+  .w-featured .temp{font-size:60px}
+  .contact-grid{grid-template-columns:1fr}
+  .auth-box{padding:30px 20px}
+  .scroll-btn{display:none}
+  .player-layout { flex-direction:column; height:auto; }
+  .player-vid-sec { height: 250px; }
+  .player-chat-sec { width:100%; height: 300px; border-left:none; border-top:1px solid var(--border); }
+}
+
+/* ── SERIES CARD ── */
+.ep-badge{position:absolute;top:8px;left:8px;background:rgba(229,9,20,.9);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;backdrop-filter:blur(4px);letter-spacing:.5px;z-index:2}
+.s-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.s-tab{padding:7px 18px;border-radius:20px;border:1px solid var(--border2);background:rgba(255,255,255,.05);color:var(--text2);font-size:13px;cursor:pointer;transition:all .2s}
+.s-tab.on{background:var(--red);border-color:var(--red);color:#fff}
+.ep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;max-height:300px;overflow-y:auto;padding-right:4px;margin-bottom:20px}
+.ep-grid::-webkit-scrollbar{width:4px}
+.ep-grid::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:2px}
+.ep-item{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 8px;cursor:pointer;transition:all .2s;text-align:center}
+.ep-item:hover{background:var(--bg4);border-color:var(--red);transform:translateY(-2px)}
+.ep-item.playing{background:var(--red);border-color:var(--red);color:#fff}
+.ep-num{font-size:17px;font-weight:700;font-family:'Oswald',sans-serif}
+.ep-label{font-size:10px;color:var(--text3);margin-top:2px}
+.ep-item.playing .ep-label{color:rgba(255,255,255,.7)}
+.s-ep-header{font-size:13px;color:var(--text2);margin-bottom:12px;font-weight:500}
+.m-series-wrap{border-top:1px solid var(--border);padding-top:24px;margin-top:8px}
+.m-series-title{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:16px}
+</style>
+</head>
+<body>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- ══════════ NAV ══════════ -->
+<nav id="navbar">
+  <div class="nav-logo" onclick="gotoPage('home')">
+    <div class="logo-mark">N</div>
+    <div class="logo-name">NABOO<span>SHY</span></div>
+  </div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" id="t-home" onclick="gotoPage('home')"><span class="tab-icon">🏠</span><span>ЭХЛЭЛ</span></button>
+    <button class="nav-tab" id="t-movies" onclick="gotoPage('movies')"><span class="tab-icon">🎬</span><span>КИНО</span></button>
+    <button class="nav-tab" id="t-games" onclick="gotoPage('games')"><span class="tab-icon">🎮</span><span>ТОГЛООМ</span></button>
+    <button class="nav-tab" id="t-weather" onclick="gotoPage('weather')"><span class="tab-icon">🌤</span><span>ЦАГ АГААР</span></button>
+    <button class="nav-tab" id="t-series" onclick="gotoPage('series')"><span class="tab-icon">📺</span><span>ЦУВРАЛ</span></button>
+    <button class="nav-tab" id="t-contact" onclick="gotoPage('contact')"><span class="tab-icon">📞</span><span>ХОЛБОО</span></button>
+  </div>
+  <div class="nav-right">
+    <div class="search-wrap">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="searchIn" type="text" placeholder="Кино, тоглоом хайх..." oninput="doSearch(this.value)">
+    </div>
+    <button class="btn-install" id="installBtn" style="display:none" onclick="installPWA()">📱 Апп татах</button>
+    <button class="nav-contact" id="navLoginBtn" onclick="openAuth('login')">Нэвтрэх</button>
+    <div class="nav-user" id="navUserBtn" style="display:none" onclick="logoutUser()">
+      <div class="nav-avatar" id="navAvatar">U</div>
+      <span id="navUserName">Хэрэглэгч</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════ HOME PAGE ══════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <div class="hero" id="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-vignette"></div>
+    <div class="hero-body">
+      <div class="hero-tag">🔥 ОНЦЛОХ</div>
+      <div class="hero-title" id="heroTitle">—</div>
+      <div class="hero-meta" id="heroMeta"></div>
+      <div class="hero-desc" id="heroDesc"></div>
+      <div class="hero-btns">
+        <button class="btn-watch" id="heroWatch"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg> Трейлер үзэх</button>
+        <button class="btn-more" id="heroMore">ℹ Дэлгэрэнгүй</button>
+      </div>
+    </div>
+    <div class="hero-dots" id="heroDots"></div>
+  </div>
+
+  <main style="margin-top:-40px; position:relative; z-index:10;">
+    <!-- NEWEST -->
+    <section class="sec">
+      <div class="sec-head">
+        <div class="sec-title">Шинээр нэмэгдсэн</div>
+        <button class="sec-more" onclick="gotoPage('movies')">Бүгд <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+      <div class="row-wrap">
+        <button class="scroll-btn left" onclick="scrollRow('rowNew', -600)">❮</button>
+        <div class="scroll-row" id="rowNew"></div>
+        <button class="scroll-btn right" onclick="scrollRow('rowNew', 600)">❯</button>
+      </div>
+    </section>
+
+    <!-- TOP RATED -->
+    <section class="sec">
+      <div class="sec-head">
+        <div class="sec-title">Шилдэг үнэлгээтэй</div>
+        <button class="sec-more" onclick="gotoPage('movies')">Бүгд <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+      <div class="row-wrap">
+        <button class="scroll-btn left" onclick="scrollRow('rowTop', -600)">❮</button>
+        <div class="scroll-row" id="rowTop"></div>
+        <button class="scroll-btn right" onclick="scrollRow('rowTop', 600)">❯</button>
+      </div>
+    </section>
+    
+    <!-- ACTION MOVIES -->
+    <section class="sec">
+      <div class="sec-head">
+        <div class="sec-title">Action & Адал явдалт</div>
+        <button class="sec-more" onclick="gotoPage('movies')">Бүгд <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+      <div class="row-wrap">
+        <button class="scroll-btn left" onclick="scrollRow('rowAction', -600)">❮</button>
+        <div class="scroll-row" id="rowAction"></div>
+        <button class="scroll-btn right" onclick="scrollRow('rowAction', 600)">❯</button>
+      </div>
+    </section>
+
+    <!-- SERIES ROW -->
+    <section class="sec">
+      <div class="sec-head">
+        <div class="sec-title">Цуврал кино</div>
+        <button class="sec-more" onclick="gotoPage('series')">Бүгд <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+      <div class="row-wrap">
+        <button class="scroll-btn left" onclick="scrollRow('rowSeries', -600)">❮</button>
+        <div class="scroll-row" id="rowSeries"></div>
+        <button class="scroll-btn right" onclick="scrollRow('rowSeries', 600)">❯</button>
+      </div>
+    </section>
+
+    <!-- GAMES ROW -->
+    <section class="sec">
+      <div class="sec-head">
+        <div class="sec-title">Онлайн тоглоомууд</div>
+        <button class="sec-more" onclick="gotoPage('games')">Бүгд <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+      <div class="row-wrap">
+        <button class="scroll-btn left" onclick="scrollRow('rowGames', -600)">❮</button>
+        <div class="scroll-row" id="rowGames"></div>
+        <button class="scroll-btn right" onclick="scrollRow('rowGames', 600)">❯</button>
+      </div>
+    </section>
+  </main>
+</div>
+
+
+<!-- ══════════ SERIES PAGE ══════════ -->
+<div class="page" id="page-series">
+  <main>
+    <div class="sec-title" style="font-size:28px;margin-bottom:24px">Цуврал кино</div>
+    <div class="genre-bar" id="seriesGenreBar"></div>
+    <div class="sort-bar">
+      <label>Эрэмбэлэх:</label>
+      <select class="sel" onchange="sortSeriesPage(this.value)">
+        <option value="new">Шинэ нь эхэнд</option>
+        <option value="rating">Үнэлгээгээр</option>
+        <option value="name">Нэрээр</option>
+      </select>
+      <div class="cnt" id="sCount"></div>
+    </div>
+    <div class="mgrid" id="seriesGrid"></div>
+  </main>
+</div>
+
+<!-- ══════════ MOVIES PAGE ══════════ -->
+<div class="page" id="page-movies">
+  <main>
+    <div class="sec-title" style="font-size:28px;margin-bottom:24px">Бүх контент</div>
+    <div class="genre-bar" id="movieGenreBar"></div>
+    <div class="sort-bar">
+      <label>Эрэмбэлэх:</label>
+      <select class="sel" onchange="sortMovies(this.value)">
+        <option value="new">Шинэ нь эхэнд</option>
+        <option value="rating">Үнэлгээгээр</option>
+        <option value="name">Нэрээр (А-Я)</option>
+        <option value="year">Гарсан оноор</option>
+      </select>
+      <span class="cnt" id="mCount"></span>
+    </div>
+    <div class="mgrid" id="moviesGrid"></div>
+  </main>
+</div>
+
+<!-- ══════════ GAMES PAGE ══════════ -->
+<div class="page" id="page-games">
+  <main>
+    <div class="sec-title" style="font-size:28px;margin-bottom:24px">Бүх тоглоом</div>
+    <div class="genre-bar" id="gameGenreBar"></div>
+    <div class="sort-bar">
+      <label>Хайх:</label>
+      <div class="search-wrap" style="flex:1;max-width:300px;background:rgba(255,255,255,.05);border:1px solid var(--border2)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" placeholder="Тоглоомын нэр..." oninput="filterGames(this.value)">
+      </div>
+      <span class="cnt" id="gCount"></span>
+    </div>
+    <div class="ggrid" id="gamesGrid"></div>
+  </main>
+</div>
+
+<!-- ══════════ WEATHER PAGE ══════════ -->
+<div class="page" id="page-weather">
+  <div class="weather-page">
+    <div class="sec-title" style="font-size:28px;margin-bottom:8px">Цаг агаар</div>
+    <p style="color:var(--text3);font-size:15px;margin-bottom:30px">Монгол улсын хот, аймгуудын цаг агаарын мэдээ</p>
+
+    <!-- FEATURED UB -->
+    <div class="w-featured" id="wFeatured">
+      <div class="icon">☁</div>
+      <div class="city">🇲🇳 УЛААНБААТАР</div>
+      <div class="temp"><span id="wfTemp">—</span><sup>°C</sup></div>
+      <div class="desc" id="wfDesc">Ачаалж байна...</div>
+      <div class="extras">
+        <div class="ex-item"><label>Чийгшил</label><strong id="wfHum">—</strong></div>
+        <div class="ex-item"><label>Салхи</label><strong id="wfWind">—</strong></div>
+        <div class="ex-item"><label>Мэдрэмж</label><strong id="wfFeel">—</strong></div>
+        <div class="ex-item"><label>Даралт</label><strong id="wfPres">—</strong></div>
+      </div>
+    </div>
+
+    <!-- CITY TABS -->
+    <div class="w-city-tabs" id="cityTabs"></div>
+
+    <!-- GRID -->
+    <div class="w-grid" id="weatherGrid"></div>
+  </div>
+</div>
+
+<!-- ══════════ CONTACT PAGE ══════════ -->
+<div class="page" id="page-contact">
+  <div class="contact-hero">
+    <h1>Холбоо барих</h1>
+    <p>Зар байршуулах, контент нэмэх, хамтран ажиллах болон бусад асуудлаар бидэнтэй холбогдоорой.</p>
+  </div>
+  <main style="max-width:880px; margin:0 auto;">
+    <div class="contact-grid">
+      <div class="contact-item" onclick="window.location='mailto:gnarantsend@gmail.com'">
+        <div class="ci-icon">📧</div>
+        <div class="ci-label">Имэйл хаяг</div>
+        <div class="ci-val"><a href="/cdn-cgi/l/email-protection#caada4abb8aba4beb9afa4ae8aada7aba3a6e4a9a5a7"><span class="__cf_email__" data-cfemail="4f28212e3d2e213b3c2a212b0f28222e2623612c2022">[email&#160;protected]</span></a></div>
+      </div>
+      <div class="contact-item" onclick="window.location='tel:+97699376238'">
+        <div class="ci-icon">📱</div>
+        <div class="ci-label">Утас / WhatsApp</div>
+        <div class="ci-val"><a href="tel:+97699376238">9937-6238</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon">✈️</div>
+        <div class="ci-label">Telegram</div>
+        <div class="ci-val"><a href="https://t.me/nabooshy" target="_blank">@nabooshy</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon">🕘</div>
+        <div class="ci-label">Ажлын цаг</div>
+        <div class="ci-val">Даваа–Баасан, 9:00–18:00</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ══════════ SEARCH PAGE ══════════ -->
+<div class="page" id="page-search">
+  <main>
+    <div class="sec-title" style="font-size:28px;margin-bottom:8px">Хайлтын үр дүн</div>
+    <p style="color:var(--text3);font-size:15px;margin-bottom:30px" id="searchInfo"></p>
+    
+    <div class="sec-title" id="searchMoviesTitle" style="display:none;font-size:20px;margin-bottom:16px">🎬 Кино</div>
+    <div class="mgrid" id="searchGrid" style="margin-bottom:40px"></div>
+    
+    <div class="sec-title" id="searchGamesTitle" style="display:none;font-size:20px;margin-bottom:16px">🎮 Тоглоом</div>
+    <div class="ggrid" id="searchGridGames"></div>
+  </main>
+</div>
+
+<!-- ══════════ AUTH MODAL ══════════ -->
+<div class="auth-modal-bg" id="authModal" onclick="if(event.target===this)closeAuth()">
+  <div class="auth-box">
+    <button class="mcls" onclick="closeAuth()">✕</button>
+    <div class="auth-logo">
+      <div class="logo-mark">N</div>
+      <div class="logo-name">NABOO<span style="color:var(--red)">SHY</span></div>
+    </div>
+    <!-- LOGIN FORM -->
+    <div id="authLogin">
+      <div class="auth-title">Нэвтрэх</div>
+      <div class="auth-sub">Дансаараа нэвтэрч хязгааргүй үзэх</div>
+      <div class="auth-field">
+        <label>И-мэйл хаяг</label>
+        <input type="email" id="loginEmail" placeholder="email@example.com" onkeydown="if(event.key==='Enter')doLogin()">
+      </div>
+      <div class="auth-field">
+        <label>Нууц үг</label>
+        <input type="password" id="loginPass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+      </div>
+      <button class="auth-btn" onclick="doLogin()">Нэвтрэх</button>
+      <div class="auth-switch">Данс байхгүй юу? <a onclick="switchAuth('register')">Бүртгүүлэх</a></div>
+    </div>
+    <!-- REGISTER FORM -->
+    <div id="authRegister" style="display:none">
+      <div class="auth-title">Бүртгүүлэх</div>
+      <div class="auth-sub">Үнэгүй данс үүсгэж эхлэх</div>
+      <div class="auth-field">
+        <label>Нэр</label>
+        <input type="text" id="regName" placeholder="Таны нэр">
+      </div>
+      <div class="auth-field">
+        <label>И-мэйл хаяг</label>
+        <input type="email" id="regEmail" placeholder="email@example.com">
+      </div>
+      <div class="auth-field">
+        <label>Нууц үг</label>
+        <input type="password" id="regPass" placeholder="Доод тал нь 6 тэмдэгт" onkeydown="if(event.key==='Enter')doRegister()">
+      </div>
+      <button class="auth-btn" onclick="doRegister()">Бүртгүүлэх</button>
+      <div class="auth-switch">Данс байна уу? <a onclick="switchAuth('login')">Нэвтрэх</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="f-brand">
+      <div class="logo-name">NABOO<span style="color:var(--red)">SHY</span></div>
+      <p>Монгол хадмал болон монголоор дублированный кино, онлайн тоглоом, цаг агаарын мэдээний нэгдсэн платформ.</p>
+    </div>
+    <div class="f-col">
+      <h4>Цэсүүд</h4>
+      <ul>
+        <li><a href="#" onclick="gotoPage('home')">Эхлэл</a></li>
+        <li><a href="#" onclick="gotoPage('movies')">Кино</a></li>
+        <li><a href="#" onclick="gotoPage('games')">Тоглоом</a></li>
+        <li><a href="#" onclick="gotoPage('weather')">Цаг агаар</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>Төрөл</h4>
+      <ul>
+        <li><a href="#" onclick="gotoPage('movies')">Action</a></li>
+        <li><a href="#" onclick="gotoPage('movies')">Drama</a></li>
+        <li><a href="#" onclick="gotoPage('movies')">Music</a></li>
+        <li><a href="#" onclick="gotoPage('movies')">TV Shows</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>Холбоос</h4>
+      <ul>
+        <li><a href="#" onclick="gotoPage('contact')">Холбоо барих</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#15727b7467747b6166707b71557278747c793b767a78"><span class="__cf_email__" data-cfemail="34535a5546555a4047515a50745359555d581a575b59">[email&#160;protected]</span></a></li>
+        <li><a href="tel:+97699376238">9937-6238</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Nabooshy. Бүх эрх хуулиар хамгаалагдсан.</span>
+  </div>
+</footer>
+
+
+<!-- ══════════ SERIES MODAL ══════════ -->
+<div class="modal-bg" id="seriesModal" onclick="closeMb(event,'seriesModal')">
+  <div class="modal" style="max-width:900px">
+    <button class="mcls" onclick="closeM('seriesModal')">✕</button>
+    <div class="m-hero" id="smHero"><div class="m-hero-g"></div></div>
+    <div class="m-body">
+      <div class="m-title" id="smTitle"></div>
+      <div class="m-meta" id="smMeta"></div>
+      <div class="m-desc" id="smDesc"></div>
+      <div class="m-acts" id="smActs"></div>
+      <div class="m-series-wrap">
+        <div class="m-series-title">Ангиуд</div>
+        <div class="s-tabs" id="smSeasonTabs"></div>
+        <div class="s-ep-header" id="smEpHeader"></div>
+        <div class="ep-grid" id="smEpGrid"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ MOVIE DETAIL MODAL ══════════ -->
+<div class="modal-bg" id="movieModal" onclick="closeMb(event,'movieModal')">
+  <div class="modal">
+    <button class="mcls" onclick="closeM('movieModal')">✕</button>
+    <div class="m-hero" id="mHero"><div class="m-hero-g"></div></div>
+    <div class="m-body">
+      <div class="m-title" id="mTitle"></div>
+      <div class="m-meta" id="mMeta"></div>
+      <div class="m-desc" id="mDesc"></div>
+      <div class="m-acts" id="mActs"></div>
+      <div class="m-grid" id="mGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ PLAYER MODAL (With Watch Party) ══════════ -->
+<div class="modal-bg" id="playerModal" onclick="closeMb(event,'playerModal')">
+  <div class="modal pmodal">
+    <button class="mcls" onclick="closeM('playerModal')">✕</button>
+    
+    <div class="player-layout">
+      <div class="player-vid-sec">
+        <!-- P2P Indicator -->
+        <div class="p2p-status" id="p2pStatus">
+          <div class="p2p-dot"></div> P2P Сүлжээ идэвхтэй
+        </div>
+        <div class="player-wrap" id="playerWrap" style="width:100%;height:100%;"></div>
+      </div>
+      
+      <!-- Watch Party Chat Sidebar -->
+      <div class="player-chat-sec" id="chatSidebar">
+        <div class="chat-header">
+          Хамтдаа үзэх 👥
+          <span onclick="toast('Урилгын линк хуулагдлаа!')">🔗 Урих</span>
+        </div>
+        <div class="chat-messages" id="chatMsgs">
+          <div class="chat-msg"><strong>Систем</strong>Та Watch Party-д нэгдлээ. Найзуудаа уриарай!</div>
+        </div>
+        <div class="chat-input">
+          <input type="text" id="chatInp" placeholder="Зурвас бичих..." onkeydown="if(event.key==='Enter')sendChat()">
+          <button onclick="sendChat()">➤</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:20px 30px; background:var(--bg2); border-radius:0 0 12px 12px;">
+      <div class="m-title" id="pTitle" style="font-size:24px; margin-bottom:4px;"></div>
+      <div class="m-meta" id="pMeta" style="margin-bottom:0;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ GAME MODAL ══════════ -->
+<div class="modal-bg" id="gameModal" onclick="closeMb(event,'gameModal')">
+  <div class="modal gmodal">
+    <button class="mcls" onclick="closeM('gameModal')">✕</button>
+    <iframe class="gm-frame" id="gmFrame" src="" allowfullscreen></iframe>
+    <div class="gm-info">
+      <div>
+        <div class="gm-title" id="gmTitle"></div>
+        <div class="gm-meta" id="gmMeta"></div>
+      </div>
+      <button class="btn-watch" onclick="toast('Дэлгэц дүүргэх...')">⛶ Томруулах</button>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ══════════════════════════════════════════
+// TMDB API (Зураг татах ухаалаг функц)
+// ══════════════════════════════════════════
+const TMDB_API_KEY = '0b34540c864eaaf51207c87c28dabb36';
+const FALLBACK_IMAGE = 'https://via.placeholder.com/300x450/222/777?text=Зураг+олдсонгүй';
+
+async function fixPoster(imgEl, title, year) {
+  if (imgEl.dataset.tried) return;
+  imgEl.dataset.tried = "true";
+  
+  const searchTitle = title.replace(/-\s*poster$/, '').trim();
+
+  try {
+    let query = `https://api.themoviedb.org/3/search/multi?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(searchTitle)}&language=en-US`;
+    if (year && year.toString().length === 4) {
+      query += `&primary_release_year=${year}`;
+    }
+    
+    const res = await fetch(query);
+    const data = await res.json();
+    
+    const result = data.results?.find(r => r.poster_path);
+
+    if (result) {
+      imgEl.src = `https://image.tmdb.org/t/p/w500${result.poster_path}`;
+    } else {
+      imgEl.src = FALLBACK_IMAGE;
+    }
+  } catch (e) {
+    console.error("Poster fetch failed:", e);
+    imgEl.src = FALLBACK_IMAGE;
+  }
+}
+
+// ══════════════════════════════════════════
+// DYNAMIC DATA LOADING (data.json)
+// ══════════════════════════════════════════
+let MOVIES = [];
+let SERIES = [];
+let GAMES =[]; // Тоглоомуудыг дараа нь games.json-оос дуудаж болно
+let HERO_MOVIES =[];
+
+async function loadData() {
+  try {
+    const response = await fetch('data.json');
+    const jsonData = await response.json();
+    const rawData = jsonData.data || jsonData;
+
+    rawData.forEach((item, index) => {
+      const isSeries = item.type && item.type.toLowerCase().includes('series');
+      
+      if (isSeries) {
+        let adaptedSeries = {
+          id: 's' + index,
+          title: item.mongolian_title || item.title || item.identified_title,
+          title_en: item.title || item.identified_title,
+          genre: item.genre || 'Drama',
+          rating: item.ratings?.imdb ? parseFloat(item.ratings.imdb) : 7.0,
+          year: item.year || 2024,
+          poster: item.poster_link || item.poster_url || '',
+          seasons:[],
+          episodes:[]
+        };
+
+        if (item.seasons && !Array.isArray(item.seasons)) {
+           let sIdx = 1;
+           for (let sName in item.seasons) {
+             let eps = item.seasons[sName].map((epObj, eIdx) => ({
+               ep: epObj.episode || epObj.episode_title || (eIdx+1),
+               embed: epObj.embed_links ? epObj.embed_links[0] : ''
+             }));
+             adaptedSeries.seasons.push({ s: sIdx++, episodes: eps });
+           }
+        } else if (item.episodes) {
+           adaptedSeries.episodes = item.episodes.map((epObj, eIdx) => ({
+             ep: epObj.episode || epObj.episode_title || (eIdx+1),
+             embed: epObj.embed_links ? epObj.embed_links[0] : ''
+           }));
+        }
+        SERIES.push(adaptedSeries);
+      } else {
+        MOVIES.push({
+          id: 'm' + index,
+          title: item.mongolian_title || item.title || item.identified_title,
+          title_en: item.title || item.identified_title,
+          year: item.year || 2024,
+          rating: item.ratings?.imdb ? parseFloat(item.ratings.imdb) : 7.0,
+          poster: item.poster_link || item.poster_url || '',
+          embed: item.embed_links ? item.embed_links[0] : '',
+          cat: (item.genre || 'action').split(',')[0].toLowerCase().trim(),
+          desc: item.mongolian_title || item.title || item.identified_title
+        });
+      }
+    });
+
+    HERO_MOVIES = MOVIES.slice(0, 6);
+    gotoPage('home');
+  } catch (error) {
+    console.error("Data loading error:", error);
+    toast("Өгөгдөл татахад алдаа гарлаа! (Live Server ашиглана уу)");
+  }
+}
+
+// ══════════════════════════════════════════
+// SERIES HELPERS
+// ══════════════════════════════════════════
+let currentSeries = null;
+let currentSeriesSeason = 0;
+
+function getSeriesEps(s) {
+  if (s.seasons && s.seasons.length > 0) return s.seasons[currentSeriesSeason]?.episodes ||[];
+  return s.episodes ||[];
+}
+function getSeriesEpCount(s) {
+  if (s.seasons && s.seasons.length > 0) return s.seasons.reduce((acc,ss)=>acc+(ss.episodes||[]).length,0);
+  return (s.episodes||[]).length;
+}
+function getSeriesSeasons(s) {
+  return s.seasons ? s.seasons.length : 1;
+}
+
+// ── Series Card
+function makeSeriesCard(s) {
+  const d = document.createElement('div');
+  d.className = 'mcard';
+  const epCount = getSeriesEpCount(s);
+  const seasons = getSeriesSeasons(s);
+  const badge = seasons > 1 ? `${seasons} улирал` : `${epCount} анги`;
+  d.innerHTML = `
+    <div class="mcard-poster-wrap">
+      <img class="mcard-poster" src="${s.poster || FALLBACK_IMAGE}" alt="${s.title}" loading="lazy"
+           data-title="${s.title_en}" data-year="${s.year}"
+           onerror="fixPoster(this,'${s.title_en}',${s.year})">
+      <video class="hover-vid" src="https://www.w3schools.com/html/mov_bbb.mp4" muted loop playsinline preload="none"></video>
+      <div class="ep-badge">📺 ${badge}</div>
+      <div class="mcard-ov">
+        <div class="mcard-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+      </div>
+    </div>
+    <div class="mcard-info">
+      <div class="mcard-title">${s.title}</div>
+      <div class="mcard-sub"><span class="st">★</span>${s.rating}<span>·</span>${s.year}</div>
+    </div>`;
+  
+  d.addEventListener('mouseenter', () => {
+    let vid = d.querySelector('video');
+    if(vid) { vid.play().catch(()=>{}); }
+  });
+  d.addEventListener('mouseleave', () => {
+    let vid = d.querySelector('video');
+    if(vid) { vid.pause(); vid.currentTime = 0; }
+  });
+
+  d.addEventListener('click', () => openSeriesDetail(s));
+  if (!s.poster) {
+    const img = d.querySelector('img');
+    setTimeout(() => fixPoster(img, s.title_en, s.year), 50);
+  }
+  return d;
+}
+
+function renderSeriesRow(id, list) {
+  const el = document.getElementById(id); if (!el) return; el.innerHTML = '';
+  list.forEach(s => el.appendChild(makeSeriesCard(s)));
+}
+function renderSeriesGrid(id, list) {
+  const el = document.getElementById(id); if (!el) return; el.innerHTML = '';
+  list.forEach(s => el.appendChild(makeSeriesCard(s)));
+}
+
+// ── Open Series Detail Modal
+function openSeriesDetail(s) {
+  currentSeries = s;
+  currentSeriesSeason = 0;
+  document.getElementById('smHero').style.backgroundImage = `url('${s.poster || FALLBACK_IMAGE}')`;
+  document.getElementById('smTitle').textContent = s.title;
+  document.getElementById('smMeta').innerHTML = `
+    <span class="st">⭐ ${s.rating}</span>
+    <span>${s.year}</span>
+    <span class="tag">${s.genre}</span>`;
+  document.getElementById('smDesc').textContent = s.title_en + ' — Монгол хадмал.';
+  
+  document.getElementById('smActs').innerHTML = `
+    <button class="btn-party" onclick="openWatchParty(currentSeries, true)"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg> Хамтдаа үзэх</button>
+  `;
+
+  const tabsEl = document.getElementById('smSeasonTabs');
+  if (s.seasons && s.seasons.length > 1) {
+    tabsEl.innerHTML = s.seasons.map((ss, i) =>
+      `<div class="s-tab${i===0?' on':''}" onclick="switchSeriesSeason(${i},this)">Улирал ${ss.s}</div>`
+    ).join('');
+  } else {
+    tabsEl.innerHTML = '';
+  }
+  renderSeriesEps(0);
+  document.getElementById('seriesModal').classList.add('open');
+}
+
+function switchSeriesSeason(idx, btn) {
+  currentSeriesSeason = idx;
+  document.querySelectorAll('#smSeasonTabs .s-tab').forEach(t => t.classList.remove('on'));
+  if (btn) btn.classList.add('on');
+  renderSeriesEps(idx);
+}
+
+function renderSeriesEps(seasonIdx) {
+  const s = currentSeries;
+  const eps = s.seasons && s.seasons.length > 0 ? (s.seasons[seasonIdx]?.episodes || []) : (s.episodes ||[]);
+  const header = document.getElementById('smEpHeader');
+  const grid = document.getElementById('smEpGrid');
+  header.textContent = `${eps.length} анги байна`;
+  grid.innerHTML = eps.map(ep => `
+    <div class="ep-item" onclick="playSeriesEp('${ep.ep}','${ep.embed.replace(/'/g,"\\'")}',this)">
+      <div class="ep-num">${ep.ep}</div>
+      <div class="ep-label">Анги</div>
+    </div>`).join('');
+}
+
+function playSeriesEp(ep, embed, btn, isParty = false) {
+  if (!currentUser) {
+    closeM('seriesModal'); openAuth('login');
+    toast('Үзэхийн тулд нэвтэрнэ үү 🔐'); return;
+  }
+  if(btn) {
+    document.querySelectorAll('#smEpGrid .ep-item').forEach(e => e.classList.remove('playing'));
+    btn.classList.add('playing');
+  }
+  
+  const wrap = document.getElementById('playerWrap');
+  wrap.innerHTML = `<iframe src="${embed}" allowfullscreen allow="autoplay; encrypted-media; fullscreen" style="width:100%;height:100%;border:none;background:#000;display:block"></iframe>`;
+  document.getElementById('pTitle').textContent = `${currentSeries.title} — ${ep}-р анги`;
+  document.getElementById('pMeta').innerHTML = `<span style="color:var(--gold)">⭐ ${currentSeries.rating}</span><span style="color:var(--text2);margin-left:10px">· ${currentSeries.year} · ${currentSeries.genre}</span>`;
+  
+  document.getElementById('chatSidebar').style.display = isParty ? 'flex' : 'none';
+  
+  closeM('seriesModal');
+  document.getElementById('playerModal').classList.add('open');
+}
+
+// ── Series Page
+let seriesSort = 'new';
+let seriesGenre = 'Бүгд';
+function initSeriesPage() {
+  const genres =['Бүгд', ...new Set(SERIES.flatMap(s => s.genre.split(',').map(g=>g.trim())))];
+  const bar = document.getElementById('seriesGenreBar');
+  bar.innerHTML = genres.slice(0, 12).map(g =>
+    `<div class="gpill${g==='Бүгд'?' on':''}" onclick="setSeriesGenre('${g}',this)">${g}</div>`
+  ).join('');
+  applySeriesFilters();
+}
+function setSeriesGenre(g, btn) {
+  seriesGenre = g;
+  document.querySelectorAll('#seriesGenreBar .gpill').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  applySeriesFilters();
+}
+function sortSeriesPage(v) { seriesSort = v; applySeriesFilters(); }
+function applySeriesFilters() {
+  let list =[...SERIES];
+  if (seriesGenre !== 'Бүгд') list = list.filter(s => s.genre.includes(seriesGenre));
+  if (seriesSort === 'rating') list.sort((a,b) => b.rating - a.rating);
+  else if (seriesSort === 'name') list.sort((a,b) => a.title.localeCompare(b.title,'mn'));
+  else list.sort((a,b) => b.year - a.year);
+  renderSeriesGrid('seriesGrid', list);
+  document.getElementById('sCount').textContent = `${list.length} цуврал`;
+}
+
+// ══════════════════════════════════════════
+// NAVBAR SCROLL EFFECT
+// ══════════════════════════════════════════
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  if(window.scrollY > 20) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+// ══════════════════════════════════════════
+// CAROUSEL SCROLL
+// ══════════════════════════════════════════
+function scrollRow(id, amount) {
+  const el = document.getElementById(id);
+  if(el) el.scrollBy({ left: amount, behavior: 'smooth' });
+}
+
+// ══════════════════════════════════════════
+// HERO SLIDER
+// ══════════════════════════════════════════
+let hi=0,hInt;
+function initHero(){
+  if(HERO_MOVIES.length === 0) return;
+  const dots=document.getElementById('heroDots');
+  dots.innerHTML=HERO_MOVIES.map((_,i)=>`<div class="hero-dot${i===0?' on':''}" onclick="setHero(${i})"></div>`).join('');
+  setHero(0);
+  clearInterval(hInt);
+  hInt=setInterval(()=>setHero((hi+1)%HERO_MOVIES.length),6000);
+}
+function setHero(i){
+  hi=i;const m=HERO_MOVIES[i];
+  document.getElementById('heroBg').style.backgroundImage=`url('${m.poster}')`;
+  document.getElementById('heroTitle').textContent=m.title;
+  document.getElementById('heroDesc').textContent=m.desc || 'Тайлбар одоогоор байхгүй байна.';
+  document.getElementById('heroMeta').innerHTML=`
+    <span class="star">⭐ ${m.rating}</span>
+    <span>${m.year}</span>
+    <span class="tag">${catLabel(m.cat)}</span>`;
+  document.getElementById('heroWatch').onclick=()=>openPlayer(m);
+  document.getElementById('heroMore').onclick=()=>openMovieDetail(m);
+  document.querySelectorAll('.hero-dot').forEach((d,j)=>d.classList.toggle('on',j===i));
+}
+
+// ══════════════════════════════════════════
+// BADGE / CAT LABELS
+// ══════════════════════════════════════════
+function catLabel(c){
+  const m={
+    action:'Action', anime:'Anime', family:'Family', comedy:'Comedy',
+    drama:'Drama', horror:'Horror', music:'Music', mystery:'Mystery',
+    romance:'Romance', sports:'Sports', thriller:'Thriller', tvshows:'TV Shows',
+    crime:'Crime', war:'War', scifi: 'Sci-Fi'
+  };
+  return m[c] || c.charAt(0).toUpperCase() + c.slice(1);
+}
+
+// ══════════════════════════════════════════
+// MOVIE CARD (With Smart Preload Hover)
+// ══════════════════════════════════════════
+function makeMovieCard(m){
+  const d=document.createElement('div');
+  d.className='mcard';
+  d.innerHTML=`
+    <div class="mcard-poster-wrap">
+      <img class="mcard-poster" src="${m.poster || FALLBACK_IMAGE}" alt="${m.title}" loading="lazy" onerror="fixPoster(this, '${m.title_en || m.title}', '${m.year}')">
+      <video class="hover-vid" src="https://www.w3schools.com/html/mov_bbb.mp4" muted loop playsinline preload="none"></video>
+      <div class="mcard-ov">
+        <div class="mcard-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+      </div>
+    </div>
+    <div class="mcard-info">
+      <div class="mcard-title">${m.title}</div>
+      <div class="mcard-sub"><span class="st">★</span>${m.rating}<span>·</span>${m.year}</div>
+    </div>`;
+  
+  d.addEventListener('mouseenter', () => {
+    let vid = d.querySelector('video');
+    if(vid) { vid.play().catch(()=>{}); }
+  });
+  d.addEventListener('mouseleave', () => {
+    let vid = d.querySelector('video');
+    if(vid) { vid.pause(); vid.currentTime = 0; }
+  });
+
+  d.addEventListener('click',()=>openMovieDetail(m));
+  return d;
+}
+
+function renderMovieRow(id,list){
+  const el=document.getElementById(id);if(!el)return;el.innerHTML='';
+  list.forEach(m=>el.appendChild(makeMovieCard(m)));
+}
+function renderMovieGrid(id,list){
+  const el=document.getElementById(id);if(!el)return;el.innerHTML='';
+  list.forEach(m=>el.appendChild(makeMovieCard(m)));
+}
+
+// ══════════════════════════════════════════
+// MOVIES PAGE
+// ══════════════════════════════════════════
+let mGenre='Бүгд',mSort='new';
+let MOVIE_GENRES =['Бүгд'];
+
+function initMoviesPage(){
+  const cats =[...new Set(MOVIES.map(m => m.cat))].filter(Boolean);
+  MOVIE_GENRES =['Бүгд', ...cats.map(c => catLabel(c))];
+  const bar=document.getElementById('movieGenreBar');
+  bar.innerHTML=MOVIE_GENRES.map(g=>`<div class="gpill${g==='Бүгд'?' on':''}" onclick="setMGenre('${g}',this)">${g}</div>`).join('');
+  applyMovieFilters();
+}
+function setMGenre(g,btn){
+  mGenre=g;
+  document.querySelectorAll('#movieGenreBar .gpill').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');applyMovieFilters();
+}
+function sortMovies(v){mSort=v;applyMovieFilters()}
+function applyMovieFilters(){
+  let list=[...MOVIES];
+  if(mGenre!=='Бүгд') list=list.filter(m=> catLabel(m.cat) === mGenre);
+  if(mSort==='rating')list.sort((a,b)=>b.rating-a.rating);
+  else if(mSort==='name')list.sort((a,b)=>a.title.localeCompare(b.title,'mn'));
+  else if(mSort==='year')list.sort((a,b)=>b.year-a.year);
+  renderMovieGrid('moviesGrid',list);
+  document.getElementById('mCount').textContent=`${list.length} контент`;
+}
+
+// ══════════════════════════════════════════
+// GAME CARD
+// ══════════════════════════════════════════
+function makeGameCard(g){
+  const d=document.createElement('div');
+  d.className='gcard';
+  d.innerHTML=`
+    <div class="gcard-poster-wrap">
+      <img class="gcard-poster" src="${g.poster || FALLBACK_IMAGE}" alt="${g.title}" loading="lazy" onerror="this.src=FALLBACK_IMAGE">
+      <div class="gcard-ov">
+        <div class="gcard-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+      </div>
+    </div>
+    <div class="gcard-info">
+      <div class="gcard-title">${g.title}</div>
+      <div class="gcard-sub">
+        <span class="st">★</span>${g.rating}
+        <span>·</span>
+        <span class="genre">${g.genre}</span>
+      </div>
+    </div>`;
+  d.addEventListener('click',()=>openGame(g));
+  return d;
+}
+
+function renderGameRow(id,list){
+  const el=document.getElementById(id);if(!el)return;el.innerHTML='';
+  list.slice(0,15).forEach(g=>el.appendChild(makeGameCard(g)));
+}
+function renderGameGrid(id,list){
+  const el=document.getElementById(id);if(!el)return;el.innerHTML='';
+  list.forEach(g=>el.appendChild(makeGameCard(g)));
+}
+
+let gGenre='Бүгд',gSearch='';
+function initGamesPage(){
+  const genres=['Бүгд',...new Set(GAMES.map(g=>g.genre))].slice(0,10);
+  const bar=document.getElementById('gameGenreBar');
+  bar.innerHTML=genres.map(g=>`<div class="gpill${g==='Бүгд'?' on':''}" onclick="setGGenre('${g}',this)">${g}</div>`).join('');
+  applyGameFilters();
+}
+function setGGenre(g,btn){
+  gGenre=g;
+  document.querySelectorAll('#gameGenreBar .gpill').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');applyGameFilters();
+}
+function filterGames(q){gSearch=q.toLowerCase();applyGameFilters()}
+function applyGameFilters(){
+  let list=[...GAMES];
+  if(gGenre!=='Бүгд')list=list.filter(g=>g.genre===gGenre);
+  if(gSearch)list=list.filter(g=>g.title.toLowerCase().includes(gSearch));
+  renderGameGrid('gamesGrid',list);
+  document.getElementById('gCount').textContent=`${list.length} тоглоом`;
+}
+
+// ══════════════════════════════════════════
+// WEATHER
+// ══════════════════════════════════════════
+const OWM_KEY='fc4b4a3ecd85839afed62a32911aa465';
+const wCache={};
+async function fetchWeather(q){
+  if(wCache[q])return wCache[q];
+  try{
+    const r=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(q)}&appid=${OWM_KEY}&units=metric&lang=en`);
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    const d=await r.json();
+    const res={
+      temp:Math.round(d.main.temp),
+      feel:Math.round(d.main.feels_like),
+      hum:d.main.humidity+'%',
+      wind:Math.round(d.wind.speed*3.6)+' км/ц',
+      pres:d.main.pressure+' гПа',
+      desc:owmDescMn(d.weather[0].id,d.weather[0].description),
+      icon:owmIcon(d.weather[0].id,d.weather[0].icon)
+    };
+    wCache[q]=res;return res;
+  }catch(e){return null}
+}
+function owmDescMn(id,orig){
+  if(id===800)return'Цэлмэг';if(id===801)return'Бага үүлтэй';if(id===802)return'Дунд зэрэг үүлтэй';if(id>=803)return'Их үүлтэй';if(id>=700&&id<800)return'Манан';if(id>=600&&id<700)return'Цас орж байна';if(id>=500&&id<600)return'Бороо орж байна';if(id>=300&&id<400)return'Шиврээ бороо';if(id>=200&&id<300)return'Аянга цахилгаан';return orig;
+}
+function owmIcon(id,ico){
+  const n=ico.endsWith('n');if(id===800)return n?'🌙':'☀';if(id===801)return n?'🌙':'🌤';if(id===802)return'⛅';if(id>=803)return'☁';if(id>=700)return'🌫';if(id>=600)return'❄';if(id>=500)return'🌧';if(id>=300)return'🌦';if(id>=200)return'⛈';return'🌡';
+}
+
+async function initWeatherPage(){
+  const ub=await fetchWeather('Ulaanbaatar');
+  if(ub){
+    document.getElementById('wfTemp').textContent=ub.temp;document.getElementById('wfDesc').textContent=ub.desc;document.getElementById('wfHum').textContent=ub.hum;document.getElementById('wfWind').textContent=ub.wind;document.getElementById('wfFeel').textContent=ub.feel+'°C';document.getElementById('wfPres').textContent=ub.pres;document.querySelector('.w-featured .icon').textContent=ub.icon;
+  }
+  const tabs=document.getElementById('cityTabs');
+  tabs.innerHTML=WEATHER_CITIES.map((c,i)=>`<div class="w-city-tab${i===0?' on':''}" onclick="loadCityWeather('${c.q}','${c.name}',this)">${c.name}</div>`).join('');
+  const grid=document.getElementById('weatherGrid');
+  grid.innerHTML=WEATHER_CITIES.map(c=>`
+    <div class="w-card" id="wc-${c.q.replace(/[^a-z]/gi,'')}" onclick="loadCityWeather('${c.q}','${c.name}',null)">
+      <div class="w-icon" id="wi-${c.q.replace(/[^a-z]/gi,'')}">🌡</div>
+      <div class="w-city-name">${c.name}</div>
+      <div class="w-temp"><span id="wt-${c.q.replace(/[^a-z]/gi,'')}">—</span><span>°C</span></div>
+      <div class="w-desc" id="wd-${c.q.replace(/[^a-z]/gi,'')}">ачаалж байна...</div>
+      <div class="w-details">
+        <div class="w-detail"><label>Чийгшил</label><strong id="wh-${c.q.replace(/[^a-z]/gi,'')}">—</strong></div>
+        <div class="w-detail"><label>Салхи</label><strong id="ww-${c.q.replace(/[^a-z]/gi,'')}">—</strong></div>
+      </div>
+    </div>`).join('');
+  WEATHER_CITIES.forEach(async c=>{
+    const key=c.q.replace(/[^a-z]/gi,'');const w=await fetchWeather(c.q);
+    if(w){
+      const el=id=>document.getElementById(id);
+      if(el('wt-'+key))el('wt-'+key).textContent=w.temp;if(el('wd-'+key))el('wd-'+key).textContent=w.desc;if(el('wi-'+key))el('wi-'+key).textContent=w.icon;if(el('wh-'+key))el('wh-'+key).textContent=w.hum;if(el('ww-'+key))el('ww-'+key).textContent=w.wind;
+    }
+  });
+}
+async function loadCityWeather(q,name,btn){
+  if(btn){document.querySelectorAll('.w-city-tab').forEach(t=>t.classList.remove('on'));btn.classList.add('on');}
+  toast(`${name}-н цаг агаар ачаалж байна...`);
+}
+
+// ══════════════════════════════════════════
+// MODALS & WATCH PARTY
+// ══════════════════════════════════════════
+function openMovieDetail(m){
+  document.getElementById('mHero').style.backgroundImage=`url('${m.poster}')`;
+  document.getElementById('mTitle').textContent=m.title;
+  document.getElementById('mMeta').innerHTML=`
+    <span class="st">⭐ ${m.rating}/10</span>
+    <span>${m.year}</span>
+    <span class="tag">${catLabel(m.cat)}</span>`;
+  document.getElementById('mDesc').textContent=m.desc||'Тайлбар байхгүй.';
+  document.getElementById('mActs').innerHTML=`
+    <button class="btn-watch" onclick="openPlayer(currentM)"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg> Үзэх</button>
+    <button class="btn-party" onclick="openWatchParty(currentM)"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg> Хамтдаа үзэх</button>
+    <button class="btn-more" onclick="toast('Жагсаалтад нэмлээ ✓')">＋ Жагсаалт</button>`;
+  document.getElementById('mGrid').innerHTML=`
+    <div class="mgi"><label>Гарсан он</label><span>${m.year}</span></div>
+    <div class="mgi"><label>Ангилал</label><span>${catLabel(m.cat)}</span></div>`;
+  window.currentM=m;
+  document.getElementById('movieModal').classList.add('open');
+}
+
+function openWatchParty(m, isSeries = false) {
+  if(!currentUser){
+    closeM('movieModal'); closeM('seriesModal'); openAuth('login');
+    toast('Үзэхийн тулд нэвтэрнэ үү 🔐'); return;
+  }
+  toast('Урилгын линк хуулагдлаа! Найзууд руугаа явуулаарай.');
+  if(isSeries) {
+    const eps = getSeriesEps(m);
+    if(eps.length > 0) playSeriesEp(eps[0].ep, eps[0].embed, null, true);
+  } else {
+    openPlayer(m, true);
+  }
+}
+
+function openPlayer(m, isParty = false){
+  if(!currentUser){closeM('movieModal');openAuth('login');toast('Үзэхийн тулд нэвтэрнэ үү 🔐');return;}
+  const wrap=document.getElementById('playerWrap');
+  if(m.embed){
+    let embedUrl = m.embed;
+    if(embedUrl.includes('youtube.com') && !embedUrl.includes('autoplay=1')) {
+      embedUrl += (embedUrl.includes('?') ? '&' : '?') + 'autoplay=1';
+    }
+    wrap.innerHTML=`<iframe src="${embedUrl}" allowfullscreen allow="autoplay; encrypted-media; fullscreen" style="width:100%;height:100%;border:none;background:#000;display:block"></iframe>`;
+  } else {
+    wrap.innerHTML=`<div style="width:100%;height:100%;background:#111;display:flex;align-items:center;justify-content:center;color:#666;font-size:16px">Тоглуулагч байхгүй</div>`;
+  }
+  document.getElementById('pTitle').textContent=m.title;
+  document.getElementById('pMeta').innerHTML=`<span style="color:var(--gold)">⭐ ${m.rating}</span><span style="color:var(--text2);margin-left:10px">· ${m.year} · ${catLabel(m.cat)}</span>`;
+  
+  document.getElementById('chatSidebar').style.display = isParty ? 'flex' : 'none';
+
+  document.getElementById('movieModal').classList.remove('open');
+  document.getElementById('playerModal').classList.add('open');
+}
+
+function sendChat() {
+  const inp = document.getElementById('chatInp');
+  const msg = inp.value.trim();
+  if(!msg) return;
+  const chatBox = document.getElementById('chatMsgs');
+  chatBox.innerHTML += `<div class="chat-msg me"><strong>${currentUser.name}</strong>${msg}</div>`;
+  inp.value = '';
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function openGame(g){
+  if(g.link&&!g.embed){window.open(g.link,'_blank');return}
+  if(!g.embed){toast('Холбоос байхгүй');return}
+  document.getElementById('gmFrame').src=g.embed;
+  document.getElementById('gmTitle').textContent=g.title;
+  document.getElementById('gmMeta').innerHTML=`<span>${g.genre}</span><span style="color:var(--gold)">★ ${g.rating}</span><span>PC · Mobile</span>`;
+  document.getElementById('gameModal').classList.add('open');
+}
+
+function closeM(id){
+  const modal = document.getElementById(id);
+  if (modal) modal.classList.remove('open');
+  if(id==='gameModal')document.getElementById('gmFrame').src='';
+  if(id==='playerModal'){var w=document.getElementById('playerWrap');if(w)w.innerHTML='';}
+}
+function closeMb(e,id){if(e.target.id===id)closeM(id)}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){['movieModal','playerModal','gameModal','authModal','seriesModal'].forEach(id => closeM(id));
+  }
+});
+
+// ══════════════════════════════════════════
+// SEARCH
+// ══════════════════════════════════════════
+let sTm;
+function doSearch(q){
+  clearTimeout(sTm);
+  if(!q.trim()){if(document.getElementById('page-search').classList.contains('active'))gotoPage('home');return}
+  sTm=setTimeout(()=>{
+    const mRes=MOVIES.filter(m=>m.title.toLowerCase().includes(q.toLowerCase())||catLabel(m.cat).toLowerCase().includes(q.toLowerCase()));
+    const gRes=GAMES.filter(g=>g.title.toLowerCase().includes(q.toLowerCase())||g.genre.toLowerCase().includes(q.toLowerCase()));
+    document.getElementById('searchInfo').textContent=`"${q}" — Кино: ${mRes.length}, Тоглоом: ${gRes.length} үр дүн`;
+    document.getElementById('searchMoviesTitle').style.display = mRes.length ? 'block' : 'none';
+    renderMovieGrid('searchGrid', mRes);
+    document.getElementById('searchGamesTitle').style.display = gRes.length ? 'block' : 'none';
+    renderGameGrid('searchGridGames', gRes);
+    gotoPage('search',true);
+  },320);
+}
+
+// ══════════════════════════════════════════
+// PAGE NAVIGATION
+// ══════════════════════════════════════════
+const PAGE_INIT={movies:initMoviesPage,games:initGamesPage,weather:initWeatherPage,series:initSeriesPage};
+let pageInitsDone={movies:false,games:false,weather:false,series:false};
+
+function gotoPage(p,noScroll=false){
+  clearInterval(hInt);
+  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  const tb=document.getElementById('t-'+p);if(tb)tb.classList.add('active');
+  if(!noScroll)window.scrollTo({top:0,behavior:'smooth'});
+
+  if(p==='home'){
+    initHero();
+    renderMovieRow('rowNew', MOVIES.slice(0,10));
+    renderMovieRow('rowTop',[...MOVIES].sort((a,b)=>b.rating-a.rating).slice(0,10));
+    renderMovieRow('rowAction', MOVIES.filter(m => m.cat === 'action').slice(0,10));
+    renderMovieRow('rowTvShows', MOVIES.filter(m => m.cat === 'tvshows').slice(0,10));
+    renderMovieRow('rowMusic', MOVIES.filter(m => m.cat === 'music').slice(0,10));
+    renderSeriesRow('rowSeries', SERIES.filter(s=>s.rating>=7.5).slice(0,12));
+    renderGameRow('rowGames', GAMES);
+  }
+  else if(PAGE_INIT[p] && !pageInitsDone[p]){
+    PAGE_INIT[p]();
+    pageInitsDone[p] = true;
+  }
+}
+
+// ══════════════════════════════════════════
+// TOAST
+// ══════════════════════════════════════════
+let tTm;
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  clearTimeout(tTm);tTm=setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+// ══════════════════════════════════════════
+// AUTH SYSTEM
+// ══════════════════════════════════════════
+let currentUser=null;
+function openAuth(mode){
+  mode=mode||'login';
+  document.getElementById('authModal').classList.add('open');
+  switchAuth(mode);
+}
+function closeAuth(){
+  document.getElementById('authModal').classList.remove('open');
+}
+function switchAuth(mode){
+  document.getElementById('authLogin').style.display=mode==='login'?'block':'none';
+  document.getElementById('authRegister').style.display=mode==='register'?'block':'none';
+}
+function doLogin(){
+  var email=document.getElementById('loginEmail').value.trim();
+  var pass=document.getElementById('loginPass').value;
+  if(!email||!pass){toast('Мэдээллээ бүрэн оруулна уу');return}
+  var users=JSON.parse(localStorage.getItem('nb_users')||'[]');
+  var found=users.find(function(u){return u.email===email&&u.pass===btoa(pass)});
+  if(!found){toast('И-мэйл эсвэл нууц үг буруу байна');return}
+  loginSuccess(found);
+}
+function doRegister(){
+  var name=document.getElementById('regName').value.trim();
+  var email=document.getElementById('regEmail').value.trim();
+  var pass=document.getElementById('regPass').value;
+  if(!name||!email||pass.length<6){toast('Мэдээллээ зөв оруулна уу');return}
+  var users=JSON.parse(localStorage.getItem('nb_users')||'[]');
+  if(users.find(function(u){return u.email===email})){toast('Бүртгэлтэй хаяг байна');return}
+  var user={name:name,email:email,pass:btoa(pass)};
+  users.push(user);
+  localStorage.setItem('nb_users',JSON.stringify(users));
+  loginSuccess(user);
+}
+function loginSuccess(user){
+  currentUser=user;
+  localStorage.setItem('nb_session',JSON.stringify(user));
+  closeAuth();
+  updateNavUser();
+  toast('Тавтай морил, '+user.name+'! 👋');
+}
+function logoutUser(){
+  if(!confirm('Гарах уу?'))return;
+  currentUser=null;
+  localStorage.removeItem('nb_session');
+  updateNavUser();
+  toast('Амжилттай гарлаа');
+}
+function updateNavUser(){
+  var lb=document.getElementById('navLoginBtn');
+  var ub=document.getElementById('navUserBtn');
+  if(currentUser){
+    lb.style.display='none';ub.style.display='flex';
+    document.getElementById('navAvatar').textContent=currentUser.name[0].toUpperCase();
+    document.getElementById('navUserName').textContent=currentUser.name;
+  } else {
+    lb.style.display='flex'; ub.style.display='none';
+  }
+}
+
+// ══════════════════════════════════════════
+// PWA INSTALL LOGIC
+// ══════════════════════════════════════════
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('installBtn').style.display = 'flex';
+});
+
+function installPWA() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        document.getElementById('installBtn').style.display = 'none';
+        toast('Апп амжилттай суулаа!');
+      }
+      deferredPrompt = null;
+    });
+  } else {
+    toast('Таны хөтөч дэмжихгүй эсвэл аль хэдийн суусан байна.');
+  }
+}
+
+// ══════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════
+(function(){
+  try {
+    const s = localStorage.getItem('nb_session');
+    if(s){ currentUser = JSON.parse(s); updateNavUser(); }
+  } catch(e) {}
+  
+  // Fetch data.json and start
+  loadData();
+})();
+</script>
+</body>
+</html>
