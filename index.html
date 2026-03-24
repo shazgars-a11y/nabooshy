@@ -3,1309 +3,719 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LoloKino — Шилдэг кино түгээгч сайт</title>
+<title>Nabooshy — Кино · Тоглоом · Цаг агаар</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+Mongolian&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --red: #CD2026;
-    --red-dark: #a01920;
-    --red-glow: rgba(205,32,38,0.3);
-    --blue: #408AE9;
-    --bg: #0E0E0E;
-    --bg2: #161616;
-    --bg3: #1e1e1e;
-    --bg4: #252525;
-    --text: #f0f0f0;
-    --text2: #aaa;
-    --text3: #666;
-    --border: rgba(255,255,255,0.08);
-    --card-w: 180px;
-    --card-h: 270px;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    line-height: 1.5;
-    overflow-x: hidden;
-  }
-
-  /* ===== SCROLLBAR ===== */
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg2); }
-  ::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--red); }
-
-  /* ===== NAVBAR ===== */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    gap: 0;
-    padding: 0 32px;
-    height: 60px;
-    background: linear-gradient(to bottom, rgba(14,14,14,0.98) 0%, rgba(14,14,14,0.85) 100%);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    transition: background 0.3s;
-  }
-
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    margin-right: 36px;
-    flex-shrink: 0;
-  }
-
-  .logo-icon {
-    width: 32px; height: 32px;
-    background: var(--red);
-    border-radius: 6px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px; font-weight: 900;
-    color: white;
-    letter-spacing: -1px;
-    font-family: 'Bebas Neue', sans-serif;
-  }
-
-  .logo-text {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 2px;
-    color: var(--text);
-  }
-  .logo-text span { color: var(--red); }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    list-style: none;
-    flex: 1;
-  }
-
-  .nav-links a {
-    text-decoration: none;
-    color: var(--text2);
-    font-size: 13px;
-    font-weight: 500;
-    padding: 8px 14px;
-    border-radius: 6px;
-    transition: all 0.2s;
-    letter-spacing: 0.5px;
-  }
-  .nav-links a:hover, .nav-links a.active {
-    color: var(--text);
-    background: rgba(255,255,255,0.07);
-  }
-  .nav-links a.active { color: var(--red); }
-
-  .nav-right {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .nav-search {
-    display: flex;
-    align-items: center;
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 6px 12px;
-    gap: 8px;
-    transition: all 0.2s;
-  }
-  .nav-search:focus-within {
-    border-color: var(--red);
-    background: var(--bg2);
-  }
-  .nav-search svg { color: var(--text3); flex-shrink: 0; }
-  .nav-search input {
-    background: none;
-    border: none;
-    outline: none;
-    color: var(--text);
-    font-size: 13px;
-    width: 180px;
-    font-family: 'Inter', sans-serif;
-  }
-  .nav-search input::placeholder { color: var(--text3); }
-
-  .btn-login {
-    background: var(--red);
-    color: white;
-    border: none;
-    padding: 8px 18px;
-    border-radius: 7px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    letter-spacing: 0.3px;
-    font-family: 'Inter', sans-serif;
-  }
-  .btn-login:hover { background: var(--red-dark); transform: translateY(-1px); }
-
-  /* ===== HERO ===== */
-  .hero {
-    position: relative;
-    height: 580px;
-    overflow: hidden;
-    margin-top: 60px;
-  }
-
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center top;
-    filter: brightness(0.45);
-    transition: all 1s ease;
-  }
-
-  .hero-gradient {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to right,
-      rgba(14,14,14,0.95) 0%,
-      rgba(14,14,14,0.6) 50%,
-      rgba(14,14,14,0.1) 100%
-    ),
-    linear-gradient(
-      to top,
-      rgba(14,14,14,1) 0%,
-      rgba(14,14,14,0.2) 40%,
-      transparent 100%
-    );
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 1;
-    padding: 100px 64px 60px;
-    max-width: 560px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--red);
-    color: white;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 4px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-    width: fit-content;
-  }
-
-  .hero-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 58px;
-    letter-spacing: 2px;
-    line-height: 1.05;
-    margin-bottom: 12px;
-    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
-  }
-
-  .hero-meta {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 14px;
-    flex-wrap: wrap;
-  }
-
-  .hero-meta span {
-    font-size: 13px;
-    color: var(--text2);
-  }
-  .hero-meta .rating {
-    color: #FFD700;
-    font-weight: 600;
-  }
-  .hero-meta .year { color: var(--text2); }
-  .hero-meta .genre-tag {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    padding: 2px 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    color: var(--text2);
-  }
-
-  .hero-desc {
-    color: var(--text2);
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 24px;
-    max-width: 440px;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-  }
-
-  .btn-play {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--red);
-    color: white;
-    padding: 12px 28px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    border: none;
-    font-family: 'Inter', sans-serif;
-    transition: all 0.2s;
-    letter-spacing: 0.5px;
-  }
-  .btn-play:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 8px 24px var(--red-glow); }
-
-  .btn-info {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255,255,255,0.1);
-    color: white;
-    padding: 12px 22px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    border: 1px solid rgba(255,255,255,0.15);
-    font-family: 'Inter', sans-serif;
-    transition: all 0.2s;
-    backdrop-filter: blur(4px);
-  }
-  .btn-info:hover { background: rgba(255,255,255,0.18); transform: translateY(-2px); }
-
-  .hero-dots {
-    position: absolute;
-    bottom: 24px;
-    left: 64px;
-    display: flex;
-    gap: 6px;
-    z-index: 2;
-  }
-  .hero-dot {
-    width: 24px; height: 3px;
-    background: rgba(255,255,255,0.3);
-    border-radius: 2px;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  .hero-dot.active {
-    width: 40px;
-    background: var(--red);
-  }
-
-  /* ===== MAIN CONTENT ===== */
-  main { padding: 0 32px 60px; }
-
-  /* ===== SECTION ===== */
-  .section { margin-bottom: 48px; }
-
-  .section-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .section-title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-  }
-  .section-title::before {
-    content: '';
-    display: block;
-    width: 4px;
-    height: 20px;
-    background: var(--red);
-    border-radius: 2px;
-  }
-
-  .section-more {
-    color: var(--red);
-    font-size: 13px;
-    text-decoration: none;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    transition: gap 0.2s;
-  }
-  .section-more:hover { gap: 8px; }
-
-  /* ===== MOVIE GRID / SCROLL ROW ===== */
-  .movies-row {
-    display: flex;
-    gap: 14px;
-    overflow-x: auto;
-    padding-bottom: 12px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--bg4) transparent;
-  }
-  .movies-row::-webkit-scrollbar { height: 4px; }
-  .movies-row::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 2px; }
-
-  .movies-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(var(--card-w), 1fr));
-    gap: 16px;
-  }
-
-  /* ===== MOVIE CARD ===== */
-  .card {
-    flex-shrink: 0;
-    width: var(--card-w);
-    cursor: pointer;
-    border-radius: 10px;
-    overflow: hidden;
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    transition: all 0.25s ease;
-    position: relative;
-  }
-  .card:hover {
-    transform: translateY(-6px) scale(1.02);
-    border-color: rgba(205,32,38,0.4);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(205,32,38,0.2);
-    z-index: 10;
-  }
-
-  .card-poster {
-    width: 100%;
-    height: var(--card-h);
-    object-fit: cover;
-    display: block;
-    background: var(--bg3);
-  }
-
-  .card-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(14,14,14,0.95) 0%, transparent 50%);
-    opacity: 0;
-    transition: opacity 0.25s;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 12px;
-  }
-  .card:hover .card-overlay { opacity: 1; }
-
-  .card-play-btn {
-    width: 44px; height: 44px;
-    background: var(--red);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 12px;
-    box-shadow: 0 4px 16px var(--red-glow);
-    transition: transform 0.2s;
-  }
-  .card:hover .card-play-btn { transform: scale(1.1); }
-
-  .card-actions {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-  }
-  .card-act-btn {
-    background: rgba(255,255,255,0.12);
-    border: none;
-    color: white;
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background 0.2s;
-  }
-  .card-act-btn:hover { background: rgba(255,255,255,0.25); }
-
-  .card-info {
-    padding: 10px 10px 12px;
-  }
-
-  .card-badges {
-    display: flex;
-    gap: 5px;
-    margin-bottom: 6px;
-    flex-wrap: wrap;
-  }
-
-  .badge {
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 7px;
-    border-radius: 3px;
-    letter-spacing: 0.5px;
-  }
-  .badge-hd { background: rgba(64,138,233,0.2); color: var(--blue); border: 1px solid rgba(64,138,233,0.3); }
-  .badge-mn { background: rgba(205,32,38,0.2); color: #e05a5e; border: 1px solid rgba(205,32,38,0.3); }
-  .badge-sub { background: rgba(255,200,0,0.15); color: #f0c040; border: 1px solid rgba(255,200,0,0.25); }
-  .badge-new { background: rgba(80,200,100,0.2); color: #5bc97a; border: 1px solid rgba(80,200,100,0.3); }
-
-  .card-title {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text);
-    line-height: 1.3;
-    margin-bottom: 4px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .card-sub {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 11px;
-    color: var(--text3);
-  }
-  .card-sub .star { color: #FFD700; }
-  .card-sub .dot { color: var(--text3); }
-
-  /* ===== GENRE FILTER ===== */
-  .genre-filter {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 24px;
-  }
-
-  .genre-btn {
-    padding: 7px 16px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    background: var(--bg2);
-    color: var(--text2);
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-family: 'Inter', sans-serif;
-  }
-  .genre-btn:hover {
-    border-color: rgba(205,32,38,0.4);
-    color: var(--text);
-  }
-  .genre-btn.active {
-    background: var(--red);
-    border-color: var(--red);
-    color: white;
-  }
-
-  /* ===== SORT BAR ===== */
-  .sort-bar {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-  .sort-bar label {
-    font-size: 13px;
-    color: var(--text2);
-  }
-  .sort-select {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 6px 12px;
-    border-radius: 7px;
-    font-size: 13px;
-    outline: none;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-  }
-  .sort-select:focus { border-color: var(--red); }
-
-  .result-count {
-    margin-left: auto;
-    font-size: 13px;
-    color: var(--text3);
-  }
-
-  /* ===== TABS ===== */
-  .tabs {
-    display: flex;
-    gap: 0;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 24px;
-  }
-  .tab {
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text2);
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    transition: all 0.2s;
-    border-radius: 0;
-    background: none;
-    border-left: none;
-    border-right: none;
-    border-top: none;
-    font-family: 'Inter', sans-serif;
-  }
-  .tab.active {
-    color: var(--red);
-    border-bottom-color: var(--red);
-  }
-  .tab:hover { color: var(--text); }
-
-  /* ===== MODAL ===== */
-  .modal-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-    backdrop-filter: blur(8px);
-    z-index: 2000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-  .modal-backdrop.open { display: flex; }
-
-  .modal {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    width: 100%;
-    max-width: 860px;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-    animation: modalIn 0.3s ease;
-  }
-  @keyframes modalIn {
-    from { opacity: 0; transform: scale(0.95) translateY(10px); }
-    to { opacity: 1; transform: scale(1) translateY(0); }
-  }
-
-  .modal-close {
-    position: absolute;
-    top: 16px; right: 16px;
-    background: rgba(255,255,255,0.1);
-    border: none;
-    color: white;
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    font-size: 18px;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s;
-    z-index: 1;
-  }
-  .modal-close:hover { background: var(--red); }
-
-  .modal-hero {
-    height: 300px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 16px 16px 0 0;
-    position: relative;
-  }
-  .modal-hero-grad {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, var(--bg2) 0%, transparent 60%);
-    border-radius: 16px 16px 0 0;
-  }
-  .modal-hero-badge {
-    position: absolute;
-    top: 20px; left: 20px;
-    background: var(--red);
-    color: white;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 4px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
-  .modal-body {
-    padding: 20px 28px 32px;
-  }
-
-  .modal-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 38px;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-  }
-
-  .modal-meta {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 16px;
-    font-size: 13px;
-    color: var(--text2);
-  }
-  .modal-meta .rating { color: #FFD700; font-weight: 600; }
-  .modal-meta .genre-tag {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-  }
-
-  .modal-desc {
-    font-size: 14px;
-    color: var(--text2);
-    line-height: 1.65;
-    margin-bottom: 24px;
-  }
-
-  .modal-actions {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
-  }
-
-  .modal-info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    border-top: 1px solid var(--border);
-    padding-top: 20px;
-  }
-  .info-item label {
-    display: block;
-    font-size: 11px;
-    color: var(--text3);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin-bottom: 4px;
-  }
-  .info-item span {
-    font-size: 13px;
-    font-weight: 500;
-  }
-
-  /* ===== LOGIN MODAL ===== */
-  .login-modal {
-    max-width: 420px;
-    border-radius: 16px;
-  }
-  .login-modal .modal-body { padding: 36px; }
-
-  .login-logo {
-    text-align: center;
-    margin-bottom: 28px;
-  }
-  .login-logo .logo-icon {
-    width: 52px; height: 52px;
-    margin: 0 auto 10px;
-    font-size: 22px;
-    border-radius: 12px;
-  }
-  .login-logo h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 26px;
-    letter-spacing: 2px;
-  }
-  .login-logo p {
-    color: var(--text2);
-    font-size: 13px;
-    margin-top: 4px;
-  }
-
-  .form-group { margin-bottom: 16px; }
-  .form-group label {
-    display: block;
-    font-size: 12px;
-    color: var(--text2);
-    margin-bottom: 6px;
-    font-weight: 500;
-  }
-  .form-group input {
-    width: 100%;
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 11px 14px;
-    color: var(--text);
-    font-size: 14px;
-    font-family: 'Inter', sans-serif;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .form-group input:focus { border-color: var(--red); }
-  .form-group input::placeholder { color: var(--text3); }
-
-  .btn-submit {
-    width: 100%;
-    background: var(--red);
-    color: white;
-    border: none;
-    padding: 13px;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    transition: all 0.2s;
-    margin-top: 8px;
-    letter-spacing: 0.5px;
-  }
-  .btn-submit:hover { background: var(--red-dark); }
-
-  .form-footer {
-    text-align: center;
-    margin-top: 16px;
-    font-size: 13px;
-    color: var(--text2);
-  }
-  .form-footer a {
-    color: var(--red);
-    text-decoration: none;
-    font-weight: 500;
-  }
-
-  .divider {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 20px 0;
-    color: var(--text3);
-    font-size: 12px;
-  }
-  .divider::before, .divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* ===== FOOTER ===== */
-  footer {
-    background: var(--bg2);
-    border-top: 1px solid var(--border);
-    padding: 40px 32px 24px;
-    margin-top: 20px;
-  }
-
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 32px;
-    margin-bottom: 32px;
-  }
-
-  .footer-brand .logo-text { font-size: 20px; margin-bottom: 12px; }
-  .footer-brand p {
-    font-size: 13px;
-    color: var(--text3);
-    line-height: 1.6;
-    max-width: 240px;
-  }
-
-  .footer-col h4 {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--text2);
-    margin-bottom: 14px;
-  }
-  .footer-col ul { list-style: none; }
-  .footer-col ul li { margin-bottom: 8px; }
-  .footer-col ul li a {
-    font-size: 13px;
-    color: var(--text3);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .footer-col ul li a:hover { color: var(--red); }
-
-  .footer-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-    font-size: 12px;
-    color: var(--text3);
-  }
-
-  .footer-social {
-    display: flex;
-    gap: 12px;
-  }
-  .social-btn {
-    width: 32px; height: 32px;
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-decoration: none;
-    color: var(--text2);
-  }
-  .social-btn:hover { background: var(--red); border-color: var(--red); color: white; }
-
-  /* ===== VIDEO PLAYER MODAL ===== */
-  .player-modal {
-    max-width: 960px;
-  }
-  .player-wrap {
-    background: #000;
-    aspect-ratio: 16/9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px 12px 0 0;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  .player-poster {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.5;
-  }
-  .player-center {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-  }
-  .play-circle {
-    width: 80px; height: 80px;
-    background: var(--red);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 0 40px var(--red-glow);
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-  .play-circle:hover { transform: scale(1.1); }
-  .player-note {
-    color: rgba(255,255,255,0.7);
-    font-size: 13px;
-    background: rgba(0,0,0,0.6);
-    padding: 6px 16px;
-    border-radius: 20px;
-  }
-
-  /* ===== EPISODE LIST ===== */
-  .ep-list { padding: 0 24px 24px; }
-  .ep-item {
-    display: flex;
-    gap: 14px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-    cursor: pointer;
-    transition: all 0.2s;
-    border-radius: 8px;
-    padding: 10px 12px;
-    margin: 0 -12px;
-  }
-  .ep-item:hover { background: var(--bg3); }
-  .ep-thumb {
-    width: 140px; height: 80px;
-    border-radius: 8px;
-    object-fit: cover;
-    flex-shrink: 0;
-    background: var(--bg4);
-  }
-  .ep-info { flex: 1; }
-  .ep-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
-  .ep-meta { font-size: 12px; color: var(--text3); margin-bottom: 6px; }
-  .ep-desc { font-size: 12px; color: var(--text2); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-
-  /* ===== PAGE SECTIONS ===== */
-  .page { display: none; }
-  .page.active { display: block; }
-
-  /* ===== NOTIFY TOAST ===== */
-  .toast {
-    position: fixed;
-    bottom: 32px; right: 32px;
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--red);
-    padding: 14px 20px;
-    border-radius: 10px;
-    font-size: 13px;
-    z-index: 9999;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.3s;
-    max-width: 300px;
-    pointer-events: none;
-  }
-  .toast.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ===== LOADING ===== */
-  .loading-bar {
-    position: fixed;
-    top: 60px; left: 0; right: 0;
-    height: 2px;
-    background: var(--red);
-    z-index: 999;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.8s ease;
-  }
-  .loading-bar.loading { transform: scaleX(0.7); }
-  .loading-bar.done { transform: scaleX(1); opacity: 0; }
-
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 768px) {
-    nav { padding: 0 16px; }
-    .nav-links { display: none; }
-    .hero-content { padding: 60px 24px 40px; }
-    .hero-title { font-size: 36px; }
-    main { padding: 0 16px 40px; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-    .modal-info-grid { grid-template-columns: 1fr; }
-    .nav-search input { width: 120px; }
-  }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#E53935;--red2:#B71C1C;--red-glow:rgba(229,57,53,.28);
+  --gold:#FFC107;--blue:#1E88E5;--green:#43A047;
+  --bg:#0A0A0F;--bg2:#111118;--bg3:#18181F;--bg4:#22222C;--bg5:#2A2A36;
+  --text:#F0F0F5;--text2:#9898A8;--text3:#55555F;
+  --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.12);
+  --r:10px;--r2:14px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.5;overflow-x:hidden}
+::-webkit-scrollbar{width:5px;height:4px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--bg5);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--red)}
+img{display:block;max-width:100%}
+button,select,input{font-family:'Inter',sans-serif}
+a{text-decoration:none;color:inherit}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;height:58px;
+  display:flex;align-items:center;gap:0;padding:0 24px;
+  background:rgba(10,10,15,.96);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(16px);
+}
+.nav-logo{display:flex;align-items:center;gap:10px;margin-right:28px;flex-shrink:0;cursor:pointer}
+.logo-mark{
+  width:36px;height:36px;background:var(--red);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Oswald',sans-serif;font-size:17px;font-weight:700;color:#fff;letter-spacing:-1px
+}
+.logo-name{font-family:'Oswald',sans-serif;font-size:22px;font-weight:600;letter-spacing:3px;color:var(--text)}
+.logo-name span{color:var(--red)}
+
+.nav-tabs{display:flex;align-items:center;gap:2px;flex:1}
+.nav-tab{
+  display:flex;align-items:center;gap:6px;padding:7px 14px;border-radius:7px;
+  font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;
+  border:none;background:none;transition:all .2s;white-space:nowrap
+}
+.nav-tab:hover{background:var(--bg3);color:var(--text)}
+.nav-tab.active{background:var(--bg4);color:var(--text)}
+.nav-tab .tab-icon{font-size:15px}
+
+.nav-right{display:flex;align-items:center;gap:10px;margin-left:auto}
+.search-wrap{
+  display:flex;align-items:center;gap:8px;
+  background:var(--bg3);border:1px solid var(--border);border-radius:8px;
+  padding:6px 12px;transition:all .2s
+}
+.search-wrap:focus-within{border-color:rgba(229,57,53,.4);background:var(--bg2)}
+.search-wrap input{
+  background:none;border:none;outline:none;color:var(--text);
+  font-size:13px;width:170px
+}
+.search-wrap input::placeholder{color:var(--text3)}
+.nav-contact{
+  display:flex;align-items:center;gap:6px;padding:7px 14px;
+  background:var(--red);color:#fff;border:none;border-radius:8px;
+  font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap
+}
+.nav-contact:hover{background:var(--red2)}
+
+/* ── PAGES ── */
+.page{display:none;padding-top:58px;min-height:100vh}
+.page.active{display:block}
+
+/* ── HERO ── */
+.hero{
+  position:relative;height:520px;overflow:hidden;
+  background:linear-gradient(135deg,#0A0A1A 0%,#12001A 100%)
+}
+.hero-bg{
+  position:absolute;inset:0;background-size:cover;background-position:center;
+  opacity:.35;transition:all 1.2s ease;filter:saturate(1.2)
+}
+.hero-vignette{
+  position:absolute;inset:0;
+  background:linear-gradient(to right,rgba(10,10,15,.98) 0%,rgba(10,10,15,.55) 55%,rgba(10,10,15,.1) 100%),
+    linear-gradient(to top,rgba(10,10,15,1) 0%,transparent 45%)
+}
+.hero-body{
+  position:relative;z-index:2;height:100%;display:flex;flex-direction:column;
+  justify-content:flex-end;padding:0 48px 52px;max-width:580px
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:5px;background:var(--red);color:#fff;
+  font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  padding:4px 10px;border-radius:4px;margin-bottom:14px;width:fit-content
+}
+.hero-title{
+  font-family:'Oswald',sans-serif;font-size:52px;font-weight:700;
+  letter-spacing:1px;line-height:1.05;margin-bottom:10px
+}
+.hero-meta{display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.hero-meta span{font-size:12px;color:var(--text2)}
+.hero-meta .star{color:var(--gold);font-weight:600}
+.hero-meta .tag{background:var(--bg4);border:1px solid var(--border);padding:2px 9px;border-radius:20px;font-size:11px}
+.hero-desc{font-size:13.5px;color:var(--text2);line-height:1.65;margin-bottom:22px;max-width:440px}
+.hero-btns{display:flex;gap:10px}
+.btn-watch{
+  display:flex;align-items:center;gap:7px;background:var(--red);color:#fff;
+  padding:11px 24px;border-radius:8px;font-size:13px;font-weight:700;
+  border:none;cursor:pointer;transition:all .2s;letter-spacing:.4px
+}
+.btn-watch:hover{background:var(--red2);transform:translateY(-2px);box-shadow:0 8px 24px var(--red-glow)}
+.btn-more{
+  display:flex;align-items:center;gap:7px;
+  background:rgba(255,255,255,.1);color:#fff;
+  padding:11px 20px;border-radius:8px;font-size:13px;font-weight:600;
+  border:1px solid rgba(255,255,255,.14);cursor:pointer;transition:all .2s;
+  backdrop-filter:blur(4px)
+}
+.btn-more:hover{background:rgba(255,255,255,.18)}
+.hero-dots{position:absolute;bottom:22px;left:48px;display:flex;gap:5px;z-index:3}
+.hero-dot{width:22px;height:3px;background:rgba(255,255,255,.25);border-radius:2px;cursor:pointer;transition:all .3s}
+.hero-dot.on{width:38px;background:var(--red)}
+
+/* ── MAIN ── */
+main{padding:0 24px 60px}
+
+/* ── SECTION ── */
+.sec{margin-bottom:44px}
+.sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:11px;border-bottom:1px solid var(--border)}
+.sec-title{display:flex;align-items:center;gap:9px;font-size:17px;font-weight:700;letter-spacing:.2px}
+.sec-title::before{content:'';display:block;width:3px;height:18px;background:var(--red);border-radius:2px;flex-shrink:0}
+.sec-more{color:var(--red);font-size:12px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:3px;border:none;background:none;transition:gap .18s}
+.sec-more:hover{gap:7px}
+
+/* ── SCROLL ROW ── */
+.scroll-row{display:flex;gap:12px;overflow-x:auto;padding-bottom:10px;scrollbar-width:thin;scrollbar-color:var(--bg5) transparent}
+.scroll-row::-webkit-scrollbar{height:3px}
+
+/* ── MOVIE CARD ── */
+.mcard{
+  flex-shrink:0;width:156px;border-radius:var(--r);overflow:hidden;
+  background:var(--bg2);border:1px solid var(--border);cursor:pointer;
+  transition:all .22s ease;position:relative
+}
+.mcard:hover{transform:translateY(-6px) scale(1.025);border-color:rgba(229,57,53,.35);box-shadow:0 14px 36px rgba(0,0,0,.55),0 0 0 1px rgba(229,57,53,.18);z-index:5}
+.mcard-poster{width:100%;height:234px;object-fit:cover;background:var(--bg3)}
+.mcard-ov{
+  position:absolute;inset:0;border-radius:var(--r);
+  background:linear-gradient(to top,rgba(10,10,15,.96) 0%,transparent 52%);
+  opacity:0;transition:opacity .22s;display:flex;flex-direction:column;justify-content:flex-end;padding:10px
+}
+.mcard:hover .mcard-ov{opacity:1}
+.mcard-play{
+  width:40px;height:40px;background:var(--red);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 10px;box-shadow:0 4px 14px var(--red-glow)
+}
+.mcard-acts{display:flex;justify-content:center;gap:6px}
+.mact{
+  width:30px;height:30px;background:rgba(255,255,255,.12);border:none;
+  color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:13px;cursor:pointer;transition:background .2s
+}
+.mact:hover{background:rgba(255,255,255,.24)}
+.mcard-info{padding:9px 9px 11px}
+.mcard-bgs{display:flex;gap:4px;margin-bottom:5px;flex-wrap:wrap}
+.mbg{font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;letter-spacing:.5px}
+.mbg-mn{background:rgba(229,57,53,.18);color:#ef9a9a;border:1px solid rgba(229,57,53,.25)}
+.mbg-sub{background:rgba(255,193,7,.13);color:#ffe082;border:1px solid rgba(255,193,7,.22)}
+.mbg-hd{background:rgba(30,136,229,.18);color:#90caf9;border:1px solid rgba(30,136,229,.25)}
+.mbg-new{background:rgba(67,160,71,.18);color:#a5d6a7;border:1px solid rgba(67,160,71,.25)}
+.mcard-title{font-size:12px;font-weight:600;line-height:1.3;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mcard-sub{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--text3)}
+.mcard-sub .st{color:var(--gold)}
+
+/* ── MOVIES GRID ── */
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+
+/* ── GENRE PILLS ── */
+.genre-bar{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
+.gpill{
+  padding:6px 14px;border-radius:20px;border:1px solid var(--border);
+  background:var(--bg2);color:var(--text2);font-size:12px;font-weight:500;
+  cursor:pointer;transition:all .18s
+}
+.gpill:hover{border-color:rgba(229,57,53,.4);color:var(--text)}
+.gpill.on{background:var(--red);border-color:var(--red);color:#fff}
+
+/* ── SORT BAR ── */
+.sort-bar{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.sort-bar label{font-size:12px;color:var(--text2)}
+.sel{
+  background:var(--bg3);border:1px solid var(--border);color:var(--text);
+  padding:6px 10px;border-radius:7px;font-size:12px;outline:none;cursor:pointer
+}
+.sel:focus{border-color:var(--red)}
+.cnt{margin-left:auto;font-size:12px;color:var(--text3)}
+
+/* ── GAME CARD ── */
+.gcard{
+  flex-shrink:0;width:200px;border-radius:var(--r);overflow:hidden;
+  background:var(--bg2);border:1px solid var(--border);cursor:pointer;
+  transition:all .22s
+}
+.gcard:hover{transform:translateY(-5px);border-color:rgba(67,160,71,.4);box-shadow:0 12px 30px rgba(0,0,0,.5)}
+.gcard-img{
+  width:100%;height:120px;background:linear-gradient(135deg,var(--bg4),var(--bg3));
+  display:flex;align-items:center;justify-content:center;font-size:36px;
+  position:relative;overflow:hidden
+}
+.gcard-img-overlay{
+  position:absolute;inset:0;background:rgba(0,0,0,.45);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .2s
+}
+.gcard:hover .gcard-img-overlay{opacity:1}
+.gplay-btn{
+  width:44px;height:44px;background:var(--green);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 14px rgba(67,160,71,.4)
+}
+.gcard-info{padding:10px 11px 12px}
+.gcard-genre{font-size:10px;color:var(--green);font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:4px}
+.gcard-title{font-size:12px;font-weight:600;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.gcard-meta{font-size:10px;color:var(--text3);display:flex;gap:6px}
+.gcard-star{color:var(--gold)}
+
+/* ── GAME GRID ── */
+.ggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+
+/* ── GAME GENRES ── */
+.game-genre-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.ggpill{
+  padding:5px 12px;border-radius:20px;border:1px solid var(--border);
+  background:var(--bg2);color:var(--text2);font-size:11px;font-weight:500;
+  cursor:pointer;transition:all .18s
+}
+.ggpill:hover{border-color:rgba(67,160,71,.4);color:var(--text)}
+.ggpill.on{background:var(--green);border-color:var(--green);color:#fff}
+
+/* ── GAME EMOJIS ── */
+.g-emoji{
+  width:100%;height:120px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:42px;user-select:none
+}
+
+/* ── WEATHER ── */
+.weather-page{padding:0 24px 60px}
+.weather-search{margin:28px 0 24px}
+.w-search-box{
+  display:flex;align-items:center;gap:10px;
+  background:var(--bg2);border:1px solid var(--border);border-radius:10px;
+  padding:10px 16px;max-width:420px;transition:all .2s
+}
+.w-search-box:focus-within{border-color:rgba(30,136,229,.4)}
+.w-search-box input{background:none;border:none;outline:none;color:var(--text);font-size:14px;flex:1}
+.w-search-box input::placeholder{color:var(--text3)}
+
+.w-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-bottom:32px}
+.w-card{
+  background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);
+  padding:18px 20px;cursor:pointer;transition:all .22s;position:relative;overflow:hidden
+}
+.w-card:hover{border-color:rgba(30,136,229,.35);transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.w-card::before{
+  content:'';position:absolute;top:-30px;right:-30px;
+  width:100px;height:100px;border-radius:50%;
+  background:rgba(30,136,229,.06);
+}
+.w-city-name{font-size:15px;font-weight:600;margin-bottom:3px}
+.w-temp{font-size:36px;font-weight:700;font-family:'Oswald',sans-serif;line-height:1;margin:8px 0 6px}
+.w-temp span{font-size:18px;font-weight:400;color:var(--text2)}
+.w-desc{font-size:12px;color:var(--text2);margin-bottom:12px;text-transform:capitalize}
+.w-details{display:flex;gap:14px;flex-wrap:wrap}
+.w-detail{font-size:11px;color:var(--text3);display:flex;flex-direction:column;gap:2px}
+.w-detail strong{font-size:13px;color:var(--text);font-weight:500}
+.w-icon{font-size:32px;position:absolute;top:18px;right:18px;opacity:.8}
+.w-loading{color:var(--text3);font-size:12px;margin-top:8px}
+.w-error{color:var(--red);font-size:11px;margin-top:6px}
+
+.w-featured{
+  background:linear-gradient(135deg,#0D1B2A,#1A2A4A);
+  border:1px solid rgba(30,136,229,.25);border-radius:var(--r2);
+  padding:28px 32px;margin-bottom:28px;position:relative;overflow:hidden
+}
+.w-featured::after{
+  content:'';position:absolute;top:-60px;right:-60px;
+  width:200px;height:200px;border-radius:50%;
+  background:rgba(30,136,229,.08)
+}
+.w-featured .city{font-size:13px;color:rgba(255,255,255,.5);font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.w-featured .temp{font-family:'Oswald',sans-serif;font-size:72px;font-weight:700;line-height:1;color:#fff}
+.w-featured .temp sup{font-size:30px;color:rgba(255,255,255,.6)}
+.w-featured .desc{font-size:15px;color:rgba(255,255,255,.6);margin:6px 0 18px;text-transform:capitalize}
+.w-featured .extras{display:flex;gap:28px;flex-wrap:wrap}
+.w-featured .ex-item{display:flex;flex-direction:column;gap:3px}
+.w-featured .ex-item label{font-size:10px;color:rgba(255,255,255,.35);letter-spacing:.8px;text-transform:uppercase}
+.w-featured .ex-item strong{font-size:14px;color:rgba(255,255,255,.8);font-weight:500}
+.w-featured .icon{position:absolute;right:32px;top:28px;font-size:80px;opacity:.25;z-index:0}
+
+.w-city-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+.w-city-tab{
+  padding:6px 13px;border-radius:20px;border:1px solid var(--border);
+  background:var(--bg2);color:var(--text2);font-size:12px;
+  cursor:pointer;transition:all .18s
+}
+.w-city-tab:hover{border-color:rgba(30,136,229,.4);color:var(--text)}
+.w-city-tab.on{background:var(--blue);border-color:var(--blue);color:#fff}
+
+/* ── DETAIL MODAL ── */
+.modal-bg{
+  position:fixed;inset:0;background:rgba(0,0,0,.86);backdrop-filter:blur(10px);
+  z-index:1000;display:none;align-items:center;justify-content:center;padding:20px
+}
+.modal-bg.open{display:flex}
+.modal{
+  background:var(--bg2);border:1px solid var(--border2);border-radius:16px;
+  width:100%;max-width:820px;max-height:90vh;overflow-y:auto;position:relative;
+  animation:mIn .28s ease
+}
+@keyframes mIn{from{opacity:0;transform:scale(.96) translateY(8px)}to{opacity:1;transform:none}}
+.mcls{
+  position:absolute;top:14px;right:14px;
+  background:rgba(255,255,255,.1);border:none;color:#fff;
+  width:34px;height:34px;border-radius:50%;font-size:17px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  z-index:1;transition:background .2s
+}
+.mcls:hover{background:var(--red)}
+.m-hero{height:280px;background-size:cover;background-position:center;border-radius:16px 16px 0 0;position:relative}
+.m-hero-g{position:absolute;inset:0;background:linear-gradient(to top,var(--bg2) 0%,transparent 60%);border-radius:16px 16px 0 0}
+.m-body{padding:18px 26px 28px}
+.m-title{font-family:'Oswald',sans-serif;font-size:34px;font-weight:700;margin-bottom:8px;letter-spacing:.5px}
+.m-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:14px;font-size:12px;color:var(--text2)}
+.m-meta .st{color:var(--gold);font-weight:600}
+.m-meta .tag{background:var(--bg3);border:1px solid var(--border);padding:3px 9px;border-radius:20px;font-size:11px}
+.m-desc{font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:20px}
+.m-acts{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.m-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;border-top:1px solid var(--border);padding-top:18px}
+.mgi label{display:block;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:3px}
+.mgi span{font-size:12px;font-weight:500}
+
+/* ── GAME MODAL ── */
+.gmodal{max-width:960px}
+.gm-frame{width:100%;aspect-ratio:16/9;border:none;border-radius:14px 14px 0 0;background:#000}
+.gm-info{padding:16px 22px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.gm-title{font-family:'Oswald',sans-serif;font-size:26px;font-weight:600}
+.gm-meta{font-size:12px;color:var(--text2);display:flex;gap:10px;margin-top:4px}
+
+/* ── PLAYER MODAL ── */
+.pmodal{max-width:900px}
+.player-wrap{
+  width:100%;aspect-ratio:16/9;background:#000;position:relative;
+  border-radius:14px 14px 0 0;overflow:hidden;cursor:pointer
+}
+.player-poster{width:100%;height:100%;object-fit:cover;opacity:.4}
+.player-center{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:14px
+}
+.p-play-btn{
+  width:72px;height:72px;background:var(--red);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 36px var(--red-glow);transition:transform .2s
+}
+.p-play-btn:hover{transform:scale(1.12)}
+.p-note{font-size:12px;color:rgba(255,255,255,.6);background:rgba(0,0,0,.55);padding:5px 14px;border-radius:20px}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:28px;right:28px;
+  background:var(--bg3);border:1px solid var(--border2);border-left:3px solid var(--red);
+  padding:12px 18px;border-radius:9px;font-size:13px;z-index:9999;
+  opacity:0;transform:translateY(8px);transition:all .28s;pointer-events:none;max-width:280px
+}
+.toast.show{opacity:1;transform:none}
+
+/* ── CONTACT ── */
+.contact-card{
+  background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);
+  padding:24px 28px;max-width:480px;margin:28px 0
+}
+.contact-card h3{font-family:'Oswald',sans-serif;font-size:22px;font-weight:600;margin-bottom:6px}
+.contact-card p{font-size:13px;color:var(--text2);margin-bottom:18px}
+.contact-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
+.contact-row:last-child{border-bottom:none}
+.contact-row .icon{font-size:18px;width:32px;text-align:center}
+.contact-row .val{font-size:13px;color:var(--text);font-weight:500}
+.contact-row .val a{color:var(--red)}
+
+/* ── FOOTER ── */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px 24px 24px;margin-top:12px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:28px;margin-bottom:28px}
+.f-brand .logo-name{font-family:'Oswald',sans-serif;font-size:20px;letter-spacing:3px;margin-bottom:10px}
+.f-brand p{font-size:12px;color:var(--text3);line-height:1.65;max-width:220px}
+.f-col h4{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text2);margin-bottom:12px}
+.f-col ul{list-style:none}
+.f-col ul li{margin-bottom:7px}
+.f-col ul li a{font-size:12px;color:var(--text3);transition:color .2s}
+.f-col ul li a:hover{color:var(--red)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:18px;border-top:1px solid var(--border);font-size:11px;color:var(--text3)}
+.f-social{display:flex;gap:8px}
+.fsoc{
+  width:30px;height:30px;background:var(--bg3);border:1px solid var(--border);
+  border-radius:7px;display:flex;align-items:center;justify-content:center;
+  font-size:13px;cursor:pointer;transition:all .2s;text-decoration:none;color:var(--text2)
+}
+.fsoc:hover{background:var(--red);border-color:var(--red);color:#fff}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  nav{padding:0 12px}
+  .nav-tabs .nav-tab span:not(.tab-icon){display:none}
+  .search-wrap input{width:100px}
+  .hero-body{padding:0 20px 36px}
+  .hero-title{font-size:32px}
+  main,.weather-page{padding:0 12px 50px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .m-grid{grid-template-columns:1fr}
+  .gm-info{flex-direction:column;align-items:flex-start}
+}
 </style>
 </head>
 <body>
 
-<!-- LOADING BAR -->
-<div class="loading-bar" id="loadingBar"></div>
-
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
 
-<!-- ===== NAVBAR ===== -->
+<!-- ══════════ NAV ══════════ -->
 <nav>
-  <a class="nav-logo" href="#" onclick="showPage('home')">
-    <div class="logo-icon">LK</div>
-    <div class="logo-text">LOLO<span>KINO</span></div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#" class="active" id="nav-home" onclick="showPage('home'); setActive('nav-home')">ЭХЛЭЛ</a></li>
-    <li><a href="#" id="nav-movies" onclick="showPage('movies'); setActive('nav-movies')">КИНО</a></li>
-    <li><a href="#" id="nav-series" onclick="showPage('series'); setActive('nav-series')">ОЛОН АНГИТ</a></li>
-    <li><a href="#" id="nav-guide" onclick="showPage('guide'); setActive('nav-guide')">ЗААВАР</a></li>
-  </ul>
+  <div class="nav-logo" onclick="gotoPage('home')">
+    <div class="logo-mark">N</div>
+    <div class="logo-name">NABOO<span>SHY</span></div>
+  </div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" id="t-home" onclick="gotoPage('home')"><span class="tab-icon">🏠</span><span>ЭХЛЭЛ</span></button>
+    <button class="nav-tab" id="t-movies" onclick="gotoPage('movies')"><span class="tab-icon">🎬</span><span>КИНО</span></button>
+    <button class="nav-tab" id="t-games" onclick="gotoPage('games')"><span class="tab-icon">🎮</span><span>ТОГЛООМ</span></button>
+    <button class="nav-tab" id="t-weather" onclick="gotoPage('weather')"><span class="tab-icon">🌤</span><span>ЦАГ АГААР</span></button>
+  </div>
   <div class="nav-right">
-    <div class="nav-search">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-      </svg>
-      <input type="text" placeholder="Хайх..." id="searchInput" oninput="handleSearch(this.value)">
+    <div class="search-wrap">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="searchIn" type="text" placeholder="Хайх..." oninput="doSearch(this.value)">
     </div>
-    <button class="btn-login" onclick="openLogin()">Нэвтрэх</button>
+    <button class="nav-contact" onclick="gotoPage('contact')">📞 Холбоо</button>
   </div>
 </nav>
 
-<!-- ===== PAGES ===== -->
-
-<!-- HOME PAGE -->
+<!-- ══════════ HOME PAGE ══════════ -->
 <div class="page active" id="page-home">
+
   <!-- HERO -->
-  <div class="hero">
+  <div class="hero" id="hero">
     <div class="hero-bg" id="heroBg"></div>
-    <div class="hero-gradient"></div>
-    <div class="hero-content">
-      <div class="hero-badge">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-        Онцлох кино
-      </div>
-      <div class="hero-title" id="heroTitle">DO NOT ENTER</div>
-      <div class="hero-meta">
-        <span class="rating">⭐ 7.8</span>
-        <span class="year">2026</span>
-        <span>2ц 14м</span>
-        <span class="genre-tag">Аймшиг</span>
-        <span class="genre-tag">Триллер</span>
-      </div>
-      <div class="hero-desc" id="heroDesc">
-        Нэг гэр бүл амралтаараа тусгаарлагдсан нэгэн байшинд хоноглоход үл мэдэгдэх аюул тэднийг хүрээлнэ. Гарах арга зам хаагдсан...
-      </div>
-      <div class="hero-actions">
-        <button class="btn-play" onclick="openPlayer(featuredMovies[heroIdx])">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
-          Үзэх
-        </button>
-        <button class="btn-info" onclick="openDetail(featuredMovies[heroIdx])">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          Дэлгэрэнгүй
-        </button>
+    <div class="hero-vignette"></div>
+    <div class="hero-body">
+      <div class="hero-tag">⭐ Онцлох кино</div>
+      <div class="hero-title" id="heroTitle">—</div>
+      <div class="hero-meta" id="heroMeta"></div>
+      <div class="hero-desc" id="heroDesc"></div>
+      <div class="hero-btns">
+        <button class="btn-watch" id="heroWatch">▶ Үзэх</button>
+        <button class="btn-more" id="heroMore">ℹ Дэлгэрэнгүй</button>
       </div>
     </div>
     <div class="hero-dots" id="heroDots"></div>
   </div>
 
-  <!-- MAIN -->
   <main>
-    <!-- RECENTLY ADDED -->
-    <section class="section">
-      <div class="section-header">
-        <div class="section-title">🔥 Шинээр нэмэгдсэн</div>
-        <a href="#" class="section-more" onclick="showPage('movies'); setActive('nav-movies')">Бүгдийг харах →</a>
+    <!-- NEWEST -->
+    <section class="sec">
+      <div class="sec-head">
+        <div class="sec-title">🔥 Шинэ кино</div>
+        <button class="sec-more" onclick="gotoPage('movies')">Бүгдийг харах →</button>
       </div>
-      <div class="movies-row" id="newMoviesRow"></div>
+      <div class="scroll-row" id="rowNew"></div>
     </section>
 
-    <!-- POPULAR -->
-    <section class="section">
-      <div class="section-header">
-        <div class="section-title">📈 Хамгийн их үзэлттэй</div>
-        <a href="#" class="section-more" onclick="showPage('movies'); setActive('nav-movies')">Бүгдийг харах →</a>
+    <!-- TOP RATED -->
+    <section class="sec">
+      <div class="sec-head">
+        <div class="sec-title">📈 Хамгийн өндөр үнэлгээтэй</div>
+        <button class="sec-more" onclick="gotoPage('movies')">Бүгдийг харах →</button>
       </div>
-      <div class="movies-row" id="popularRow"></div>
+      <div class="scroll-row" id="rowTop"></div>
     </section>
 
-    <!-- SERIES -->
-    <section class="section">
-      <div class="section-header">
-        <div class="section-title">📺 Олон ангит</div>
-        <a href="#" class="section-more" onclick="showPage('series'); setActive('nav-series')">Бүгдийг харах →</a>
+    <!-- GAMES ROW -->
+    <section class="sec">
+      <div class="sec-head">
+        <div class="sec-title">🎮 Онлайн тоглоом</div>
+        <button class="sec-more" onclick="gotoPage('games')">Бүгдийг харах →</button>
       </div>
-      <div class="movies-row" id="seriesRow"></div>
+      <div class="scroll-row" id="rowGames"></div>
     </section>
 
-    <!-- ACTION -->
-    <section class="section">
-      <div class="section-header">
-        <div class="section-title">💥 Экшн кино</div>
-        <a href="#" class="section-more" onclick="filterAndShow('Экшн')">Бүгдийг харах →</a>
+    <!-- WEATHER MINI -->
+    <section class="sec">
+      <div class="sec-head">
+        <div class="sec-title">🌤 Цаг агаарын мэдээ</div>
+        <button class="sec-more" onclick="gotoPage('weather')">Бүгдийг харах →</button>
       </div>
-      <div class="movies-row" id="actionRow"></div>
+      <div class="scroll-row" id="rowWeather"></div>
     </section>
   </main>
 </div>
 
-<!-- MOVIES PAGE -->
+<!-- ══════════ MOVIES PAGE ══════════ -->
 <div class="page" id="page-movies">
-  <main style="padding-top: 80px;">
-    <div class="section-title" style="margin-bottom: 20px; font-size: 22px;">🎬 Кино</div>
-    <div class="genre-filter" id="movieGenreFilter"></div>
+  <main style="padding-top:28px">
+    <div class="sec-title" style="font-size:20px;margin-bottom:18px">🎬 Бүх кино</div>
+    <div class="genre-bar" id="movieGenreBar"></div>
     <div class="sort-bar">
       <label>Эрэмбэлэх:</label>
-      <select class="sort-select" onchange="sortMovies(this.value)">
+      <select class="sel" onchange="sortMovies(this.value)">
         <option value="new">Шинэ эхэнд</option>
         <option value="rating">Рейтинг</option>
         <option value="name">Нэр (А-Я)</option>
         <option value="year">Жил</option>
       </select>
-      <span class="result-count" id="movieCount"></span>
+      <span class="cnt" id="mCount"></span>
     </div>
-    <div class="movies-grid" id="moviesGrid"></div>
+    <div class="mgrid" id="moviesGrid"></div>
   </main>
 </div>
 
-<!-- SERIES PAGE -->
-<div class="page" id="page-series">
-  <main style="padding-top: 80px;">
-    <div class="section-title" style="margin-bottom: 20px; font-size: 22px;">📺 Олон ангит цуврал</div>
-    <div class="genre-filter" id="seriesGenreFilter"></div>
+<!-- ══════════ GAMES PAGE ══════════ -->
+<div class="page" id="page-games">
+  <main style="padding-top:28px">
+    <div class="sec-title" style="font-size:20px;margin-bottom:18px">🎮 Бүх тоглоом</div>
+    <div class="game-genre-bar" id="gameGenreBar"></div>
     <div class="sort-bar">
-      <label>Эрэмбэлэх:</label>
-      <select class="sort-select" onchange="sortSeries(this.value)">
-        <option value="new">Шинэ эхэнд</option>
-        <option value="rating">Рейтинг</option>
-        <option value="name">Нэр (А-Я)</option>
-      </select>
-      <span class="result-count" id="seriesCount"></span>
+      <label>Хайх:</label>
+      <div class="search-wrap" style="flex:1;max-width:300px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" placeholder="Тоглоомын нэр..." oninput="filterGames(this.value)">
+      </div>
+      <span class="cnt" id="gCount"></span>
     </div>
-    <div class="movies-grid" id="seriesGrid"></div>
+    <div class="ggrid" id="gamesGrid"></div>
   </main>
 </div>
 
-<!-- GUIDE PAGE -->
-<div class="page" id="page-guide">
-  <main style="padding-top: 80px; max-width: 800px;">
-    <div class="section-title" style="margin-bottom: 8px; font-size: 22px;">📖 Заавар</div>
-    <p style="color: var(--text2); margin-bottom: 32px; font-size: 14px;">Сайтыг хэрхэн ашиглах талаар заавар</p>
+<!-- ══════════ WEATHER PAGE ══════════ -->
+<div class="page" id="page-weather">
+  <div class="weather-page" style="padding-top:28px">
+    <div class="sec-title" style="font-size:20px;margin-bottom:6px">🌤 Монголын цаг агаар</div>
+    <p style="color:var(--text3);font-size:13px;margin-bottom:22px">Аймаг, нийслэлийн цаг агаарын мэдээ</p>
 
-    <div style="display: flex; flex-direction: column; gap: 16px;">
-      <div style="background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
-        <h3 style="font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
-          <span style="background: var(--red); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0;">1</span>
-          Бүртгэл үүсгэх
-        </h3>
-        <p style="color: var(--text2); font-size: 13px; line-height: 1.6; margin-left: 38px;">Баруун дээд буланд байрлах "Нэвтрэх" товчийг дарж бүртгэлгүй бол шинэ бүртгэл үүсгэнэ үү. Имэйл болон нууц үгээ оруулаад бүртгэл баталгаажуулна.</p>
+    <!-- FEATURED UB -->
+    <div class="w-featured" id="wFeatured">
+      <div class="icon">☁</div>
+      <div class="city">🇲🇳 УЛААНБААТАР</div>
+      <div class="temp"><span id="wfTemp">—</span><sup>°C</sup></div>
+      <div class="desc" id="wfDesc">Ачаалж байна...</div>
+      <div class="extras">
+        <div class="ex-item"><label>Чийгшил</label><strong id="wfHum">—</strong></div>
+        <div class="ex-item"><label>Салхи</label><strong id="wfWind">—</strong></div>
+        <div class="ex-item"><label>Мэдрэмж</label><strong id="wfFeel">—</strong></div>
+        <div class="ex-item"><label>Даралт</label><strong id="wfPres">—</strong></div>
       </div>
-      <div style="background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
-        <h3 style="font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
-          <span style="background: var(--red); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0;">2</span>
-          Кино хайх
-        </h3>
-        <p style="color: var(--text2); font-size: 13px; line-height: 1.6; margin-left: 38px;">Дээд хэсэгт байрлах хайлтын цонхонд кино, цувралын нэрийг монгол эсвэл англиар бичиж хайна уу.</p>
+    </div>
+
+    <!-- CITY TABS -->
+    <div class="w-city-tabs" id="cityTabs"></div>
+
+    <!-- GRID -->
+    <div class="w-grid" id="weatherGrid"></div>
+  </div>
+</div>
+
+<!-- ══════════ CONTACT PAGE ══════════ -->
+<div class="page" id="page-contact">
+  <main style="padding-top:28px;max-width:640px">
+    <div class="sec-title" style="font-size:20px;margin-bottom:6px">📞 Холбоо барих</div>
+    <p style="color:var(--text3);font-size:13px;margin-bottom:20px">Зар байршуулах болон бусад асуудлаар холбоо барина уу</p>
+    <div class="contact-card">
+      <h3>Nabooshy</h3>
+      <p>Бидэнтэй холбогдож зар байршуулах, контент нэмэх, хамтран ажиллах боломжтой.</p>
+      <div class="contact-row">
+        <div class="icon">📧</div>
+        <div>
+          <div style="font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:3px">Имэйл</div>
+          <div class="val"><a href="mailto:gnarantsend@gmail.com">gnarantsend@gmail.com</a></div>
+        </div>
       </div>
-      <div style="background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
-        <h3 style="font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
-          <span style="background: var(--red); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0;">3</span>
-          Кино үзэх
-        </h3>
-        <p style="color: var(--text2); font-size: 13px; line-height: 1.6; margin-left: 38px;">Кинон дээр дарж дэлгэрэнгүй мэдээллийг харна уу. "Үзэх" товч дарж стрийминг эхлүүлнэ. Монгол хадмал эсвэл монголоор дублированный хувилбарыг сонгох боломжтой.</p>
+      <div class="contact-row">
+        <div class="icon">📱</div>
+        <div>
+          <div style="font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:3px">Утас</div>
+          <div class="val"><a href="tel:+97699376238">9937-6238</a></div>
+        </div>
       </div>
-      <div style="background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
-        <h3 style="font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
-          <span style="background: var(--red); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0;">4</span>
-          Чанар сонгох
-        </h3>
-        <p style="color: var(--text2); font-size: 13px; line-height: 1.6; margin-left: 38px;">Тоглуулагч дотор чанарын тохиргоог дарж 480p, 720p, 1080p хувилбаруудаас сонгоно уу. Интернэт хурдаасаа хамаарч сонгох нь зүйтэй.</p>
+      <div class="contact-row">
+        <div class="icon">📢</div>
+        <div>
+          <div style="font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:3px">Зар байршуулах</div>
+          <div class="val"><a href="mailto:gnarantsend@gmail.com?subject=Nabooshy — Зар байршуулах хүсэлт">Имэйл бичих →</a></div>
+        </div>
       </div>
-      <div style="background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 24px; border-left: 3px solid var(--red);">
-        <h3 style="font-size: 15px; margin-bottom: 8px; color: var(--red);">⚠️ Анхааруулга</h3>
-        <p style="color: var(--text2); font-size: 13px; line-height: 1.6;">Сайт дээрх контент нь зөвхөн хувийн хэрэгцээнд зориулагдсан бөгөөд арилжааны зорилгоор ашиглахыг хориглоно. Асуудал тулгарвал холбоо барина уу.</p>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:20px 24px;max-width:480px">
+      <h4 style="font-size:14px;margin-bottom:12px">📍 Зарын байршлууд</h4>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;color:var(--text2)">
+        <div>📱 Гар утас хэвтээ (1,2,3)</div>
+        <div>📱 Гар утас босоо (1,2,3)</div>
+        <div>🖥 Кино дээр баннер</div>
+        <div>🖥 Дунд баннер</div>
+        <div>🖥 Доор баннер</div>
+        <div>🖥 Баруун sidebar (1,2,3)</div>
       </div>
     </div>
   </main>
 </div>
 
-<!-- SEARCH PAGE -->
+<!-- ══════════ SEARCH PAGE ══════════ -->
 <div class="page" id="page-search">
-  <main style="padding-top: 80px;">
-    <div class="section-title" style="margin-bottom: 6px; font-size: 20px;">🔍 Хайлтын үр дүн</div>
-    <p style="color: var(--text2); margin-bottom: 24px; font-size: 13px;" id="searchResultLabel"></p>
-    <div class="movies-grid" id="searchGrid"></div>
+  <main style="padding-top:28px">
+    <div class="sec-title" style="font-size:18px;margin-bottom:6px">🔍 Хайлтын үр дүн</div>
+    <p style="color:var(--text3);font-size:13px;margin-bottom:20px" id="searchInfo"></p>
+    <div class="mgrid" id="searchGrid"></div>
   </main>
 </div>
 
-<!-- ===== FOOTER ===== -->
+<!-- ══════════ FOOTER ══════════ -->
 <footer>
   <div class="footer-grid">
-    <div class="footer-brand">
-      <div class="logo-text" style="font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px; margin-bottom: 12px;">LOLO<span style="color: var(--red);">KINO</span></div>
-      <p>Монгол хадмалтай болон монголоор дублированный кино, цуврал цэнхэрт дэлгэцийн шилдэг эх сурвалж.</p>
+    <div class="f-brand">
+      <div class="logo-name">NABOO<span style="color:var(--red)">SHY</span></div>
+      <p>Монгол хадмал болон монголоор дублированный кино, онлайн тоглоом, цаг агаарын мэдээний нэгдсэн платформ.</p>
     </div>
-    <div class="footer-col">
+    <div class="f-col">
       <h4>Навигаци</h4>
       <ul>
-        <li><a href="#" onclick="showPage('home')">Эхлэл</a></li>
-        <li><a href="#" onclick="showPage('movies'); setActive('nav-movies')">Кино</a></li>
-        <li><a href="#" onclick="showPage('series'); setActive('nav-series')">Олон ангит</a></li>
-        <li><a href="#" onclick="showPage('guide'); setActive('nav-guide')">Заавар</a></li>
+        <li><a href="#" onclick="gotoPage('home')">Эхлэл</a></li>
+        <li><a href="#" onclick="gotoPage('movies')">Кино</a></li>
+        <li><a href="#" onclick="gotoPage('games')">Тоглоом</a></li>
+        <li><a href="#" onclick="gotoPage('weather')">Цаг агаар</a></li>
       </ul>
     </div>
-    <div class="footer-col">
-      <h4>Төрөл</h4>
+    <div class="f-col">
+      <h4>Кино төрөл</h4>
       <ul>
-        <li><a href="#" onclick="filterAndShow('Экшн')">Экшн</a></li>
-        <li><a href="#" onclick="filterAndShow('Драм')">Драм</a></li>
-        <li><a href="#" onclick="filterAndShow('Инээдмийн')">Инээдмийн</a></li>
-        <li><a href="#" onclick="filterAndShow('Аймшиг')">Аймшиг</a></li>
-        <li><a href="#" onclick="filterAndShow('Анимэ')">Анимэ</a></li>
+        <li><a href="#" onclick="gotoPage('movies')">Экшн</a></li>
+        <li><a href="#" onclick="gotoPage('movies')">Драм</a></li>
+        <li><a href="#" onclick="gotoPage('movies')">Фантастик</a></li>
+        <li><a href="#" onclick="gotoPage('movies')">Аймшиг</a></li>
       </ul>
     </div>
-    <div class="footer-col">
+    <div class="f-col">
       <h4>Холбоос</h4>
       <ul>
-        <li><a href="#">Бидний тухай</a></li>
+        <li><a href="#" onclick="gotoPage('contact')">Холбоо барих</a></li>
+        <li><a href="mailto:gnarantsend@gmail.com">gnarantsend@gmail.com</a></li>
+        <li><a href="tel:+97699376238">9937-6238</a></li>
         <li><a href="#">Нууцлалын бодлого</a></li>
-        <li><a href="#">Ашиглалтын нөхцөл</a></li>
-        <li><a href="#">Холбоо барих</a></li>
-        <li><a href="#">DMCA</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 LoloKino. Бүх эрх хуулиар хамгаалагдсан.</span>
-    <div class="footer-social">
-      <a class="social-btn" href="#" title="Facebook">f</a>
-      <a class="social-btn" href="#" title="Twitter">✕</a>
-      <a class="social-btn" href="#" title="Telegram">✈</a>
+    <span>© 2026 Nabooshy. Бүх эрх хуулиар хамгаалагдсан.</span>
+    <div class="f-social">
+      <a class="fsoc" href="#" title="Facebook">f</a>
+      <a class="fsoc" href="#" title="Telegram">✈</a>
     </div>
   </div>
 </footer>
 
-<!-- ===== MOVIE DETAIL MODAL ===== -->
-<div class="modal-backdrop" id="detailModal" onclick="closeModalOnBg(event, 'detailModal')">
-  <div class="modal" id="detailContent">
-    <button class="modal-close" onclick="document.getElementById('detailModal').classList.remove('open')">✕</button>
-    <div class="modal-hero" id="modalHero">
-      <div class="modal-hero-grad"></div>
-      <div class="modal-hero-badge" id="modalBadge">КИНО</div>
-    </div>
-    <div class="modal-body">
-      <div class="modal-title" id="modalTitle"></div>
-      <div class="modal-meta" id="modalMeta"></div>
-      <div class="modal-desc" id="modalDesc"></div>
-      <div class="modal-actions" id="modalActions"></div>
-      <div class="modal-info-grid" id="modalGrid"></div>
+<!-- ══════════ MOVIE DETAIL MODAL ══════════ -->
+<div class="modal-bg" id="movieModal" onclick="closeMb(event,'movieModal')">
+  <div class="modal">
+    <button class="mcls" onclick="closeM('movieModal')">✕</button>
+    <div class="m-hero" id="mHero"><div class="m-hero-g"></div></div>
+    <div class="m-body">
+      <div class="m-title" id="mTitle"></div>
+      <div class="m-meta" id="mMeta"></div>
+      <div class="m-desc" id="mDesc"></div>
+      <div class="m-acts" id="mActs"></div>
+      <div class="m-grid" id="mGrid"></div>
     </div>
   </div>
 </div>
 
-<!-- ===== VIDEO PLAYER MODAL ===== -->
-<div class="modal-backdrop" id="playerModal" onclick="closeModalOnBg(event, 'playerModal')">
-  <div class="modal player-modal">
-    <button class="modal-close" onclick="document.getElementById('playerModal').classList.remove('open')">✕</button>
-    <div class="player-wrap" id="playerWrap">
-      <img class="player-poster" id="playerPoster" src="" alt="">
+<!-- ══════════ PLAYER MODAL ══════════ -->
+<div class="modal-bg" id="playerModal" onclick="closeMb(event,'playerModal')">
+  <div class="modal pmodal">
+    <button class="mcls" onclick="closeM('playerModal')">✕</button>
+    <div class="player-wrap">
+      <img class="player-poster" id="pPoster" src="" alt="">
       <div class="player-center">
-        <div class="play-circle" onclick="showToast('Тоглуулагч ачаалж байна...')">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+        <div class="p-play-btn" onclick="toast('Тоглуулагч ачаалж байна...')">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
         </div>
-        <div class="player-note">Бүрэн хувилбар үзэхийн тулд нэвтэрнэ үү</div>
+        <div class="p-note">Бүрэн үзэхийн тулд нэвтэрнэ үү</div>
       </div>
     </div>
-    <div class="modal-body" style="padding: 16px 24px;">
-      <div class="modal-title" id="playerTitle" style="font-size: 24px;"></div>
-      <div class="modal-meta" id="playerMeta"></div>
-      <div style="display: flex; gap: 16px; margin-top: 12px;">
-        <div style="background: var(--bg3); border-radius: 8px; padding: 10px 16px; font-size: 13px;">
-          <div style="color: var(--text3); margin-bottom: 4px;">Чанар</div>
-          <select class="sort-select" style="background: none; border: none; padding: 0; font-size: 13px; color: var(--text);">
-            <option>1080p HD</option>
-            <option>720p</option>
-            <option>480p</option>
+    <div class="m-body" style="padding:14px 22px 18px">
+      <div class="m-title" id="pTitle" style="font-size:22px"></div>
+      <div class="m-meta" id="pMeta"></div>
+      <div style="display:flex;gap:12px;margin-top:10px;flex-wrap:wrap">
+        <div style="background:var(--bg3);border-radius:7px;padding:8px 14px">
+          <div style="font-size:10px;color:var(--text3);margin-bottom:4px">Чанар</div>
+          <select class="sel" style="background:none;border:none;padding:0;font-size:12px">
+            <option>1080p HD</option><option>720p</option><option>480p</option>
           </select>
         </div>
-        <div style="background: var(--bg3); border-radius: 8px; padding: 10px 16px; font-size: 13px;">
-          <div style="color: var(--text3); margin-bottom: 4px;">Хэл</div>
-          <select class="sort-select" style="background: none; border: none; padding: 0; font-size: 13px; color: var(--text);">
-            <option>Монгол хадмал</option>
-            <option>Монгол дубляж</option>
-            <option>Анхны хэл</option>
+        <div style="background:var(--bg3);border-radius:7px;padding:8px 14px">
+          <div style="font-size:10px;color:var(--text3);margin-bottom:4px">Хэл</div>
+          <select class="sel" style="background:none;border:none;padding:0;font-size:12px">
+            <option>Монгол хадмал</option><option>Монгол дубляж</option><option>Анхны хэл</option>
           </select>
         </div>
       </div>
@@ -1313,445 +723,484 @@
   </div>
 </div>
 
-<!-- ===== LOGIN MODAL ===== -->
-<div class="modal-backdrop" id="loginModal" onclick="closeModalOnBg(event, 'loginModal')">
-  <div class="modal login-modal">
-    <button class="modal-close" onclick="document.getElementById('loginModal').classList.remove('open')">✕</button>
-    <div class="modal-body">
-      <div class="login-logo">
-        <div class="logo-icon" style="width: 52px; height: 52px; font-size: 22px; border-radius: 12px;">LK</div>
-        <h2 style="font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 2px; margin-top: 10px;">LOLO<span style="color: var(--red);">KINO</span></h2>
-        <p style="color: var(--text2); font-size: 13px; margin-top: 4px;">Нэвтэрч кино үзнэ үү</p>
+<!-- ══════════ GAME MODAL ══════════ -->
+<div class="modal-bg" id="gameModal" onclick="closeMb(event,'gameModal')">
+  <div class="modal gmodal">
+    <button class="mcls" onclick="closeM('gameModal')">✕</button>
+    <iframe class="gm-frame" id="gmFrame" src="" allowfullscreen></iframe>
+    <div class="gm-info">
+      <div>
+        <div class="gm-title" id="gmTitle"></div>
+        <div class="gm-meta" id="gmMeta"></div>
       </div>
-      <div class="tabs" style="margin-bottom: 20px;">
-        <button class="tab active" onclick="switchTab(this, 'login')">Нэвтрэх</button>
-        <button class="tab" onclick="switchTab(this, 'register')">Бүртгүүлэх</button>
-      </div>
-      <div id="loginForm">
-        <div class="form-group">
-          <label>Имэйл хаяг</label>
-          <input type="email" placeholder="example@gmail.com">
-        </div>
-        <div class="form-group">
-          <label>Нууц үг</label>
-          <input type="password" placeholder="••••••••">
-        </div>
-        <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
-          <label style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text2); cursor: pointer;">
-            <input type="checkbox" style="accent-color: var(--red);"> Намайг санах
-          </label>
-          <a href="#" style="font-size: 13px; color: var(--red); text-decoration: none;">Нууц үг мартсан?</a>
-        </div>
-        <button class="btn-submit" onclick="handleLogin()">Нэвтрэх</button>
-        <div class="divider">Эсвэл</div>
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-          <button class="btn-info" style="width: 100%; justify-content: center; gap: 8px; font-size: 14px;" onclick="showToast('Google нэвтрэлт...')">
-            <span>G</span> Google-ээр нэвтрэх
-          </button>
-          <button class="btn-info" style="width: 100%; justify-content: center; gap: 8px; font-size: 14px;" onclick="showToast('Facebook нэвтрэлт...')">
-            <span>f</span> Facebook-ээр нэвтрэх
-          </button>
-        </div>
-      </div>
-      <div id="registerForm" style="display: none;">
-        <div class="form-group">
-          <label>Хэрэглэгчийн нэр</label>
-          <input type="text" placeholder="Таны нэр">
-        </div>
-        <div class="form-group">
-          <label>Имэйл хаяг</label>
-          <input type="email" placeholder="example@gmail.com">
-        </div>
-        <div class="form-group">
-          <label>Нууц үг</label>
-          <input type="password" placeholder="Дор хаяж 8 тэмдэгт">
-        </div>
-        <div class="form-group">
-          <label>Нууц үг давтах</label>
-          <input type="password" placeholder="Нууц үгийг давтах">
-        </div>
-        <button class="btn-submit" onclick="handleRegister()">Бүртгүүлэх</button>
+      <div style="display:flex;gap:8px">
+        <button class="btn-watch" onclick="toast('Дэлгэц дүүргэх...')">⛶ Томруулах</button>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-// ============================================================
+// ══════════════════════════════════════════
 // DATA
-// ============================================================
-const GENRES = ['Бүгд','Экшн','Драм','Инээдмийн','Романтик','Аймшиг','Фантастик','Анимэ','Адал явдал','Криминал'];
-
+// ══════════════════════════════════════════
 const MOVIES = [
-  { id:1, title:'Do Not Enter', mnTitle:'Бүү орох', year:2026, rating:7.8, duration:'2ц 14м', genre:'Аймшиг', type:'movie', badge:'mn', new:true, desc:'Нэг гэр бүл амралтаараа тусгаарлагдсан нэгэн байшинд хоноглоход үл мэдэгдэх аюул тэднийг хүрээлнэ.', director:'Мэтт Бэттинелли', cast:'Эвелин Дин, Рожер Дэвис', poster:'https://picsum.photos/seed/donotenter/300/450', wide:'https://picsum.photos/seed/donotenter/1200/500' },
-  { id:2, title:'Dune: Part Two', mnTitle:'Дюн: Хоёрдугаар хэсэг', year:2024, rating:8.5, duration:'2ц 46м', genre:'Фантастик', type:'movie', badge:'hd', new:true, desc:'Пол Атрейдес Зачайн нутгийн иргэдтэй нэгдэн эзэн хааны хүч болон бусад хүчний эсрэг тэмцэнэ.', director:'Дэнис Вильнев', cast:'Тимоти Шаламе, Зэндея', poster:'https://picsum.photos/seed/dune2/300/450', wide:'https://picsum.photos/seed/dune2/1200/500' },
-  { id:3, title:'Oppenheimer', mnTitle:'Оппенхеймер', year:2023, rating:8.9, duration:'3ц', genre:'Драм', type:'movie', badge:'hd', desc:'Атомын бөмбөг зохион бүтээгч Ж.Роберт Оппенхеймерийн амьдрал.', director:'Кристофер Нолан', cast:'Киллиан Мёрфи, Эмили Блант', poster:'https://picsum.photos/seed/oppenheimer/300/450', wide:'https://picsum.photos/seed/oppenheimer/1200/500' },
-  { id:4, title:'Deadpool & Wolverine', mnTitle:'Дэдпүүл ба Вулверин', year:2024, rating:8.1, duration:'2ц 7м', genre:'Экшн', type:'movie', badge:'mn', new:true, desc:'Вэйд Уилсон хугацааны гаргалгааны агентлагаас авардаг хамтрагчтай нэгдэж гайхалтай аянд гарна.', director:'Шон Леви', cast:'Райан Рейнолдс, Хью Жакман', poster:'https://picsum.photos/seed/deadpool3/300/450', wide:'https://picsum.photos/seed/deadpool3/1200/500' },
-  { id:5, title:'Inside Out 2', mnTitle:'Сэтгэлийн дотор 2', year:2024, rating:7.8, duration:'1ц 40м', genre:'Анимэ', type:'movie', badge:'mn', desc:'Өсвөр насны Райлийн бодол дотор шинэ сэтгэл хөдлөлүүд гарч ирнэ.', director:'Кэлси Манн', cast:'Эмий Поэлер, Майа Хоук', poster:'https://picsum.photos/seed/insideout2/300/450', wide:'https://picsum.photos/seed/insideout2/1200/500' },
-  { id:6, title:'The Substance', mnTitle:'Бодис', year:2024, rating:7.3, duration:'2ц 20м', genre:'Аймшиг', type:'movie', badge:'sub', new:true, desc:'Нэгэн жүжигчин залуурдах бодис хэрэглэсний дараа гэнэтийн хувиргалт амьдарна.', director:'Корали Фаржеат', cast:'Деми Мур, Маргарет Куолли', poster:'https://picsum.photos/seed/substance/300/450', wide:'https://picsum.photos/seed/substance/1200/500' },
-  { id:7, title:'Alien: Romulus', mnTitle:'Пришелец: Ромул', year:2024, rating:7.3, duration:'1ц 59м', genre:'Фантастик', type:'movie', badge:'hd', desc:'Залуус сансрын хоосон станц шинжлэхдээ хамгийн аймшигтай амьтантай тулгарна.', director:'Фэде Альварес', cast:'Каели Спени, Дэвид Жонссон', poster:'https://picsum.photos/seed/alienlrom/300/450', wide:'https://picsum.photos/seed/alienr/1200/500' },
-  { id:8, title:'Gladiator 2', mnTitle:'Гладиатор 2', year:2024, rating:7.5, duration:'2ц 28м', genre:'Экшн', type:'movie', badge:'hd', new:true, desc:'Луций Рим гүрнийг дотроос идэж байгаа хоёр хаантай тэмцэхийн тулд бэлдэнэ.', director:'Ридли Скотт', cast:'Пол Мескал, Дензел Вашингтон', poster:'https://picsum.photos/seed/gladiator2/300/450', wide:'https://picsum.photos/seed/gladiator2/1200/500' },
-  { id:9, title:'Wicked', mnTitle:'Визкед', year:2024, rating:7.7, duration:'2ц 40м', genre:'Романтик', type:'movie', badge:'mn', desc:'Элфаба болон Глиндагийн хосын Оз газарт суусан гайхамшигтай найрамдлын тухай.', director:'Жон Чу', cast:'Синтиа Эриво, Аринана Гранде', poster:'https://picsum.photos/seed/wicked2024/300/450', wide:'https://picsum.photos/seed/wicked/1200/500' },
-  { id:10, title:'A Minecraft Movie', mnTitle:'Майнкрафт Кино', year:2025, rating:6.8, duration:'1ц 41м', genre:'Адал явдал', type:'movie', badge:'mn', new:true, desc:'Хэд хэдэн хүн Блокын ертөнцөд татагдаж орж ирэн эх дэлхий рүүгээ буцах замыг хайна.', director:'Жаред Херн', cast:'Жек Блэк, Жейсон Момоа', poster:'https://picsum.photos/seed/minecraft/300/450', wide:'https://picsum.photos/seed/minecraft/1200/500' },
-  { id:11, title:'The Wild Robot', mnTitle:'Зэрлэг робот', year:2024, rating:8.3, duration:'1ц 41м', genre:'Анимэ', type:'movie', badge:'mn', desc:'Нэгэн робот хүн ам суурьшаагүй арал дээр хэрхэн амьд үлдэхийг сурна.', director:'Крис Сандерс', cast:'Лупита Нионго, Педро Паскаль', poster:'https://picsum.photos/seed/wildrobot/300/450', wide:'https://picsum.photos/seed/wildrobot/1200/500' },
-  { id:12, title:'Twisters', mnTitle:'Шуурганчид', year:2024, rating:7.2, duration:'2ц 2м', genre:'Экшн', type:'movie', badge:'hd', desc:'Хуй салхи судлаачид хамгийн хүчтэй шуурганыг зогсоохыг завддаг.', director:'Ли Айзек Чунг', cast:'Глен Пауэлл, Дэйзи Эдгар-Жонс', poster:'https://picsum.photos/seed/twisters/300/450', wide:'https://picsum.photos/seed/twisters/1200/500' },
-  { id:13, title:'Furiosa', mnTitle:'Фуриоза', year:2024, rating:7.7, duration:'2ц 28м', genre:'Экшн', type:'movie', badge:'sub', desc:'Фуриозагийн түүх — эхлэлийн цэг нь хэрхэн тасаршаасан тухай эпик дайны тухай.', director:'Жорж Миллер', cast:'Аня Тэйлор-Жой, Крис Хемсворт', poster:'https://picsum.photos/seed/furiosa/300/450', wide:'https://picsum.photos/seed/furiosa/1200/500' },
-  { id:14, title:'Moana 2', mnTitle:'Моана 2', year:2024, rating:7.0, duration:'1ц 40м', genre:'Анимэ', type:'movie', badge:'mn', new:true, desc:'Моана шинэ аялалд гарч далайн нуугдмал зүйлсийг илрүүлнэ.', director:'Дэйв Деррик', cast:'Аули Кравальо, Дваин Жонсон', poster:'https://picsum.photos/seed/moana2/300/450', wide:'https://picsum.photos/seed/moana2/1200/500' },
-  { id:15, title:'Hit Man', mnTitle:'Хит Мэн', year:2024, rating:7.6, duration:'1ц 55м', genre:'Инээдмийн', type:'movie', badge:'sub', desc:'Онлайн агентын дүр гүйцэтгэдэг нэгэн хүн гэнэт хаалгатаа ирсэн хүнтэй дурласна.', director:'Ричард Линклэйтэр', cast:'Глен Пауэлл, Адрия Архона', poster:'https://picsum.photos/seed/hitman2024/300/450', wide:'https://picsum.photos/seed/hitman/1200/500' },
-  { id:16, title:'Longlegs', mnTitle:'Лонглегс', year:2024, rating:6.0, duration:'1ц 41м', genre:'Криминал', type:'movie', badge:'hd', desc:'FBI-ын шинэ мөрдөгч харийн хүн алагчийн хэрэгт холбоотой болоод аймаар нууцыг илрүүлнэ.', director:'Оскар Жулиусон', cast:'Маика Монро, Николас Кейж', poster:'https://picsum.photos/seed/longlegs/300/450', wide:'https://picsum.photos/seed/longlegs/1200/500' },
+  {id:647,title:'Секрет',year:2026,rating:7.0,poster:'https://image.tmdb.org/t/p/w300/rZqolYhxMEe6TZZTjSmFw9crDTD.jpg',link:'https://mglguide.top/news/tech/scrlt/',embed:'https://infi.xtremestream.xyz/player/index.php?data=81e3225c6ad49623167a4309eb4b2e75',cat:'world',badge:'mn',desc:'Нууц нэгэн хайрын түүх. 2026 оны шинэ цуврал кино.',dir:'—',cast:'—'},
+  {id:1102,title:'Тэр',year:2026,rating:9.0,poster:'https://image.tmdb.org/t/p/w300/bpOrZGKbrdk9L0tfMk22o3zCkvz.jpg',link:'https://mglguide.top/news/tech/ter/',embed:'https://infi.xtremestream.xyz/player/index.php?data=415585bd389b69659223807d77a96791',cat:'world',badge:'mn',desc:'He / She / It — 2026 оны шинэ хайрын драм цуврал.',dir:'—',cast:'—'},
+  {id:1464,title:'Графт',year:2026,rating:8.0,poster:'https://image.tmdb.org/t/p/w300/cK89AAzR8laGnN6aNH6OX4kUkV6.jpg',link:'https://mglguide.top/news/tech/grft/',embed:'https://infi.xtremestream.co/player/index.php?data=6734fa703f6633ab896eecbdfad8953a',cat:'world',badge:'mn',desc:'Graft — гайхалтай ажиллагаа, нийгмийн шүүмжлэл бүхий 2026 оны цуврал.',dir:'—',cast:'—'},
+  {id:1480,title:'Culpa Mia',year:2026,rating:6.0,poster:'https://image.tmdb.org/t/p/w300/xuMZp0ZADSi0HEEQkCDkhNXgQEP.jpg',link:'https://mglguide.top/news/tech/mniiburuu1/',embed:'https://infi.xtremestream.xyz/player/index.php?data=c42f891cebbc81aa59f8f183243ac2b9',cat:'world',badge:'mn',desc:'My Fault 1 — Испани хэлтэй хайрын драм кино.',dir:'—',cast:'—'},
+  {id:1487,title:"What's Wrong with Secretary Kim",year:2026,rating:5.0,poster:'https://image.tmdb.org/t/p/w300/qmq7vKRPoK2VHOTeaUdwwe3l5bB.jpg',link:'https://mglguide.top/news/tech/mitugsnarnbichig7/',embed:'https://infi.xtremestream.xyz/player/index.php?data=a5ff5d4b0a0d7b3e4d64147037d8c344',cat:'world',badge:'mn',desc:'Бичиг даагч нарийн бичгийн дарга Ким юу болсон бэ? 7-р анги.',dir:'—',cast:'—'},
+  {id:3266,title:'Red Door',year:2026,rating:7.2,poster:'https://image.tmdb.org/t/p/w300/7fn5A5wUAacSEaCfKDUIDFfJj54.jpg',link:'https://mglguide.top/news/tech/red-door/',embed:'https://infi.xtremestream.co/player/index.php?data=716e1b8c6cd17b771da77391355749f3',cat:'world',badge:'sub',desc:'Red Door — нууцлалтай, аймшгийн элемент бүхий 2026 оны цуврал.',dir:'—',cast:'—'},
+  {id:3914,title:'Re Member',year:2026,rating:8.0,poster:'https://image.tmdb.org/t/p/w300/9njMmEXfPHVKWdAZg80F4yxlEnZ.jpg',link:'https://mglguide.top/news/tech/re-member/',embed:'https://infi.xtremestream.co/player/index.php?data=647c722bf90a49140184672e0d3723e3',cat:'world',badge:'sub',desc:'Re Member — дурсамж, хайр, ганцаардлын тухай 2026 оны шинэ кино.',dir:'—',cast:'—'},
+  {id:5496,title:'Gun Us',year:2026,rating:6.3,poster:'https://image.tmdb.org/t/p/w300/kf1Jb1c2JAOqjuzA3H4oDM263uB.jpg',link:'https://mglguide.top/news/tech/gun-us/',embed:'https://infi.xtremestream.co/player/index.php?data=e56954b4f6347e897f954495eab16a88',cat:'world',badge:'sub',desc:'Gun Us — тулаан, хайр, жүжигчдийн оролцоо бүхий 2026 оны цуврал.',dir:'—',cast:'—'},
+  {id:6001,title:'Пелхэм 123',year:2009,rating:6.5,poster:'https://picsum.photos/seed/pelham123/300/450',link:'https://mglguide.top/news/tech/123sxdsd/',embed:'https://infi.xtremestream.xyz/player/index.php?data=ac8cd1808dc30460a81cab1b0e6652fa',cat:'action',badge:'mn',desc:'Нью-Йоркийн метрог тасалдуулан барьцаалсан нэгэн галт тэргэний ажилчин хэрхэн тулгарсан бэ.',dir:'Тони Скотт',cast:'Дензел Вашингтон, Жон Траволта'},
+  {id:6002,title:'12 дахь сэжигтэн',year:2019,rating:7.0,poster:'https://picsum.photos/seed/12suspect/300/450',link:'https://mglguide.top/news/tech/12dahsejigten/',embed:'https://www.fembed.com/v/gx8-zs-mpe1y4rd',cat:'thriller',badge:'mn',desc:'Алт тонолтыг будлиулсан нэгэн мөрдлөгийн жам ёсны триллер кино.',dir:'—',cast:'—'},
+  {id:6003,title:'13-ийн халдлага',year:2005,rating:6.4,poster:'https://picsum.photos/seed/assault13/300/450',link:'https://mglguide.top/news/tech/13iinhaldlaga/',embed:'//ok.ru/videoembed/1668829612593',cat:'action',badge:'mn',desc:'Гэмт хэргийн мөрдлөгийн газрыг халдлага хийх шөнийн тулаан.',dir:'Жон Карпентер',cast:'Итан Хок, Лоренс Фишбёрн'},
+  {id:6004,title:'14 илд',year:2010,rating:6.3,poster:'https://picsum.photos/seed/14blades/300/450',link:'https://mglguide.top/news/tech/14ild/',embed:'//ok.ru/videoembed/1632050678321',cat:'action',badge:'mn',desc:'Хятадын эзэн хааны нууц агент хашгирсан тэмцлийн кино.',dir:'Даниэль Ли',cast:'Донни Иен'},
+  {id:6005,title:'28 жилийн дараа',year:2025,rating:7.5,poster:'https://picsum.photos/seed/28years/300/450',link:'https://mglguide.top/news/tech/28jiliindra/',embed:'https://infi.xtremestream.xyz/player/index.php?data=cb59b747f88a35e0d452377f60f7c25f',cat:'horror',badge:'sub',desc:'28 жилийн дараа дэлхий яах болсон бэ? Вирусийн апокалипс үргэлжилнэ.',dir:'Дэнни Бойл',cast:'Киллиан Мёрфи'},
+  {id:6006,title:'2 ертөнц',year:2021,rating:6.8,poster:'https://picsum.photos/seed/twoworlds/300/450',link:'https://mglguide.top/news/tech/2yrtsonts/',embed:'https://hqq.to/e/TTU0U2xrNGlwRkF3NS90a1RQRUd1QT09',cat:'drama',badge:'mn',desc:'Хоёр өөр ертөнцийн уулзалт, хайр, сонголтын драм кино.',dir:'Марчел Жакийе',cast:'Жюлиет Бинош'},
+  {id:6007,title:'3 мянган жилийн хүсэл',year:2022,rating:7.0,poster:'https://picsum.photos/seed/3thousand/300/450',link:'https://mglguide.top/news/tech/3mjilhsvl/',embed:'https://infi.xtremestream.co/player/index.php?data=fba9d88164f3e2d9109ee770223212a0',cat:'drama',badge:'sub',desc:'Гэнэтэд Жинн олж авсан нэгэн эмэгтэйн гурван хүслийн тухай үлгэр.',dir:'Жорж Миллер',cast:'Тильда Свинтон, Идрис Элба'},
+  {id:6008,title:'500 өдөр',year:2009,rating:7.7,poster:'https://picsum.photos/seed/500days/300/450',link:'https://mglguide.top/news/tech/500udur/',embed:'https://watchsb.com/e/0p7ev6gkkbum.html',cat:'romance',badge:'mn',desc:'500 Days of Summer — хайрын эхлэл, дунд, төгсгөлийн гайхалтай дүрслэл.',dir:'Марк Уэбб',cast:'Жозеф Гордон-Левитт, Зүй Дешанель'},
+  {id:6009,title:'5 цус',year:2020,rating:6.5,poster:'https://picsum.photos/seed/5bloods/300/450',link:'https://mglguide.top/news/tech/5tsus/',embed:'https://ninjastream.to/watch/dloABeG37mzRJ',cat:'war',badge:'mn',desc:'Vietnam дайны ахмадууд нас барсан нөхрийнхөө цогцсыг авахаар буцна.',dir:'Спайк Ли',cast:'Дельрой Линдо, Жонатан Мажор'},
+  {id:6010,title:'6 дахь мэдрэхүй',year:1999,rating:8.1,poster:'https://picsum.photos/seed/6thsense/300/450',link:'https://mglguide.top/news/tech/6dhmrduns2ad/',embed:'https://infi.xtremestream.co/player/index.php?data=7fe1f8abaad094e0b5cb1b01d712f708',cat:'thriller',badge:'mn',desc:'Нэгэн хүүхэд үхэгсдийг харж чадна. Классик хэвшсэн триллер кино.',dir:'М. Найт Шьямалан',cast:'Брюс Уиллис, Хэйли Жоэл Осмент'},
+  {id:6011,title:'Аадар бороо',year:1998,rating:5.8,poster:'https://picsum.photos/seed/hardrain/300/450',link:'https://mglguide.top/news/tech/aadarboroo/',embed:'https://short.ink/KjmITxMUfy',cat:'action',badge:'mn',desc:'Үер болсон хотод алтан тэрэг хулгайлагч, мөрдөгч хоёрын тулаан.',dir:'Микаэль Сальоман',cast:'Морган Фриман, Кристиан Слэйтэр'},
+  {id:6012,title:'Аалзан толгойт',year:2022,rating:5.4,poster:'https://picsum.photos/seed/spiderhead/300/450',link:'https://mglguide.top/news/tech/aalzntolgoit/',embed:'https://infi.xtremestream.co/player/index.php?data=f29c21d4897f78948b91f03172341b7b',cat:'scifi',badge:'sub',desc:'Зэнгийн туршилт хийгдэж буй нэгэн тусгаарлагдсан шоронд аймаар нууц нуугдана.',dir:'Жозеф Косински',cast:'Крис Хемсворт'},
+  {id:6015,title:'Нягтлан',year:2016,rating:7.3,poster:'https://picsum.photos/seed/accountant/300/450',link:'https://mglguide.top/news/tech/accnt/',embed:'https://www.fembed.com/v/4yd-5iznnk6-ylg',cat:'action',badge:'mn',desc:'Аутист нягтлан бодогч Мат Флэмон халдагчдаас дутахгүй тулаанч болно.',dir:'Гэвин О\'Коннор',cast:'Бен Афлек, Анна Кендрик'},
+  {id:6016,title:'Адам төсөл',year:2022,rating:6.7,poster:'https://picsum.photos/seed/adamproject/300/450',link:'https://mglguide.top/news/tech/adamtusul/',embed:'https://infi.xtremestream.co/player/index.php?data=f340f1b1f65b6df5b5e3f94d95b11daf',cat:'scifi',badge:'mn',desc:'Ирээдүйн Адам өнгөрсөнд аав болон хүүхэд цагтаа өөртэйгөө уулздаг.',dir:'Шон Леви',cast:'Райан Рейнолдс, Марк Руффало'},
+  {id:6018,title:'Агшин гялбаа',year:2023,rating:6.7,poster:'https://picsum.photos/seed/theflash/300/450',link:'https://mglguide.top/news/tech/agtnllagg16t/',embed:'https://infi.xtremestream.co/player/index.php?data=c0d0e461de8d0024aebcb0a7c68836df',cat:'action',badge:'mn',desc:'The Flash — хугацааг өөрчлөхийн тулд аянд гардаг хурдны баатар.',dir:'Андрес Мускетти',cast:'Эзра Миллер'},
+  {id:6019,title:'Ахмад',year:2013,rating:7.8,poster:'https://picsum.photos/seed/captainphillips/300/450',link:'https://mglguide.top/news/tech/ahmad/',embed:'https://www.fembed.com/v/n0r5ws2-x1ger0e',cat:'thriller',badge:'mn',desc:'Captain Phillips — далайн дээрэмчид барьцаалсан жинхэнэ үйл явдал.',dir:'Пол Гринграсс',cast:'Том Хэнкс'},
 ];
 
-const SERIES = [
-  { id:101, title:'Squid Game', mnTitle:'Наадмын тоглоом', year:2024, rating:8.5, duration:'9 анги', genre:'Драм', type:'series', badge:'mn', new:true, desc:'Өртэй хүмүүс амь насаа барьцаалан хачирхалтай тоглоомд оролцоно. 2-р улирал.', director:'Хван Дон Хёк', cast:'Ли Жун Жэ, Ли Бён Хун', poster:'https://picsum.photos/seed/squidgame2/300/450', wide:'https://picsum.photos/seed/squidgame2w/1200/500', episodes: 9 },
-  { id:102, title:'The Bear', mnTitle:'Баавгай', year:2024, rating:8.9, duration:'10 анги', genre:'Драм', type:'series', badge:'sub', desc:'Карми хамаатны ресторанаа хэрхэн удирдахыг сурч байна.', director:'Кристофер Сторер', cast:'Жереми Аллен Уайт', poster:'https://picsum.photos/seed/thebear/300/450', wide:'https://picsum.photos/seed/thebear/1200/500', episodes: 10 },
-  { id:103, title:'House of the Dragon', mnTitle:'Луу улсын ордон', year:2024, rating:8.2, duration:'8 анги', genre:'Фантастик', type:'series', badge:'mn', new:true, desc:'Таргарин гэр бүлийн ширэгтэй хаан ширээний тэмцэл.', director:'Жорж Р.Р. Мартин', cast:'Матт Смит, Эмма Д\'Арси', poster:'https://picsum.photos/seed/hotd2/300/450', wide:'https://picsum.photos/seed/hotd2/1200/500', episodes: 8 },
-  { id:104, title:'Shōgun', mnTitle:'Шогун', year:2024, rating:9.0, duration:'10 анги', genre:'Драм', type:'series', badge:'sub', desc:'1600-аад оны Японд гарсан нэгэн Англи далайчны хувь заяа.', director:'Рэйчел Кондо', cast:'Хироюки Санада, Козму Жарвис', poster:'https://picsum.photos/seed/shogun2024/300/450', wide:'https://picsum.photos/seed/shogun/1200/500', episodes: 10 },
-  { id:105, title:'The Penguin', mnTitle:'Пингвин', year:2024, rating:8.3, duration:'8 анги', genre:'Криминал', type:'series', badge:'hd', new:true, desc:'Готэм хотод эрх мэдэл олохоор тэмцэж буй Осз Коббпотын тухай.', director:'Лорен Лефрэнк', cast:'Колин Фаррелл, Кристал Зейк', poster:'https://picsum.photos/seed/penguin/300/450', wide:'https://picsum.photos/seed/penguin/1200/500', episodes: 8 },
-  { id:106, title:'Agatha All Along', mnTitle:'Агата бүх замаар', year:2024, rating:7.4, duration:'9 анги', genre:'Фантастик', type:'series', badge:'sub', desc:'Аймшигт магийн замаар тэмцэн гарах гайхамшигт Agatha-гийн тухай.', director:'Жэк Шаффер', cast:'Кэтрин Хан', poster:'https://picsum.photos/seed/agatha/300/450', wide:'https://picsum.photos/seed/agatha/1200/500', episodes: 9 },
-  { id:107, title:'Tulsa King', mnTitle:'Тулса хаан', year:2024, rating:8.0, duration:'10 анги', genre:'Инээдмийн', type:'series', badge:'mn', desc:'Нью-Йоркийн мафийн гишүүн Оклахома руу гадаа илгээгдэн шинэ хаанлалаа байгуулна.', director:'Тэйлор Шеридан', cast:'Сильвестр Сталлоне', poster:'https://picsum.photos/seed/tulsaking2/300/450', wide:'https://picsum.photos/seed/tulsa/1200/500', episodes: 10 },
-  { id:108, title:'Only Murders in the Building', mnTitle:'Барилгад дотор хөнөөлт', year:2024, rating:7.8, duration:'10 анги', genre:'Инээдмийн', type:'series', badge:'sub', new:true, desc:'Гурван хөршийн аялал биш мөрдлөгийн хамт олон.', director:'Жон Хоффман', cast:'Стив Мартин, Мартин Шорт, Селена Гомез', poster:'https://picsum.photos/seed/omitb/300/450', wide:'https://picsum.photos/seed/omitb/1200/500', episodes: 10 },
+const GAMES = [
+  {id:10,title:'Chess',genre:'Тэрлэг',rating:9.2,emoji:'♟',embed:'https://playpager.com/embed/chess/index.html'},
+  {id:11,title:'Sudoku',genre:'Оньсого',rating:9.0,emoji:'🔢',embed:'https://playpager.com/embed/sudoku/index.html'},
+  {id:12,title:'Checkers',genre:'Тэрлэг',rating:8.8,emoji:'🔴',embed:'https://playpager.com/embed/checkers/index.html'},
+  {id:13,title:'Solitaire',genre:'Картын',rating:9.1,emoji:'🃏',embed:'https://playpager.com/embed/solitaire/index.html'},
+  {id:14,title:'Reversi',genre:'Тэрлэг',rating:8.7,emoji:'⚫',embed:'https://playpager.com/embed/reversi/index.html'},
+  {id:15,title:'Word Puzzle',genre:'Оньсого',rating:8.9,emoji:'🔤',embed:'https://playpager.com/embed/wordpuzzle/index.html'},
+  {id:16,title:'Falling Cubes',genre:'Оньсого',rating:8.5,emoji:'🟦',embed:'https://playpager.com/embed/cubes/index.html'},
+  {id:17,title:'Mini Chess',genre:'Тэрлэг',rating:8.8,emoji:'♟',embed:'https://playpager.com/embed/minichess/index.html'},
+  {id:18,title:'Gravity Guy',genre:'Үйл',rating:8.9,emoji:'🏃',embed:'https://iDev.Games/embed/gravity-guy'},
+  {id:19,title:'Road to Rage',genre:'Үйл',rating:8.7,emoji:'🚗',embed:'https://iDev.Games/embed/road-to-rage'},
+  {id:20,title:'Burger Empire',genre:'Стратеги',rating:8.6,emoji:'🍔',embed:'https://iDev.Games/embed/burger-empire'},
+  {id:21,title:'Hadros',genre:'Үйл',rating:8.5,emoji:'🦕',embed:'https://iDev.Games/embed/hadros'},
+  {id:22,title:'Salsa Disparos',genre:'Буудлага',rating:8.4,emoji:'🔫',embed:'https://iDev.Games/embed/salsa-disparos'},
+  {id:23,title:'Super Tucano',genre:'Буудлага',rating:8.6,emoji:'✈',embed:'https://iDev.Games/embed/super-tucano-score-combat'},
+  {id:30,title:'The Cargo 2',genre:'Жолоодлого',rating:8.5,emoji:'🚛',embed:'https://1000webgames.com/games/thecargo2/play.php'},
+  {id:31,title:'Park The Taxi 3',genre:'Зогсоол',rating:8.3,emoji:'🚕',embed:'https://1000webgames.com/games/parkthetaxi3/play.php'},
+  {id:32,title:'Warfare Area 3',genre:'Буудлага',rating:8.7,emoji:'💣',embed:'https://1000webgames.com/games/warfarearea3/play.php'},
+  {id:33,title:'Truck Space 2',genre:'Жолоодлого',rating:8.4,emoji:'🚚',embed:'https://1000webgames.com/games/truckspace2/play.php'},
+  {id:34,title:'Hard Wheels Winter 2',genre:'Жолоодлого',rating:8.5,emoji:'❄',embed:'https://1000webgames.com/games/hardwheelswinter2/play.php'},
+  {id:35,title:'Assault Time',genre:'Буудлага',rating:8.6,emoji:'🎯',embed:'https://1000webgames.com/games/assaulttime/play.php'},
+  {id:43,title:'Bullet Fury 2',genre:'Буудлага',rating:8.8,emoji:'💥',embed:'https://1000webgames.com/games/bulletfury2/bulletfury2.php'},
+  {id:50,title:'Battle Area',genre:'Буудлага',rating:8.6,emoji:'⚔',embed:'https://1000webgames.com/games/battlearea/battlearea.php'},
+  {id:93,title:'Plants vs Zombies',genre:'Стратеги',rating:8.0,emoji:'🌻',embed:'https://1000webgames.com/games/plantsvszombies/plantsvszombies.php'},
+  {id:122,title:'Pool 8 Ball Mania',genre:'Спорт',rating:8.0,emoji:'🎱',embed:'https://1000webgames.com/games/pool8ballmania/pool8ballmania.php'},
+  {id:280,title:'Flappy Bird',genre:'Аркад',rating:8.0,emoji:'🐦',embed:'https://1000webgames.com/games/flappybird/flappybird.php'},
+  {id:2,title:'Roblox',genre:'MMO',rating:8.5,emoji:'🟦',link:'https://www.roblox.com'},
+  {id:3,title:'Genshin Impact',genre:'RPG',rating:8.7,emoji:'⚡',link:'https://genshin.hoyoverse.com'},
 ];
 
-const ALL_CONTENT = [...MOVIES, ...SERIES];
-const featuredMovies = MOVIES.slice(0, 5);
+const WEATHER_CITIES = [
+  {name:'Улаанбаатар',q:'Ulaanbaatar'},
+  {name:'Дархан',q:'Darkhan'},
+  {name:'Эрдэнэт',q:'Erdenet'},
+  {name:'Архангай',q:'Arkhangai'},
+  {name:'Баян-Өлгий',q:'Bayan-Olgii'},
+  {name:'Баянхонгор',q:'Bayankhongor'},
+  {name:'Булган',q:'Bulgan'},
+  {name:'Говь-Алтай',q:'Govi-Altai'},
+  {name:'Дорнод',q:'Choibalsan'},
+  {name:'Завхан',q:'Zavkhan'},
+  {name:'Өвөрхангай',q:'Mandalgovi'},
+  {name:'Өмнөговь',q:'Dalanzadgad'},
+  {name:'Сүхбаатар',q:'Sukhbaatar'},
+  {name:'Сэлэнгэ',q:'Selenge'},
+  {name:'Увс',q:'Ulaangom'},
+  {name:'Ховд',q:'Hovd'},
+  {name:'Хөвсгөл',q:'Murun'},
+  {name:'Хэнтий',q:'Onderhaan'},
+];
 
-// ============================================================
-// STATE
-// ============================================================
-let heroIdx = 0;
-let heroInterval;
-let currentMovieGenre = 'Бүгд';
-let currentSeriesGenre = 'Бүгд';
+const HERO_MOVIES = MOVIES.slice(0,6);
 
-// ============================================================
+// ══════════════════════════════════════════
 // HERO SLIDER
-// ============================================================
-function initHero() {
-  const dotsEl = document.getElementById('heroDots');
-  dotsEl.innerHTML = featuredMovies.map((_, i) =>
-    `<div class="hero-dot ${i===0?'active':''}" onclick="setHero(${i})"></div>`
-  ).join('');
+// ══════════════════════════════════════════
+let hi=0,hInt;
+function initHero(){
+  const dots=document.getElementById('heroDots');
+  dots.innerHTML=HERO_MOVIES.map((_,i)=>`<div class="hero-dot${i===0?' on':''}" onclick="setHero(${i})"></div>`).join('');
   setHero(0);
-  heroInterval = setInterval(() => setHero((heroIdx+1) % featuredMovies.length), 6000);
+  clearInterval(hInt);
+  hInt=setInterval(()=>setHero((hi+1)%HERO_MOVIES.length),5500);
+}
+function setHero(i){
+  hi=i;const m=HERO_MOVIES[i];
+  document.getElementById('heroBg').style.backgroundImage=`url('${m.poster}')`;
+  document.getElementById('heroTitle').textContent=m.title;
+  document.getElementById('heroDesc').textContent=m.desc;
+  document.getElementById('heroMeta').innerHTML=`
+    <span class="star">⭐ ${m.rating}</span>
+    <span>${m.year}</span>
+    <span class="tag">${badgeLabel(m.badge)}</span>
+    <span class="tag">${catLabel(m.cat)}</span>`;
+  document.getElementById('heroWatch').onclick=()=>openPlayer(m);
+  document.getElementById('heroMore').onclick=()=>openMovieDetail(m);
+  document.querySelectorAll('.hero-dot').forEach((d,j)=>d.classList.toggle('on',j===i));
 }
 
-function setHero(i) {
-  heroIdx = i;
-  const m = featuredMovies[i];
-  document.getElementById('heroBg').style.backgroundImage = `url('${m.wide}')`;
-  document.getElementById('heroTitle').textContent = m.title;
-  document.getElementById('heroDesc').textContent = m.desc;
-  document.querySelectorAll('.hero-dot').forEach((d, j) => d.classList.toggle('active', j===i));
+// ══════════════════════════════════════════
+// BADGE / CAT LABELS
+// ══════════════════════════════════════════
+function badgeLabel(b){return b==='mn'?'🇲🇳 Монгол':b==='sub'?'Sub':b==='hd'?'HD':''}
+function catLabel(c){const m={world:'Драм',action:'Экшн',thriller:'Триллер',horror:'Аймшиг',drama:'Драм',romance:'Романтик',scifi:'Фантастик',war:'Дайн'};return m[c]||c}
+function badgeHTML(b){
+  if(b==='mn') return '<span class="mbg mbg-mn">МН</span>';
+  if(b==='sub') return '<span class="mbg mbg-sub">SUB</span>';
+  if(b==='hd') return '<span class="mbg mbg-hd">HD</span>';
+  return '';
 }
 
-// ============================================================
-// CARD FACTORY
-// ============================================================
-function badgeHTML(b, isNew) {
-  let html = '';
-  if (b === 'hd') html += '<span class="badge badge-hd">HD</span>';
-  if (b === 'mn') html += '<span class="badge badge-mn">МН</span>';
-  if (b === 'sub') html += '<span class="badge badge-sub">SUB</span>';
-  if (isNew) html += '<span class="badge badge-new">ШИНЭ</span>';
-  return html;
-}
-
-function createCard(m) {
-  const d = document.createElement('div');
-  d.className = 'card';
-  d.innerHTML = `
-    <img class="card-poster" src="${m.poster}" alt="${m.title}" loading="lazy"
-      onerror="this.style.background='var(--bg4)'; this.src='';">
-    <div class="card-overlay">
-      <div class="card-play-btn" onclick="event.stopPropagation(); openPlayer(${JSON.stringify(m).replace(/"/g,'&quot;')})">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
-      </div>
-      <div class="card-actions">
-        <button class="card-act-btn" onclick="event.stopPropagation(); addToList(this)" title="Жагсаалт">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <button class="card-act-btn" onclick="event.stopPropagation(); likeCard(this)" title="Таалагдлаа">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        </button>
-      </div>
-    </div>
-    <div class="card-info">
-      <div class="card-badges">${badgeHTML(m.badge, m.new)}</div>
-      <div class="card-title">${m.title}</div>
-      <div class="card-sub">
-        <span class="star">★</span> ${m.rating}
-        <span class="dot">·</span>
-        <span>${m.year}</span>
-        <span class="dot">·</span>
-        <span>${m.duration}</span>
+// ══════════════════════════════════════════
+// MOVIE CARD
+// ══════════════════════════════════════════
+function makeMovieCard(m,wide=false){
+  const d=document.createElement('div');
+  d.className='mcard'+(wide?' ':' ');
+  d.innerHTML=`
+    <img class="mcard-poster" src="${m.poster}" alt="${m.title}" loading="lazy"
+      onerror="this.style.background='var(--bg4)';this.style.height='234px';this.src=''">
+    <div class="mcard-ov">
+      <div class="mcard-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+      <div class="mcard-acts">
+        <button class="mact" title="Нэмэх" onclick="event.stopPropagation();toast('Жагсаалтад нэмлээ ✓')">＋</button>
+        <button class="mact" title="Хуваалцах" onclick="event.stopPropagation();toast('Линк хуулагдлаа ✓')">⇑</button>
       </div>
     </div>
-  `;
-  d.addEventListener('click', () => openDetail(m));
+    <div class="mcard-info">
+      <div class="mcard-bgs">${badgeHTML(m.badge)}</div>
+      <div class="mcard-title">${m.title}</div>
+      <div class="mcard-sub"><span class="st">★</span>${m.rating}<span>·</span>${m.year}</div>
+    </div>`;
+  d.querySelector('.mcard-play').addEventListener('click',e=>{e.stopPropagation();openPlayer(m)});
+  d.addEventListener('click',()=>openMovieDetail(m));
   return d;
 }
 
-// ============================================================
-// RENDER ROWS
-// ============================================================
-function renderRow(containerId, items) {
-  const el = document.getElementById(containerId);
-  if (!el) return;
-  el.innerHTML = '';
-  items.forEach(m => el.appendChild(createCard(m)));
+function renderMovieRow(id,list){
+  const el=document.getElementById(id);if(!el)return;el.innerHTML='';
+  list.forEach(m=>el.appendChild(makeMovieCard(m)));
+}
+function renderMovieGrid(id,list){
+  const el=document.getElementById(id);if(!el)return;el.innerHTML='';
+  list.forEach(m=>el.appendChild(makeMovieCard(m,true)));
 }
 
-function renderGrid(containerId, items) {
-  const el = document.getElementById(containerId);
-  if (!el) return;
-  el.innerHTML = '';
-  items.forEach(m => el.appendChild(createCard(m)));
-}
-
-function initRows() {
-  const newMovies = MOVIES.filter(m => m.new);
-  renderRow('newMoviesRow', newMovies);
-  const popular = [...MOVIES].sort((a,b) => b.rating - a.rating).slice(0, 10);
-  renderRow('popularRow', popular);
-  renderRow('seriesRow', SERIES.slice(0, 8));
-  const action = MOVIES.filter(m => m.genre === 'Экшн');
-  renderRow('actionRow', action);
-}
-
-// ============================================================
+// ══════════════════════════════════════════
 // MOVIES PAGE
-// ============================================================
-function initMoviesPage() {
-  const filter = document.getElementById('movieGenreFilter');
-  filter.innerHTML = GENRES.map(g =>
-    `<button class="genre-btn ${g==='Бүгд'?'active':''}" onclick="filterMovies('${g}', this)">${g}</button>`
-  ).join('');
-  filterMovies('Бүгд', filter.firstElementChild);
+// ══════════════════════════════════════════
+let mGenre='Бүгд',mSort='new';
+const MOVIE_GENRES=['Бүгд','Экшн','Драм','Фантастик','Триллер','Аймшиг','Романтик','Дайн'];
+const GENRE_CAT={Экшн:'action',Драм:'drama',Фантастик:'scifi',Триллер:'thriller',Аймшиг:'horror',Романтик:'romance',Дайн:'war'};
+
+function initMoviesPage(){
+  const bar=document.getElementById('movieGenreBar');
+  bar.innerHTML=MOVIE_GENRES.map(g=>`<div class="gpill${g==='Бүгд'?' on':''}" onclick="setMGenre('${g}',this)">${g}</div>`).join('');
+  applyMovieFilters();
+}
+function setMGenre(g,btn){
+  mGenre=g;
+  document.querySelectorAll('.gpill').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');applyMovieFilters();
+}
+function sortMovies(v){mSort=v;applyMovieFilters()}
+function applyMovieFilters(){
+  let list=[...MOVIES];
+  if(mGenre!=='Бүгд')list=list.filter(m=>m.cat===GENRE_CAT[mGenre]);
+  if(mSort==='rating')list.sort((a,b)=>b.rating-a.rating);
+  else if(mSort==='name')list.sort((a,b)=>a.title.localeCompare(b.title,'mn'));
+  else if(mSort==='year')list.sort((a,b)=>b.year-a.year);
+  renderMovieGrid('moviesGrid',list);
+  document.getElementById('mCount').textContent=`${list.length} кино`;
 }
 
-function filterMovies(genre, btn) {
-  currentMovieGenre = genre;
-  document.querySelectorAll('#movieGenreFilter .genre-btn').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  const filtered = genre === 'Бүгд' ? MOVIES : MOVIES.filter(m => m.genre === genre);
-  renderGrid('moviesGrid', filtered);
-  document.getElementById('movieCount').textContent = `${filtered.length} кино`;
+// ══════════════════════════════════════════
+// GAME CARD
+// ══════════════════════════════════════════
+const GAME_EMOJIS={Тэрлэг:'♟',Оньсого:'🔮',Картын:'🃏',Үйл:'🏃',Буудлага:'🎯',Жолоодлого:'🚗',Зогсоол:'🅿',Стратеги:'⚔',Спорт:'⚽',Аркад:'👾',MMO:'🌍',RPG:'🗡',Шинэ:'✨'};
+function makeGameCard(g){
+  const d=document.createElement('div');
+  d.className='gcard';
+  const em=GAME_EMOJIS[g.genre]||'🎮';
+  d.innerHTML=`
+    <div class="gcard-img" style="background:linear-gradient(135deg,${genreColor(g.genre)})">
+      <span style="font-size:42px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))">${em}</span>
+      <div class="gcard-img-overlay">
+        <div class="gplay-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+      </div>
+    </div>
+    <div class="gcard-info">
+      <div class="gcard-genre">${g.genre}</div>
+      <div class="gcard-title">${g.title}</div>
+      <div class="gcard-meta"><span class="gcard-star">★</span>${g.rating} · PC · Mobile</div>
+    </div>`;
+  d.addEventListener('click',()=>openGame(g));
+  return d;
+}
+function genreColor(g){const c={Тэрлэг:'#1a1a2e,#16213e',Оньсого:'#1a2e1a,#16213e',Картын:'#2e1a1a,#3e1616',Буудлага:'#2e1a1a,#4e1616',Жолоодлого:'#1a2a2e,#163e3e',Стратеги:'#2a1a2e,#3e1655',Спорт:'#1a2a1e,#163e22',Аркад:'#2e2a1a,#3e3216',MMO:'#1a1e2e,#162a3e',RPG:'#2e1a2a,#3e1635'};return c[g]||'#1a1a2e,#16213e'}
+
+function renderGameRow(id,list){
+  const el=document.getElementById(id);if(!el)return;el.innerHTML='';
+  list.slice(0,12).forEach(g=>el.appendChild(makeGameCard(g)));
+}
+function renderGameGrid(id,list){
+  const el=document.getElementById(id);if(!el)return;el.innerHTML='';
+  list.forEach(g=>el.appendChild(makeGameCard(g)));
 }
 
-function sortMovies(val) {
-  const filtered = currentMovieGenre === 'Бүгд' ? [...MOVIES] : MOVIES.filter(m => m.genre === currentMovieGenre);
-  if (val === 'rating') filtered.sort((a,b) => b.rating - a.rating);
-  else if (val === 'name') filtered.sort((a,b) => a.title.localeCompare(b.title));
-  else if (val === 'year') filtered.sort((a,b) => b.year - a.year);
-  renderGrid('moviesGrid', filtered);
+let gGenre='Бүгд',gSearch='';
+function initGamesPage(){
+  const genres=['Бүгд',...new Set(GAMES.map(g=>g.genre))];
+  const bar=document.getElementById('gameGenreBar');
+  bar.innerHTML=genres.map(g=>`<div class="ggpill${g==='Бүгд'?' on':''}" onclick="setGGenre('${g}',this)">${g}</div>`).join('');
+  applyGameFilters();
+}
+function setGGenre(g,btn){
+  gGenre=g;
+  document.querySelectorAll('.ggpill').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');applyGameFilters();
+}
+function filterGames(q){gSearch=q.toLowerCase();applyGameFilters()}
+function applyGameFilters(){
+  let list=[...GAMES];
+  if(gGenre!=='Бүгд')list=list.filter(g=>g.genre===gGenre);
+  if(gSearch)list=list.filter(g=>g.title.toLowerCase().includes(gSearch));
+  renderGameGrid('gamesGrid',list);
+  document.getElementById('gCount').textContent=`${list.length} тоглоом`;
 }
 
-// ============================================================
-// SERIES PAGE
-// ============================================================
-function initSeriesPage() {
-  const filter = document.getElementById('seriesGenreFilter');
-  filter.innerHTML = GENRES.map(g =>
-    `<button class="genre-btn ${g==='Бүгд'?'active':''}" onclick="filterSeries('${g}', this)">${g}</button>`
-  ).join('');
-  filterSeries('Бүгд', filter.firstElementChild);
+// ══════════════════════════════════════════
+// WEATHER
+// ══════════════════════════════════════════
+const wCache={};
+async function fetchWeather(q){
+  if(wCache[q])return wCache[q];
+  try{
+    const r=await fetch(`https://wttr.in/${encodeURIComponent(q)}?format=j1`);
+    if(!r.ok)throw new Error();
+    const d=await r.json();
+    const c=d.current_condition[0];
+    const res={
+      temp:c.temp_C,feel:c.FeelsLikeC,
+      hum:c.humidity+'%',wind:c.windspeedKmph+' км/ц',
+      pres:c.pressure+' гПа',desc:c.weatherDesc[0].value,
+      icon:getWIcon(parseInt(c.weatherCode))
+    };
+    wCache[q]=res;return res;
+  }catch{return null}
+}
+function getWIcon(code){
+  if(code===113)return'☀';
+  if([116,119,122].includes(code))return'☁';
+  if([143,248,260].includes(code))return'🌫';
+  if(code>=263&&code<=282)return'🌦';
+  if(code>=293&&code<=314)return'🌧';
+  if(code>=320&&code<=335)return'❄';
+  if(code>=338&&code<=395)return'🌨';
+  if([200,201,202,210,211,212,221,230,231,232].includes(code))return'⛈';
+  return'🌡';
 }
 
-function filterSeries(genre, btn) {
-  currentSeriesGenre = genre;
-  document.querySelectorAll('#seriesGenreFilter .genre-btn').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  const filtered = genre === 'Бүгд' ? SERIES : SERIES.filter(m => m.genre === genre);
-  renderGrid('seriesGrid', filtered);
-  document.getElementById('seriesCount').textContent = `${filtered.length} цуврал`;
+async function initWeatherPage(){
+  // Featured UB
+  const ub=await fetchWeather('Ulaanbaatar');
+  if(ub){
+    document.getElementById('wfTemp').textContent=ub.temp;
+    document.getElementById('wfDesc').textContent=ub.desc;
+    document.getElementById('wfHum').textContent=ub.hum;
+    document.getElementById('wfWind').textContent=ub.wind;
+    document.getElementById('wfFeel').textContent=ub.feel+'°C';
+    document.getElementById('wfPres').textContent=ub.pres;
+    document.querySelector('.w-featured .icon').textContent=ub.icon;
+  }
+
+  // City tabs
+  const tabs=document.getElementById('cityTabs');
+  tabs.innerHTML=WEATHER_CITIES.map((c,i)=>`<div class="w-city-tab${i===0?' on':''}" onclick="loadCityWeather('${c.q}','${c.name}',this)">${c.name}</div>`).join('');
+
+  // All cities grid
+  const grid=document.getElementById('weatherGrid');
+  grid.innerHTML=WEATHER_CITIES.map(c=>`
+    <div class="w-card" id="wc-${c.q.replace(/[^a-z]/gi,'')}" onclick="loadCityWeather('${c.q}','${c.name}',null)">
+      <div class="w-icon" id="wi-${c.q.replace(/[^a-z]/gi,'')}">🌡</div>
+      <div class="w-city-name">${c.name}</div>
+      <div class="w-temp"><span id="wt-${c.q.replace(/[^a-z]/gi,'')}">—</span><span>°C</span></div>
+      <div class="w-desc" id="wd-${c.q.replace(/[^a-z]/gi,'')}">ачаалж байна...</div>
+      <div class="w-details">
+        <div class="w-detail"><label>Чийгшил</label><strong id="wh-${c.q.replace(/[^a-z]/gi,'')}">—</strong></div>
+        <div class="w-detail"><label>Салхи</label><strong id="ww-${c.q.replace(/[^a-z]/gi,'')}">—</strong></div>
+      </div>
+    </div>`).join('');
+
+  // Load all async
+  WEATHER_CITIES.forEach(async c=>{
+    const key=c.q.replace(/[^a-z]/gi,'');
+    const w=await fetchWeather(c.q);
+    if(w){
+      const el=id=>document.getElementById(id);
+      if(el('wt-'+key))el('wt-'+key).textContent=w.temp;
+      if(el('wd-'+key))el('wd-'+key).textContent=w.desc;
+      if(el('wi-'+key))el('wi-'+key).textContent=w.icon;
+      if(el('wh-'+key))el('wh-'+key).textContent=w.hum;
+      if(el('ww-'+key))el('ww-'+key).textContent=w.wind;
+    }
+  });
 }
 
-function sortSeries(val) {
-  const filtered = currentSeriesGenre === 'Бүгд' ? [...SERIES] : SERIES.filter(m => m.genre === currentSeriesGenre);
-  if (val === 'rating') filtered.sort((a,b) => b.rating - a.rating);
-  else if (val === 'name') filtered.sort((a,b) => a.title.localeCompare(b.title));
-  renderGrid('seriesGrid', filtered);
+async function loadCityWeather(q,name,btn){
+  if(btn){
+    document.querySelectorAll('.w-city-tab').forEach(t=>t.classList.remove('on'));
+    btn.classList.add('on');
+  }
+  toast(`${name}-н цаг агаар ачаалж байна...`);
 }
 
-// ============================================================
-// DETAIL MODAL
-// ============================================================
-function openDetail(m) {
-  document.getElementById('modalHero').style.backgroundImage = `url('${m.wide}')`;
-  document.getElementById('modalBadge').textContent = m.type === 'series' ? 'ЦУВРАЛ' : 'КИНО';
-  document.getElementById('modalTitle').textContent = m.title;
-  document.getElementById('modalMeta').innerHTML = `
-    <span class="rating">⭐ ${m.rating}/10</span>
+// Mini weather row for home
+async function initWeatherRow(){
+  const el=document.getElementById('rowWeather');if(!el)return;
+  el.innerHTML=WEATHER_CITIES.slice(0,8).map(c=>`
+    <div style="flex-shrink:0;width:150px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;cursor:pointer;transition:all .2s" onclick="gotoPage('weather')" onmouseover="this.style.borderColor='rgba(30,136,229,.35)'" onmouseout="this.style.borderColor='var(--border)'">
+      <div style="font-size:24px;margin-bottom:6px" id="rw-icon-${c.q.replace(/[^a-z]/gi,'')}">🌡</div>
+      <div style="font-size:13px;font-weight:600;margin-bottom:2px">${c.name}</div>
+      <div style="font-size:24px;font-weight:700;font-family:'Oswald',sans-serif;color:var(--blue)" id="rw-temp-${c.q.replace(/[^a-z]/gi,'')}">—°</div>
+      <div style="font-size:11px;color:var(--text3);margin-top:3px" id="rw-desc-${c.q.replace(/[^a-z]/gi,'')}">...</div>
+    </div>`).join('');
+
+  WEATHER_CITIES.slice(0,8).forEach(async c=>{
+    const k=c.q.replace(/[^a-z]/gi,'');
+    const w=await fetchWeather(c.q);
+    if(w){
+      const gi=document.getElementById('rw-icon-'+k);
+      const gt=document.getElementById('rw-temp-'+k);
+      const gd=document.getElementById('rw-desc-'+k);
+      if(gi)gi.textContent=w.icon;
+      if(gt)gt.textContent=w.temp+'°';
+      if(gd)gd.textContent=w.desc;
+    }
+  });
+}
+
+// ══════════════════════════════════════════
+// MODALS
+// ══════════════════════════════════════════
+function openMovieDetail(m){
+  document.getElementById('mHero').style.backgroundImage=`url('${m.poster}')`;
+  document.getElementById('mTitle').textContent=m.title;
+  document.getElementById('mMeta').innerHTML=`
+    <span class="st">⭐ ${m.rating}/10</span>
     <span>${m.year}</span>
-    <span>${m.duration}</span>
-    <span class="genre-tag">${m.genre}</span>
-    ${badgeHTML(m.badge, m.new)}
-  `;
-  document.getElementById('modalDesc').textContent = m.desc;
-  document.getElementById('modalActions').innerHTML = `
-    <button class="btn-play" onclick="openPlayer(${JSON.stringify(m).replace(/"/g,'&quot;')})">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
-      Үзэх
-    </button>
-    <button class="btn-info" onclick="showToast('Жагсаалтад нэмлээ ✓')">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      Жагсаалт
-    </button>
-    <button class="btn-info" onclick="showToast('Хуваалцах линк хуулагдлаа ✓')">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-      Хуваалцах
-    </button>
-  `;
-  document.getElementById('modalGrid').innerHTML = `
-    <div class="info-item"><label>Найруулагч</label><span>${m.director || '—'}</span></div>
-    <div class="info-item"><label>Жүжигчид</label><span>${m.cast || '—'}</span></div>
-    <div class="info-item"><label>Гарсан он</label><span>${m.year}</span></div>
-    <div class="info-item"><label>Төрөл</label><span>${m.genre}</span></div>
-    ${m.episodes ? `<div class="info-item"><label>Ангийн тоо</label><span>${m.episodes}</span></div>` : ''}
-    <div class="info-item"><label>Чанар</label><span>HD 1080p</span></div>
-  `;
-  document.getElementById('detailModal').classList.add('open');
+    <span class="tag">${catLabel(m.cat)}</span>
+    ${badgeHTML(m.badge)}`;
+  document.getElementById('mDesc').textContent=m.desc||'Тайлбар байхгүй.';
+  document.getElementById('mActs').innerHTML=`
+    <button class="btn-watch" onclick="openPlayer(currentM)">▶ Үзэх</button>
+    <a href="${m.link}" target="_blank" rel="noopener">
+      <button class="btn-more" style="cursor:pointer">🔗 Эх сурвалж</button>
+    </a>
+    <button class="btn-more" onclick="toast('Жагсаалтад нэмлээ ✓')">＋ Жагсаалт</button>`;
+  document.getElementById('mGrid').innerHTML=`
+    <div class="mgi"><label>Найруулагч</label><span>${m.dir||'—'}</span></div>
+    <div class="mgi"><label>Жүжигчид</label><span>${m.cast||'—'}</span></div>
+    <div class="mgi"><label>Гарсан он</label><span>${m.year}</span></div>
+    <div class="mgi"><label>Ангилал</label><span>${catLabel(m.cat)}</span></div>`;
+  window.currentM=m;
+  document.getElementById('movieModal').classList.add('open');
 }
 
-// ============================================================
-// PLAYER MODAL
-// ============================================================
-function openPlayer(m) {
-  if (typeof m === 'string') m = JSON.parse(m);
-  document.getElementById('playerPoster').src = m.wide || m.poster;
-  document.getElementById('playerTitle').textContent = m.title;
-  document.getElementById('playerMeta').innerHTML = `
-    <span class="rating">⭐ ${m.rating}</span>
-    <span style="color:var(--text2)">·</span>
-    <span style="color:var(--text2)">${m.year}</span>
-    <span style="color:var(--text2)">·</span>
-    <span style="color:var(--text2)">${m.genre}</span>
-  `;
-  document.getElementById('detailModal').classList.remove('open');
+function openPlayer(m){
+  document.getElementById('pPoster').src=m.poster;
+  document.getElementById('pTitle').textContent=m.title;
+  document.getElementById('pMeta').innerHTML=`<span style="color:var(--gold)">⭐ ${m.rating}</span><span style="color:var(--text2)">· ${m.year} · ${catLabel(m.cat)}</span>`;
+  document.getElementById('movieModal').classList.remove('open');
   document.getElementById('playerModal').classList.add('open');
 }
 
-// ============================================================
-// LOGIN MODAL
-// ============================================================
-function openLogin() {
-  document.getElementById('loginModal').classList.add('open');
+function openGame(g){
+  if(g.link&&!g.embed){window.open(g.link,'_blank');return}
+  if(!g.embed){toast('Холбоос байхгүй');return}
+  document.getElementById('gmFrame').src=g.embed;
+  document.getElementById('gmTitle').textContent=g.title;
+  document.getElementById('gmMeta').innerHTML=`<span>${g.genre}</span><span style="color:var(--gold)">★ ${g.rating}</span><span>PC · Mobile</span>`;
+  document.getElementById('gameModal').classList.add('open');
 }
 
-function handleLogin() {
-  document.getElementById('loginModal').classList.remove('open');
-  showToast('Амжилттай нэвтэрлээ! 🎬');
+function closeM(id){
+  document.getElementById(id).classList.remove('open');
+  if(id==='gameModal')document.getElementById('gmFrame').src='';
 }
-function handleRegister() {
-  document.getElementById('loginModal').classList.remove('open');
-  showToast('Бүртгэл амжилттай! Тавтай морилно уу 🎉');
-}
-
-function switchTab(btn, type) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('loginForm').style.display = type === 'login' ? '' : 'none';
-  document.getElementById('registerForm').style.display = type === 'register' ? '' : 'none';
-}
-
-// ============================================================
-// SEARCH
-// ============================================================
-let searchTimeout;
-function handleSearch(q) {
-  clearTimeout(searchTimeout);
-  if (!q.trim()) {
-    if (document.getElementById('page-search').classList.contains('active')) showPage('home');
-    return;
-  }
-  searchTimeout = setTimeout(() => {
-    const results = ALL_CONTENT.filter(m =>
-      m.title.toLowerCase().includes(q.toLowerCase()) ||
-      (m.mnTitle && m.mnTitle.toLowerCase().includes(q.toLowerCase())) ||
-      m.genre.toLowerCase().includes(q.toLowerCase())
-    );
-    document.getElementById('searchResultLabel').textContent = `"${q}" — ${results.length} үр дүн олдлоо`;
-    renderGrid('searchGrid', results);
-    showPage('search');
-    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-  }, 300);
-}
-
-// ============================================================
-// PAGE NAVIGATION
-// ============================================================
-function showPage(p) {
-  clearInterval(heroInterval);
-  document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
-  document.getElementById(`page-${p}`).classList.add('active');
-  if (p === 'home') {
-    initHero();
-    heroInterval = setInterval(() => setHero((heroIdx+1) % featuredMovies.length), 6000);
-  }
-  if (p === 'movies') initMoviesPage();
-  if (p === 'series') initSeriesPage();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function setActive(id) {
-  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
-
-function filterAndShow(genre) {
-  showPage('movies');
-  setActive('nav-movies');
-  setTimeout(() => {
-    const btn = [...document.querySelectorAll('#movieGenreFilter .genre-btn')]
-      .find(b => b.textContent === genre);
-    if (btn) filterMovies(genre, btn);
-  }, 100);
-}
-
-// ============================================================
-// UI UTILS
-// ============================================================
-function closeModalOnBg(e, id) {
-  if (e.target.id === id) document.getElementById(id).classList.remove('open');
-}
-
-function addToList(btn) {
-  btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5bc97a" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>';
-  showToast('Миний жагсаалтад нэмэгдлээ ✓');
-}
-
-function likeCard(btn) {
-  btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="var(--red)" stroke="var(--red)" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';
-  showToast('Дуртай кинонд нэмлээ ❤');
-}
-
-let toastTimer;
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
-}
-
-// ============================================================
-// KEYBOARD
-// ============================================================
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    ['detailModal','playerModal','loginModal'].forEach(id =>
-      document.getElementById(id).classList.remove('open')
-    );
-  }
+function closeMb(e,id){if(e.target.id===id)closeM(id)}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')['movieModal','playerModal','gameModal'].forEach(closeM);
 });
 
-// ============================================================
+// ══════════════════════════════════════════
+// SEARCH
+// ══════════════════════════════════════════
+let sTm;
+function doSearch(q){
+  clearTimeout(sTm);
+  if(!q.trim()){if(document.getElementById('page-search').classList.contains('active'))gotoPage('home');return}
+  sTm=setTimeout(()=>{
+    const res=MOVIES.filter(m=>m.title.toLowerCase().includes(q.toLowerCase())||catLabel(m.cat).includes(q));
+    document.getElementById('searchInfo').textContent=`"${q}" — ${res.length} үр дүн`;
+    renderMovieGrid('searchGrid',res);
+    gotoPage('search',true);
+  },320);
+}
+
+// ══════════════════════════════════════════
+// PAGE NAVIGATION
+// ══════════════════════════════════════════
+const PAGE_INIT={movies:initMoviesPage,games:initGamesPage,weather:initWeatherPage};
+let wInited=false;
+
+function gotoPage(p,noScroll=false){
+  clearInterval(hInt);
+  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  const tb=document.getElementById('t-'+p);if(tb)tb.classList.add('active');
+  if(!noScroll)window.scrollTo({top:0,behavior:'smooth'});
+
+  if(p==='home'){initHero();initWeatherRow()}
+  else if(PAGE_INIT[p]){
+    if(p==='weather'&&wInited){}
+    else{PAGE_INIT[p]();if(p==='weather')wInited=true}
+  }
+}
+
+// ══════════════════════════════════════════
+// TOAST
+// ══════════════════════════════════════════
+let tTm;
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  clearTimeout(tTm);tTm=setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+// ══════════════════════════════════════════
 // INIT
-// ============================================================
-document.addEventListener('DOMContentLoaded', () => {
+// ══════════════════════════════════════════
+document.addEventListener('DOMContentLoaded',()=>{
+  // Home rows
+  const byRating=[...MOVIES].sort((a,b)=>b.rating-a.rating);
+  renderMovieRow('rowNew',MOVIES.slice(0,12));
+  renderMovieRow('rowTop',byRating.slice(0,12));
+  renderGameRow('rowGames',GAMES);
   initHero();
-  initRows();
-  heroInterval = setInterval(() => setHero((heroIdx+1) % featuredMovies.length), 6000);
+  initWeatherRow();
 });
 </script>
 </body>
