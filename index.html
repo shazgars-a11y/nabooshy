@@ -3,1144 +3,1756 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nabooshy</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<title>LoloKino — Шилдэг кино түгээгч сайт</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+Mongolian&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#07090f;--bg2:#0d1117;--bg3:#161b27;--border:#ffffff14;--text:#e8e6ff;--muted:#6b7280;--purple:#818cf8;--pl:#c4b5fd;--tl:#34d399;--amber:#fbbf24;}
-*{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;background-color:var(--bg);background-image:radial-gradient(circle,#ffffff16 1px,transparent 1px);background-size:28px 28px;color:var(--text);min-height:100vh;overflow-x:hidden;}
-nav{background:rgba(7,9,15,0.88);backdrop-filter:blur(16px);border-bottom:0.5px solid #818cf822;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:54px;position:sticky;top:0;z-index:200;}
-.nav-logo{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;background:linear-gradient(90deg,#7F77DD,#1D9E75,#D4537E,#EF9F27,#7F77DD);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gm 4s linear infinite;cursor:pointer;}
-@keyframes gm{0%{background-position:0%}100%{background-position:100%}}
-.nav-right{display:flex;align-items:center;gap:4px;}
-.nav-link{font-size:13px;color:var(--muted);padding:6px 12px;border-radius:8px;cursor:pointer;text-decoration:none;transition:all .2s;}
-.nav-link:hover{color:var(--pl);background:#7F77DD15;}
-.nav-search{background:var(--bg2);border:0.5px solid var(--border);border-radius:8px;padding:6px 14px;font-size:13px;color:var(--text);outline:none;width:180px;font-family:'DM Sans',sans-serif;transition:width .3s;}
-.nav-search:focus{width:240px;border-color:#818cf850;}
-.nav-search::placeholder{color:var(--muted);}
-/* Search overlay */
-.search-overlay{display:none;position:fixed;inset:0;z-index:999;background:rgba(7,9,15,0.92);backdrop-filter:blur(8px);padding:80px 20px 20px;overflow-y:auto;}
-.search-overlay.active{display:block;}
-.search-box{max-width:700px;margin:0 auto;}
-.search-input-wrap{position:relative;margin-bottom:20px;}
-.search-big{width:100%;background:var(--bg2);border:1px solid #818cf840;border-radius:12px;padding:14px 20px 14px 48px;font-size:18px;color:var(--text);outline:none;font-family:'DM Sans',sans-serif;}
-.search-big::placeholder{color:var(--muted);}
-.search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:18px;pointer-events:none;}
-.search-close{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:transparent;border:none;color:var(--muted);font-size:20px;cursor:pointer;padding:4px;}
-.search-section{margin-bottom:20px;}
-.search-section-title{font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;padding-left:4px;}
-.search-movies-grid{display:flex;gap:8px;flex-wrap:wrap;}
-.search-games-list{display:flex;flex-direction:column;gap:6px;}
-.search-empty{text-align:center;color:var(--muted);font-size:14px;padding:40px 0;}
-/* Preview popup */
-.preview-popup{display:none;position:fixed;inset:0;z-index:998;background:rgba(7,9,15,0.88);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:20px;}
-.preview-popup.active{display:flex;}
-.preview-box{background:var(--bg2);border:0.5px solid #818cf830;border-radius:16px;max-width:480px;width:100%;overflow:hidden;box-shadow:0 0 60px rgba(129,140,248,0.15);}
-.preview-poster-wrap{position:relative;width:100%;height:200px;overflow:hidden;}
-.preview-poster-wrap img{width:100%;height:100%;object-fit:cover;}
-.preview-poster-wrap .preview-grad{position:absolute;inset:0;background:linear-gradient(to top,var(--bg2) 0%,transparent 60%);}
-.preview-close{position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.6);border:0.5px solid rgba(255,255,255,0.2);border-radius:8px;color:#fff;width:32px;height:32px;cursor:pointer;font-size:16px;}
-.preview-body{padding:16px 20px 20px;}
-.preview-title{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:var(--text);margin-bottom:6px;}
-.preview-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
-.preview-tag{font-size:10px;padding:2px 8px;border-radius:12px;background:var(--bg3);border:0.5px solid var(--border);color:var(--muted);}
-.preview-actions{display:flex;gap:8px;}
-.preview-watch{flex:1;background:linear-gradient(135deg,#818cf8,#6366f1);border:none;border-radius:10px;padding:11px;color:#fff;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;text-align:center;text-decoration:none;display:block;}
-.preview-watch:hover{opacity:0.9;}
-.preview-bookmark{background:var(--bg3);border:0.5px solid var(--border);border-radius:10px;padding:11px 14px;cursor:pointer;font-size:18px;transition:all .2s;}
-.preview-bookmark:hover{border-color:#818cf860;}
-.preview-bookmark.saved{background:#818cf820;border-color:#818cf860;}
-/* Bookmark button on cards */
-.card-bm{position:absolute;bottom:38px;right:5px;background:rgba(0,0,0,0.7);border:none;border-radius:4px;width:22px;height:22px;cursor:pointer;font-size:11px;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;}
-.mc:hover .card-bm{opacity:1;}
-.card-bm.saved{opacity:1;color:#fbbf24;}
-/* Bookmark row in sidebar */
-.bm-empty{font-size:11px;color:var(--muted);padding:8px 0;}
-/* New badge on cards */
-.new-badge{position:absolute;top:6px;left:6px;background:linear-gradient(135deg,#34d399,#059669);color:#fff;font-size:8px;padding:2px 5px;border-radius:4px;font-weight:700;letter-spacing:.5px;}
-.hero{text-align:center;padding:56px 20px 40px;position:relative;overflow:hidden;min-height:480px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.hero-posters{position:absolute;inset:0;display:grid;grid-template-columns:repeat(7,1fr);grid-template-rows:repeat(2,1fr);gap:4px;z-index:0;pointer-events:none;transform:skewY(-2deg) scale(1.08);transform-origin:center;}
-.hero-posters img{width:100%;height:100%;object-fit:cover;opacity:0.55;border-radius:4px;}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(7,9,15,0.55) 0%,rgba(7,9,15,0.72) 50%,rgba(7,9,15,0.97) 100%);z-index:1;}
-.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
-.o1{width:520px;height:520px;background:#818cf818;top:-120px;left:-100px;animation:of 9s ease-in-out infinite;z-index:1;}
-.o2{width:360px;height:360px;background:#34d39914;bottom:-80px;right:-80px;animation:of 11s ease-in-out infinite 2s;z-index:1;}
-@keyframes of{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,-20px)}}
-.ll{display:flex;gap:2px;font-family:'Space Grotesk',sans-serif;font-size:clamp(44px,7vw,76px);font-weight:600;line-height:1;justify-content:center;position:relative;z-index:2;}
-.ll span{display:inline-block;animation:lf 2.4s ease-in-out infinite;}
-.ll span:nth-child(1){animation-delay:.00s;background:linear-gradient(135deg,#534AB7,#7F77DD);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.ll span:nth-child(2){animation-delay:.08s;background:linear-gradient(135deg,#7F77DD,#1D9E75);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.ll span:nth-child(3){animation-delay:.16s;background:linear-gradient(135deg,#1D9E75,#D4537E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.ll span:nth-child(4){animation-delay:.24s;background:linear-gradient(135deg,#D4537E,#EF9F27);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.ll span:nth-child(5){animation-delay:.32s;background:linear-gradient(135deg,#EF9F27,#534AB7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.ll span:nth-child(6){animation-delay:.40s;background:linear-gradient(135deg,#534AB7,#1D9E75);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.ll span:nth-child(7){animation-delay:.48s;background:linear-gradient(135deg,#1D9E75,#D4537E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.ll span:nth-child(8){animation-delay:.56s;background:linear-gradient(135deg,#D4537E,#534AB7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-@keyframes lf{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-@keyframes hfade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-.lb{height:3px;border-radius:2px;background:linear-gradient(90deg,#534AB7,#1D9E75,#D4537E,#EF9F27,#534AB7);background-size:300% 100%;animation:gm 3s linear infinite;margin-top:8px;position:relative;z-index:2;}
-.hs{position:relative;z-index:2;font-size:12px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-top:10px;}
-.page{display:grid;grid-template-columns:1fr 260px;gap:20px;max-width:1240px;margin:0 auto;padding:20px;}
-.main{min-width:0;}
-.sidebar{display:flex;flex-direction:column;gap:14px;}
-.bad{width:100%;background:var(--bg2);border:1px dashed #818cf830;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;text-decoration:none;overflow:hidden;transition:border-color .2s;margin-bottom:16px;}
-.bad:hover{border-color:#818cf860;}
-.bad-ph{font-size:12px;color:var(--muted);text-align:center;padding:12px;line-height:1.8;}
-.bad-ph b{display:block;font-size:13px;color:var(--pl);margin-bottom:3px;}
-.wb{background:var(--bg2);border:0.5px solid var(--border);border-radius:12px;padding:12px 18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:16px;}
-.wt{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:600;color:var(--tl);}
-.wi{font-size:28px;}
-.winfo{flex:1;min-width:100px;}
-.wc{font-size:13px;font-weight:500;color:var(--tl);}
-.wd{font-size:11px;color:var(--muted);margin-top:2px;}
-.ctabs{display:flex;gap:6px;flex-wrap:wrap;}
-.ctab{font-size:11px;padding:3px 10px;border-radius:16px;background:transparent;border:0.5px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;}
-.ctab:hover,.ctab.active{background:#1D9E7520;border-color:#1D9E7555;color:var(--tl);}
-.st{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:8px;border-left:3px solid var(--purple);padding-left:10px;}
-.mg{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:20px;}
-.mc{border-radius:10px;overflow:hidden;border:0.5px solid var(--border);cursor:pointer;position:relative;transition:transform .2s,border-color .2s,box-shadow .2s;text-decoration:none;background:var(--bg2);box-shadow:0 0 0 0.5px #818cf812,0 4px 20px #00000030;}
-.mc:hover{transform:translateY(-4px);border-color:#818cf840;box-shadow:0 0 20px #818cf822,0 8px 32px #00000040;}
-.mp{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;background:var(--bg3);}
-.mph{width:100%;aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;font-size:32px;background:var(--bg3);}
-.mi{padding:7px 9px;}
-.mt{font-size:11px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.my{font-size:10px;color:var(--muted);}
-.rb{position:absolute;top:5px;right:5px;background:rgba(0,0,0,0.75);backdrop-filter:blur(4px);border-radius:4px;padding:2px 5px;font-size:9px;font-weight:600;color:var(--amber);}
-.gl{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
-.gc{background:var(--bg2);border:0.5px solid var(--border);border-radius:10px;padding:11px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;text-decoration:none;transition:border-color .2s,transform .2s,box-shadow .2s;box-shadow:0 2px 12px #00000028;}
-.gc:hover{border-color:#818cf835;transform:translateX(3px);box-shadow:0 0 16px #818cf818;}
-.gib{width:42px;height:42px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;}
-.gn{font-size:13px;font-weight:500;color:var(--text);}
-.gm2{font-size:11px;color:var(--muted);margin-top:2px;}
-.gb{font-size:10px;padding:3px 9px;border-radius:10px;font-weight:500;flex-shrink:0;}
-.gbf{background:#1D9E7518;color:var(--tl);border:0.5px solid #1D9E7435;}
-.gbp{background:#EF9F2718;color:var(--amber);border:0.5px solid #EF9F2735;}
-.saw{background:var(--bg2);border:0.5px solid var(--border);border-radius:12px;padding:14px;box-shadow:0 0 0 0.5px #34d39912,0 4px 20px #00000028;}
-.sst{font-size:12px;font-weight:500;color:var(--pl);margin-bottom:10px;}
-.scb{font-size:12px;padding:6px 10px;border-radius:7px;background:transparent;border:0.5px solid var(--border);color:var(--muted);cursor:pointer;text-align:left;font-family:'DM Sans',sans-serif;transition:all .2s;display:block;width:100%;}
-.scb:hover,.scb.active{background:#1D9E7515;border-color:#1D9E7545;color:var(--tl);}
-.sad{background:var(--bg2);border:1px dashed #818cf830;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;text-decoration:none;overflow:hidden;transition:border-color .2s;}
-.sad:hover{border-color:#818cf860;}
-.sad-ph{font-size:11px;color:var(--muted);text-align:center;padding:16px;width:100%;line-height:1.8;}
-.sad-ph b{display:block;font-size:12px;color:var(--pl);margin-bottom:4px;}
-footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-top:0.5px solid var(--border);max-width:1240px;margin:0 auto;}
-.fl{font-family:'Space Grotesk',sans-serif;font-size:15px;color:var(--pl);margin-bottom:5px;}
-.mob-ads{display:none;}
-/* ── Bottom Navigation (mobile only) ── */
-.bot-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:300;background:rgba(7,9,15,0.97);backdrop-filter:blur(20px);border-top:0.5px solid #818cf828;padding:0 12px;height:62px;}
-.bot-nav-inner{display:flex;align-items:center;height:100%;gap:6px;}
-.bot-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;border:none;background:transparent;color:var(--muted);font-family:'DM Sans',sans-serif;transition:color .2s;padding:8px 12px;border-radius:10px;-webkit-tap-highlight-color:transparent;flex-shrink:0;}
-.bot-btn:active{background:rgba(255,255,255,0.05);}
-.bot-btn.active{color:var(--purple);}
-.bot-btn-icon{font-size:20px;line-height:1;}
-.bot-btn-label{font-size:10px;font-weight:500;letter-spacing:.2px;}
-.bot-search{flex:1;display:flex;align-items:center;gap:10px;background:var(--bg3);border:0.5px solid #818cf825;border-radius:22px;padding:9px 16px;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:border-color .2s;min-width:0;}
-.bot-search:active{border-color:#818cf850;}
-.bot-search-icon{font-size:15px;flex-shrink:0;}
-.bot-search-text{font-size:13px;color:var(--muted);font-family:'DM Sans',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-/* ── Mobile inline ad banner ── */
-.mob-inline-ad{width:100%;height:80px;background:var(--bg2);border:1px dashed #818cf825;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin:4px 0 16px;text-decoration:none;}
-.mob-inline-ad-ph{font-size:10px;color:var(--muted);text-align:center;line-height:1.6;}
-/* 860px — Таблет хэвтээ */
-@media(max-width:860px){
-  .page{grid-template-columns:1fr;}
-  .sidebar{display:none;}
-  .bad{height:60px!important;}
-  .bot-nav{display:flex;}
-  body{padding-bottom:62px;}
-  .hero{min-height:320px!important;}
-}
-/* 640px — Таблет босоо / том утас */
-@media(max-width:640px){
-  nav{padding:0 16px;}
-  .nav-search{display:none;}
-  .nav-link{font-size:12px;padding:5px 8px;}
-  .page{padding:14px 12px;}
-  .wb{padding:10px 14px;gap:10px;}
-  .wt{font-size:26px;}
-}
-/* 480px — Дундаж утас */
-@media(max-width:480px){
-  .hero{padding:16px 12px 12px;}
-  .ll{font-size:clamp(38px,9vw,76px);}
-  .mg{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;}
-  .page{padding:12px 10px;}
-  .bad{height:52px!important;}
-  .nav-link{font-size:11px;padding:4px 7px;}
-  .wb{flex-wrap:wrap;}
-  .winfo{min-width:80px;}
-  .ctabs{gap:4px;}
-  .ctab{font-size:10px;padding:3px 8px;}
-  .st{font-size:13px;}
-  .gc{padding:9px 11px;}
-  .gn{font-size:12px;}
-  .gm2{font-size:10px;}
-}
-/* 360px — Жижиг утас */
-@media(max-width:360px){
-  .nav-logo{font-size:18px;}
-  nav{padding:0 12px;}
-  .nav-link{padding:4px 5px;font-size:10px;}
-  .hero{padding:12px 10px 10px;}
-  .ll{font-size:clamp(32px,9vw,76px);}
-  .hs{font-size:10px;letter-spacing:2px;}
-  .page{padding:10px 8px;}
-  .mg{grid-template-columns:repeat(auto-fill,minmax(95px,1fr));gap:6px;}
-  .mt{font-size:10px;}
-  .my{font-size:9px;}
-  .wt{font-size:22px;}
-  .wc{font-size:12px;}
-  .wd{font-size:10px;}
-  .st{font-size:12px;}
-  .gc{padding:8px 10px;gap:8px;}
-  .gib{width:36px;height:36px;font-size:16px;}
-}
-.mob-ad-h{width:100%;height:60px;background:var(--bg2);border:1px dashed #818cf830;border-radius:8px;display:flex;align-items:center;justify-content:center;text-decoration:none;overflow:hidden;}
-.mob-ad-v{flex:1;height:160px;background:var(--bg2);border:1px dashed #818cf830;border-radius:8px;display:flex;align-items:center;justify-content:center;text-decoration:none;overflow:hidden;}
-.mob-ad-h img,.mob-ad-v img{width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;}
-.mob-ad-h video,.mob-ad-v video{width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;pointer-events:none;}
-/* Netflix Row Styles */
-.movie-section{margin-bottom:28px;}
-.row-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
-.row-title{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:8px;border-left:3px solid var(--purple);padding-left:10px;}
-.row-count{font-size:11px;color:var(--muted);background:var(--bg2);border:0.5px solid var(--border);border-radius:10px;padding:2px 8px;}
-.movie-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;}
-.movie-row::-webkit-scrollbar{height:3px;}
-.movie-row::-webkit-scrollbar-track{background:transparent;}
-.movie-row::-webkit-scrollbar-thumb{background:#818cf840;border-radius:4px;}
-.movie-row::-webkit-scrollbar-thumb:hover{background:#818cf870;}
-.movie-row .mc{scroll-snap-align:start;flex-shrink:0;width:130px;}
-@media(max-width:480px){.movie-row .mc{width:110px;}}
-@media(max-width:360px){.movie-row .mc{width:95px;}}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ── Глобал хайлт ── */
-.search-wrap{position:relative;}
-.nav-search{background:var(--bg2);border:0.5px solid var(--border);border-radius:8px;padding:6px 14px;font-size:13px;color:var(--text);outline:none;width:180px;font-family:'DM Sans',sans-serif;transition:width .3s,border-color .2s;}
-.nav-search:focus{width:260px;border-color:#818cf860;}
-.search-drop{display:none;position:absolute;top:calc(100% + 6px);right:0;width:320px;background:#0d1117;border:0.5px solid #818cf830;border-radius:12px;overflow:hidden;z-index:999;box-shadow:0 8px 32px rgba(0,0,0,0.5);}
-.search-drop.open{display:block;}
-.search-drop-inner{max-height:400px;overflow-y:auto;}
-.search-drop-inner::-webkit-scrollbar{width:3px;}
-.search-drop-inner::-webkit-scrollbar-thumb{background:#818cf840;border-radius:4px;}
-.search-sec{padding:8px 12px 4px;font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;border-bottom:0.5px solid var(--border);}
-.search-item{display:flex;align-items:center;gap:10px;padding:9px 12px;cursor:pointer;transition:background .15s;text-decoration:none;}
-.search-item:hover{background:#818cf810;}
-.search-thumb{width:32px;height:48px;object-fit:cover;border-radius:4px;background:var(--bg3);flex-shrink:0;}
-.search-thumb-ph{width:32px;height:48px;border-radius:4px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
-.search-item-title{font-size:12px;font-weight:500;color:var(--text);}
-.search-item-meta{font-size:10px;color:var(--muted);margin-top:2px;}
-.search-empty{padding:20px;text-align:center;font-size:12px;color:var(--muted);}
+  :root {
+    --red: #CD2026;
+    --red-dark: #a01920;
+    --red-glow: rgba(205,32,38,0.3);
+    --blue: #408AE9;
+    --bg: #0E0E0E;
+    --bg2: #161616;
+    --bg3: #1e1e1e;
+    --bg4: #252525;
+    --text: #f0f0f0;
+    --text2: #aaa;
+    --text3: #666;
+    --border: rgba(255,255,255,0.08);
+    --card-w: 180px;
+    --card-h: 270px;
+  }
 
-/* ── Preview Popup ── */
-.prev-popup{display:none;position:fixed;inset:0;z-index:998;background:rgba(0,0,0,0.8);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;}
-.prev-popup.open{display:flex;}
-.prev-box{background:#0d1117;border:0.5px solid #818cf825;border-radius:16px;max-width:420px;width:100%;overflow:hidden;position:relative;box-shadow:0 24px 64px rgba(0,0,0,0.7);}
-.prev-poster{width:100%;height:220px;object-fit:cover;display:block;}
-.prev-poster-ph{width:100%;height:220px;display:flex;align-items:center;justify-content:center;font-size:48px;background:var(--bg3);}
-.prev-body{padding:18px 20px 20px;}
-.prev-title{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:var(--text);margin-bottom:6px;}
-.prev-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
-.prev-rating{font-size:12px;font-weight:600;color:var(--amber);background:rgba(251,191,36,0.12);border:0.5px solid rgba(251,191,36,0.25);border-radius:6px;padding:2px 8px;}
-.prev-year{font-size:12px;color:var(--muted);}
-.prev-cat{font-size:11px;color:var(--pl);background:#818cf812;border:0.5px solid #818cf825;border-radius:6px;padding:2px 8px;}
-.prev-actions{display:flex;gap:8px;margin-top:4px;}
-.prev-watch{flex:1;background:#818cf8;color:#fff;border:none;border-radius:10px;padding:11px 16px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s;text-decoration:none;text-align:center;}
-.prev-watch:hover{background:#6d66e8;}
-.prev-bm{width:44px;height:44px;background:var(--bg3);border:0.5px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;transition:all .2s;flex-shrink:0;}
-.prev-bm:hover{border-color:#818cf850;background:#818cf815;}
-.prev-bm.saved{background:#818cf820;border-color:#818cf860;}
-.prev-close{position:absolute;top:10px;right:10px;width:30px;height:30px;background:rgba(0,0,0,0.6);border:none;border-radius:50%;color:#fff;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+  html { scroll-behavior: smooth; }
 
-/* ── Bookmark row ── */
-.bm-dot{position:absolute;top:4px;left:4px;width:8px;height:8px;background:#818cf8;border-radius:50%;border:1.5px solid var(--bg2);}
-.new-badge{position:absolute;top:6px;left:6px;background:linear-gradient(135deg,#34d399,#818cf8);color:#fff;font-size:8px;padding:2px 5px;border-radius:4px;font-weight:700;letter-spacing:.5px;}
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  /* ===== SCROLLBAR ===== */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg2); }
+  ::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--red); }
+
+  /* ===== NAVBAR ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0 32px;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(14,14,14,0.98) 0%, rgba(14,14,14,0.85) 100%);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    margin-right: 36px;
+    flex-shrink: 0;
+  }
+
+  .logo-icon {
+    width: 32px; height: 32px;
+    background: var(--red);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 900;
+    color: white;
+    letter-spacing: -1px;
+    font-family: 'Bebas Neue', sans-serif;
+  }
+
+  .logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: var(--text);
+  }
+  .logo-text span { color: var(--red); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    list-style: none;
+    flex: 1;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text2);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+  .nav-links a:hover, .nav-links a.active {
+    color: var(--text);
+    background: rgba(255,255,255,0.07);
+  }
+  .nav-links a.active { color: var(--red); }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-search {
+    display: flex;
+    align-items: center;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 12px;
+    gap: 8px;
+    transition: all 0.2s;
+  }
+  .nav-search:focus-within {
+    border-color: var(--red);
+    background: var(--bg2);
+  }
+  .nav-search svg { color: var(--text3); flex-shrink: 0; }
+  .nav-search input {
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-size: 13px;
+    width: 180px;
+    font-family: 'Inter', sans-serif;
+  }
+  .nav-search input::placeholder { color: var(--text3); }
+
+  .btn-login {
+    background: var(--red);
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+    font-family: 'Inter', sans-serif;
+  }
+  .btn-login:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    height: 580px;
+    overflow: hidden;
+    margin-top: 60px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center top;
+    filter: brightness(0.45);
+    transition: all 1s ease;
+  }
+
+  .hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(14,14,14,0.95) 0%,
+      rgba(14,14,14,0.6) 50%,
+      rgba(14,14,14,0.1) 100%
+    ),
+    linear-gradient(
+      to top,
+      rgba(14,14,14,1) 0%,
+      rgba(14,14,14,0.2) 40%,
+      transparent 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 100px 64px 60px;
+    max-width: 560px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--red);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    width: fit-content;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 58px;
+    letter-spacing: 2px;
+    line-height: 1.05;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta span {
+    font-size: 13px;
+    color: var(--text2);
+  }
+  .hero-meta .rating {
+    color: #FFD700;
+    font-weight: 600;
+  }
+  .hero-meta .year { color: var(--text2); }
+  .hero-meta .genre-tag {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    color: var(--text2);
+  }
+
+  .hero-desc {
+    color: var(--text2);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    max-width: 440px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .btn-play {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--red);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+  .btn-play:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 8px 24px var(--red-glow); }
+
+  .btn-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.15);
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+    backdrop-filter: blur(4px);
+  }
+  .btn-info:hover { background: rgba(255,255,255,0.18); transform: translateY(-2px); }
+
+  .hero-dots {
+    position: absolute;
+    bottom: 24px;
+    left: 64px;
+    display: flex;
+    gap: 6px;
+    z-index: 2;
+  }
+  .hero-dot {
+    width: 24px; height: 3px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .hero-dot.active {
+    width: 40px;
+    background: var(--red);
+  }
+
+  /* ===== MAIN CONTENT ===== */
+  main { padding: 0 32px 60px; }
+
+  /* ===== SECTION ===== */
+  .section { margin-bottom: 48px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .section-title::before {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 20px;
+    background: var(--red);
+    border-radius: 2px;
+  }
+
+  .section-more {
+    color: var(--red);
+    font-size: 13px;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: gap 0.2s;
+  }
+  .section-more:hover { gap: 8px; }
+
+  /* ===== MOVIE GRID / SCROLL ROW ===== */
+  .movies-row {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--bg4) transparent;
+  }
+  .movies-row::-webkit-scrollbar { height: 4px; }
+  .movies-row::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 2px; }
+
+  .movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--card-w), 1fr));
+    gap: 16px;
+  }
+
+  /* ===== MOVIE CARD ===== */
+  .card {
+    flex-shrink: 0;
+    width: var(--card-w);
+    cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    transition: all 0.25s ease;
+    position: relative;
+  }
+  .card:hover {
+    transform: translateY(-6px) scale(1.02);
+    border-color: rgba(205,32,38,0.4);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(205,32,38,0.2);
+    z-index: 10;
+  }
+
+  .card-poster {
+    width: 100%;
+    height: var(--card-h);
+    object-fit: cover;
+    display: block;
+    background: var(--bg3);
+  }
+
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(14,14,14,0.95) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.25s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 12px;
+  }
+  .card:hover .card-overlay { opacity: 1; }
+
+  .card-play-btn {
+    width: 44px; height: 44px;
+    background: var(--red);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 12px;
+    box-shadow: 0 4px 16px var(--red-glow);
+    transition: transform 0.2s;
+  }
+  .card:hover .card-play-btn { transform: scale(1.1); }
+
+  .card-actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  .card-act-btn {
+    background: rgba(255,255,255,0.12);
+    border: none;
+    color: white;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+  }
+  .card-act-btn:hover { background: rgba(255,255,255,0.25); }
+
+  .card-info {
+    padding: 10px 10px 12px;
+  }
+
+  .card-badges {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+  }
+  .badge-hd { background: rgba(64,138,233,0.2); color: var(--blue); border: 1px solid rgba(64,138,233,0.3); }
+  .badge-mn { background: rgba(205,32,38,0.2); color: #e05a5e; border: 1px solid rgba(205,32,38,0.3); }
+  .badge-sub { background: rgba(255,200,0,0.15); color: #f0c040; border: 1px solid rgba(255,200,0,0.25); }
+  .badge-new { background: rgba(80,200,100,0.2); color: #5bc97a; border: 1px solid rgba(80,200,100,0.3); }
+
+  .card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-sub {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--text3);
+  }
+  .card-sub .star { color: #FFD700; }
+  .card-sub .dot { color: var(--text3); }
+
+  /* ===== GENRE FILTER ===== */
+  .genre-filter {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+
+  .genre-btn {
+    padding: 7px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--bg2);
+    color: var(--text2);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+  .genre-btn:hover {
+    border-color: rgba(205,32,38,0.4);
+    color: var(--text);
+  }
+  .genre-btn.active {
+    background: var(--red);
+    border-color: var(--red);
+    color: white;
+  }
+
+  /* ===== SORT BAR ===== */
+  .sort-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .sort-bar label {
+    font-size: 13px;
+    color: var(--text2);
+  }
+  .sort-select {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 12px;
+    border-radius: 7px;
+    font-size: 13px;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+  }
+  .sort-select:focus { border-color: var(--red); }
+
+  .result-count {
+    margin-left: auto;
+    font-size: 13px;
+    color: var(--text3);
+  }
+
+  /* ===== TABS ===== */
+  .tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .tab {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text2);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    border-radius: 0;
+    background: none;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    font-family: 'Inter', sans-serif;
+  }
+  .tab.active {
+    color: var(--red);
+    border-bottom-color: var(--red);
+  }
+  .tab:hover { color: var(--text); }
+
+  /* ===== MODAL ===== */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-backdrop.open { display: flex; }
+
+  .modal {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 860px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalIn 0.3s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+    z-index: 1;
+  }
+  .modal-close:hover { background: var(--red); }
+
+  .modal-hero {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px 16px 0 0;
+    position: relative;
+  }
+  .modal-hero-grad {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--bg2) 0%, transparent 60%);
+    border-radius: 16px 16px 0 0;
+  }
+  .modal-hero-badge {
+    position: absolute;
+    top: 20px; left: 20px;
+    background: var(--red);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .modal-body {
+    padding: 20px 28px 32px;
+  }
+
+  .modal-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 38px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .modal-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: var(--text2);
+  }
+  .modal-meta .rating { color: #FFD700; font-weight: 600; }
+  .modal-meta .genre-tag {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+  }
+
+  .modal-desc {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.65;
+    margin-bottom: 24px;
+  }
+
+  .modal-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .modal-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+  }
+  .info-item label {
+    display: block;
+    font-size: 11px;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 4px;
+  }
+  .info-item span {
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* ===== LOGIN MODAL ===== */
+  .login-modal {
+    max-width: 420px;
+    border-radius: 16px;
+  }
+  .login-modal .modal-body { padding: 36px; }
+
+  .login-logo {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .login-logo .logo-icon {
+    width: 52px; height: 52px;
+    margin: 0 auto 10px;
+    font-size: 22px;
+    border-radius: 12px;
+  }
+  .login-logo h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 2px;
+  }
+  .login-logo p {
+    color: var(--text2);
+    font-size: 13px;
+    margin-top: 4px;
+  }
+
+  .form-group { margin-bottom: 16px; }
+  .form-group label {
+    display: block;
+    font-size: 12px;
+    color: var(--text2);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .form-group input {
+    width: 100%;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 11px 14px;
+    color: var(--text);
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus { border-color: var(--red); }
+  .form-group input::placeholder { color: var(--text3); }
+
+  .btn-submit {
+    width: 100%;
+    background: var(--red);
+    color: white;
+    border: none;
+    padding: 13px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+  }
+  .btn-submit:hover { background: var(--red-dark); }
+
+  .form-footer {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--text2);
+  }
+  .form-footer a {
+    color: var(--red);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+    color: var(--text3);
+    font-size: 12px;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    padding: 40px 32px 24px;
+    margin-top: 20px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+  }
+
+  .footer-brand .logo-text { font-size: 20px; margin-bottom: 12px; }
+  .footer-brand p {
+    font-size: 13px;
+    color: var(--text3);
+    line-height: 1.6;
+    max-width: 240px;
+  }
+
+  .footer-col h4 {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text2);
+    margin-bottom: 14px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 8px; }
+  .footer-col ul li a {
+    font-size: 13px;
+    color: var(--text3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: var(--red); }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text3);
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 12px;
+  }
+  .social-btn {
+    width: 32px; height: 32px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    color: var(--text2);
+  }
+  .social-btn:hover { background: var(--red); border-color: var(--red); color: white; }
+
+  /* ===== VIDEO PLAYER MODAL ===== */
+  .player-modal {
+    max-width: 960px;
+  }
+  .player-wrap {
+    background: #000;
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px 12px 0 0;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .player-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+  }
+  .player-center {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .play-circle {
+    width: 80px; height: 80px;
+    background: var(--red);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 40px var(--red-glow);
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .play-circle:hover { transform: scale(1.1); }
+  .player-note {
+    color: rgba(255,255,255,0.7);
+    font-size: 13px;
+    background: rgba(0,0,0,0.6);
+    padding: 6px 16px;
+    border-radius: 20px;
+  }
+
+  /* ===== EPISODE LIST ===== */
+  .ep-list { padding: 0 24px 24px; }
+  .ep-item {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin: 0 -12px;
+  }
+  .ep-item:hover { background: var(--bg3); }
+  .ep-thumb {
+    width: 140px; height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: var(--bg4);
+  }
+  .ep-info { flex: 1; }
+  .ep-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .ep-meta { font-size: 12px; color: var(--text3); margin-bottom: 6px; }
+  .ep-desc { font-size: 12px; color: var(--text2); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+  /* ===== PAGE SECTIONS ===== */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ===== NOTIFY TOAST ===== */
+  .toast {
+    position: fixed;
+    bottom: 32px; right: 32px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--red);
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-size: 13px;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s;
+    max-width: 300px;
+    pointer-events: none;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== LOADING ===== */
+  .loading-bar {
+    position: fixed;
+    top: 60px; left: 0; right: 0;
+    height: 2px;
+    background: var(--red);
+    z-index: 999;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.8s ease;
+  }
+  .loading-bar.loading { transform: scaleX(0.7); }
+  .loading-bar.done { transform: scaleX(1); opacity: 0; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    nav { padding: 0 16px; }
+    .nav-links { display: none; }
+    .hero-content { padding: 60px 24px 40px; }
+    .hero-title { font-size: 36px; }
+    main { padding: 0 16px 40px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .modal-info-grid { grid-template-columns: 1fr; }
+    .nav-search input { width: 120px; }
+  }
 </style>
 </head>
 <body>
 
+<!-- LOADING BAR -->
+<div class="loading-bar" id="loadingBar"></div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- ===== NAVBAR ===== -->
 <nav>
-  <div class="nav-logo" onclick="goTo('top')">nabooshy</div>
+  <a class="nav-logo" href="#" onclick="showPage('home')">
+    <div class="logo-icon">LK</div>
+    <div class="logo-text">LOLO<span>KINO</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#" class="active" id="nav-home" onclick="showPage('home'); setActive('nav-home')">ЭХЛЭЛ</a></li>
+    <li><a href="#" id="nav-movies" onclick="showPage('movies'); setActive('nav-movies')">КИНО</a></li>
+    <li><a href="#" id="nav-series" onclick="showPage('series'); setActive('nav-series')">ОЛОН АНГИТ</a></li>
+    <li><a href="#" id="nav-guide" onclick="showPage('guide'); setActive('nav-guide')">ЗААВАР</a></li>
+  </ul>
   <div class="nav-right">
-    <input class="nav-search" id="nav-search" type="text" placeholder="🔍 Хайх..." onclick="openSearch()" readonly>
-    <a href="javascript:void(0)" onclick="goTo('movies')" class="nav-link">🎬 Кино</a>
-    <a href="javascript:void(0)" onclick="goTo('games')" class="nav-link">🎮 Тоглоом</a>
-    <a href="javascript:void(0)" onclick="goTo('weather-sec')" class="nav-link">🌤 Цаг</a>
+    <div class="nav-search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" placeholder="Хайх..." id="searchInput" oninput="handleSearch(this.value)">
+    </div>
+    <button class="btn-login" onclick="openLogin()">Нэвтрэх</button>
   </div>
 </nav>
 
-<!-- Search Overlay -->
-<div class="search-overlay" id="search-overlay" onclick="if(event.target===this)closeSearch()">
-  <div class="search-box">
-    <div class="search-input-wrap">
-      <span class="search-icon">🔍</span>
-      <input class="search-big" id="search-big-input" type="text" placeholder="Кино, цуврал, тоглоом хайх..." oninput="doSearch(this.value)" autofocus>
-      <button class="search-close" onclick="closeSearch()">✕</button>
-    </div>
-    <div id="search-results"></div>
-  </div>
-</div>
+<!-- ===== PAGES ===== -->
 
-<!-- Preview Popup -->
-<div class="preview-popup" id="preview-popup" onclick="if(event.target===this)closePreview()">
-  <div class="preview-box">
-    <div class="preview-poster-wrap">
-      <img id="pv-poster" src="" alt="">
-      <div class="preview-grad"></div>
-      <button class="preview-close" onclick="closePreview()">✕</button>
-    </div>
-    <div class="preview-body">
-      <div class="preview-title" id="pv-title"></div>
-      <div class="preview-meta" id="pv-meta"></div>
-      <div class="preview-actions">
-        <a class="preview-watch" id="pv-watch" href="#" target="_blank">▶ Үзэх</a>
-        <button class="preview-bookmark" id="pv-bm" onclick="toggleBookmarkCurrent()">🔖</button>
+<!-- HOME PAGE -->
+<div class="page active" id="page-home">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-gradient"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        Онцлох кино
       </div>
-      <div id="pv-episodes" style="margin-top:12px;display:flex;flex-direction:column;gap:5px;max-height:200px;overflow-y:auto;"></div>
-    </div>
-  </div>
-</div>
-
-<div id="top"></div>
-
-<!-- Bottom Navigation (mobile) -->
-<nav class="bot-nav">
-  <div class="bot-nav-inner">
-    <!-- Зүүн: Нүүр + Хадгалсан -->
-    <button class="bot-btn active" id="bn-home" onclick="botNav('home')">
-      <span class="bot-btn-icon">🏠</span>
-      <span class="bot-btn-label">Нүүр</span>
-    </button>
-    <button class="bot-btn" id="bn-saved" onclick="botNav('saved')">
-      <span class="bot-btn-icon">🔖</span>
-      <span class="bot-btn-label">Хадгалсан</span>
-    </button>
-    <!-- Гол: Хайлт -->
-    <div class="bot-search" onclick="botNav('search')">
-      <span class="bot-search-icon">🔍</span>
-      <span class="bot-search-text">Кино, тоглоом хайх...</span>
-    </div>
-    <!-- Баруун: Кино + Тоглоом -->
-    <button class="bot-btn" id="bn-movies" onclick="botNav('movies')">
-      <span class="bot-btn-icon">🎬</span>
-      <span class="bot-btn-label">Кино</span>
-    </button>
-    <button class="bot-btn" id="bn-games" onclick="botNav('games')">
-      <span class="bot-btn-icon">🎮</span>
-      <span class="bot-btn-label">Тоглоом</span>
-    </button>
-  </div>
-</nav>
-
-<div class="hero">
-  <div class="hero-posters" id="hero-posters"></div>
-  <div class="hero-overlay"></div>
-  <div class="orb o1"></div>
-  <div class="orb o2"></div>
-  <div class="ll"><span>n</span><span>a</span><span>b</span><span>o</span><span>o</span><span>s</span><span>h</span><span>y</span></div>
-  <div class="lb"></div>
-  <div class="hs">✦ &nbsp; монголын хамгийн шилдэг &nbsp; ✦</div>
-
-  <div style="position:relative;z-index:2;margin-top:14px;animation:hfade .8s ease .1s both">
-    <div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(15px,3vw,21px);font-weight:600;color:#e8e6ff;line-height:1.4">Нэг сайт. Бүх зугаа. Тэг төлбөр.</div>
-    <div style="font-size:13px;color:rgba(232,230,255,0.65);margin-top:6px;line-height:1.7">
-      Кино үзэх, тоглоом тоглох, цаг агаар мэдэх — бүгд нэг дор.<br>
-      Бүртгэл шаардахгүй. Мөнгө нэхэхгүй. Луйвраас ангид.
-    </div>
-  </div>
-
-  <div style="position:relative;z-index:2;display:flex;gap:6px;justify-content:center;margin-top:14px;flex-wrap:wrap;animation:hfade .8s ease .25s both">
-    <div style="background:rgba(255,255,255,0.08);backdrop-filter:blur(8px);border:0.5px solid rgba(255,255,255,0.14);border-radius:8px;padding:7px 14px;display:flex;align-items:center;gap:7px;">
-      <span style="font-size:15px">🎬</span>
-      <div><div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;color:#e8e6ff">Кино & цуврал</div><div style="font-size:9px;color:rgba(232,230,255,0.5)">Монгол хадмалтай</div></div>
-    </div>
-    <div style="background:rgba(255,255,255,0.08);backdrop-filter:blur(8px);border:0.5px solid rgba(255,255,255,0.14);border-radius:8px;padding:7px 14px;display:flex;align-items:center;gap:7px;">
-      <span style="font-size:15px">🎮</span>
-      <div><div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;color:#e8e6ff">50+ тоглоом</div><div style="font-size:9px;color:rgba(232,230,255,0.5)">Дарахад тоглоно</div></div>
-    </div>
-    <div style="background:rgba(255,255,255,0.08);backdrop-filter:blur(8px);border:0.5px solid rgba(255,255,255,0.14);border-radius:8px;padding:7px 14px;display:flex;align-items:center;gap:7px;">
-      <span style="font-size:15px">🌤</span>
-      <div><div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;color:#e8e6ff">21 аймаг</div><div style="font-size:9px;color:rgba(232,230,255,0.5)">Бодит цаг агаар</div></div>
-    </div>
-  </div>
-
-  <div style="position:relative;z-index:2;display:flex;justify-content:center;gap:5px;margin-top:12px;flex-wrap:wrap;animation:hfade .8s ease .4s both">
-    <span style="font-size:10px;padding:3px 10px;border-radius:16px;border:0.5px solid rgba(255,255,255,0.12);color:rgba(232,230,255,0.6);background:rgba(255,255,255,0.06)">✓ Үнэгүй</span>
-    <span style="font-size:10px;padding:3px 10px;border-radius:16px;border:0.5px solid rgba(255,255,255,0.12);color:rgba(232,230,255,0.6);background:rgba(255,255,255,0.06)">✓ Бүртгэлгүй</span>
-    <span style="font-size:10px;padding:3px 10px;border-radius:16px;border:0.5px solid rgba(255,255,255,0.12);color:rgba(232,230,255,0.6);background:rgba(255,255,255,0.06)">✓ Луйвраас ангид</span>
-    <span style="font-size:10px;padding:3px 10px;border-radius:16px;border:0.5px solid rgba(255,255,255,0.12);color:rgba(232,230,255,0.6);background:rgba(255,255,255,0.06)">✓ Монголоор</span>
-  </div>
-</div>
-
-<div class="page">
-  <div class="main">
-
-    <a class="bad" id="banner-top" style="height:90px" href="#">
-      <div class="bad-ph" id="bph-top"><b>📢 Дээд байрлалын зар — 728×90</b>Зар байршуулах холбоо барина уу</div>
-    </a>
-
-    <div id="weather-sec" class="wb">
-      <div class="wi" id="w-icon">🌤</div>
-      <div class="wt" id="w-temp">--°</div>
-      <div class="winfo">
-        <div class="wc" id="w-city">Улаанбаатар</div>
-        <div class="wd" id="w-desc">Уншиж байна...</div>
+      <div class="hero-title" id="heroTitle">DO NOT ENTER</div>
+      <div class="hero-meta">
+        <span class="rating">⭐ 7.8</span>
+        <span class="year">2026</span>
+        <span>2ц 14м</span>
+        <span class="genre-tag">Аймшиг</span>
+        <span class="genre-tag">Триллер</span>
       </div>
-      <div class="ctabs" id="city-tabs"></div>
-    </div>
-
-    <div id="movies">
-      <div style="color:var(--muted);font-size:13px;padding:8px 0" id="movies-loading">🎬 Уншиж байна...</div>
-    </div>
-
-    <a class="bad" id="banner-mid" style="height:90px" href="#">
-      <div class="bad-ph" id="bph-mid"><b>📢 Дунд байрлалын зар — 728×90</b>Зар байршуулах холбоо барина уу</div>
-    </a>
-
-    <!-- Mobile зар — тоглоомын өмнө -->
-    <a class="mob-inline-ad" id="mob-h-3" href="#" style="display:none">
-      <div class="mob-inline-ad-ph"><b style="color:var(--pl);display:block;font-size:11px;margin-bottom:2px">📢 Зар байршуулах</b>320×80 · Тоглоомын өмнө</div>
-    </a>
-
-    <div id="games" style="scroll-margin-top:60px">
-      <input id="game-search" type="text" placeholder="🔍 Тоглоом хайх..." oninput="searchGames(this.value)" style="width:100%;background:var(--bg2);border:0.5px solid var(--border);border-radius:8px;padding:8px 14px;font-size:13px;color:var(--text);outline:none;margin-bottom:16px;font-family:'DM Sans',sans-serif;">
-      <div id="game-rows"></div>
-      <div id="game-search-results" style="display:none">
-        <div class="row-header"><div class="row-title">🔍 Хайлтын үр дүн</div><span class="row-count" id="game-search-count">0</span></div>
-        <div class="gl" id="game-search-list"></div>
+      <div class="hero-desc" id="heroDesc">
+        Нэг гэр бүл амралтаараа тусгаарлагдсан нэгэн байшинд хоноглоход үл мэдэгдэх аюул тэднийг хүрээлнэ. Гарах арга зам хаагдсан...
+      </div>
+      <div class="hero-actions">
+        <button class="btn-play" onclick="openPlayer(featuredMovies[heroIdx])">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+          Үзэх
+        </button>
+        <button class="btn-info" onclick="openDetail(featuredMovies[heroIdx])">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Дэлгэрэнгүй
+        </button>
       </div>
     </div>
-
-    <a class="bad" id="banner-bot" style="height:90px" href="#">
-      <div class="bad-ph" id="bph-bot"><b>📢 Доод байрлалын зар — 728×90</b>Зар байршуулах холбоо барина уу</div>
-    </a>
-
+    <div class="hero-dots" id="heroDots"></div>
   </div>
 
-  <div class="sidebar">
-    <div class="saw" id="saved-section">
-      <div class="sst">🔖 Хадгалсан кинонууд</div>
-      <div id="bm-list"><div class="bm-empty">Одоогоор хоосон байна</div></div>
+  <!-- MAIN -->
+  <main>
+    <!-- RECENTLY ADDED -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-title">🔥 Шинээр нэмэгдсэн</div>
+        <a href="#" class="section-more" onclick="showPage('movies'); setActive('nav-movies')">Бүгдийг харах →</a>
+      </div>
+      <div class="movies-row" id="newMoviesRow"></div>
+    </section>
+
+    <!-- POPULAR -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-title">📈 Хамгийн их үзэлттэй</div>
+        <a href="#" class="section-more" onclick="showPage('movies'); setActive('nav-movies')">Бүгдийг харах →</a>
+      </div>
+      <div class="movies-row" id="popularRow"></div>
+    </section>
+
+    <!-- SERIES -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-title">📺 Олон ангит</div>
+        <a href="#" class="section-more" onclick="showPage('series'); setActive('nav-series')">Бүгдийг харах →</a>
+      </div>
+      <div class="movies-row" id="seriesRow"></div>
+    </section>
+
+    <!-- ACTION -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-title">💥 Экшн кино</div>
+        <a href="#" class="section-more" onclick="filterAndShow('Экшн')">Бүгдийг харах →</a>
+      </div>
+      <div class="movies-row" id="actionRow"></div>
+    </section>
+  </main>
+</div>
+
+<!-- MOVIES PAGE -->
+<div class="page" id="page-movies">
+  <main style="padding-top: 80px;">
+    <div class="section-title" style="margin-bottom: 20px; font-size: 22px;">🎬 Кино</div>
+    <div class="genre-filter" id="movieGenreFilter"></div>
+    <div class="sort-bar">
+      <label>Эрэмбэлэх:</label>
+      <select class="sort-select" onchange="sortMovies(this.value)">
+        <option value="new">Шинэ эхэнд</option>
+        <option value="rating">Рейтинг</option>
+        <option value="name">Нэр (А-Я)</option>
+        <option value="year">Жил</option>
+      </select>
+      <span class="result-count" id="movieCount"></span>
     </div>
+    <div class="movies-grid" id="moviesGrid"></div>
+  </main>
+</div>
 
-    <a class="sad" id="sidebar-ad-1" style="height:250px" href="#">
-      <div class="sad-ph" id="sph-1"><b>📢 Sidebar зар 1</b>260 × 250 px<br>Их хүн харна</div>
-    </a>
+<!-- SERIES PAGE -->
+<div class="page" id="page-series">
+  <main style="padding-top: 80px;">
+    <div class="section-title" style="margin-bottom: 20px; font-size: 22px;">📺 Олон ангит цуврал</div>
+    <div class="genre-filter" id="seriesGenreFilter"></div>
+    <div class="sort-bar">
+      <label>Эрэмбэлэх:</label>
+      <select class="sort-select" onchange="sortSeries(this.value)">
+        <option value="new">Шинэ эхэнд</option>
+        <option value="rating">Рейтинг</option>
+        <option value="name">Нэр (А-Я)</option>
+      </select>
+      <span class="result-count" id="seriesCount"></span>
+    </div>
+    <div class="movies-grid" id="seriesGrid"></div>
+  </main>
+</div>
 
-    <div class="saw">
-      <div class="sst">🌤 Цаг агаар</div>
-      <div id="sidebar-cities" style="display:flex;flex-direction:column;gap:5px;"></div>
-      <div style="margin-top:10px;padding-top:10px;border-top:0.5px solid var(--border);">
-        <div style="font-size:22px" id="sw-icon">🌤</div>
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:600;color:var(--tl)" id="sw-temp">--°</div>
-        <div style="font-size:12px;color:var(--tl);margin-top:2px" id="sw-city">Улаанбаатар</div>
-        <div style="font-size:11px;color:var(--muted)" id="sw-desc">Уншиж байна...</div>
+<!-- GUIDE PAGE -->
+<div class="page" id="page-guide">
+  <main style="padding-top: 80px; max-width: 800px;">
+    <div class="section-title" style="margin-bottom: 8px; font-size: 22px;">📖 Заавар</div>
+    <p style="color: var(--text2); margin-bottom: 32px; font-size: 14px;">Сайтыг хэрхэн ашиглах талаар заавар</p>
+
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
+        <h3 style="font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+          <span style="background: var(--red); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0;">1</span>
+          Бүртгэл үүсгэх
+        </h3>
+        <p style="color: var(--text2); font-size: 13px; line-height: 1.6; margin-left: 38px;">Баруун дээд буланд байрлах "Нэвтрэх" товчийг дарж бүртгэлгүй бол шинэ бүртгэл үүсгэнэ үү. Имэйл болон нууц үгээ оруулаад бүртгэл баталгаажуулна.</p>
+      </div>
+      <div style="background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
+        <h3 style="font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+          <span style="background: var(--red); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0;">2</span>
+          Кино хайх
+        </h3>
+        <p style="color: var(--text2); font-size: 13px; line-height: 1.6; margin-left: 38px;">Дээд хэсэгт байрлах хайлтын цонхонд кино, цувралын нэрийг монгол эсвэл англиар бичиж хайна уу.</p>
+      </div>
+      <div style="background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
+        <h3 style="font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+          <span style="background: var(--red); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0;">3</span>
+          Кино үзэх
+        </h3>
+        <p style="color: var(--text2); font-size: 13px; line-height: 1.6; margin-left: 38px;">Кинон дээр дарж дэлгэрэнгүй мэдээллийг харна уу. "Үзэх" товч дарж стрийминг эхлүүлнэ. Монгол хадмал эсвэл монголоор дублированный хувилбарыг сонгох боломжтой.</p>
+      </div>
+      <div style="background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
+        <h3 style="font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+          <span style="background: var(--red); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0;">4</span>
+          Чанар сонгох
+        </h3>
+        <p style="color: var(--text2); font-size: 13px; line-height: 1.6; margin-left: 38px;">Тоглуулагч дотор чанарын тохиргоог дарж 480p, 720p, 1080p хувилбаруудаас сонгоно уу. Интернэт хурдаасаа хамаарч сонгох нь зүйтэй.</p>
+      </div>
+      <div style="background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 24px; border-left: 3px solid var(--red);">
+        <h3 style="font-size: 15px; margin-bottom: 8px; color: var(--red);">⚠️ Анхааруулга</h3>
+        <p style="color: var(--text2); font-size: 13px; line-height: 1.6;">Сайт дээрх контент нь зөвхөн хувийн хэрэгцээнд зориулагдсан бөгөөд арилжааны зорилгоор ашиглахыг хориглоно. Асуудал тулгарвал холбоо барина уу.</p>
       </div>
     </div>
-
-    <a class="sad" id="sidebar-ad-2" style="height:300px" href="#">
-      <div class="sad-ph" id="sph-2"><b>📢 Sidebar зар 2</b>260 × 300 px</div>
-    </a>
-
-    <a class="sad" id="sidebar-ad-3" style="height:200px" href="#">
-      <div class="sad-ph" id="sph-3"><b>📢 Sidebar зар 3</b>260 × 200 px</div>
-    </a>
-  </div>
+  </main>
 </div>
 
-<div style="max-width:1240px;margin:0 auto;padding:0 20px 24px">
-  <div style="background:#13121f;border:0.5px solid #ffffff14;border-radius:14px;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
-    <div>
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;color:#e8e6ff;margin-bottom:6px;">📢 Зар байршуулах уу?</div>
-      <div style="font-size:13px;color:#6b6880;line-height:1.8">Nabooshy дээр зараа байршуулж олон хүнд хүрээрэй.<br>Холбоо барьж мэдээлэл авна уу.</div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:10px;min-width:240px;">
-      <a href="tel:+97699376238" style="display:flex;align-items:center;gap:12px;background:#1D9E7518;border:0.5px solid #1D9E7440;border-radius:10px;padding:12px 18px;text-decoration:none;">
-        <span style="font-size:22px">📞</span>
-        <div style="flex:1">
-          <div style="font-size:11px;color:#5DCAA5;margin-bottom:2px">Утас — дарахад залгана</div>
-          <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:#5DCAA5">9937-6238</div>
-        </div>
-        <span style="font-size:11px;color:#5DCAA5;opacity:0.7;cursor:pointer;padding:4px 8px;border:0.5px solid #1D9E7440;border-radius:6px;" id="ph-copy">copy</span>
-      </a>
-      <a id="em-btn" href="#" style="display:flex;align-items:center;gap:12px;background:#7F77DD18;border:0.5px solid #7F77DD40;border-radius:10px;padding:12px 18px;text-decoration:none;">
-        <span style="font-size:22px">✉️</span>
-        <div style="flex:1;min-width:0">
-          <div style="font-size:11px;color:#AFA9EC;margin-bottom:2px">И-мэйл — дарахад бичих болно</div>
-          <div id="em-txt" style="font-size:12px;font-weight:500;color:#AFA9EC"></div>
-        </div>
-        <span style="font-size:11px;color:#AFA9EC;opacity:0.7;cursor:pointer;padding:4px 8px;border:0.5px solid #7F77DD40;border-radius:6px;" id="em-copy">copy</span>
-      </a>
-    </div>
-  </div>
+<!-- SEARCH PAGE -->
+<div class="page" id="page-search">
+  <main style="padding-top: 80px;">
+    <div class="section-title" style="margin-bottom: 6px; font-size: 20px;">🔍 Хайлтын үр дүн</div>
+    <p style="color: var(--text2); margin-bottom: 24px; font-size: 13px;" id="searchResultLabel"></p>
+    <div class="movies-grid" id="searchGrid"></div>
+  </main>
 </div>
 
+<!-- ===== FOOTER ===== -->
 <footer>
-  <div class="fl">nabooshy</div>
-  <div style="margin-top:4px" id="footer-txt">© 2026 Nabooshy</div>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo-text" style="font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px; margin-bottom: 12px;">LOLO<span style="color: var(--red);">KINO</span></div>
+      <p>Монгол хадмалтай болон монголоор дублированный кино, цуврал цэнхэрт дэлгэцийн шилдэг эх сурвалж.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Навигаци</h4>
+      <ul>
+        <li><a href="#" onclick="showPage('home')">Эхлэл</a></li>
+        <li><a href="#" onclick="showPage('movies'); setActive('nav-movies')">Кино</a></li>
+        <li><a href="#" onclick="showPage('series'); setActive('nav-series')">Олон ангит</a></li>
+        <li><a href="#" onclick="showPage('guide'); setActive('nav-guide')">Заавар</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Төрөл</h4>
+      <ul>
+        <li><a href="#" onclick="filterAndShow('Экшн')">Экшн</a></li>
+        <li><a href="#" onclick="filterAndShow('Драм')">Драм</a></li>
+        <li><a href="#" onclick="filterAndShow('Инээдмийн')">Инээдмийн</a></li>
+        <li><a href="#" onclick="filterAndShow('Аймшиг')">Аймшиг</a></li>
+        <li><a href="#" onclick="filterAndShow('Анимэ')">Анимэ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Холбоос</h4>
+      <ul>
+        <li><a href="#">Бидний тухай</a></li>
+        <li><a href="#">Нууцлалын бодлого</a></li>
+        <li><a href="#">Ашиглалтын нөхцөл</a></li>
+        <li><a href="#">Холбоо барих</a></li>
+        <li><a href="#">DMCA</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 LoloKino. Бүх эрх хуулиар хамгаалагдсан.</span>
+    <div class="footer-social">
+      <a class="social-btn" href="#" title="Facebook">f</a>
+      <a class="social-btn" href="#" title="Twitter">✕</a>
+      <a class="social-btn" href="#" title="Telegram">✈</a>
+    </div>
+  </div>
 </footer>
 
+<!-- ===== MOVIE DETAIL MODAL ===== -->
+<div class="modal-backdrop" id="detailModal" onclick="closeModalOnBg(event, 'detailModal')">
+  <div class="modal" id="detailContent">
+    <button class="modal-close" onclick="document.getElementById('detailModal').classList.remove('open')">✕</button>
+    <div class="modal-hero" id="modalHero">
+      <div class="modal-hero-grad"></div>
+      <div class="modal-hero-badge" id="modalBadge">КИНО</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-title" id="modalTitle"></div>
+      <div class="modal-meta" id="modalMeta"></div>
+      <div class="modal-desc" id="modalDesc"></div>
+      <div class="modal-actions" id="modalActions"></div>
+      <div class="modal-info-grid" id="modalGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== VIDEO PLAYER MODAL ===== -->
+<div class="modal-backdrop" id="playerModal" onclick="closeModalOnBg(event, 'playerModal')">
+  <div class="modal player-modal">
+    <button class="modal-close" onclick="document.getElementById('playerModal').classList.remove('open')">✕</button>
+    <div class="player-wrap" id="playerWrap">
+      <img class="player-poster" id="playerPoster" src="" alt="">
+      <div class="player-center">
+        <div class="play-circle" onclick="showToast('Тоглуулагч ачаалж байна...')">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+        <div class="player-note">Бүрэн хувилбар үзэхийн тулд нэвтэрнэ үү</div>
+      </div>
+    </div>
+    <div class="modal-body" style="padding: 16px 24px;">
+      <div class="modal-title" id="playerTitle" style="font-size: 24px;"></div>
+      <div class="modal-meta" id="playerMeta"></div>
+      <div style="display: flex; gap: 16px; margin-top: 12px;">
+        <div style="background: var(--bg3); border-radius: 8px; padding: 10px 16px; font-size: 13px;">
+          <div style="color: var(--text3); margin-bottom: 4px;">Чанар</div>
+          <select class="sort-select" style="background: none; border: none; padding: 0; font-size: 13px; color: var(--text);">
+            <option>1080p HD</option>
+            <option>720p</option>
+            <option>480p</option>
+          </select>
+        </div>
+        <div style="background: var(--bg3); border-radius: 8px; padding: 10px 16px; font-size: 13px;">
+          <div style="color: var(--text3); margin-bottom: 4px;">Хэл</div>
+          <select class="sort-select" style="background: none; border: none; padding: 0; font-size: 13px; color: var(--text);">
+            <option>Монгол хадмал</option>
+            <option>Монгол дубляж</option>
+            <option>Анхны хэл</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LOGIN MODAL ===== -->
+<div class="modal-backdrop" id="loginModal" onclick="closeModalOnBg(event, 'loginModal')">
+  <div class="modal login-modal">
+    <button class="modal-close" onclick="document.getElementById('loginModal').classList.remove('open')">✕</button>
+    <div class="modal-body">
+      <div class="login-logo">
+        <div class="logo-icon" style="width: 52px; height: 52px; font-size: 22px; border-radius: 12px;">LK</div>
+        <h2 style="font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 2px; margin-top: 10px;">LOLO<span style="color: var(--red);">KINO</span></h2>
+        <p style="color: var(--text2); font-size: 13px; margin-top: 4px;">Нэвтэрч кино үзнэ үү</p>
+      </div>
+      <div class="tabs" style="margin-bottom: 20px;">
+        <button class="tab active" onclick="switchTab(this, 'login')">Нэвтрэх</button>
+        <button class="tab" onclick="switchTab(this, 'register')">Бүртгүүлэх</button>
+      </div>
+      <div id="loginForm">
+        <div class="form-group">
+          <label>Имэйл хаяг</label>
+          <input type="email" placeholder="example@gmail.com">
+        </div>
+        <div class="form-group">
+          <label>Нууц үг</label>
+          <input type="password" placeholder="••••••••">
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
+          <label style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text2); cursor: pointer;">
+            <input type="checkbox" style="accent-color: var(--red);"> Намайг санах
+          </label>
+          <a href="#" style="font-size: 13px; color: var(--red); text-decoration: none;">Нууц үг мартсан?</a>
+        </div>
+        <button class="btn-submit" onclick="handleLogin()">Нэвтрэх</button>
+        <div class="divider">Эсвэл</div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <button class="btn-info" style="width: 100%; justify-content: center; gap: 8px; font-size: 14px;" onclick="showToast('Google нэвтрэлт...')">
+            <span>G</span> Google-ээр нэвтрэх
+          </button>
+          <button class="btn-info" style="width: 100%; justify-content: center; gap: 8px; font-size: 14px;" onclick="showToast('Facebook нэвтрэлт...')">
+            <span>f</span> Facebook-ээр нэвтрэх
+          </button>
+        </div>
+      </div>
+      <div id="registerForm" style="display: none;">
+        <div class="form-group">
+          <label>Хэрэглэгчийн нэр</label>
+          <input type="text" placeholder="Таны нэр">
+        </div>
+        <div class="form-group">
+          <label>Имэйл хаяг</label>
+          <input type="email" placeholder="example@gmail.com">
+        </div>
+        <div class="form-group">
+          <label>Нууц үг</label>
+          <input type="password" placeholder="Дор хаяж 8 тэмдэгт">
+        </div>
+        <div class="form-group">
+          <label>Нууц үг давтах</label>
+          <input type="password" placeholder="Нууц үгийг давтах">
+        </div>
+        <button class="btn-submit" onclick="handleRegister()">Бүртгүүлэх</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
-const _e = (function(){const a='gnarantsend',b='gmail',c='com';return a+'@'+b+'.'+c;})();
-const _p = '99376238';
-const _ph = '9937-6238';
-const _sub = 'Nabooshy%20%D0%B7%D0%B0%D1%80%20%D0%B1%D0%B0%D0%B9%D1%80%D1%88%D1%83%D1%83%D0%BB%D0%B0%D1%85';
+// ============================================================
+// DATA
+// ============================================================
+const GENRES = ['Бүгд','Экшн','Драм','Инээдмийн','Романтик','Аймшиг','Фантастик','Анимэ','Адал явдал','Криминал'];
 
-function _initContact(){
-  const btn=document.getElementById('em-btn');
-  const txt=document.getElementById('em-txt');
-  const cp=document.getElementById('em-copy');
-  const phcp=document.getElementById('ph-copy');
-  const ft=document.getElementById('footer-txt');
-  if(btn)btn.href='mailto:'+_e+'?subject='+_sub;
-  if(txt)txt.textContent=_e;
-  if(cp)cp.onclick=function(ev){ev.preventDefault();navigator.clipboard.writeText(_e).then(()=>{cp.textContent='✓';setTimeout(()=>cp.textContent='copy',1500)});};
-  if(phcp)phcp.onclick=function(ev){ev.preventDefault();navigator.clipboard.writeText(_p).then(()=>{phcp.textContent='✓';setTimeout(()=>phcp.textContent='copy',1500)});};
-  if(ft)ft.innerHTML='© 2026 Nabooshy &nbsp;·&nbsp; <span style="color:#7F77DD;cursor:pointer" onclick="window.location=\'mailto:'+_e+'?subject='+_sub+'\'">'+_e+'</span> &nbsp;·&nbsp; <a href="tel:+97699376238" style="color:#5DCAA5;text-decoration:none">'+_ph+'</a>';
-  const slots=['banner-top','banner-mid','banner-bot','sidebar-ad-1','sidebar-ad-2','sidebar-ad-3','mob-ad-1','mob-ad-2'];
-  slots.forEach(id=>{
-    const el=document.getElementById(id);
-    if(el&&el.href==='#'||el&&el.getAttribute('href')==='#'){
-      el.href='mailto:'+_e+'?subject='+_sub;
-    }
-  });
-  const phs=['bph-top','bph-mid','bph-bot','sph-1','sph-2','sph-3'];
-  phs.forEach(id=>{
-    const el=document.getElementById(id);
-    if(el){const b=el.querySelector('b');if(b&&!el.querySelector('span'))el.insertAdjacentHTML('beforeend','<span style="color:var(--pl)">'+_e+'</span>');}
-  });
+const MOVIES = [
+  { id:1, title:'Do Not Enter', mnTitle:'Бүү орох', year:2026, rating:7.8, duration:'2ц 14м', genre:'Аймшиг', type:'movie', badge:'mn', new:true, desc:'Нэг гэр бүл амралтаараа тусгаарлагдсан нэгэн байшинд хоноглоход үл мэдэгдэх аюул тэднийг хүрээлнэ.', director:'Мэтт Бэттинелли', cast:'Эвелин Дин, Рожер Дэвис', poster:'https://picsum.photos/seed/donotenter/300/450', wide:'https://picsum.photos/seed/donotenter/1200/500' },
+  { id:2, title:'Dune: Part Two', mnTitle:'Дюн: Хоёрдугаар хэсэг', year:2024, rating:8.5, duration:'2ц 46м', genre:'Фантастик', type:'movie', badge:'hd', new:true, desc:'Пол Атрейдес Зачайн нутгийн иргэдтэй нэгдэн эзэн хааны хүч болон бусад хүчний эсрэг тэмцэнэ.', director:'Дэнис Вильнев', cast:'Тимоти Шаламе, Зэндея', poster:'https://picsum.photos/seed/dune2/300/450', wide:'https://picsum.photos/seed/dune2/1200/500' },
+  { id:3, title:'Oppenheimer', mnTitle:'Оппенхеймер', year:2023, rating:8.9, duration:'3ц', genre:'Драм', type:'movie', badge:'hd', desc:'Атомын бөмбөг зохион бүтээгч Ж.Роберт Оппенхеймерийн амьдрал.', director:'Кристофер Нолан', cast:'Киллиан Мёрфи, Эмили Блант', poster:'https://picsum.photos/seed/oppenheimer/300/450', wide:'https://picsum.photos/seed/oppenheimer/1200/500' },
+  { id:4, title:'Deadpool & Wolverine', mnTitle:'Дэдпүүл ба Вулверин', year:2024, rating:8.1, duration:'2ц 7м', genre:'Экшн', type:'movie', badge:'mn', new:true, desc:'Вэйд Уилсон хугацааны гаргалгааны агентлагаас авардаг хамтрагчтай нэгдэж гайхалтай аянд гарна.', director:'Шон Леви', cast:'Райан Рейнолдс, Хью Жакман', poster:'https://picsum.photos/seed/deadpool3/300/450', wide:'https://picsum.photos/seed/deadpool3/1200/500' },
+  { id:5, title:'Inside Out 2', mnTitle:'Сэтгэлийн дотор 2', year:2024, rating:7.8, duration:'1ц 40м', genre:'Анимэ', type:'movie', badge:'mn', desc:'Өсвөр насны Райлийн бодол дотор шинэ сэтгэл хөдлөлүүд гарч ирнэ.', director:'Кэлси Манн', cast:'Эмий Поэлер, Майа Хоук', poster:'https://picsum.photos/seed/insideout2/300/450', wide:'https://picsum.photos/seed/insideout2/1200/500' },
+  { id:6, title:'The Substance', mnTitle:'Бодис', year:2024, rating:7.3, duration:'2ц 20м', genre:'Аймшиг', type:'movie', badge:'sub', new:true, desc:'Нэгэн жүжигчин залуурдах бодис хэрэглэсний дараа гэнэтийн хувиргалт амьдарна.', director:'Корали Фаржеат', cast:'Деми Мур, Маргарет Куолли', poster:'https://picsum.photos/seed/substance/300/450', wide:'https://picsum.photos/seed/substance/1200/500' },
+  { id:7, title:'Alien: Romulus', mnTitle:'Пришелец: Ромул', year:2024, rating:7.3, duration:'1ц 59м', genre:'Фантастик', type:'movie', badge:'hd', desc:'Залуус сансрын хоосон станц шинжлэхдээ хамгийн аймшигтай амьтантай тулгарна.', director:'Фэде Альварес', cast:'Каели Спени, Дэвид Жонссон', poster:'https://picsum.photos/seed/alienlrom/300/450', wide:'https://picsum.photos/seed/alienr/1200/500' },
+  { id:8, title:'Gladiator 2', mnTitle:'Гладиатор 2', year:2024, rating:7.5, duration:'2ц 28м', genre:'Экшн', type:'movie', badge:'hd', new:true, desc:'Луций Рим гүрнийг дотроос идэж байгаа хоёр хаантай тэмцэхийн тулд бэлдэнэ.', director:'Ридли Скотт', cast:'Пол Мескал, Дензел Вашингтон', poster:'https://picsum.photos/seed/gladiator2/300/450', wide:'https://picsum.photos/seed/gladiator2/1200/500' },
+  { id:9, title:'Wicked', mnTitle:'Визкед', year:2024, rating:7.7, duration:'2ц 40м', genre:'Романтик', type:'movie', badge:'mn', desc:'Элфаба болон Глиндагийн хосын Оз газарт суусан гайхамшигтай найрамдлын тухай.', director:'Жон Чу', cast:'Синтиа Эриво, Аринана Гранде', poster:'https://picsum.photos/seed/wicked2024/300/450', wide:'https://picsum.photos/seed/wicked/1200/500' },
+  { id:10, title:'A Minecraft Movie', mnTitle:'Майнкрафт Кино', year:2025, rating:6.8, duration:'1ц 41м', genre:'Адал явдал', type:'movie', badge:'mn', new:true, desc:'Хэд хэдэн хүн Блокын ертөнцөд татагдаж орж ирэн эх дэлхий рүүгээ буцах замыг хайна.', director:'Жаред Херн', cast:'Жек Блэк, Жейсон Момоа', poster:'https://picsum.photos/seed/minecraft/300/450', wide:'https://picsum.photos/seed/minecraft/1200/500' },
+  { id:11, title:'The Wild Robot', mnTitle:'Зэрлэг робот', year:2024, rating:8.3, duration:'1ц 41м', genre:'Анимэ', type:'movie', badge:'mn', desc:'Нэгэн робот хүн ам суурьшаагүй арал дээр хэрхэн амьд үлдэхийг сурна.', director:'Крис Сандерс', cast:'Лупита Нионго, Педро Паскаль', poster:'https://picsum.photos/seed/wildrobot/300/450', wide:'https://picsum.photos/seed/wildrobot/1200/500' },
+  { id:12, title:'Twisters', mnTitle:'Шуурганчид', year:2024, rating:7.2, duration:'2ц 2м', genre:'Экшн', type:'movie', badge:'hd', desc:'Хуй салхи судлаачид хамгийн хүчтэй шуурганыг зогсоохыг завддаг.', director:'Ли Айзек Чунг', cast:'Глен Пауэлл, Дэйзи Эдгар-Жонс', poster:'https://picsum.photos/seed/twisters/300/450', wide:'https://picsum.photos/seed/twisters/1200/500' },
+  { id:13, title:'Furiosa', mnTitle:'Фуриоза', year:2024, rating:7.7, duration:'2ц 28м', genre:'Экшн', type:'movie', badge:'sub', desc:'Фуриозагийн түүх — эхлэлийн цэг нь хэрхэн тасаршаасан тухай эпик дайны тухай.', director:'Жорж Миллер', cast:'Аня Тэйлор-Жой, Крис Хемсворт', poster:'https://picsum.photos/seed/furiosa/300/450', wide:'https://picsum.photos/seed/furiosa/1200/500' },
+  { id:14, title:'Moana 2', mnTitle:'Моана 2', year:2024, rating:7.0, duration:'1ц 40м', genre:'Анимэ', type:'movie', badge:'mn', new:true, desc:'Моана шинэ аялалд гарч далайн нуугдмал зүйлсийг илрүүлнэ.', director:'Дэйв Деррик', cast:'Аули Кравальо, Дваин Жонсон', poster:'https://picsum.photos/seed/moana2/300/450', wide:'https://picsum.photos/seed/moana2/1200/500' },
+  { id:15, title:'Hit Man', mnTitle:'Хит Мэн', year:2024, rating:7.6, duration:'1ц 55м', genre:'Инээдмийн', type:'movie', badge:'sub', desc:'Онлайн агентын дүр гүйцэтгэдэг нэгэн хүн гэнэт хаалгатаа ирсэн хүнтэй дурласна.', director:'Ричард Линклэйтэр', cast:'Глен Пауэлл, Адрия Архона', poster:'https://picsum.photos/seed/hitman2024/300/450', wide:'https://picsum.photos/seed/hitman/1200/500' },
+  { id:16, title:'Longlegs', mnTitle:'Лонглегс', year:2024, rating:6.0, duration:'1ц 41м', genre:'Криминал', type:'movie', badge:'hd', desc:'FBI-ын шинэ мөрдөгч харийн хүн алагчийн хэрэгт холбоотой болоод аймаар нууцыг илрүүлнэ.', director:'Оскар Жулиусон', cast:'Маика Монро, Николас Кейж', poster:'https://picsum.photos/seed/longlegs/300/450', wide:'https://picsum.photos/seed/longlegs/1200/500' },
+];
+
+const SERIES = [
+  { id:101, title:'Squid Game', mnTitle:'Наадмын тоглоом', year:2024, rating:8.5, duration:'9 анги', genre:'Драм', type:'series', badge:'mn', new:true, desc:'Өртэй хүмүүс амь насаа барьцаалан хачирхалтай тоглоомд оролцоно. 2-р улирал.', director:'Хван Дон Хёк', cast:'Ли Жун Жэ, Ли Бён Хун', poster:'https://picsum.photos/seed/squidgame2/300/450', wide:'https://picsum.photos/seed/squidgame2w/1200/500', episodes: 9 },
+  { id:102, title:'The Bear', mnTitle:'Баавгай', year:2024, rating:8.9, duration:'10 анги', genre:'Драм', type:'series', badge:'sub', desc:'Карми хамаатны ресторанаа хэрхэн удирдахыг сурч байна.', director:'Кристофер Сторер', cast:'Жереми Аллен Уайт', poster:'https://picsum.photos/seed/thebear/300/450', wide:'https://picsum.photos/seed/thebear/1200/500', episodes: 10 },
+  { id:103, title:'House of the Dragon', mnTitle:'Луу улсын ордон', year:2024, rating:8.2, duration:'8 анги', genre:'Фантастик', type:'series', badge:'mn', new:true, desc:'Таргарин гэр бүлийн ширэгтэй хаан ширээний тэмцэл.', director:'Жорж Р.Р. Мартин', cast:'Матт Смит, Эмма Д\'Арси', poster:'https://picsum.photos/seed/hotd2/300/450', wide:'https://picsum.photos/seed/hotd2/1200/500', episodes: 8 },
+  { id:104, title:'Shōgun', mnTitle:'Шогун', year:2024, rating:9.0, duration:'10 анги', genre:'Драм', type:'series', badge:'sub', desc:'1600-аад оны Японд гарсан нэгэн Англи далайчны хувь заяа.', director:'Рэйчел Кондо', cast:'Хироюки Санада, Козму Жарвис', poster:'https://picsum.photos/seed/shogun2024/300/450', wide:'https://picsum.photos/seed/shogun/1200/500', episodes: 10 },
+  { id:105, title:'The Penguin', mnTitle:'Пингвин', year:2024, rating:8.3, duration:'8 анги', genre:'Криминал', type:'series', badge:'hd', new:true, desc:'Готэм хотод эрх мэдэл олохоор тэмцэж буй Осз Коббпотын тухай.', director:'Лорен Лефрэнк', cast:'Колин Фаррелл, Кристал Зейк', poster:'https://picsum.photos/seed/penguin/300/450', wide:'https://picsum.photos/seed/penguin/1200/500', episodes: 8 },
+  { id:106, title:'Agatha All Along', mnTitle:'Агата бүх замаар', year:2024, rating:7.4, duration:'9 анги', genre:'Фантастик', type:'series', badge:'sub', desc:'Аймшигт магийн замаар тэмцэн гарах гайхамшигт Agatha-гийн тухай.', director:'Жэк Шаффер', cast:'Кэтрин Хан', poster:'https://picsum.photos/seed/agatha/300/450', wide:'https://picsum.photos/seed/agatha/1200/500', episodes: 9 },
+  { id:107, title:'Tulsa King', mnTitle:'Тулса хаан', year:2024, rating:8.0, duration:'10 анги', genre:'Инээдмийн', type:'series', badge:'mn', desc:'Нью-Йоркийн мафийн гишүүн Оклахома руу гадаа илгээгдэн шинэ хаанлалаа байгуулна.', director:'Тэйлор Шеридан', cast:'Сильвестр Сталлоне', poster:'https://picsum.photos/seed/tulsaking2/300/450', wide:'https://picsum.photos/seed/tulsa/1200/500', episodes: 10 },
+  { id:108, title:'Only Murders in the Building', mnTitle:'Барилгад дотор хөнөөлт', year:2024, rating:7.8, duration:'10 анги', genre:'Инээдмийн', type:'series', badge:'sub', new:true, desc:'Гурван хөршийн аялал биш мөрдлөгийн хамт олон.', director:'Жон Хоффман', cast:'Стив Мартин, Мартин Шорт, Селена Гомез', poster:'https://picsum.photos/seed/omitb/300/450', wide:'https://picsum.photos/seed/omitb/1200/500', episodes: 10 },
+];
+
+const ALL_CONTENT = [...MOVIES, ...SERIES];
+const featuredMovies = MOVIES.slice(0, 5);
+
+// ============================================================
+// STATE
+// ============================================================
+let heroIdx = 0;
+let heroInterval;
+let currentMovieGenre = 'Бүгд';
+let currentSeriesGenre = 'Бүгд';
+
+// ============================================================
+// HERO SLIDER
+// ============================================================
+function initHero() {
+  const dotsEl = document.getElementById('heroDots');
+  dotsEl.innerHTML = featuredMovies.map((_, i) =>
+    `<div class="hero-dot ${i===0?'active':''}" onclick="setHero(${i})"></div>`
+  ).join('');
+  setHero(0);
+  heroInterval = setInterval(() => setHero((heroIdx+1) % featuredMovies.length), 6000);
 }
 
-const API_KEY='fc4b4a3ecd85839afed62a32911aa465';
-const WI={Clear:'☀️',Clouds:'☁️',Rain:'🌧️',Snow:'❄️',Thunderstorm:'⛈️',Drizzle:'🌦️',Mist:'🌫️',Fog:'🌫️'};
-
-function goTo(id){
-  if(id==='top'){window.scrollTo({top:0,behavior:'smooth'});return;}
-  const el=document.getElementById(id);
-  if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+function setHero(i) {
+  heroIdx = i;
+  const m = featuredMovies[i];
+  document.getElementById('heroBg').style.backgroundImage = `url('${m.wide}')`;
+  document.getElementById('heroTitle').textContent = m.title;
+  document.getElementById('heroDesc').textContent = m.desc;
+  document.querySelectorAll('.hero-dot').forEach((d, j) => d.classList.toggle('active', j===i));
 }
 
-function botNav(tab){
-  document.querySelectorAll('.bot-btn').forEach(function(b){b.classList.remove('active');});
-  var btn=document.getElementById('bn-'+tab);
-  if(btn)btn.classList.add('active');
-  if(tab==='home'){window.scrollTo({top:0,behavior:'smooth'});}
-  else if(tab==='search'){openSearch();}
-  else if(tab==='movies'){goTo('movies');}
-  else if(tab==='games'){goTo('games');}
-  else if(tab==='saved'){goTo('saved-section');}
+// ============================================================
+// CARD FACTORY
+// ============================================================
+function badgeHTML(b, isNew) {
+  let html = '';
+  if (b === 'hd') html += '<span class="badge badge-hd">HD</span>';
+  if (b === 'mn') html += '<span class="badge badge-mn">МН</span>';
+  if (b === 'sub') html += '<span class="badge badge-sub">SUB</span>';
+  if (isNew) html += '<span class="badge badge-new">ШИНЭ</span>';
+  return html;
 }
 
-async function fetchWeather(q,name){
-  try{
-    const r=await fetch('https://api.openweathermap.org/data/2.5/weather?q='+q+'&appid='+API_KEY+'&units=metric&lang=mn');
-    const d=await r.json();
-    if(d.cod!==200)throw new Error();
-    const ic=WI[d.weather[0].main]||'🌤';
-    const t=Math.round(d.main.temp)+'°';
-    const desc=d.weather[0].description;
-    document.getElementById('w-icon').textContent=ic;
-    document.getElementById('w-temp').textContent=t;
-    document.getElementById('w-city').textContent=name;
-    document.getElementById('w-desc').textContent=desc+' · Мэдрэгдэх: '+Math.round(d.main.feels_like)+'°';
-    document.getElementById('sw-icon').textContent=ic;
-    document.getElementById('sw-temp').textContent=t;
-    document.getElementById('sw-city').textContent=name;
-    document.getElementById('sw-desc').textContent=desc;
-  }catch(e){
-    document.getElementById('w-desc').textContent='API идэвхжиж байна — 2 цаг дараа дахин оролдоно уу';
-    document.getElementById('sw-desc').textContent='Боломжгүй';
+function createCard(m) {
+  const d = document.createElement('div');
+  d.className = 'card';
+  d.innerHTML = `
+    <img class="card-poster" src="${m.poster}" alt="${m.title}" loading="lazy"
+      onerror="this.style.background='var(--bg4)'; this.src='';">
+    <div class="card-overlay">
+      <div class="card-play-btn" onclick="event.stopPropagation(); openPlayer(${JSON.stringify(m).replace(/"/g,'&quot;')})">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+      </div>
+      <div class="card-actions">
+        <button class="card-act-btn" onclick="event.stopPropagation(); addToList(this)" title="Жагсаалт">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <button class="card-act-btn" onclick="event.stopPropagation(); likeCard(this)" title="Таалагдлаа">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="card-info">
+      <div class="card-badges">${badgeHTML(m.badge, m.new)}</div>
+      <div class="card-title">${m.title}</div>
+      <div class="card-sub">
+        <span class="star">★</span> ${m.rating}
+        <span class="dot">·</span>
+        <span>${m.year}</span>
+        <span class="dot">·</span>
+        <span>${m.duration}</span>
+      </div>
+    </div>
+  `;
+  d.addEventListener('click', () => openDetail(m));
+  return d;
+}
+
+// ============================================================
+// RENDER ROWS
+// ============================================================
+function renderRow(containerId, items) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = '';
+  items.forEach(m => el.appendChild(createCard(m)));
+}
+
+function renderGrid(containerId, items) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = '';
+  items.forEach(m => el.appendChild(createCard(m)));
+}
+
+function initRows() {
+  const newMovies = MOVIES.filter(m => m.new);
+  renderRow('newMoviesRow', newMovies);
+  const popular = [...MOVIES].sort((a,b) => b.rating - a.rating).slice(0, 10);
+  renderRow('popularRow', popular);
+  renderRow('seriesRow', SERIES.slice(0, 8));
+  const action = MOVIES.filter(m => m.genre === 'Экшн');
+  renderRow('actionRow', action);
+}
+
+// ============================================================
+// MOVIES PAGE
+// ============================================================
+function initMoviesPage() {
+  const filter = document.getElementById('movieGenreFilter');
+  filter.innerHTML = GENRES.map(g =>
+    `<button class="genre-btn ${g==='Бүгд'?'active':''}" onclick="filterMovies('${g}', this)">${g}</button>`
+  ).join('');
+  filterMovies('Бүгд', filter.firstElementChild);
+}
+
+function filterMovies(genre, btn) {
+  currentMovieGenre = genre;
+  document.querySelectorAll('#movieGenreFilter .genre-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  const filtered = genre === 'Бүгд' ? MOVIES : MOVIES.filter(m => m.genre === genre);
+  renderGrid('moviesGrid', filtered);
+  document.getElementById('movieCount').textContent = `${filtered.length} кино`;
+}
+
+function sortMovies(val) {
+  const filtered = currentMovieGenre === 'Бүгд' ? [...MOVIES] : MOVIES.filter(m => m.genre === currentMovieGenre);
+  if (val === 'rating') filtered.sort((a,b) => b.rating - a.rating);
+  else if (val === 'name') filtered.sort((a,b) => a.title.localeCompare(b.title));
+  else if (val === 'year') filtered.sort((a,b) => b.year - a.year);
+  renderGrid('moviesGrid', filtered);
+}
+
+// ============================================================
+// SERIES PAGE
+// ============================================================
+function initSeriesPage() {
+  const filter = document.getElementById('seriesGenreFilter');
+  filter.innerHTML = GENRES.map(g =>
+    `<button class="genre-btn ${g==='Бүгд'?'active':''}" onclick="filterSeries('${g}', this)">${g}</button>`
+  ).join('');
+  filterSeries('Бүгд', filter.firstElementChild);
+}
+
+function filterSeries(genre, btn) {
+  currentSeriesGenre = genre;
+  document.querySelectorAll('#seriesGenreFilter .genre-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  const filtered = genre === 'Бүгд' ? SERIES : SERIES.filter(m => m.genre === genre);
+  renderGrid('seriesGrid', filtered);
+  document.getElementById('seriesCount').textContent = `${filtered.length} цуврал`;
+}
+
+function sortSeries(val) {
+  const filtered = currentSeriesGenre === 'Бүгд' ? [...SERIES] : SERIES.filter(m => m.genre === currentSeriesGenre);
+  if (val === 'rating') filtered.sort((a,b) => b.rating - a.rating);
+  else if (val === 'name') filtered.sort((a,b) => a.title.localeCompare(b.title));
+  renderGrid('seriesGrid', filtered);
+}
+
+// ============================================================
+// DETAIL MODAL
+// ============================================================
+function openDetail(m) {
+  document.getElementById('modalHero').style.backgroundImage = `url('${m.wide}')`;
+  document.getElementById('modalBadge').textContent = m.type === 'series' ? 'ЦУВРАЛ' : 'КИНО';
+  document.getElementById('modalTitle').textContent = m.title;
+  document.getElementById('modalMeta').innerHTML = `
+    <span class="rating">⭐ ${m.rating}/10</span>
+    <span>${m.year}</span>
+    <span>${m.duration}</span>
+    <span class="genre-tag">${m.genre}</span>
+    ${badgeHTML(m.badge, m.new)}
+  `;
+  document.getElementById('modalDesc').textContent = m.desc;
+  document.getElementById('modalActions').innerHTML = `
+    <button class="btn-play" onclick="openPlayer(${JSON.stringify(m).replace(/"/g,'&quot;')})">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+      Үзэх
+    </button>
+    <button class="btn-info" onclick="showToast('Жагсаалтад нэмлээ ✓')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Жагсаалт
+    </button>
+    <button class="btn-info" onclick="showToast('Хуваалцах линк хуулагдлаа ✓')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      Хуваалцах
+    </button>
+  `;
+  document.getElementById('modalGrid').innerHTML = `
+    <div class="info-item"><label>Найруулагч</label><span>${m.director || '—'}</span></div>
+    <div class="info-item"><label>Жүжигчид</label><span>${m.cast || '—'}</span></div>
+    <div class="info-item"><label>Гарсан он</label><span>${m.year}</span></div>
+    <div class="info-item"><label>Төрөл</label><span>${m.genre}</span></div>
+    ${m.episodes ? `<div class="info-item"><label>Ангийн тоо</label><span>${m.episodes}</span></div>` : ''}
+    <div class="info-item"><label>Чанар</label><span>HD 1080p</span></div>
+  `;
+  document.getElementById('detailModal').classList.add('open');
+}
+
+// ============================================================
+// PLAYER MODAL
+// ============================================================
+function openPlayer(m) {
+  if (typeof m === 'string') m = JSON.parse(m);
+  document.getElementById('playerPoster').src = m.wide || m.poster;
+  document.getElementById('playerTitle').textContent = m.title;
+  document.getElementById('playerMeta').innerHTML = `
+    <span class="rating">⭐ ${m.rating}</span>
+    <span style="color:var(--text2)">·</span>
+    <span style="color:var(--text2)">${m.year}</span>
+    <span style="color:var(--text2)">·</span>
+    <span style="color:var(--text2)">${m.genre}</span>
+  `;
+  document.getElementById('detailModal').classList.remove('open');
+  document.getElementById('playerModal').classList.add('open');
+}
+
+// ============================================================
+// LOGIN MODAL
+// ============================================================
+function openLogin() {
+  document.getElementById('loginModal').classList.add('open');
+}
+
+function handleLogin() {
+  document.getElementById('loginModal').classList.remove('open');
+  showToast('Амжилттай нэвтэрлээ! 🎬');
+}
+function handleRegister() {
+  document.getElementById('loginModal').classList.remove('open');
+  showToast('Бүртгэл амжилттай! Тавтай морилно уу 🎉');
+}
+
+function switchTab(btn, type) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('loginForm').style.display = type === 'login' ? '' : 'none';
+  document.getElementById('registerForm').style.display = type === 'register' ? '' : 'none';
+}
+
+// ============================================================
+// SEARCH
+// ============================================================
+let searchTimeout;
+function handleSearch(q) {
+  clearTimeout(searchTimeout);
+  if (!q.trim()) {
+    if (document.getElementById('page-search').classList.contains('active')) showPage('home');
+    return;
   }
+  searchTimeout = setTimeout(() => {
+    const results = ALL_CONTENT.filter(m =>
+      m.title.toLowerCase().includes(q.toLowerCase()) ||
+      (m.mnTitle && m.mnTitle.toLowerCase().includes(q.toLowerCase())) ||
+      m.genre.toLowerCase().includes(q.toLowerCase())
+    );
+    document.getElementById('searchResultLabel').textContent = `"${q}" — ${results.length} үр дүн олдлоо`;
+    renderGrid('searchGrid', results);
+    showPage('search');
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  }, 300);
 }
 
-function setAd(slotId,ad){
-  if(!ad||!ad.active)return;
-  const el=document.getElementById(slotId);
-  if(!el)return;
-  if(ad.link)el.href=ad.link;
-  if(ad.html){
-    el.innerHTML='<iframe src="'+ad.html+'" style="width:100%;height:100%;border:none;border-radius:8px;pointer-events:none" scrolling="no"></iframe>';
-  }else if(ad.video){
-    el.innerHTML='<video src="'+ad.video+'" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;pointer-events:none"></video>';
-  }else if(ad.image){
-    el.innerHTML='<img src="'+ad.image+'" alt="ad" style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:block">';
+// ============================================================
+// PAGE NAVIGATION
+// ============================================================
+function showPage(p) {
+  clearInterval(heroInterval);
+  document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
+  document.getElementById(`page-${p}`).classList.add('active');
+  if (p === 'home') {
+    initHero();
+    heroInterval = setInterval(() => setHero((heroIdx+1) % featuredMovies.length), 6000);
   }
+  if (p === 'movies') initMoviesPage();
+  if (p === 'series') initSeriesPage();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ── Global data store ───────────────────────────────────────
-var _allMoviesData=[];
-var _allGamesData=[];
-
-// ── Bookmark (localStorage) ──────────────────────────────────
-function getBookmarks(){try{return JSON.parse(localStorage.getItem('nbs_bm')||'[]');}catch(e){return[];}}
-function saveBookmarks(arr){try{localStorage.setItem('nbs_bm',JSON.stringify(arr));}catch(e){}}
-
-function renderBookmarks(){
-  var bms=getBookmarks();
-  var el=document.getElementById('bm-list');
-  if(!el)return;
-  if(!bms.length){el.innerHTML='<div class="bm-empty">Одоогоор хоосон байна</div>';return;}
-  var movies=_allMoviesData.filter(function(m){return bms.indexOf(m.id)>=0;});
-  if(!movies.length){el.innerHTML='<div class="bm-empty">Одоогоор хоосон байна</div>';return;}
-  el.innerHTML='';
-  movies.forEach(function(m){
-    var d=document.createElement('div');
-    d.style.cssText='display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:0.5px solid var(--border);cursor:pointer;';
-    d.onclick=function(){openPreview(m,m._cachedPoster||'');};
-    var poster=m._cachedPoster||'';
-    d.innerHTML=(poster?'<img src="'+poster+'" style="width:32px;height:46px;object-fit:cover;border-radius:4px;flex-shrink:0">':'<div style="width:32px;height:46px;background:var(--bg3);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px">🎬</div>')
-      +'<div style="flex:1;min-width:0"><div style="font-size:11px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+m.title+'</div><div style="font-size:10px;color:var(--muted)">'+m.year+'</div></div>'
-      +'<button onclick="event.stopPropagation();removeBookmark('+m.id+')" style="background:transparent;border:none;color:var(--muted);cursor:pointer;font-size:14px;padding:2px 4px;">✕</button>';
-    el.appendChild(d);
-  });
+function setActive(id) {
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
 }
 
-function removeBookmark(id){
-  var bms=getBookmarks();
-  var idx=bms.indexOf(id);
-  if(idx>=0)bms.splice(idx,1);
-  saveBookmarks(bms);
-  // card товч шинэчлэх
-  var cardBtn=document.querySelector('.card-bm[data-id="'+id+'"]');
-  if(cardBtn)cardBtn.classList.remove('saved');
-  var pvBm=document.getElementById('pv-bm');
-  if(pvBm&&parseInt(pvBm.dataset.id)===id)pvBm.classList.remove('saved');
-  renderBookmarks();
+function filterAndShow(genre) {
+  showPage('movies');
+  setActive('nav-movies');
+  setTimeout(() => {
+    const btn = [...document.querySelectorAll('#movieGenreFilter .genre-btn')]
+      .find(b => b.textContent === genre);
+    if (btn) filterMovies(genre, btn);
+  }, 100);
 }
 
-function toggleBookmark(id,btn){
-  var bms=getBookmarks();
-  var idx=bms.indexOf(id);
-  if(idx>=0){bms.splice(idx,1);}else{bms.push(id);}
-  saveBookmarks(bms);
-  var saved=bms.indexOf(id)>=0;
-  if(btn){btn.classList.toggle('saved',saved);}
-  var pvBm=document.getElementById('pv-bm');
-  if(pvBm&&parseInt(pvBm.dataset.id)===id){pvBm.classList.toggle('saved',saved);}
-  renderBookmarks();
-}
-function toggleBookmarkCurrent(){
-  var pvBm=document.getElementById('pv-bm');
-  if(!pvBm)return;
-  var id=parseInt(pvBm.dataset.id);
-  // card дээрх товчийг ч олж шинэчилнэ
-  var cardBtn=document.querySelector('.card-bm[data-id="'+id+'"]');
-  toggleBookmark(id,cardBtn);
+// ============================================================
+// UI UTILS
+// ============================================================
+function closeModalOnBg(e, id) {
+  if (e.target.id === id) document.getElementById(id).classList.remove('open');
 }
 
-// ── Preview Popup ────────────────────────────────────────────
-var _pvCurrent=null;
-var CAT_LABELS={'mn':'🇲🇳 Монгол','horror':'😱 Аймшиг','action':'💥 Экшн','adult':'🔞 +18','anime':'🎌 Анимэ','war':'🕰️ Дайн','thriller':'🔪 Триллер','romance':'💕 Хайр','comedy':'😂 Инээдмийн','scifi':'🚀 Sci-Fi','drama':'🎭 Драм','series':'📺 Цуврал','world':'🌍 Гадаад'};
+function addToList(btn) {
+  btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5bc97a" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>';
+  showToast('Миний жагсаалтад нэмэгдлээ ✓');
+}
 
-function openPreview(m,poster){
-  _pvCurrent=m;
-  document.getElementById('pv-title').textContent=m.title;
-  var poster_el=document.getElementById('pv-poster');
-  poster_el.src=poster||'';
-  poster_el.style.display=poster?'block':'none';
-  // meta tags
-  var meta=document.getElementById('pv-meta');
-  meta.innerHTML='<span class="preview-tag">📅 '+m.year+'</span>'
-    +'<span class="preview-tag">⭐ '+m.rating+'</span>'
-    +(CAT_LABELS[m.category]?'<span class="preview-tag">'+CAT_LABELS[m.category]+'</span>':'')
-    +(m.episodes&&m.episodes.length?'<span class="preview-tag">'+m.episodes.length+' анги</span>':'');
-  // bookmark
-  var pvBm=document.getElementById('pv-bm');
-  pvBm.dataset.id=m.id;
-  var bms=getBookmarks();
-  pvBm.classList.toggle('saved',bms.indexOf(m.id)>=0);
-  // watch button / episodes
-  var pvWatch=document.getElementById('pv-watch');
-  var pvEp=document.getElementById('pv-episodes');
-  pvEp.innerHTML='';
-  // embed_url байвал шууд iframe-д тоглуулна
-  if(m.embed_url){
-    pvWatch.style.display='none';
-    pvEp.style.display='flex';
-    pvEp.style.flexDirection='column';
-    pvEp.innerHTML='<iframe src="'+m.embed_url+'" style="width:100%;height:340px;border:none;border-radius:10px;background:#000" allowfullscreen allow="autoplay"></iframe>';
-  }else if(m.episodes&&m.episodes.length>0){
-    pvWatch.style.display='none';
-    pvEp.style.display='flex';
-    m.episodes.forEach(function(ep,i){
-      var a=document.createElement('a');
-      a.href=ep.link;a.target='_blank';
-      a.style.cssText='display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--bg3);border:0.5px solid var(--border);border-radius:7px;text-decoration:none;font-size:12px;color:var(--text);';
-      a.innerHTML='<span style="color:var(--purple);font-weight:600;min-width:20px">'+(i+1)+'</span><span style="flex:1">'+ep.title+'</span><span style="color:var(--purple);font-size:11px">▶</span>';
-      pvEp.appendChild(a);
-    });
-  }else{
-    pvWatch.style.display='block';
-    pvWatch.href=m.link||'#';
-    pvEp.style.display='none';
+function likeCard(btn) {
+  btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="var(--red)" stroke="var(--red)" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';
+  showToast('Дуртай кинонд нэмлээ ❤');
+}
+
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ============================================================
+// KEYBOARD
+// ============================================================
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    ['detailModal','playerModal','loginModal'].forEach(id =>
+      document.getElementById(id).classList.remove('open')
+    );
   }
-  var popup=document.getElementById('preview-popup');
-  popup.classList.add('active');
-  document.body.style.overflow='hidden';
-}
-function closePreview(){
-  document.getElementById('preview-popup').classList.remove('active');
-  document.body.style.overflow='';
-  _pvCurrent=null;
-}
-
-// ── Global Search ────────────────────────────────────────────
-function openSearch(){
-  document.getElementById('search-overlay').classList.add('active');
-  document.body.style.overflow='hidden';
-  setTimeout(function(){
-    var inp=document.getElementById('search-big-input');
-    if(inp){inp.focus();inp.value='';}
-    document.getElementById('search-results').innerHTML='<div class="search-empty">Хайх үгээ бичнэ үү...</div>';
-  },50);
-}
-function closeSearch(){
-  document.getElementById('search-overlay').classList.remove('active');
-  document.body.style.overflow='';
-}
-function doSearch(q){
-  q=(q||'').toLowerCase().trim();
-  var res=document.getElementById('search-results');
-  if(!q){res.innerHTML='<div class="search-empty">Хайх үгээ бичнэ үү...</div>';return;}
-  // Movies
-  var mRes=_allMoviesData.filter(function(m){return m.title.toLowerCase().indexOf(q)>=0;}).slice(0,12);
-  // Games
-  var gRes=_allGamesData.filter(function(g){return g.title.toLowerCase().indexOf(q)>=0||(g.genre&&g.genre.toLowerCase().indexOf(q)>=0);}).slice(0,6);
-  if(!mRes.length&&!gRes.length){res.innerHTML='<div class="search-empty">«'+q+'» — олдсонгүй</div>';return;}
-  var html='';
-  if(mRes.length){
-    html+='<div class="search-section"><div class="search-section-title">🎬 Кино & цуврал</div><div class="search-movies-grid">';
-    mRes.forEach(function(m){
-      var poster=m._cachedPoster||'';
-      html+='<div onclick="closeSearch();openPreview(window._allMoviesData.find(function(x){return x.id==='+m.id+'}) ,\''+poster+'\')" style="cursor:pointer;width:90px;flex-shrink:0">'
-        +'<div style="width:90px;aspect-ratio:2/3;border-radius:7px;overflow:hidden;background:var(--bg3);position:relative">'
-        +(poster?'<img src="'+poster+'" style="width:100%;height:100%;object-fit:cover">':'<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:22px">🎬</div>')
-        +'</div>'
-        +'<div style="font-size:10px;color:var(--text);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+m.title+'</div>'
-        +'<div style="font-size:9px;color:var(--muted)">'+m.year+'</div>'
-        +'</div>';
-    });
-    html+='</div></div>';
-  }
-  if(gRes.length){
-    html+='<div class="search-section"><div class="search-section-title">🎮 Тоглоомууд</div><div class="search-games-list">';
-    gRes.forEach(function(g){
-      var href=g.embed?'#':''+g.link;
-      var onclick=g.embed?'openGame(window._allGamesData.find(function(x){return x.id==='+g.id+'}))':'window.open(\''+g.link+'\',\'_blank\')';
-      html+='<div onclick="closeSearch();'+onclick+'" style="cursor:pointer;display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--bg2);border:0.5px solid var(--border);border-radius:8px">'
-        +'<span style="font-size:16px">🎮</span>'
-        +'<div style="flex:1"><div style="font-size:12px;font-weight:500;color:var(--text)">'+g.title+'</div><div style="font-size:10px;color:var(--muted)">'+g.genre+'</div></div>'
-        +'<span style="font-size:10px;color:var(--muted)">⭐'+g.rating+'</span>'
-        +'</div>';
-    });
-    html+='</div></div>';
-  }
-  res.innerHTML=html;
-}
-
-document.addEventListener('keydown',function(e){
-  if(e.key==='Escape'){closeSearch();closePreview();}
-  if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();openSearch();}
 });
 
-_initContact();
-
-// Mobile inline зар — mob-h-3 (тоглоомын өмнө)
-(function(){
-  var el=document.getElementById('mob-h-3');
-  if(!el)return;
-  function check(){el.style.display=window.innerWidth<=860?'flex':'none';}
-  check();
-  window.addEventListener('resize',check);
-})();
-
-var _epPopup=document.createElement('div');
-_epPopup.id='ep-popup';
-_epPopup.style.cssText='display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;padding:20px;';
-_epPopup.innerHTML='<div id="ep-box" style="background:#13121f;border:0.5px solid #ffffff18;border-radius:16px;max-width:440px;width:100%;max-height:80vh;overflow-y:auto;padding:24px;">'
-  +'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">'
-  +'<div id="ep-title" style="font-family:\'Space Grotesk\',sans-serif;font-size:16px;font-weight:600;color:#e8e6ff"></div>'
-  +'<button onclick="closeEp()" style="background:transparent;border:0.5px solid #ffffff20;border-radius:8px;color:#6b6880;font-size:18px;width:32px;height:32px;cursor:pointer;line-height:1">✕</button>'
-  +'</div>'
-  +'<div id="ep-list" style="display:flex;flex-direction:column;gap:6px;"></div>'
-  +'</div>';
-document.body.appendChild(_epPopup);
-
-_epPopup.onclick=function(e){if(e.target===_epPopup)closeEp();};
-
-function showEpisodes(m){
-  document.getElementById('ep-title').textContent=m.title+' · '+m.year;
-  var list=document.getElementById('ep-list');
-  list.innerHTML='';
-  m.episodes.forEach(function(ep,i){
-    var a=document.createElement('a');
-    a.href=ep.link;
-    a.target='_blank';
-    a.style.cssText='display:flex;align-items:center;gap:12px;padding:10px 14px;background:#1c1b2e;border:0.5px solid #ffffff12;border-radius:8px;text-decoration:none;transition:border-color .2s;';
-    a.innerHTML='<span style="font-size:11px;color:#534AB7;font-weight:600;min-width:24px">'+(i+1)+'</span>'
-      +'<span style="font-size:13px;color:#e8e6ff;flex:1">'+ep.title+'</span>'
-      +'<span style="font-size:11px;color:#7F77DD">▶ Үзэх</span>';
-    a.onmouseover=function(){this.style.borderColor='#7F77DD50';};
-    a.onmouseout=function(){this.style.borderColor='#ffffff12';};
-    list.appendChild(a);
-  });
-  _epPopup.style.display='flex';
-  document.body.style.overflow='hidden';
-}
-
-function closeEp(){
-  _epPopup.style.display='none';
-  document.body.style.overflow='';
-}
-
-var _gamePopup=document.createElement('div');
-_gamePopup.id='game-popup';
-_gamePopup.style.cssText='display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.92);align-items:center;justify-content:center;padding:16px;flex-direction:column;gap:12px;';
-_gamePopup.innerHTML='<div style="width:100%;max-width:900px;">'
-  +'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">'
-  +'<div id="game-popup-title" style="font-family:\'Space Grotesk\',sans-serif;font-size:16px;font-weight:600;color:#e8e6ff"></div>'
-  +'<button onclick="closeGame()" style="background:transparent;border:0.5px solid #ffffff30;border-radius:8px;color:#e8e6ff;font-size:16px;padding:4px 12px;cursor:pointer">✕ Хаах</button>'
-  +'</div>'
-  +'<iframe id="game-iframe" src="" style="width:100%;height:560px;border:none;border-radius:10px;background:#000" allowfullscreen></iframe>'
-  +'</div>';
-document.body.appendChild(_gamePopup);
-_gamePopup.onclick=function(e){if(e.target===_gamePopup)closeGame();};
-
-function openGame(g){
-  document.getElementById('game-popup-title').textContent='🎮 '+g.title;
-  document.getElementById('game-iframe').src=g.embed;
-  _gamePopup.style.display='flex';
-  document.body.style.overflow='hidden';
-}
-function closeGame(){
-  document.getElementById('game-iframe').src='';
-  _gamePopup.style.display='none';
-  document.body.style.overflow='';
-}
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeGame();closeEp();}});
-
-var TMDB_KEY='0b34540c864eaaf51207c87c28dabb36';
-
-async function getTMDBPoster(movie){
-  if(movie.poster)return movie.poster;
-  if(!movie.tmdb_id&&!movie.title)return '';
-  try{
-    // 1. tmdb_id байвал movie endpoint
-    if(movie.tmdb_id){
-      var r1=await fetch('https://api.themoviedb.org/3/movie/'+movie.tmdb_id+'?api_key='+TMDB_KEY);
-      var d1=await r1.json();
-      if(d1.poster_path)return 'https://image.tmdb.org/t/p/w300'+d1.poster_path;
-      // Movie-д олдохгүй бол TV series-ээс хайна
-      var r2=await fetch('https://api.themoviedb.org/3/tv/'+movie.tmdb_id+'?api_key='+TMDB_KEY);
-      var d2=await r2.json();
-      if(d2.poster_path)return 'https://image.tmdb.org/t/p/w300'+d2.poster_path;
-    }
-    // 2. Нэрээр movie хайна
-    var sq=encodeURIComponent(movie.title_en||movie.title);
-    var yr=movie.year?'&year='+movie.year:'';
-    var r3=await fetch('https://api.themoviedb.org/3/search/movie?api_key='+TMDB_KEY+'&query='+sq+yr);
-    var d3=await r3.json();
-    if(d3.results&&d3.results[0]&&d3.results[0].poster_path)
-      return 'https://image.tmdb.org/t/p/w300'+d3.results[0].poster_path;
-    // 3. Нэрээр TV хайна — цуврал байж болно
-    var r4=await fetch('https://api.themoviedb.org/3/search/tv?api_key='+TMDB_KEY+'&query='+sq);
-    var d4=await r4.json();
-    if(d4.results&&d4.results[0]&&d4.results[0].poster_path)
-      return 'https://image.tmdb.org/t/p/w300'+d4.results[0].poster_path;
-    return '';
-  }catch(e){return '';}
-}
-
-fetch('data.json')
-  .then(function(r){return r.json();})
-  .then(async function(data){
-
-    // ── Кино ангилал ──────────────────────────────────────────────
-    var movieLoader=document.getElementById('movies-loading');
-    if(movieLoader)movieLoader.remove();
-    var moviesEl=document.getElementById('movies');
-
-    // Ангиллын дараалал — Row бүрийн гарчиг энд тохируулна
-    var CATEGORIES=[
-      {key:'new',   label:'🆕 Шинээр нэмэгдсэн', filter:function(m){return true;}, sort:function(a,b){return b.id-a.id;}, limit:20},
-      {key:'top',   label:'⭐ Шилдэг кинонууд',   filter:function(m){return m.rating>=8;}},
-      {key:'world', label:'🎬 Бүх кино',           filter:function(m){return true;}},
-    ];
-
-    // Давхцсан id-г нэг удаа л харуулна
-    var seenIds={};
-    var uniqueMovies=data.movies.filter(function(m){
-      if(seenIds[m.id])return false;
-      seenIds[m.id]=true;
-      return true;
-    });
-
-    // Global data store дүүргэнэ — хайлт ажиллахын тулд
-    _allMoviesData=uniqueMovies;
-    _allGamesData=data.games;
-
-    // Hero poster grid — татагдсан poster URL-уудыг цуглуулна
-    var _heroPosterUrls=[];
-    var _heroPosterMax=14;
-
-    // Кино card үүсгэх функц — preview popup нээнэ
-    function makeCard(m,poster,isNew){
-      var a=document.createElement('a');
-      a.className='mc';
-      a.href='#';
-      var bms=getBookmarks();
-      var isSaved=bms.indexOf(m.id)>=0;
-      (function(mv,ps){
-        a.onclick=function(e){e.preventDefault();openPreview(mv,ps);};
-      })(m,poster);
-      a.innerHTML=(isNew?'<div class="new-badge">NEW</div>':'')
-        +'<div class="rb">⭐'+m.rating+'</div>'
-        +(m.episodes&&m.episodes.length?'<div style="position:absolute;top:6px;left:6px;background:#818cf899;color:#fff;font-size:9px;padding:2px 5px;border-radius:4px;font-weight:600">'+m.episodes.length+' анги</div>':'')
-        +(poster?'<img class="mp" src="'+poster+'" alt="'+m.title+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">':'')
-        +'<div class="mph" style="'+(poster?'display:none':'')+'">🎬</div>'
-        +'<button class="card-bm'+(isSaved?' saved':'')+'" data-id="'+m.id+'" onclick="event.preventDefault();event.stopPropagation();toggleBookmark('+m.id+',this)">'+(isSaved?'🔖':'🔖')+'</button>'
-        +'<div class="mi"><div class="mt">'+m.title+'</div><div class="my">'+m.year+'</div></div>';
-      return a;
-    }
-
-    // Mobile зарын байрлал — row-ны дараа оруулах
-    var MOB_AD_AFTER=['new','top'];
-    var _mobAdIdx=0;
-    var MOB_AD_IDS=['mob-h-1','mob-h-2','mob-h-3'];
-
-    // Row бүрийг async дараалан байгуулна
-    for(var ci=0;ci<CATEGORIES.length;ci++){
-      var cat=CATEGORIES[ci];
-      var filtered=uniqueMovies.filter(cat.filter);
-      if(cat.sort)filtered=filtered.slice().sort(cat.sort);
-      if(cat.limit)filtered=filtered.slice(0,cat.limit);
-      if(filtered.length===0)continue;
-      var isNewRow=(cat.key==='new');
-
-      var section=document.createElement('div');
-      section.className='movie-section';
-
-      var header=document.createElement('div');
-      header.className='row-header';
-      header.innerHTML='<div class="row-title">'+cat.label+'</div>'
-        +'<span class="row-count">'+filtered.length+'</span>';
-      section.appendChild(header);
-
-      var row=document.createElement('div');
-      row.className='movie-row';
-
-      // Placeholder card-уудыг нэн даруй харуулна
-      filtered.forEach(function(m){
-        var ph=document.createElement('div');
-        ph.className='mc';
-        ph.style.cssText='width:130px;flex-shrink:0;';
-        ph.innerHTML='<div class="mph">🎬</div>'
-          +'<div class="mi"><div class="mt">'+m.title+'</div><div class="my">'+m.year+'</div></div>';
-        row.appendChild(ph);
-      });
-      section.appendChild(row);
-
-      // Mobile inline зар — стратегийн row-уудын дараа
-      if(MOB_AD_AFTER.indexOf(cat.key)>=0&&_mobAdIdx<MOB_AD_IDS.length){
-        var adWrap=document.createElement('a');
-        adWrap.className='mob-inline-ad';
-        adWrap.id=MOB_AD_IDS[_mobAdIdx];
-        adWrap.href='#';
-        adWrap.style.cssText='display:none;'; // JS-ээр зөвхөн mobile дээр харуулна
-        adWrap.innerHTML='<div class="mob-inline-ad-ph"><b style="color:var(--pl);display:block;font-size:11px;margin-bottom:2px">📢 Зар байршуулах</b>320×80 · Их хүн харна</div>';
-        section.appendChild(adWrap);
-        // Mobile дээр л харуулна
-        (function(el){
-          if(window.innerWidth<=860)el.style.display='flex';
-          window.addEventListener('resize',function(){
-            el.style.display=window.innerWidth<=860?'flex':'none';
-          });
-        })(adWrap);
-        _mobAdIdx++;
-      }
-
-      moviesEl.appendChild(section);
-
-      // Poster-уудыг async татаж placeholder-г солино
-      (function(rowEl,movies,newRow){
-        movies.forEach(function(m,idx){
-          getTMDBPoster(m).then(function(poster){
-            // Poster-г кино объект дээр cache хийнэ — хайлтад ашиглана
-            m._cachedPoster=poster;
-            if(poster&&_heroPosterUrls.length<_heroPosterMax){
-              _heroPosterUrls.push(poster);
-              var grid=document.getElementById('hero-posters');
-              if(grid){
-                var img=document.createElement('img');
-                img.src=poster;
-                img.style.cssText='width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s;border-radius:4px;';
-                img.onload=function(){this.style.opacity='0.6';};
-                grid.appendChild(img);
-              }
-            }
-            var card=makeCard(m,poster,newRow);
-            card.style.width='130px';
-            var ph=rowEl.children[idx];
-            if(ph)rowEl.replaceChild(card,ph);
-          });
-        });
-      })(row,filtered,isNewRow);
-    }
-
-    var _allGames=data.games;
-    window._allGames=_allGames;
-
-    // Тоглоомын ангиллын Row-ууд — нэр + genre жагсаалт
-    var GAME_ROWS=[
-      {label:'⭐ Шилдэг тоглоомууд', filter:function(g){return g.rating>=9;}},
-      {label:'🆕 Шинэ тоглоомууд',   filter:function(g){return g.genre==='Шинэ';}},
-      {label:'💥 Экшн & Буудлага',   filter:function(g){return ['Экшн','Буудлага','Снайпер','Тулаан'].indexOf(g.genre)>=0;}},
-      {label:'🚗 Машин & Уралдаан',  filter:function(g){return ['Машин','Жолоодлого','Уралдаан','Зогсоол','Монстр машин','Мотоцикл','Машин засах'].indexOf(g.genre)>=0;}},
-      {label:'🧩 Тааварт & Логик',   filter:function(g){return ['Тааварт','Дарж тоглох','Физик','Оньсого'].indexOf(g.genre)>=0;}},
-      {label:'⚔️ Тулаан & Стратеги', filter:function(g){return ['Стратеги','Нийгэм'].indexOf(g.genre)>=0;}},
-      {label:'🎨 Чимэглэлийн',       filter:function(g){return ['Будаж чимэглэх','Засаж чимэглэх','Өрөө засах','Хоол'].indexOf(g.genre)>=0;}},
-      {label:'🕹️ Аркад & Спорт',    filter:function(g){return ['Аркад','Спорт'].indexOf(g.genre)>=0;}},
-      {label:'🎭 Бусад',             filter:function(g){
-        var used=['Шинэ','Экшн','Буудлага','Снайпер','Тулаан','Машин','Жолоодлого','Уралдаан','Зогсоол','Монстр машин','Мотоцикл','Машин засах','Тааварт','Дарж тоглох','Физик','Оньсого','Стратеги','Нийгэм','Будаж чимэглэх','Засаж чимэглэх','Өрөө засах','Хоол','Аркад','Спорт'];
-        return used.indexOf(g.genre)<0;
-      }},
-    ];
-
-    // Game card үүсгэх
-    function makeGameCard(g,i){
-      var a=document.createElement('a');
-      a.className='mc';
-      a.style.cssText='width:130px;flex-shrink:0;scroll-snap-align:start;';
-      if(g.embed){
-        a.href='#';
-        a.onclick=function(e){e.preventDefault();openGame(g);};
-      }else{
-        a.href=g.link||'#';
-        a.target='_blank';
-      }
-      // Зураг — embed URL-аас thumbnail үүсгэнэ
-      // https://1000webgames.com/games/noobfall/noobfall.php → noobfall-189x120.jpg
-      var thumb='';
-      if(g.poster){
-        thumb=g.poster;
-      }else if(g.embed&&g.embed.indexOf('/games/')>=0){
-        var em=g.embed.replace(/\/play\.php$/,'').replace(/\/[^/]+\.php$/,'');
-        var slug=em.split('/').pop();
-        thumb='https://1000webgames.com/games/'+slug+'/'+slug+'-189x120.jpg';
-      }
-      var colors=['#818cf818','#34d39918','#f472b618','#fbbf2418','#a78bfa18'];
-      var icons=['🎮','🕹️','⚔️','🏎️','🔫','🧩','🏆','🎯'];
-      var col=colors[i%colors.length];
-      var ico=icons[i%icons.length];
-      var imgHtml=thumb
-        ?'<img src="'+thumb+'" alt="'+g.title+'" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px 10px 0 0;display:block;background:var(--bg3)" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">'
-        +'<div style="display:none;width:100%;aspect-ratio:16/9;background:'+col+';align-items:center;justify-content:center;font-size:28px;border-radius:10px 10px 0 0">'+ico+'</div>'
-        :'<div style="width:100%;aspect-ratio:16/9;background:'+col+';display:flex;align-items:center;justify-content:center;font-size:28px;border-radius:10px 10px 0 0">'+ico+'</div>';
-      a.innerHTML=imgHtml
-        +'<div class="rb">⭐'+g.rating+'</div>'
-        +'<div class="mi"><div class="mt">'+g.title+'</div><div class="my">'+g.genre+'</div></div>';
-      return a;
-    }
-
-    // Game row үүсгэх
-    function makeGameRow(label, games){
-      if(!games.length) return null;
-      var sec=document.createElement('div');
-      sec.className='movie-section';
-      sec.innerHTML='<div class="row-header"><div class="row-title">'+label+'</div><span class="row-count">'+games.length+'</span></div>';
-      var row=document.createElement('div');
-      row.className='movie-row';
-      games.forEach(function(g,i){ row.appendChild(makeGameCard(g,i)); });
-      sec.appendChild(row);
-      return sec;
-    }
-
-    // Row-уудыг render хийнэ
-    var rowsEl=document.getElementById('game-rows');
-    rowsEl.innerHTML='';
-    GAME_ROWS.forEach(function(cat){
-      var filtered=_allGames.filter(cat.filter);
-      var sec=makeGameRow(cat.label, filtered);
-      if(sec) rowsEl.appendChild(sec);
-    });
-
-    // Хайлт
-    window.searchGames=function(q){
-      q=(q||'').toLowerCase().trim();
-      var rowsEl=document.getElementById('game-rows');
-      var srEl=document.getElementById('game-search-results');
-      var slEl=document.getElementById('game-search-list');
-      var scEl=document.getElementById('game-search-count');
-      if(!q){
-        rowsEl.style.display='';
-        srEl.style.display='none';
-        return;
-      }
-      rowsEl.style.display='none';
-      srEl.style.display='block';
-      var res=_allGames.filter(function(g){
-        return g.title.toLowerCase().indexOf(q)>=0||(g.genre&&g.genre.toLowerCase().indexOf(q)>=0);
-      });
-      if(scEl) scEl.textContent=res.length;
-      slEl.innerHTML='';
-      if(!res.length){
-        slEl.innerHTML='<div style="color:var(--muted);font-size:13px;padding:12px 0">Тоглоом олдсонгүй</div>';
-        return;
-      }
-      res.slice(0,30).forEach(function(g,i){
-        var a=document.createElement('a');
-        a.className='gc';
-        if(g.embed){a.href='#';a.onclick=function(e){e.preventDefault();openGame(g);};}
-        else{a.href=g.link||'#';a.target='_blank';}
-        var gc2=['#818cf818','#34d39918','#f472b618','#fbbf2418','#a78bfa18'];
-        var ge2=['🎮','🕹️','⚔️','🏎️','🔫'];
-        a.innerHTML='<div class="gib" style="background:'+gc2[i%gc2.length]+'">'+ge2[i%ge2.length]+'</div>'
-          +'<div style="flex:1;min-width:0"><div class="gn">'+g.title+'</div><div class="gm2">'+g.genre+'</div></div>'
-          +'<span style="font-size:10px;color:var(--muted)">⭐'+g.rating+'</span>';
-        slEl.appendChild(a);
-      });
-    };
-
-    // Хуучин функцуудыг хэвээр үлдээнэ — хайлт overlay-д ашиглагдана
-    window._allGamesData=_allGames;
-    window.filterGames=function(){};
-    window.loadMoreGames=function(){};
-
-    var tabs=document.getElementById('city-tabs');
-    var stabs=document.getElementById('sidebar-cities');
-    tabs.innerHTML='';stabs.innerHTML='';
-    data.weather.cities.forEach(function(c,i){
-      var btn=document.createElement('button');
-      btn.className='ctab'+(i===0?' active':'');
-      btn.textContent=c.name;
-      btn.onclick=function(){
-        document.querySelectorAll('.ctab,.scb').forEach(function(b){b.classList.remove('active');});
-        document.querySelectorAll('.ctab,.scb').forEach(function(b){if(b.textContent===c.name)b.classList.add('active');});
-        fetchWeather(c.query,c.name);
-      };
-      tabs.appendChild(btn);
-      var sb=document.createElement('button');
-      sb.className='scb'+(i===0?' active':'');
-      sb.textContent=c.name;
-      sb.onclick=btn.onclick;
-      stabs.appendChild(sb);
-    });
-
-    var map={banner_top:'banner-top',banner_mid:'banner-mid',banner_bot:'banner-bot',
-             sidebar_1:'sidebar-ad-1',sidebar_2:'sidebar-ad-2',sidebar_3:'sidebar-ad-3',
-             mob_h1:'mob-h-1',mob_h2:'mob-h-2',mob_h3:'mob-h-3',
-             mob_v1:'mob-v-1',mob_v2:'mob-v-2',mob_v3:'mob-v-3'};
-    if(data.ads)data.ads.forEach(function(ad){if(map[ad.position])setAd(map[ad.position],ad);});
-
-    fetchWeather(data.weather.cities[0].query,data.weather.cities[0].name);
-
-  })
-  .catch(function(err){
-    console.error('data.json алдаа:',err);
-    var ml=document.getElementById('movies-loading');
-    if(ml)ml.textContent='data.json файл олдсонгүй';
-    document.getElementById('game-list').innerHTML='<div style="color:var(--muted);font-size:13px">data.json файл олдсонгүй</div>';
-  });
+// ============================================================
+// INIT
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+  initHero();
+  initRows();
+  heroInterval = setInterval(() => setHero((heroIdx+1) % featuredMovies.length), 6000);
+});
 </script>
 </body>
 </html>
