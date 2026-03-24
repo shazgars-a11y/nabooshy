@@ -414,17 +414,116 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px 24p
 }
 .fsoc:hover{background:var(--red);border-color:var(--red);color:#fff}
 
-/* ── RESPONSIVE ── */
+/* ── LOGIN MODAL ── */
+.auth-modal-bg{
+  position:fixed;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(14px);
+  z-index:2000;display:none;align-items:center;justify-content:center;padding:20px
+}
+.auth-modal-bg.open{display:flex}
+.auth-box{
+  background:var(--bg2);border:1px solid var(--border2);border-radius:18px;
+  width:100%;max-width:400px;padding:36px 32px;position:relative;
+  animation:mIn .28s ease
+}
+.auth-logo{display:flex;align-items:center;gap:8px;justify-content:center;margin-bottom:28px}
+.auth-logo .logo-mark{width:40px;height:40px;font-size:18px}
+.auth-logo .logo-name{font-size:20px;letter-spacing:2px}
+.auth-title{font-family:'Oswald',sans-serif;font-size:22px;font-weight:600;text-align:center;margin-bottom:6px}
+.auth-sub{font-size:12px;color:var(--text3);text-align:center;margin-bottom:26px}
+.auth-field{margin-bottom:16px}
+.auth-field label{display:block;font-size:11px;font-weight:600;letter-spacing:.7px;text-transform:uppercase;color:var(--text2);margin-bottom:7px}
+.auth-field input{
+  width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:9px;
+  padding:11px 14px;color:var(--text);font-size:14px;outline:none;transition:all .2s
+}
+.auth-field input:focus{border-color:rgba(229,57,53,.5);background:var(--bg2)}
+.auth-field input::placeholder{color:var(--text3)}
+.auth-btn{
+  width:100%;padding:12px;background:var(--red);color:#fff;border:none;border-radius:9px;
+  font-size:14px;font-weight:700;cursor:pointer;margin-top:6px;transition:all .2s;letter-spacing:.3px
+}
+.auth-btn:hover{background:var(--red2);transform:translateY(-1px);box-shadow:0 6px 20px var(--red-glow)}
+.auth-divider{display:flex;align-items:center;gap:12px;margin:18px 0}
+.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.auth-divider span{font-size:11px;color:var(--text3)}
+.auth-switch{text-align:center;font-size:12px;color:var(--text3);margin-top:16px}
+.auth-switch a{color:var(--red);cursor:pointer;font-weight:600}
+.auth-switch a:hover{text-decoration:underline}
+.auth-close{
+  position:absolute;top:14px;right:14px;background:rgba(255,255,255,.08);
+  border:none;color:var(--text2);width:30px;height:30px;border-radius:50%;
+  font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s
+}
+.auth-close:hover{background:var(--red);color:#fff}
+.auth-error{background:rgba(229,57,53,.12);border:1px solid rgba(229,57,53,.3);border-radius:7px;padding:9px 12px;font-size:12px;color:#ef9a9a;margin-bottom:14px;display:none}
+.auth-error.show{display:block}
+
+/* user avatar in nav */
+.nav-user{
+  display:flex;align-items:center;gap:8px;padding:6px 12px;
+  background:var(--bg3);border:1px solid var(--border);border-radius:8px;
+  cursor:pointer;transition:all .2s;font-size:13px;font-weight:500
+}
+.nav-user:hover{border-color:rgba(229,57,53,.4)}
+.nav-avatar{
+  width:26px;height:26px;background:var(--red);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff
+}
+
+/* ── CONTACT PAGE IMPROVED ── */
+.contact-hero{
+  background:linear-gradient(135deg,#0D1020,#1A0020);
+  padding:40px 24px 36px;margin-bottom:32px;
+  border-bottom:1px solid var(--border)
+}
+.contact-hero h1{font-family:'Oswald',sans-serif;font-size:32px;font-weight:700;margin-bottom:8px}
+.contact-hero p{color:var(--text2);font-size:14px;max-width:480px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:700px;margin-bottom:28px}
+.contact-item{
+  background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);
+  padding:22px 24px;transition:all .22s;cursor:pointer
+}
+.contact-item:hover{border-color:rgba(229,57,53,.35);transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.contact-item .ci-icon{font-size:28px;margin-bottom:12px}
+.contact-item .ci-label{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--text3);margin-bottom:4px}
+.contact-item .ci-val{font-size:14px;font-weight:600;color:var(--text)}
+.contact-item .ci-val a{color:var(--red)}
+.contact-social{display:flex;gap:10px;margin-top:4px}
+.csoc-btn{
+  display:flex;align-items:center;gap:7px;padding:9px 16px;
+  background:var(--bg3);border:1px solid var(--border);border-radius:8px;
+  font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;color:var(--text)
+}
+.csoc-btn:hover{border-color:rgba(229,57,53,.4);background:var(--bg4)}
+
+/* ── RESPONSIVE IMPROVED ── */
 @media(max-width:768px){
-  nav{padding:0 12px}
+  nav{padding:0 10px;gap:4px}
   .nav-tabs .nav-tab span:not(.tab-icon){display:none}
-  .search-wrap input{width:100px}
-  .hero-body{padding:0 20px 36px}
-  .hero-title{font-size:32px}
+  .nav-tabs .nav-tab{padding:7px 10px}
+  .search-wrap{display:none}
+  .hero-body{padding:0 16px 32px;max-width:100%}
+  .hero-title{font-size:28px}
+  .hero-desc{font-size:12px}
+  .hero-btns .btn-more span{display:none}
   main,.weather-page{padding:0 12px 50px}
   .footer-grid{grid-template-columns:1fr 1fr}
   .m-grid{grid-template-columns:1fr}
   .gm-info{flex-direction:column;align-items:flex-start}
+  .mcard{width:136px}
+  .mcard-poster{height:204px}
+  .gcard{width:160px}
+  .w-featured{padding:20px 18px}
+  .w-featured .temp{font-size:52px}
+  .w-featured .icon{font-size:56px;top:16px;right:16px}
+  .contact-grid{grid-template-columns:1fr}
+  .auth-box{padding:28px 20px}
+}
+@media(max-width:480px){
+  .hero{height:420px}
+  .hero-title{font-size:24px}
+  .nav-logo .logo-name{font-size:18px;letter-spacing:2px}
+  .logo-mark{width:30px;height:30px;font-size:14px}
 }
 </style>
 </head>
@@ -444,13 +543,17 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px 24p
     <button class="nav-tab" id="t-movies" onclick="gotoPage('movies')"><span class="tab-icon">🎬</span><span>КИНО</span></button>
     <button class="nav-tab" id="t-games" onclick="gotoPage('games')"><span class="tab-icon">🎮</span><span>ТОГЛООМ</span></button>
     <button class="nav-tab" id="t-weather" onclick="gotoPage('weather')"><span class="tab-icon">🌤</span><span>ЦАГ АГААР</span></button>
+    <button class="nav-tab" id="t-contact" onclick="gotoPage('contact')"><span class="tab-icon">📞</span><span>ХОЛБОО</span></button>
   </div>
-  <div class="nav-right">
     <div class="search-wrap">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       <input id="searchIn" type="text" placeholder="Хайх..." oninput="doSearch(this.value)">
     </div>
-    <button class="nav-contact" onclick="gotoPage('contact')">📞 Холбоо</button>
+    <button class="nav-contact" id="navLoginBtn" onclick="openAuth('login')">🔐 Нэвтрэх</button>
+    <div class="nav-user" id="navUserBtn" style="display:none" onclick="logoutUser()">
+      <div class="nav-avatar" id="navAvatar">U</div>
+      <span id="navUserName">Хэрэглэгч</span>
+    </div>
   </div>
 </nav>
 
@@ -579,43 +682,51 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px 24p
 
 <!-- ══════════ CONTACT PAGE ══════════ -->
 <div class="page" id="page-contact">
-  <main style="padding-top:28px;max-width:640px">
-    <div class="sec-title" style="font-size:20px;margin-bottom:6px">📞 Холбоо барих</div>
-    <p style="color:var(--text3);font-size:13px;margin-bottom:20px">Зар байршуулах болон бусад асуудлаар холбоо барина уу</p>
-    <div class="contact-card">
-      <h3>Nabooshy</h3>
-      <p>Бидэнтэй холбогдож зар байршуулах, контент нэмэх, хамтран ажиллах боломжтой.</p>
-      <div class="contact-row">
-        <div class="icon">📧</div>
-        <div>
-          <div style="font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:3px">Имэйл</div>
-          <div class="val"><a href="mailto:gnarantsend@gmail.com">gnarantsend@gmail.com</a></div>
-        </div>
+  <div class="contact-hero">
+    <h1>📞 Холбоо барих</h1>
+    <p>Зар байршуулах, контент нэмэх, хамтран ажиллах болон бусад асуудлаар бидэнтэй холбогдоорой.</p>
+  </div>
+  <main style="padding-top:0;max-width:720px">
+    <div class="contact-grid">
+      <div class="contact-item" onclick="window.location='mailto:nabooshy@gmail.com'">
+        <div class="ci-icon">📧</div>
+        <div class="ci-label">Имэйл</div>
+        <div class="ci-val"><a href="mailto:nabooshy@gmail.com">nabooshy@gmail.com</a></div>
       </div>
-      <div class="contact-row">
-        <div class="icon">📱</div>
-        <div>
-          <div style="font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:3px">Утас</div>
-          <div class="val"><a href="tel:+97699376238">9937-6238</a></div>
-        </div>
+      <div class="contact-item" onclick="window.location='tel:+97699376238'">
+        <div class="ci-icon">📱</div>
+        <div class="ci-label">Утас / WhatsApp</div>
+        <div class="ci-val"><a href="tel:+97699376238">9937-6238</a></div>
       </div>
-      <div class="contact-row">
-        <div class="icon">📢</div>
-        <div>
-          <div style="font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:3px">Зар байршуулах</div>
-          <div class="val"><a href="mailto:gnarantsend@gmail.com?subject=Nabooshy — Зар байршуулах хүсэлт">Имэйл бичих →</a></div>
-        </div>
+      <div class="contact-item">
+        <div class="ci-icon">✈️</div>
+        <div class="ci-label">Telegram</div>
+        <div class="ci-val"><a href="https://t.me/nabooshy" target="_blank">@nabooshy</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon">🕘</div>
+        <div class="ci-label">Ажлын цаг</div>
+        <div class="ci-val">Даваа–Баасан, 9:00–18:00</div>
       </div>
     </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:20px 24px;max-width:480px">
-      <h4 style="font-size:14px;margin-bottom:12px">📍 Зарын байршлууд</h4>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;color:var(--text2)">
-        <div>📱 Гар утас хэвтээ (1,2,3)</div>
-        <div>📱 Гар утас босоо (1,2,3)</div>
-        <div>🖥 Кино дээр баннер</div>
-        <div>🖥 Дунд баннер</div>
-        <div>🖥 Доор баннер</div>
-        <div>🖥 Баруун sidebar (1,2,3)</div>
+    <div class="contact-card" style="max-width:100%">
+      <h3>Nabooshy тухай</h3>
+      <p>Монгол хадмал болон монголоор дублированный кино, онлайн тоглоом, цаг агаарын мэдээний нэгдсэн платформ. Бидэнтэй хамтран ажиллах, зар байршуулах, контент санал болгох боломжтой.</p>
+      <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--border)">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--text3);margin-bottom:12px">📍 Зарын байршлууд</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;color:var(--text2);margin-bottom:18px">
+          <div>📱 Гар утас хэвтээ (1,2,3)</div>
+          <div>📱 Гар утас босоо (1,2,3)</div>
+          <div>🖥 Кино дээр баннер</div>
+          <div>🖥 Дунд баннер</div>
+          <div>🖥 Доор баннер</div>
+          <div>🖥 Sidebar баннер</div>
+        </div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--text3);margin-bottom:10px">Сошиал хаяг</div>
+        <div class="contact-social">
+          <a class="csoc-btn" href="#" target="_blank">📘 Facebook</a>
+          <a class="csoc-btn" href="https://t.me/nabooshy" target="_blank">✈ Telegram</a>
+        </div>
       </div>
     </div>
   </main>
@@ -628,6 +739,55 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px 24p
     <p style="color:var(--text3);font-size:13px;margin-bottom:20px" id="searchInfo"></p>
     <div class="mgrid" id="searchGrid"></div>
   </main>
+</div>
+
+<!-- ══════════ AUTH MODAL ══════════ -->
+<div class="auth-modal-bg" id="authModal" onclick="if(event.target===this)closeAuth()">
+  <div class="auth-box">
+    <button class="auth-close" onclick="closeAuth()">✕</button>
+    <div class="auth-logo">
+      <div class="logo-mark">N</div>
+      <div class="logo-name" style="font-family:'Oswald',sans-serif;letter-spacing:2px">NABOO<span style="color:var(--red)">SHY</span></div>
+    </div>
+    <!-- LOGIN FORM -->
+    <div id="authLogin">
+      <div class="auth-title">Нэвтрэх</div>
+      <div class="auth-sub">Дансаараа нэвтэрч кино үзэх</div>
+      <div class="auth-error" id="loginErr"></div>
+      <div class="auth-field">
+        <label>И-мэйл хаяг</label>
+        <input type="email" id="loginEmail" placeholder="email@example.com" onkeydown="if(event.key==='Enter')doLogin()">
+      </div>
+      <div class="auth-field">
+        <label>Нууц үг</label>
+        <input type="password" id="loginPass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+      </div>
+      <button class="auth-btn" onclick="doLogin()">Нэвтрэх</button>
+      <div class="auth-divider"><span>эсвэл</span></div>
+      <div class="auth-switch">Данс байхгүй юу? <a onclick="switchAuth('register')">Бүртгүүлэх →</a></div>
+    </div>
+    <!-- REGISTER FORM -->
+    <div id="authRegister" style="display:none">
+      <div class="auth-title">Бүртгүүлэх</div>
+      <div class="auth-sub">Үнэгүй данс үүсгэж эхлэх</div>
+      <div class="auth-error" id="regErr"></div>
+      <div class="auth-field">
+        <label>Нэр</label>
+        <input type="text" id="regName" placeholder="Таны нэр">
+      </div>
+      <div class="auth-field">
+        <label>И-мэйл хаяг</label>
+        <input type="email" id="regEmail" placeholder="email@example.com">
+      </div>
+      <div class="auth-field">
+        <label>Нууц үг</label>
+        <input type="password" id="regPass" placeholder="Доод тал нь 6 тэмдэгт" onkeydown="if(event.key==='Enter')doRegister()">
+      </div>
+      <button class="auth-btn" onclick="doRegister()">Бүртгүүлэх</button>
+      <div class="auth-divider"><span>эсвэл</span></div>
+      <div class="auth-switch">Данс байна уу? <a onclick="switchAuth('login')">Нэвтрэх →</a></div>
+    </div>
+  </div>
 </div>
 
 <!-- ══════════ FOOTER ══════════ -->
@@ -659,7 +819,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px 24p
       <h4>Холбоос</h4>
       <ul>
         <li><a href="#" onclick="gotoPage('contact')">Холбоо барих</a></li>
-        <li><a href="mailto:gnarantsend@gmail.com">gnarantsend@gmail.com</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#1a7d747b687b746e697f747e5a7d777b737634797577"><span class="__cf_email__" data-cfemail="690e07081b08071d1a0c070d290e04080005470a0604">[email&#160;protected]</span></a></li>
         <li><a href="tel:+97699376238">9937-6238</a></li>
         <li><a href="#">Нууцлалын бодлого</a></li>
       </ul>
@@ -740,7 +900,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px 24p
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ══════════════════════════════════════════
 // DATA
 // ══════════════════════════════════════════
@@ -983,32 +1143,49 @@ function applyGameFilters(){
 // ══════════════════════════════════════════
 // WEATHER
 // ══════════════════════════════════════════
+const OWM_KEY='fc4b4a3ecd85839afed62a32911aa465';
 const wCache={};
 async function fetchWeather(q){
   if(wCache[q])return wCache[q];
   try{
-    const r=await fetch(`https://wttr.in/${encodeURIComponent(q)}?format=j1`);
-    if(!r.ok)throw new Error();
+    const r=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(q)}&appid=${OWM_KEY}&units=metric&lang=en`);
+    if(!r.ok)throw new Error('HTTP '+r.status);
     const d=await r.json();
-    const c=d.current_condition[0];
     const res={
-      temp:c.temp_C,feel:c.FeelsLikeC,
-      hum:c.humidity+'%',wind:c.windspeedKmph+' км/ц',
-      pres:c.pressure+' гПа',desc:c.weatherDesc[0].value,
-      icon:getWIcon(parseInt(c.weatherCode))
+      temp:Math.round(d.main.temp),
+      feel:Math.round(d.main.feels_like),
+      hum:d.main.humidity+'%',
+      wind:Math.round(d.wind.speed*3.6)+' км/ц',
+      pres:d.main.pressure+' гПа',
+      desc:owmDescMn(d.weather[0].id,d.weather[0].description),
+      icon:owmIcon(d.weather[0].id,d.weather[0].icon)
     };
     wCache[q]=res;return res;
-  }catch{return null}
+  }catch(e){console.warn('Weather error:',q,e);return null}
 }
-function getWIcon(code){
-  if(code===113)return'☀';
-  if([116,119,122].includes(code))return'☁';
-  if([143,248,260].includes(code))return'🌫';
-  if(code>=263&&code<=282)return'🌦';
-  if(code>=293&&code<=314)return'🌧';
-  if(code>=320&&code<=335)return'❄';
-  if(code>=338&&code<=395)return'🌨';
-  if([200,201,202,210,211,212,221,230,231,232].includes(code))return'⛈';
+function owmDescMn(id,orig){
+  if(id===800)return'Цэлмэг';
+  if(id===801)return'Бага үүлтэй';
+  if(id===802)return'Дунд зэрэг үүлтэй';
+  if(id>=803)return'Их үүлтэй';
+  if(id>=700&&id<800)return'Манан';
+  if(id>=600&&id<700)return'Цас орж байна';
+  if(id>=500&&id<600)return'Бороо орж байна';
+  if(id>=300&&id<400)return'Шиврээ бороо';
+  if(id>=200&&id<300)return'Аянга цахилгаан';
+  return orig;
+}
+function owmIcon(id,ico){
+  const n=ico.endsWith('n');
+  if(id===800)return n?'🌙':'☀';
+  if(id===801)return n?'🌙':'🌤';
+  if(id===802)return'⛅';
+  if(id>=803)return'☁';
+  if(id>=700)return'🌫';
+  if(id>=600)return'❄';
+  if(id>=500)return'🌧';
+  if(id>=300)return'🌦';
+  if(id>=200)return'⛈';
   return'🌡';
 }
 
@@ -1119,6 +1296,12 @@ function openMovieDetail(m){
 }
 
 function openPlayer(m){
+  if(!currentUser){
+    closeM('movieModal');
+    openAuth('login');
+    toast('Үзэхийн тулд нэвтэрнэ үү 🔐');
+    return;
+  }
   document.getElementById('pPoster').src=m.poster;
   document.getElementById('pTitle').textContent=m.title;
   document.getElementById('pMeta').innerHTML=`<span style="color:var(--gold)">⭐ ${m.rating}</span><span style="color:var(--text2)">· ${m.year} · ${catLabel(m.cat)}</span>`;
@@ -1190,18 +1373,80 @@ function toast(msg){
   clearTimeout(tTm);tTm=setTimeout(()=>t.classList.remove('show'),2800);
 }
 
-// ══════════════════════════════════════════
+// AUTH SYSTEM
+let currentUser=null;
+function openAuth(mode){
+  mode=mode||'login';
+  document.getElementById('authModal').classList.add('open');
+  switchAuth(mode);
+}
+function closeAuth(){
+  document.getElementById('authModal').classList.remove('open');
+}
+function switchAuth(mode){
+  document.getElementById('authLogin').style.display=mode==='login'?'block':'none';
+  document.getElementById('authRegister').style.display=mode==='register'?'block':'none';
+  document.getElementById('loginErr').classList.remove('show');
+  document.getElementById('regErr').classList.remove('show');
+}
+function showAuthErr(id,msg){
+  var el=document.getElementById(id);el.textContent=msg;el.classList.add('show');
+}
+function doLogin(){
+  var email=document.getElementById('loginEmail').value.trim();
+  var pass=document.getElementById('loginPass').value;
+  if(!email||!pass){showAuthErr('loginErr','\u0418-\u043c\u044d\u0439\u043b \u0431\u043e\u043b\u043e\u043d \u043d\u0443\u0443\u0446 \u04af\u0433\u0438\u0439\u0433 \u043e\u0440\u0443\u0443\u043b\u043d\u0430 \u0443\u0443');return}
+  if(!email.includes('@')){showAuthErr('loginErr','\u0418-\u043c\u044d\u0439\u043b \u0445\u0430\u044f\u0433 \u0431\u0443\u0440\u0443\u0443 \u0431\u0430\u0439\u043d\u0430');return}
+  var users=JSON.parse(localStorage.getItem('nb_users')||'[]');
+  var found=users.find(function(u){return u.email===email&&u.pass===btoa(pass)});
+  if(!found){showAuthErr('loginErr','\u0418-\u043c\u044d\u0439\u043b \u044d\u0441\u0432\u044d\u043b \u043d\u0443\u0443\u0446 \u04af\u0433 \u0431\u0443\u0440\u0443\u0443 \u0431\u0430\u0439\u043d\u0430');return}
+  loginSuccess(found);
+}
+function doRegister(){
+  var name=document.getElementById('regName').value.trim();
+  var email=document.getElementById('regEmail').value.trim();
+  var pass=document.getElementById('regPass').value;
+  if(!name){showAuthErr('regErr','\u041d\u044d\u0440\u0438\u0439\u0433 \u043e\u0440\u0443\u0443\u043b\u043d\u0430 \u0443\u0443');return}
+  if(!email||!email.includes('@')){showAuthErr('regErr','\u0418-\u043c\u044d\u0439\u043b \u0445\u0430\u044f\u0433 \u0431\u0443\u0440\u0443\u0443 \u0431\u0430\u0439\u043d\u0430');return}
+  if(pass.length<6){showAuthErr('regErr','\u041d\u0443\u0443\u0446 \u04af\u0433 \u0434\u043e\u043e\u0434 \u0442\u0430\u043b 6 \u0442\u044d\u043c\u0434\u044d\u0433\u0442 \u0431\u0430\u0439\u043d\u0430');return}
+  var users=JSON.parse(localStorage.getItem('nb_users')||'[]');
+  if(users.find(function(u){return u.email===email})){showAuthErr('regErr','\u042d\u043d\u044d \u0438-\u043c\u044d\u0439\u043b \u0430\u043b\u044c \u0445\u044d\u0434\u0438\u0439\u043d \u0431\u04af\u0440\u0442\u0433\u044d\u043b\u0442\u044d\u0439');return}
+  var user={name:name,email:email,pass:btoa(pass)};
+  users.push(user);
+  localStorage.setItem('nb_users',JSON.stringify(users));
+  loginSuccess(user);
+}
+function loginSuccess(user){
+  currentUser=user;
+  localStorage.setItem('nb_session',JSON.stringify(user));
+  closeAuth();
+  updateNavUser();
+  toast('\u0422\u0430\u0432\u0442\u0430\u0439 \u043c\u043e\u0440\u0438\u043b\u043d\u043e \u0443\u0443, '+user.name+'! \ud83d\udc4b');
+}
+function logoutUser(){
+  if(!confirm('\u0413\u0430\u0440\u0430\u0445 \u0443\u0443?'))return;
+  currentUser=null;
+  localStorage.removeItem('nb_session');
+  updateNavUser();
+  toast('\u0410\u043c\u0436\u0438\u043b\u0442\u0442\u0430\u0439 \u0433\u0430\u0440\u043b\u0430\u0430');
+}
+function updateNavUser(){
+  var lb=document.getElementById('navLoginBtn');
+  var ub=document.getElementById('navUserBtn');
+  if(currentUser){
+    lb.style.display='none';ub.style.display='flex';
+    document.getElementById('navAvatar').textContent=currentUser.name[0].toUpperCase();
+    document.getElementById('navUserName').textContent=currentUser.name;
+  } else {
+    lb.style.display='flex';ub.style.display='none';
+  }
+}
+(function(){
+  try{var s=localStorage.getItem('nb_session');if(s){currentUser=JSON.parse(s);updateNavUser();}}catch(e){}
+})();
+
 // INIT
-// ══════════════════════════════════════════
-document.addEventListener('DOMContentLoaded',()=>{
-  // Home rows
-  const byRating=[...MOVIES].sort((a,b)=>b.rating-a.rating);
-  renderMovieRow('rowNew',MOVIES.slice(0,12));
-  renderMovieRow('rowTop',byRating.slice(0,12));
-  renderGameRow('rowGames',GAMES);
-  initHero();
-  initWeatherRow();
-});
+gotoPage('home');
 </script>
 </body>
 </html>
