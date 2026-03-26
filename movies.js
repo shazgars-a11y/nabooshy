@@ -2,14 +2,27 @@
 // movies.js — Кино карт, дэлгэрэнгүй, кино хуудас
 // ============================================================
 
-export const MOVIE_GENRES = [
-  { label: '🌐 Бүгд',         keys: [] },
-  { label: '⚔️ Action',       keys: ['action', 'adventure'] },
-  { label: '👻 Аймшиг',       keys: ['horror', 'thriller'] },
-  { label: '🎭 Драма',         keys: ['drama', 'romance'] },
-  { label: '😂 Инээдмийн',    keys: ['comedy'] },
-  { label: '🚀 Sci-Fi',        keys: ['sci-fi', 'fantasy', 'science fiction'] },
-  { label: '🎨 Аниме',         keys: ['animation', 'anime', 'cartoon'] },
+export const MOVIE_GENRES =[
+  { label: '🌐 All',          keys: [] },
+  { label: '💥 Action',       keys: ['action'] },
+  { label: '🗺️ Adventure',    keys: ['adventure'] },
+  { label: '😂 Comedy',       keys: ['comedy'] },
+  { label: '🎭 Drama',        keys: ['drama'] },
+  { label: '👻 Horror',       keys: ['horror'] },
+  { label: '🔪 Thriller',     keys: ['thriller'] },
+  { label: '🚀 Sci-Fi',       keys:['sci-fi', 'science fiction'] },
+  { label: '✨ Fantasy',      keys: ['fantasy'] },
+  { label: '❤️ Romance',      keys: ['romance'] },
+  { label: '🎨 Animation',    keys: ['animation', 'anime'] },
+  { label: '🕵️ Mystery',      keys: ['mystery'] },
+  { label: '🚨 Crime',        keys: ['crime'] },
+  { label: '📹 Documentary',  keys: ['documentary'] },
+  { label: '👨‍👩‍👧‍👦 Family',       keys: ['family'] },
+  { label: '🏛️ History',      keys: ['history'] },
+  { label: '🪖 War',          keys: ['war'] },
+  { label: '🎵 Music',        keys: ['music', 'musical'] },
+  { label: '🤠 Western',      keys: ['western'] },
+  { label: '📖 Biography',    keys:['biography'] }
 ];
 
 window.makeMovieCard = function (m) {
