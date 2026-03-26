@@ -77,6 +77,7 @@
         <button class="scroll-btn right" onclick="scrollRow('rowFeatured',600)">❯</button>
       </div>
     </section>
+    
     <!-- Цуврал -->
     <section class="sec">
       <div class="sec-head">
@@ -89,42 +90,10 @@
         <button class="scroll-btn right" onclick="scrollRow('rowSeries',600)">❯</button>
       </div>
     </section>
-    <!-- Action -->
-    <section class="sec">
-      <div class="sec-head"><div class="sec-title">⚔️ Action & Адал явдалт</div></div>
-      <div class="row-wrap">
-        <button class="scroll-btn left" onclick="scrollRow('rowAction',-600)">❮</button>
-        <div class="scroll-row" id="rowAction"></div>
-        <button class="scroll-btn right" onclick="scrollRow('rowAction',600)">❯</button>
-      </div>
-    </section>
-    <!-- Аймшиг -->
-    <section class="sec">
-      <div class="sec-head"><div class="sec-title">👻 Аймшиг & Триллер</div></div>
-      <div class="row-wrap">
-        <button class="scroll-btn left" onclick="scrollRow('rowHorror',-600)">❮</button>
-        <div class="scroll-row" id="rowHorror"></div>
-        <button class="scroll-btn right" onclick="scrollRow('rowHorror',600)">❯</button>
-      </div>
-    </section>
-    <!-- Драма -->
-    <section class="sec">
-      <div class="sec-head"><div class="sec-title">🎭 Драма & Хайр дурлал</div></div>
-      <div class="row-wrap">
-        <button class="scroll-btn left" onclick="scrollRow('rowDrama',-600)">❮</button>
-        <div class="scroll-row" id="rowDrama"></div>
-        <button class="scroll-btn right" onclick="scrollRow('rowDrama',600)">❯</button>
-      </div>
-    </section>
-    <!-- Sci-Fi -->
-    <section class="sec">
-      <div class="sec-head"><div class="sec-title">🚀 Sci-Fi & Fantasy</div></div>
-      <div class="row-wrap">
-        <button class="scroll-btn left" onclick="scrollRow('rowSciFi',-600)">❮</button>
-        <div class="scroll-row" id="rowSciFi"></div>
-        <button class="scroll-btn right" onclick="scrollRow('rowSciFi',600)">❯</button>
-      </div>
-    </section>
+
+    <!-- Энд 19 төрлийн кино автоматаар үүснэ -->
+    <div id="dynamicRows"></div>
+
     <!-- Тоглоом preview -->
     <section class="sec">
       <div class="sec-head">
@@ -137,6 +106,7 @@
         <button class="scroll-btn right" onclick="scrollRow('rowGames',600)">❯</button>
       </div>
     </section>
+    
     <!-- Олон улс -->
     <section class="sec" style="margin-top:60px;border-top:1px solid var(--border);padding-top:40px;">
       <div class="sec-head">
