@@ -1,9 +1,5 @@
 // ============================================================
 // app.js — Гол entry point
-// Импорт хийх дараалал:
-//   firebase-config → auth → player → config →
-//   weather → games → hero →
-//   utils → movies → series → search → app
 // ============================================================
 
 import './firebase-config.js';
@@ -21,12 +17,17 @@ import './search.js';
 
 // ── Глобал өгөгдлийн сан ────────────────────────────────────
 window.MOVIES = [];
-window.SERIES = [];
+window.SERIES =[];
 
 // ── Өгөгдөл татах ───────────────────────────────────────────
 async function loadData() {
   try {
-    const res  = await fetch('data.json');
+    // Хуучин датаг цэвэрлэх
+    window.MOVIES =[];
+    window.SERIES =[];
+
+    // Cache-лэхгүйгээр үргэлж шинээр татах
+    const res  = await fetch('data.json?t=' + new Date().getTime(), { cache: 'no-store' });
     const json = await res.json();
     const raw  = json.data || json;
 
@@ -50,7 +51,7 @@ async function loadData() {
       };
 
       if (isSeries) {
-        window.SERIES.push({ ...base, episodes: item.episodes || [] });
+        window.SERIES.push({ ...base, episodes: item.episodes ||[] });
       } else {
         window.MOVIES.push({ ...base, embed: item.embed_links?.[0] || '' });
       }
@@ -69,13 +70,29 @@ function buildHomePage() {
   fillRow('rowFeatured',     window.MOVIES.slice(0, 30));
   fillRow('rowSeries',       window.SERIES.slice(0, 20), true);
 
-  if (window.HOME_ROWS) {
-    window.HOME_ROWS.forEach(({ id, keys }) =>
-      fillRow(
-        id,
-        window.MOVIES.filter((m) => keys.some((k) => m.cat.includes(k))).slice(0, 25)
-      )
-    );
+  const dynamicContainer = document.getElementById('dynamicRows');
+  if (dynamicContainer && window.HOME_ROWS) {
+    dynamicContainer.innerHTML = ''; // Өмнөх датаг цэвэрлэх
+    window.HOME_ROWS.forEach(({ id, title, keys }) => {
+      // Тухайн төрөлд хамаарах кинонуудыг шүүж авах
+      const filteredMovies = window.MOVIES.filter((m) => keys.some((k) => m.cat.includes(k))).slice(0, 25);
+
+      // Хэрэв тухайн төрлийн кино data.json дотор байвал л мөрийг харуулна
+      if (filteredMovies.length > 0) {
+        const section = document.createElement('section');
+        section.className = 'sec';
+        section.innerHTML = `
+          <div class="sec-head"><div class="sec-title">${title}</div></div>
+          <div class="row-wrap">
+            <button class="scroll-btn left" onclick="scrollRow('${id}',-600)">❮</button>
+            <div class="scroll-row" id="${id}"></div>
+            <button class="scroll-btn right" onclick="scrollRow('${id}',600)">❯</button>
+          </div>
+        `;
+        dynamicContainer.appendChild(section);
+        fillRow(id, filteredMovies);
+      }
+    });
   }
 
   if (window.buildGamesRow) window.buildGamesRow();
