@@ -11,22 +11,26 @@ import './games.js';
 import './hero.js';
 
 import { fillRow }         from './utils.js';
-import { buildMoviesPage } from './movies.js';
+import { buildMoviesPage, buildSeriesPage as buildSeriesGrid } from './movies.js';
 import { buildSeriesPage } from './series.js';
 import './search.js';
 
 // ── Глобал өгөгдлийн сан ────────────────────────────────────
 window.MOVIES = [];
-window.SERIES =[];
+window.SERIES = [];
+
+// ── Navbar scroll эффект ─────────────────────────────────────
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  if (nav) nav.classList.toggle('scrolled', window.scrollY > 10);
+});
 
 // ── Өгөгдөл татах ───────────────────────────────────────────
 async function loadData() {
   try {
-    // Хуучин датаг цэвэрлэх
-    window.MOVIES =[];
-    window.SERIES =[];
+    window.MOVIES = [];
+    window.SERIES = [];
 
-    // Cache-лэхгүйгээр үргэлж шинээр татах
     const res  = await fetch('data.json?t=' + new Date().getTime(), { cache: 'no-store' });
     const json = await res.json();
     const raw  = json.data || json;
@@ -51,13 +55,13 @@ async function loadData() {
       };
 
       if (isSeries) {
-        window.SERIES.push({ ...base, episodes: item.episodes ||[] });
+        window.SERIES.push({ ...base, episodes: item.episodes || [] });
       } else {
         window.MOVIES.push({ ...base, embed: item.embed_links?.[0] || '' });
       }
     });
 
-    buildHomePage();
+    buildHomeRows();
     if (window.fetchTMDBNowPlaying) window.fetchTMDBNowPlaying();
   } catch (e) {
     window.toast('Өгөгдөл татахад алдаа!');
@@ -65,19 +69,16 @@ async function loadData() {
   }
 }
 
-// ── Нүүр хуудас ─────────────────────────────────────────────
-function buildHomePage() {
-  fillRow('rowFeatured',     window.MOVIES.slice(0, 30));
-  fillRow('rowSeries',       window.SERIES.slice(0, 20), true);
+// ── Кино хуудасны мөрүүд ─────────────────────────────────────
+function buildHomeRows() {
+  fillRow('rowFeatured', window.MOVIES.slice(0, 30));
+  fillRow('rowSeries',   window.SERIES.slice(0, 20), true);
 
   const dynamicContainer = document.getElementById('dynamicRows');
   if (dynamicContainer && window.HOME_ROWS) {
-    dynamicContainer.innerHTML = ''; // Өмнөх датаг цэвэрлэх
+    dynamicContainer.innerHTML = '';
     window.HOME_ROWS.forEach(({ id, title, keys }) => {
-      // Тухайн төрөлд хамаарах кинонуудыг шүүж авах
-      const filteredMovies = window.MOVIES.filter((m) => keys.some((k) => m.cat.includes(k))).slice(0, 25);
-
-      // Хэрэв тухайн төрлийн кино data.json дотор байвал л мөрийг харуулна
+      const filteredMovies = window.MOVIES.filter(m => keys.some(k => m.cat.includes(k))).slice(0, 25);
       if (filteredMovies.length > 0) {
         const section = document.createElement('section');
         section.className = 'sec';
@@ -87,8 +88,7 @@ function buildHomePage() {
             <button class="scroll-btn left" onclick="scrollRow('${id}',-600)">❮</button>
             <div class="scroll-row" id="${id}"></div>
             <button class="scroll-btn right" onclick="scrollRow('${id}',600)">❯</button>
-          </div>
-        `;
+          </div>`;
         dynamicContainer.appendChild(section);
         fillRow(id, filteredMovies);
       }
@@ -96,24 +96,64 @@ function buildHomePage() {
   }
 
   if (window.buildGamesRow) window.buildGamesRow();
-
-  // Зар оруулах (zar.js-тэй холбоо)
   setTimeout(() => { if (window.insertAds) window.insertAds(); }, 500);
 }
 
-// ── Хуудас солих ────────────────────────────────────────────
-window.gotoPage = function (p) {
-  document.querySelectorAll('.page').forEach((el) => el.classList.remove('active'));
+// ── Бүх кино grid харуулах (мөрүүдийн хуудсаас "Бүгд" дарахад) ──
+window.showMoviesGrid = function() {
+  const s = document.getElementById('moviesFullSection');
+  const rows = document.querySelectorAll('#page-movies > main > .sec, #dynamicRows');
+  if (!s) return;
+
+  const isVisible = s.style.display !== 'none';
+  if (isVisible) {
+    s.style.display = 'none';
+    rows.forEach(el => el.style.display = '');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    s.style.display = '';
+    // Genre bar + grid дүүргэх
+    buildMoviesPage();
+    s.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
+// ── Бүх цуврал grid харуулах ──────────────────────────────────
+window.showSeriesGrid = function() {
+  const s = document.getElementById('seriesFullSection');
+  if (!s) return;
+  const isVisible = s.style.display !== 'none';
+  if (isVisible) {
+    s.style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    s.style.display = '';
+    buildSeriesPage();
+    s.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
+// ── Scroll хэрэгсэл ──────────────────────────────────────────
+window.scrollRow = function(id, dx) {
+  document.getElementById(id)?.scrollBy({ left: dx, behavior: 'smooth' });
+};
+
+// ── Хуудас солих ─────────────────────────────────────────────
+window.gotoPage = function(p) {
+  document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
   document.getElementById('page-' + p)?.classList.add('active');
-  document.querySelectorAll('.nav-tab').forEach((t) => t.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
   document.getElementById('t-' + p)?.classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  if (p === 'home')    { if (window.initHero) window.initHero(); buildHomePage(); }
-  if (p === 'movies')  buildMoviesPage();
-  if (p === 'series')  buildSeriesPage();
+  // Hero хуудас бүрт тохируулах
+  if (window.setPageHero) window.setPageHero(p);
+
   if (p === 'games'   && window.buildGamesPage) window.buildGamesPage();
   if (p === 'weather' && window.loadWeather)    window.loadWeather();
+  if (p === 'search') {
+    setTimeout(() => document.getElementById('searchPageInput')?.focus(), 300);
+  }
 };
 
 // ── Эхлүүлэх ────────────────────────────────────────────────
