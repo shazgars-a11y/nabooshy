@@ -20,21 +20,20 @@
 
 <!-- ===================== NAVBAR ===================== -->
 <nav id="navbar">
-  <div class="nav-logo" onclick="gotoPage('home')">
+  <div class="nav-logo" onclick="gotoPage('movies')">
     <div class="logo-mark">N</div>
     <div class="logo-name">NABOO<span>SHY</span></div>
   </div>
   <div class="nav-tabs">
-    <button class="nav-tab active" id="t-home"    onclick="gotoPage('home')">   <span class="tab-icon">🏠</span><span>ЭХЛЭЛ</span></button>
-    <button class="nav-tab"        id="t-movies"  onclick="gotoPage('movies')"> <span class="tab-icon">🎬</span><span>КИНО</span></button>
-    <button class="nav-tab"        id="t-series"  onclick="gotoPage('series')"> <span class="tab-icon">📺</span><span>ЦУВРАЛ</span></button>
+    <button class="nav-tab active" id="t-movies"  onclick="gotoPage('movies')"> <span class="tab-icon">🎬</span><span>КИНО</span></button>
     <button class="nav-tab"        id="t-games"   onclick="gotoPage('games')">  <span class="tab-icon">🎮</span><span>ТОГЛООМ</span></button>
     <button class="nav-tab"        id="t-weather" onclick="gotoPage('weather')"><span class="tab-icon">🌤</span><span>ЦАГ АГААР</span></button>
+    <button class="nav-tab"        id="t-search"  onclick="gotoPage('search')"> <span class="tab-icon">🔍</span><span>ХАЙХ</span></button>
   </div>
   <div class="nav-right">
-    <div class="search-wrap">
+    <div class="search-wrap" onclick="gotoPage('search')">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input id="searchIn" type="text" placeholder="Хайх..." oninput="doSearch(this.value)">
+      <input id="searchIn" type="text" placeholder="Хайх..." oninput="doSearch(this.value)" onfocus="gotoPage('search')">
     </div>
     <button class="nav-contact" id="navLoginBtn" onclick="openAuth('login')">Нэвтрэх</button>
     <div class="nav-user" id="navUserBtn" style="display:none" onclick="logoutUser()">
@@ -44,32 +43,35 @@
   </div>
 </nav>
 
-<!-- ===================== HOME ===================== -->
-<div class="page active" id="page-home">
+<!-- ===================== SHARED HERO ===================== -->
+<div id="heroWrap">
   <div class="hero" id="hero">
     <div id="heroVideoContainer" class="hero-video-container"></div>
     <div class="hero-bg" id="heroBg"></div>
     <div class="hero-vignette"></div>
     <div class="hero-body">
-      <div class="hero-tag">🔥 ДЭЛХИЙН ШИЛДЭГ</div>
+      <div class="hero-tag" id="heroTag">🔥 ДЭЛХИЙН ШИЛДЭГ</div>
       <div class="hero-title" id="heroTitle">Ачаалж байна...</div>
       <div class="hero-meta" id="heroMeta"></div>
       <div class="hero-desc" id="heroDesc"></div>
-      <div class="hero-btns">
+      <div class="hero-btns" id="heroBtns">
         <button class="btn-watch" id="heroWatch"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg> Үзэх</button>
-        <button class="btn-more" id="heroMore">ℹ Дэлгэрэнгүй</button>
+        <button class="btn-more"  id="heroMore">ℹ Дэлгэрэнгүй</button>
         <button class="btn-volume" id="heroVolumeBtn" onclick="toggleHeroVolume()">🔇 Дууг нээх</button>
       </div>
     </div>
     <div class="hero-dots" id="heroDots"></div>
   </div>
+</div>
 
+<!-- ===================== MOVIES (КИНО) ===================== -->
+<div class="page active" id="page-movies">
   <main style="margin-top:-40px;position:relative;z-index:10;">
     <!-- Онцлох -->
     <section class="sec">
       <div class="sec-head">
         <div class="sec-title" style="color:var(--red);font-size:22px;">🔥 Онцлох шилдэг бүтээлүүд</div>
-        <button class="sec-more" onclick="gotoPage('movies')">Бүгд ›</button>
+        <button class="sec-more" onclick="showMoviesGrid()">Бүгд ›</button>
       </div>
       <div class="row-wrap">
         <button class="scroll-btn left" onclick="scrollRow('rowFeatured',-600)">❮</button>
@@ -77,12 +79,12 @@
         <button class="scroll-btn right" onclick="scrollRow('rowFeatured',600)">❯</button>
       </div>
     </section>
-    
+
     <!-- Цуврал -->
     <section class="sec">
       <div class="sec-head">
         <div class="sec-title">📺 Шилдэг цувралууд</div>
-        <button class="sec-more" onclick="gotoPage('series')">Бүгд ›</button>
+        <button class="sec-more" onclick="showSeriesGrid()">Бүгд ›</button>
       </div>
       <div class="row-wrap">
         <button class="scroll-btn left" onclick="scrollRow('rowSeries',-600)">❮</button>
@@ -91,10 +93,10 @@
       </div>
     </section>
 
-    <!-- Энд 19 төрлийн кино автоматаар үүснэ -->
+    <!-- Динамик 19 төрлийн мөр -->
     <div id="dynamicRows"></div>
 
-    <!-- Тоглоом preview -->
+    <!-- Тоглоомын preview мөр -->
     <section class="sec">
       <div class="sec-head">
         <div class="sec-title">🎮 Онлайн Тоглоомууд</div>
@@ -106,7 +108,7 @@
         <button class="scroll-btn right" onclick="scrollRow('rowGames',600)">❯</button>
       </div>
     </section>
-    
+
     <!-- Олон улс -->
     <section class="sec" style="margin-top:60px;border-top:1px solid var(--border);padding-top:40px;">
       <div class="sec-head">
@@ -118,55 +120,62 @@
         <button class="scroll-btn right" onclick="scrollRow('rowInternational',600)">❯</button>
       </div>
     </section>
-  </main>
-</div>
 
-<!-- ===================== MOVIES ===================== -->
-<div class="page" id="page-movies">
-  <main>
-    <div class="page-header">
-      <h1 class="page-h1">🎬 Бүх кино</h1>
-      <p class="page-sub" id="moviesCount"></p>
+    <!-- Бүх кино grid (нуугдсан байгаа, Бүгд дарахад гарна) -->
+    <div id="moviesFullSection" style="display:none;">
+      <div class="page-header" style="margin-top:40px;">
+        <h1 class="page-h1">🎬 Бүх кино</h1>
+        <p class="page-sub" id="moviesCount"></p>
+      </div>
+      <div class="genre-bar" id="movieGenreBar"></div>
+      <div class="mgrid" id="moviesGrid"></div>
     </div>
-    <div class="genre-bar" id="movieGenreBar"></div>
-    <div class="mgrid" id="moviesGrid"></div>
-  </main>
-</div>
 
-<!-- ===================== SERIES ===================== -->
-<div class="page" id="page-series">
-  <main>
-    <div class="page-header">
-      <h1 class="page-h1">📺 Цуврал кино</h1>
-      <p class="page-sub" id="seriesCount"></p>
+    <!-- Бүх цуврал grid (нуугдсан байгаа) -->
+    <div id="seriesFullSection" style="display:none;">
+      <div class="page-header" style="margin-top:40px;">
+        <h1 class="page-h1">📺 Цуврал кино</h1>
+        <p class="page-sub" id="seriesCount"></p>
+      </div>
+      <div class="genre-bar" id="seriesGenreBar"></div>
+      <div class="mgrid" id="seriesGrid"></div>
     </div>
-    <div class="genre-bar" id="seriesGenreBar"></div>
-    <div class="mgrid" id="seriesGrid"></div>
   </main>
 </div>
 
-<!-- ===================== GAMES ===================== -->
+<!-- ===================== GAMES (ТОГЛООМ) ===================== -->
 <div class="page" id="page-games">
   <main>
-    <!-- Ангилал товчнууд -->
     <div class="genre-bar" id="gameGenreBar" style="margin-top:20px;"></div>
-    <!-- Тоглоомын grid -->
-    <div class="games-grid" id="gamesGrid"></div>
+    <div class="mgrid" id="gamesGrid"></div>
   </main>
 </div>
 
-<!-- ===================== WEATHER ===================== -->
+<!-- ===================== WEATHER (ЦАГ АГААР) ===================== -->
 <div class="page" id="page-weather">
   <main>
-    <div class="page-header">
-      <h1 class="page-h1">🌤️ Цаг агаар</h1>
-      <p class="page-sub">Монгол улсын бүх аймгийн цаг агаарын мэдээлэл</p>
-    </div>
     <div class="weather-update-bar">
       <span id="weatherLastUpdate">⏳ Мэдээлэл татаж байна...</span>
       <button class="weather-refresh-btn" onclick="refreshWeather()">🔄 Шинэчлэх</button>
     </div>
     <div class="w-grid" id="weatherGrid"></div>
+  </main>
+</div>
+
+<!-- ===================== SEARCH (ХАЙХ) ===================== -->
+<div class="page" id="page-search">
+  <main>
+    <div class="search-page-box">
+      <div class="search-page-icon">🔍</div>
+      <div class="search-page-wrap">
+        <input id="searchPageInput" type="text" class="search-page-input"
+               placeholder="Кино, цуврал, тоглоом, хот хайх..."
+               oninput="doSearch(this.value)" autofocus>
+      </div>
+      <div class="search-page-hint">Жишээ: <span onclick="doSearch('action')">action</span> · <span onclick="doSearch('дархан')">дархан</span> · <span onclick="doSearch('chess')">chess</span></div>
+    </div>
+    <div id="searchCount" style="color:var(--text2);font-size:14px;margin-bottom:16px;"></div>
+    <div class="mgrid" id="searchGrid"></div>
   </main>
 </div>
 
